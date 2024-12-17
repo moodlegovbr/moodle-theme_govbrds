@@ -1,9 +1,9 @@
-# moodleidg
+# moodle-govbrds
 Identidade Digital de Governo para o Moodle
 
-Estas instruções descrevem como fazer a instalação correta do Plugin "moodleidg".
-Esse plugin é desenvolvido e suportado pela Coordenação de Tecnologia e Suporte - CTS / IPEAD / IFRR.
-Plugin desenvolvido como extensão do tema Boost (padrão no Moodle 3).
+Estas instruções descrevem como fazer a instalação correta do Plugin "moodle-govbrds".
+
+Esse plugin é desenvolvido e suportado pela Coordenação de Tecnologia e Suporte - CTS / IPEAD / IFRR e pela Diretoria de Tecnologia da Informação DTI / IFRR
 
 Pré-requisitos:
 ============
@@ -21,7 +21,7 @@ Estas instruções assumem que o Moodle já esta instalado no seu servidor (/var
     O próprio Moodle irá identificar a nova instalação e apresentará a tela para a continuação do processo.
 
 3.  Clique no botão para fazer a instalação;
-4.  Preencha os formulário para parametrizar o tema moodleidg a sua instituição;
+4.  Preencha os formulário para parametrizar o tema moodle-govbrds a sua instituição;
 5.  Clieque no botão "Continuar";
 
 	A partir deste ponto você já poderá adicionar ativar o tema moodleidg.
