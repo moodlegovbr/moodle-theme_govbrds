@@ -6,10 +6,10 @@
  * Time: 09:57
  */
 
-$string['pluginname'] = 'Moodle IDG';
-$string['configtitle'] = 'Moodle IDG';
-$string['choosereadme'] = 'O tema MoodleIDG é um tema filho do boost. É um tema baseado na identidade digital do governo brasileiro.';
-$string['configtitle'] = 'Configurações do Moodle IDG';
+$string['pluginname'] = 'GovBR-DS';
+$string['configtitle'] = 'GovBR-DS';
+$string['choosereadme'] = 'O tema govbrds é um tema filho do boost. É um tema baseado na identidade digital do governo brasileiro.';
+$string['configtitle'] = 'Configurações do GovBR-DS';
 $string['generalsettings'] = 'Configurações Gerais';
 
 $string['organization'] = 'Organização';

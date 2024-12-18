@@ -22,9 +22,9 @@ Estas instruções assumem que o Moodle já esta instalado no seu servidor (/var
 
 3.  Clique no botão para fazer a instalação;
 4.  Preencha os formulário para parametrizar o tema moodle-govbrds a sua instituição;
-5.  Clieque no botão "Continuar";
+5.  Clique no botão "Continuar";
 
-	A partir deste ponto você já poderá adicionar ativar o tema moodleidg.
+	A partir deste ponto você já poderá adicionar ativar o tema govbrds.
 
 Fim
 ============
