@@ -1,11 +1,26 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version info
+ * GovBR-DS Layout
  *
  * @package    theme
- * @subpackage moodleidg
- * @copyright  2018 Fábio Rodrigues dos Santos - fabio.santos@ifrr.edu.br
+ * @subpackage govbrds
+ * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -38,19 +53,19 @@ $homerighthasblocks = strpos($homerightblock, 'data-block=') !== false;
 
 $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 
-$container = get_config('theme_moodleidg', 'layout')?'container-fluid':'container';
+$container = get_config('theme_govbrds', 'layout')?'container-fluid':'container';
 
 $templatecontext = [
-    // Moodle IDG
+    // GOvBRDS
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'shortname' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-    'organization' => get_config('theme_moodleidg', 'organization'),
-    'subordination' => get_config('theme_moodleidg', 'subordination'),
-    'addressm' => get_config('theme_moodleidg', 'addressm'),
+    'organization' => get_config('theme_govbrds', 'organization'),
+    'subordination' => get_config('theme_govbrds', 'subordination'),
+    'addressm' => get_config('theme_govbrds', 'addressm'),
     'container' => $container,
-    'brand' => $OUTPUT->image_url('ifrr-brand','theme_moodleidg'),
-    'barracodigo' => get_config('theme_moodleidg', 'barracodigo'),
-    'googlemetasearch' => get_config('theme_moodleidg', 'googlemetasearch'),
+    'brand' => $OUTPUT->image_url('ifrr-brand','theme_govbrds'),
+    'barracodigo' => get_config('theme_govbrds', 'barracodigo'),
+    'googlemetasearch' => get_config('theme_govbrds', 'googlemetasearch'),
 
 
     //Boost
@@ -70,5 +85,5 @@ $templatecontext = [
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 
 $PAGE->requires->jquery();
-$PAGE->requires->js('/theme/moodleidg/javascript/sticky_navbar.js');
-$PAGE->requires->js('/theme/moodleidg/javascript/moodleidg.js');
+$PAGE->requires->js('/theme/govbrds/javascript/sticky_navbar.js');
+$PAGE->requires->js('/theme/govbrds/javascript/govbrds.js');
