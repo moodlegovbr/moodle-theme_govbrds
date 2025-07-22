@@ -42,5 +42,5 @@ $plugin->requires = 2018050800;
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'theme_boost' => 2018051400
+    'theme_boost' => 2024100700
 ];

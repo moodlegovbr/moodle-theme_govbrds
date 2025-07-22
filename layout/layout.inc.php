@@ -25,7 +25,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+/*
+ * user_preference_allow_ajax_update() is deprecated. Please use the "core_user/repository" module instead.
+ * user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
+ */
+
 require_once($CFG->libdir . '/behat/lib.php');
 
 if (isloggedin()) {
@@ -82,7 +86,13 @@ $templatecontext = [
 
 ];
 
-$templatecontext['flatnavigation'] = $PAGE->flatnav;
+/* 
+ * Flat navigation has been deprecated in favour of primary/secondary navigation concepts
+ * $templatecontext['flatnavigation'] = $PAGE->flatnav;
+ */
+
+$templatecontext['primarynavigation'] = $PAGE->primarynav;
+$templatecontext['secondarynavigation'] = $PAGE->secondarynav;
 
 $PAGE->requires->jquery();
 $PAGE->requires->js('/theme/govbrds/javascript/sticky_navbar.js');
