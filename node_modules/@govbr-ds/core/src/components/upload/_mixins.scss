@@ -1,0 +1,91 @@
+// Dependências
+@import "../button/mixins";
+
+// Mixins
+@mixin upload-configs {
+  // @include upload-tokens;
+  @include upload-default;
+  @include upload-list;
+  @include upload-states;
+}
+
+// @mixin upload-tokens {
+// }
+
+@mixin upload-default {
+  input {
+    display: none;
+  }
+
+  .upload-button {
+    @include button-tokens;
+    @include button-default;
+    border: var(--surface-width-sm) dashed var(--interactive);
+    border-radius: var(--surface-rounder-sm);
+    display: block;
+    font-size: var(--font-size-scale-base);
+    font-style: italic;
+    font-weight: var(--font-weight-regular);
+    margin-top: var(--spacing-scale-half);
+    max-width: 550px;
+    min-height: var(--button-size);
+    padding-left: var(--spacing-scale-2x);
+    padding-right: var(--spacing-scale-2x);
+    text-align: left;
+    width: 100%;
+    @include icon {
+      margin-right: var(--spacing-scale-base);
+    }
+  }
+}
+
+@mixin upload-list {
+  .upload-list {
+    max-width: 550px;
+    position: relative;
+
+    .content {
+      align-self: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 70%;
+    }
+
+    .support {
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .br-tooltip {
+    max-width: 93%;
+  }
+}
+
+@mixin upload-states {
+  .upload-button {
+    @include button-states;
+  }
+  @each $state in success, danger, warning, info {
+    &.#{$state},
+    &[data-#{$state}] {
+      .upload-button {
+        border-color: var(--#{$state});
+      }
+    }
+  }
+
+  &.dragging {
+    .upload-button {
+      background-image: linear-gradient(
+        rgba(var(--interactive-rgb), var(--hover)),
+        rgba(var(--interactive-rgb), var(--hover))
+      );
+    }
+  }
+}
+
+@mixin upload-state {
+  @include upload-states;
+}

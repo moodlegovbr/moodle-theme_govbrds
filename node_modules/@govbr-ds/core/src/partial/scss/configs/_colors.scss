@@ -1,0 +1,159 @@
+@import "colors/blue";
+@import "colors/cyan";
+@import "colors/gold";
+@import "colors/gray";
+@import "colors/green";
+@import "colors/indigo";
+@import "colors/magenta";
+@import "colors/mint";
+@import "colors/orange";
+@import "colors/pure";
+@import "colors/red";
+@import "colors/violet";
+@import "colors/yellow";
+
+@import "colors/blue-cool";
+@import "colors/gray-cool";
+@import "colors/green-cool";
+@import "colors/indigo-cool";
+@import "colors/mint-cool";
+@import "colors/red-cool";
+
+@import "colors/blue-warm";
+@import "colors/gray-warm";
+@import "colors/green-warm";
+@import "colors/indigo-warm";
+@import "colors/orange-warm";
+@import "colors/red-warm";
+@import "colors/violet-warm";
+
+@import "colors/blue-vivid";
+@import "colors/cyan-vivid";
+@import "colors/gold-vivid";
+@import "colors/green-vivid";
+@import "colors/indigo-vivid";
+@import "colors/magenta-vivid";
+@import "colors/mint-vivid";
+@import "colors/orange-vivid";
+@import "colors/red-vivid";
+@import "colors/violet-vivid";
+@import "colors/yellow-vivid";
+
+@import "colors/blue-cool-vivid";
+@import "colors/green-cool-vivid";
+@import "colors/indigo-cool-vivid";
+@import "colors/mint-cool-vivid";
+@import "colors/red-cool-vivid";
+
+@import "colors/blue-warm-vivid";
+@import "colors/green-warm-vivid";
+@import "colors/indigo-warm-vivid";
+@import "colors/orange-warm-vivid";
+@import "colors/red-warm-vivid";
+@import "colors/violet-warm-vivid";
+
+// Compatibilidade com versões anteriores do Design System
+// Primário
+$color-primary-pastel-01: #c5d4eb;
+$color-primary-pastel-02: #dbe8fb;
+$color-primary-lighten-01: #2670e8;
+$color-primary-lighten-02: #5992ed;
+$color-primary-default: #1351b4;
+$color-primary-darken-01: #0c326f;
+$color-primary-darken-02: #071d41;
+$rgb-primary-pastel-01: get-rgb($color-primary-pastel-01);
+$rgb-primary-pastel-02: get-rgb($color-primary-pastel-02);
+$rgb-primary-lighten-01: get-rgb($color-primary-lighten-01);
+$rgb-primary-lighten-02: get-rgb($color-primary-lighten-02);
+$rgb-primary-default: get-rgb($color-primary-default);
+$rgb-primary-darken-01: get-rgb($color-primary-darken-01);
+$rgb-primary-darken-02: get-rgb($color-primary-darken-02);
+
+// Secundário
+$color-secondary-01: #fff;
+$color-secondary-02: #f8f8f8;
+$color-secondary-03: #ededed;
+$color-secondary-04: #ccc;
+$color-secondary-05: #9e9d9d;
+$color-secondary-06: #888;
+$color-secondary-07: #555;
+$color-secondary-08: #333;
+$color-secondary-09: #000;
+$rgb-secondary-01: get-rgb($color-secondary-01);
+$rgb-secondary-02: get-rgb($color-secondary-02);
+$rgb-secondary-03: get-rgb($color-secondary-03);
+$rgb-secondary-04: get-rgb($color-secondary-04);
+$rgb-secondary-05: get-rgb($color-secondary-05);
+$rgb-secondary-06: get-rgb($color-secondary-06);
+$rgb-secondary-07: get-rgb($color-secondary-07);
+$rgb-secondary-08: get-rgb($color-secondary-08);
+$rgb-secondary-09: get-rgb($color-secondary-09);
+
+// Destaque
+$color-highlight: #268744;
+$rgb-highlight: get-rgb($color-highlight);
+
+// Estados
+$color-warning: #ffcd07;
+$color-success: #168821;
+$color-danger: #e52207;
+$color-info: #155bcb;
+$rgb-warning: get-rgb($color-warning);
+$rgb-success: get-rgb($color-success);
+$rgb-danger: get-rgb($color-danger);
+$rgb-info: get-rgb($color-info);
+
+// Suporte
+$color-support-01: #36a191;
+$color-support-02: #f2e317;
+$color-support-03: #db4800;
+$color-support-04: #a26739;
+$color-support-05: #40e0d0;
+$color-support-06: #48cbeb;
+$color-support-07: #c72487;
+$color-support-08: #63007f;
+$color-support-09: #f08080;
+$color-support-10: #ff8c00;
+$color-support-11: #fdf5e6;
+$rgb-support-01: get-rgb($color-support-01);
+$rgb-support-02: get-rgb($color-support-02);
+$rgb-support-03: get-rgb($color-support-03);
+$rgb-support-04: get-rgb($color-support-04);
+$rgb-support-05: get-rgb($color-support-05);
+$rgb-support-06: get-rgb($color-support-06);
+$rgb-support-07: get-rgb($color-support-07);
+$rgb-support-08: get-rgb($color-support-08);
+$rgb-support-09: get-rgb($color-support-09);
+$rgb-support-10: get-rgb($color-support-10);
+$rgb-support-11: get-rgb($color-support-11);
+
+$br-colors: (
+  primary-pastel-01: $color-primary-pastel-01,
+  primary-pastel-02: $color-primary-pastel-02,
+  primary-lighten-01: $color-primary-lighten-01,
+  primary-lighten-02: $color-primary-lighten-02,
+  primary-default: $color-primary-default,
+  primary-darken-01: $color-primary-darken-01,
+  primary-darken-02: $color-primary-darken-02,
+  secondary-01: $color-secondary-01,
+  secondary-02: $color-secondary-02,
+  secondary-03: $color-secondary-03,
+  secondary-04: $color-secondary-04,
+  secondary-05: $color-secondary-05,
+  secondary-06: $color-secondary-06,
+  secondary-07: $color-secondary-07,
+  secondary-08: $color-secondary-08,
+  secondary-09: $color-secondary-09,
+  highlight: $color-highlight,
+  support-01: $color-support-01,
+  support-02: $color-support-02,
+  support-03: $color-support-03,
+  support-04: $color-support-04,
+  support-05: $color-support-05,
+  support-06: $color-support-06,
+  support-07: $color-support-07,
+  support-08: $color-support-08,
+  support-09: $color-support-09,
+  support-10: $color-support-10,
+  support-11: $color-support-11,
+);

@@ -9,7 +9,7 @@ Pré-requisitos:
 ============
 Você irá precisar no mínimo de:
 
-1.  Um servidor rodando Moodle 3.0, ou superior;
+1.  Um servidor rodando Moodle 4.5+
 
 Instalação:
 ============

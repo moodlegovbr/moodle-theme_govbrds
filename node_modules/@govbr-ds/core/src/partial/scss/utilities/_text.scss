@@ -1,0 +1,89 @@
+// Alinhamentos
+$aligns: center, justify, left, right;
+@each $align in $aligns {
+  .text-#{$align} {
+    text-align: $align !important;
+  }
+}
+
+// Wraps
+.text-wrap {
+  white-space: normal !important;
+}
+
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-break: break-word !important;
+  word-wrap: break-word !important;
+}
+
+// Transformação
+$transforms: lowercase, uppercase, capitalize;
+@each $transform in $transforms {
+  .text-#{$transform} {
+    text-transform: $transform !important;
+  }
+}
+
+// Pesos
+@each $key, $value in $font-weights {
+  .text-#{$key},
+  .text-weight-#{$key} {
+    font-weight: #{$value} !important;
+  }
+}
+
+// Tamanhos
+@include font-sizes;
+
+// Com breakpoints
+@each $breakpoint in "sm", "md", "lg", "xl" {
+  @include media-breakpoint-up($breakpoint) {
+    // Alinhamentos
+    @each $align in $aligns {
+      .text-#{$breakpoint}-#{$align} {
+        text-align: $align !important;
+      }
+    }
+    // Wraps
+    .text-#{$breakpoint}-wrap {
+      white-space: normal !important;
+    }
+    .text-#{$breakpoint}-nowrap {
+      white-space: nowrap !important;
+    }
+    .text-#{$breakpoint}-truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .text-#{$breakpoint}-break {
+      word-break: break-word !important;
+      word-wrap: break-word !important;
+    }
+    // Transformação
+    @each $transform in $transforms {
+      .text-#{$breakpoint}-#{$transform} {
+        text-transform: $transform !important;
+      }
+    }
+    // Pesos
+    @each $key, $value in $font-weights {
+      .text-#{$breakpoint}-#{$key},
+      .text-#{$breakpoint}-weight-#{$key} {
+        font-weight: #{$value} !important;
+      }
+    }
+    // Tamanhos
+    @include font-sizes($breakpoint);
+  }
+}

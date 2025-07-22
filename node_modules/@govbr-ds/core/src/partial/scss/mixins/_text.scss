@@ -1,0 +1,25 @@
+// Criar tamanhos de fontes
+@mixin font-sizes($breakpoint: null, $map: $text-font-size) {
+  @each $key, $value in $map {
+    .text#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key} {
+      font-size: var(--font-size-scale-#{$key}) !important;
+    }
+  }
+}
+
+// Criar tokens de tipografia
+@mixin tokens-font-weight($item, $value) {
+  .#{$item} {
+    font-weight: v($item, $value) !important;
+  }
+}
+@mixin tokens-font-size($item, $value) {
+  .#{$item} {
+    font-size: v($item, $value) !important;
+  }
+}
+@mixin tokens-line-height($item, $value) {
+  .#{$item} {
+    line-height: v($item, $value) !important;
+  }
+}

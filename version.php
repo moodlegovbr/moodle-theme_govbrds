@@ -32,15 +32,15 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_govbrds';
 
 // This is the version of the plugin.
-$plugin->version = 2018091800;
+$plugin->version = 2025072200;
 
 // This is the named version.
-$plugin->release = 'v1.03';
+$plugin->release = 'v1.04';
 
 // This is the version of Moodle this plugin requires.
 $plugin->requires = 2018050800;
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'theme_boost' => 2018051400
+    'theme_boost' => 2024100700
 ];

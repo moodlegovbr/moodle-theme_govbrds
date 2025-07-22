@@ -1,0 +1,10 @@
+@import "mixins";
+
+.#{$prefix}button {
+  @include button-configs;
+}
+
+a.#{$prefix}button {
+  font-weight: var(--font-weight-semi-bold);
+  text-decoration: none !important;
+}

@@ -1,0 +1,53 @@
+@function contrast($key) {
+  $colors-list: [];
+  $reds: "red-50", "red-60", "red-70", "red-80", "red-90", "red-vivid-50", "red-vivid-60", "red-vivid-70",
+    "red-vivid-80", "red-cool-50", "red-cool-60", "red-cool-70", "red-cool-80", "red-cool-90", "red-cool-vivid-50",
+    "red-cool-vivid-60", "red-cool-vivid-70", "red-cool-vivid-80", "red-warm-50", "red-warm-60", "red-warm-70",
+    "red-warm-80", "red-warm-90", "red-warm-vivid-60", "red-warm-vivid-70", "red-warm-vivid-80";
+  $colors-list: join($colors-list, $reds);
+  $oranges: "orange-50", "orange-60", "orange-70", "orange-80", "orange-90", "orange-vivid-50", "orange-vivid-60",
+    "orange-vivid-70", "orange-vivid-80", "orange-warm-50", "orange-warm-60", "orange-warm-70", "orange-warm-80",
+    "orange-warm-90", "orange-warm-vivid-60", "orange-warm-vivid-70", "orange-warm-vivid-80";
+  $colors-list: join($colors-list, $oranges);
+  $golds: "gold-50", "gold-60", "gold-70", "gold-80", "gold-90", "gold-vivid-50", "gold-vivid-60", "gold-vivid-70",
+    "gold-vivid-80";
+  $colors-list: join($colors-list, $golds);
+  $yellows: "yellow-50", "yellow-60", "yellow-70", "yellow-80", "yellow-90", "yellow-vivid-60", "yellow-vivid-70",
+    "yellow-vivid-80";
+  $colors-list: join($colors-list, $yellows);
+  $greens: "green-60", "green-70", "green-80", "green-90", "green-vivid-50", "green-vivid-60", "green-vivid-70",
+    "green-vivid-80", "green-cool-50", "green-cool-60", "green-cool-70", "green-cool-80", "green-cool-90",
+    "green-cool-vivid-50", "green-cool-vivid-60", "green-cool-vivid-70", "green-cool-vivid-80", "green-warm-50",
+    "green-warm-60", "green-warm-70", "green-warm-80", "green-warm-90", "green-warm-vivid-50", "green-warm-vivid-60",
+    "green-warm-vivid-70", "green-warm-vivid-80";
+  $colors-list: join($colors-list, $greens);
+  $mints: "mint-50", "mint-60", "mint-70", "mint-80", "mint-90", "mint-vivid-50", "mint-vivid-60", "mint-vivid-70",
+    "mint-vivid-80", "mint-cool-60", "mint-cool-70", "mint-cool-80", "mint-cool-90", "mint-cool-vivid-60",
+    "mint-cool-vivid-70", "mint-cool-vivid-80";
+  $colors-list: join($colors-list, $mints);
+  $cyans: "cyan-50", "cyan-60", "cyan-70", "cyan-80", "cyan-90", "cyan-vivid-60", "cyan-vivid-70", "cyan-vivid-80";
+  $colors-list: join($colors-list, $cyans);
+  $blues: "blue-50", "blue-60", "blue-70", "blue-80", "blue-90", "blue-vivid-50", "blue-vivid-60", "blue-vivid-70",
+    "blue-vivid-80", "blue-cool-50", "blue-cool-60", "blue-cool-70", "blue-cool-80", "blue-cool-90",
+    "blue-cool-vivid-50", "blue-cool-vivid-60", "blue-cool-vivid-70", "blue-cool-vivid-80", "blue-warm-60",
+    "blue-warm-70", "blue-warm-80", "blue-warm-90", "blue-warm-vivid-50", "blue-warm-vivid-60", "blue-warm-vivid-70",
+    "blue-warm-vivid-80", "blue-warm-vivid-90";
+  $colors-list: join($colors-list, $blues);
+  $indigos: "indigo-50", "indigo-60", "indigo-70", "indigo-80", "indigo-90", "indigo-vivid-60", "indigo-vivid-70",
+    "indigo-vivid-80", "indigo-cool-50", "indigo-cool-60", "indigo-cool-70", "indigo-cool-80", "indigo-cool-90",
+    "indigo-cool-vivid-60", "indigo-cool-vivid-70", "indigo-cool-vivid-80", "indigo-warm-50", "indigo-warm-60",
+    "indigo-warm-70", "indigo-warm-80", "indigo-warm-90", "indigo-warm-vivid-50", "indigo-warm-vivid-60",
+    "indigo-warm-vivid-70", "indigo-warm-vivid-80";
+  $colors-list: join($colors-list, $indigos);
+  $violets: "violet-50", "violet-60", "violet-70", "violet-80", "violet-90", "violet-vivid-50", "violet-vivid-60",
+    "violet-vivid-70", "violet-vivid-80", "violet-warm-50", "violet-warm-60", "violet-warm-70", "violet-warm-80",
+    "violet-warm-90", "violet-warm-vivid-50", "violet-warm-vivid-60", "violet-warm-vivid-70", "violet-warm-vivid-80";
+  $colors-list: join($colors-list, $violets);
+  $magentas: "magenta-50", "magenta-60", "magenta-70", "magenta-80", "magenta-90", "magenta-vivid-50",
+    "magenta-vivid-60", "magenta-vivid-70", "magenta-vivid-80";
+  $colors-list: join($colors-list, $magentas);
+  $grays: "gray-50", "gray-60", "gray-70", "gray-80", "gray-90", "gray-cool-50", "gray-cool-60", "gray-cool-70",
+    "gray-cool-80", "gray-cool-90", "gray-warm-50", "gray-warm-60", "gray-warm-70", "gray-warm-80", "gray-warm-90";
+  $colors-list: join($colors-list, $grays);
+  @return index($colors-list, $key);
+}

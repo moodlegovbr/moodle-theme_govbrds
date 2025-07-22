@@ -1,0 +1,19 @@
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+// Com breakpoints
+@each $breakpoint in "sm", "md", "lg", "xl" {
+  @include media-breakpoint-up($breakpoint) {
+    .overflow-#{$breakpoint}-auto {
+      overflow: auto !important;
+    }
+    .overflow-#{$breakpoint}-hidden {
+      overflow: hidden !important;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+/// Aplica foco: feedback ao navegar por teclado no elemento
+/// @example scss - Uso prático
+///  a {
+///    @include focus;
+///  }
+@mixin focus {
+  &:focus {
+    outline: none;
+  }
+
+  &.focus-visible,
+  &:focus-visible {
+    outline-color: var(--focus);
+    outline-offset: var(--focus-offset);
+    outline-style: var(--focus-style);
+    outline-width: var(--focus-width);
+  }
+}
+
+/// Aplica foco tênue
+/// @example scss - Uso prático
+///  input {
+///    &:focus,
+///    &:focus-visible,
+///    &.focus-visible {
+///      @include focus-soft;
+///    }
+///  }
+@mixin focus-soft {
+  border-color: var(--focus) !important;
+  box-shadow: 0 0 0 var(--surface-width-md) var(--focus);
+  outline: none;
+}

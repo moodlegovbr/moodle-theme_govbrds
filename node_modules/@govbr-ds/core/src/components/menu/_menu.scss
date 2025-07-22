@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}menu {
+  @include menu-configs;
+}

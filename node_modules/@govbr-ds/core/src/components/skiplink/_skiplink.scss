@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}skiplink {
+  @include skiplink-configs;
+}

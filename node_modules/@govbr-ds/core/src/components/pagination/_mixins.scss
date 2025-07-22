@@ -1,0 +1,191 @@
+// Dependências
+@import "../select/mixins";
+
+// Mixins
+@mixin pagination-configs {
+  @include pagination-tokens;
+  @include pagination-default;
+  @include pagination-page;
+  @include pagination-ellipsis;
+  @include pagination-sizes;
+  @include pagination-contextual;
+  @include pagination-dark-mode;
+  @include pagination-select-fix;
+}
+
+@mixin pagination-select-fix {
+  .input-group {
+    .input-icon {
+      display: none;
+    }
+  }
+}
+
+@mixin pagination-tokens {
+  --pagination-margin: var(--spacing-scale-base);
+  --pagination-select-width: 88px;
+  --pagination-size: var(--pagination-medium);
+  --pagination-small: 24px;
+  --pagination-medium: 32px;
+  --pagination-large: 40px;
+}
+
+@mixin pagination-default {
+  color: var(--color);
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: var(--font-weight);
+  justify-content: center;
+
+  ul {
+    align-items: center;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 0;
+  }
+}
+
+@mixin pagination-page {
+  &.dark-mode {
+    .page {
+      color: var(--color-dark);
+    }
+
+    .br-select {
+      .br-item {
+        label {
+          color: var(--color-dark);
+        }
+      }
+    }
+  }
+
+  .page {
+    @include hover;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 100em;
+    color: var(--interactive);
+    display: inline-flex;
+    justify-content: center;
+    margin: 0 calc(var(--pagination-margin) * 0.5);
+    min-height: var(--pagination-size);
+    min-width: var(--pagination-size);
+    padding: 0 var(--spacing-scale-base);
+    white-space: nowrap;
+
+    &.active {
+      background: var(--active);
+      color: var(--color-dark);
+      font-weight: var(--font-weight-semi-bold);
+    }
+  }
+}
+
+@mixin pagination-ellipsis {
+  .pagination-ellipsis {
+    margin: 0 calc(var(--pagination-margin) * 0.5);
+    position: relative;
+    .#{$prefix}button {
+      --button-size: var(--pagination-size);
+    }
+    .#{$prefix}list {
+      @include scrollbar;
+      max-height: 220px;
+      min-width: 4em;
+      overflow-y: auto;
+      z-index: var(--z-index-layer-1);
+    }
+  }
+}
+
+@mixin pagination-sizes {
+  @each $size in small, medium, large {
+    &.#{$size} {
+      --pagination-size: var(--pagination-#{$size});
+    }
+  }
+}
+
+@mixin pagination-contextual {
+  .pagination-information {
+    align-items: center;
+    display: flex;
+  }
+
+  .pagination-per-page,
+  .pagination-go-to-page {
+    align-items: center;
+    display: flex;
+    .#{$prefix}input {
+      align-items: center;
+      display: flex;
+
+      label {
+        font-weight: var(--font-weight-regular);
+        margin-bottom: 0;
+        margin-right: var(--spacing-scale-base);
+        padding-bottom: 0;
+      }
+
+      input {
+        --input-size: var(--pagination-medium);
+        padding-left: var(--spacing-scale-base);
+        padding-right: calc(var(--spacing-scale-baseh) + 32px);
+        text-align: right;
+        width: var(--pagination-select-width);
+
+        &:not(:focus) {
+          border-color: transparent;
+        }
+      }
+    }
+    .#{$prefix}list {
+      min-width: 5em;
+      right: 0;
+      width: auto;
+    }
+  }
+
+  .pagination-arrows {
+    align-items: center;
+    display: flex;
+  }
+  .#{$prefix}select {
+    .#{$prefix}input {
+      .#{$prefix}button {
+        bottom: auto;
+        margin-top: 0;
+        position: absolute;
+        right: var(--spacing-scale-half);
+        top: auto;
+        transform: none;
+      }
+    }
+  }
+  .#{$prefix}divider {
+    border-right-width: var(--divider-size);
+    border-top: 0;
+  }
+}
+
+@mixin pagination-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    @include dark-mode;
+    @include select-dark-mode;
+
+    .page {
+      &.active {
+        --interactive-rgb: var(--active-rgb);
+        background-color: var(--background-light);
+        color: var(--active);
+      }
+    }
+  }
+}

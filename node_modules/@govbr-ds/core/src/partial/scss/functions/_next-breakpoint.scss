@@ -1,0 +1,19 @@
+/// Retorna qual será próximo breakpoint.
+/// @group 02
+/// @param {String} $breakpoint - **Usar**: xs, sm, md ou lg
+/// @example scss - Retorna o breakpoint **md**
+///  next-breakpoint(sm)
+@function next-breakpoint($breakpoint) {
+  @if $breakpoint == "xs" {
+    @return "sm";
+  }
+  @if $breakpoint == "sm" {
+    @return "md";
+  }
+  @if $breakpoint == "md" {
+    @return "lg";
+  }
+  @if $breakpoint == "lg" {
+    @return "xl";
+  }
+}

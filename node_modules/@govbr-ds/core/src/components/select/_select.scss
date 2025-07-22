@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}select {
+  @include select-configs;
+}

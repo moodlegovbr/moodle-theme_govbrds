@@ -1,0 +1,6 @@
+@import "mixins";
+
+.loading, // TODO: Esta linha mantém compatibilidade com versão anterior. Remover na proxima release!
+.#{$prefix}loading {
+  @include loading-configs;
+}

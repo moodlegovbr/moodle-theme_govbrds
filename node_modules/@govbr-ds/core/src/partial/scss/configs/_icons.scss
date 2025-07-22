@@ -1,0 +1,47 @@
+// Tamanhos de ícones do GOVBR-DS
+$icon-size-base: 16px;
+$icon-size-xs: $icon-size-base * 0.5;
+$icon-size-sm: $icon-size-base * 0.75;
+$icon-size-lg: $icon-size-base * 1.25;
+$icon-size-2x: $icon-size-base * 2;
+$icon-size-3x: $icon-size-base * 3;
+$icon-size-4x: $icon-size-base * 4;
+$icon-size-5x: $icon-size-base * 5;
+$icon-size-6x: $icon-size-base * 6;
+$icon-size-7x: $icon-size-base * 7;
+$icon-size-8x: $icon-size-base * 8;
+$icon-size-9x: $icon-size-base * 9;
+$icon-size-10x: $icon-size-base * 10;
+
+// Mapa de ícones do GOVBR-DS
+$tokens-icons: (
+  icon-size-base: $icon-size-base,
+  icon-size-xs: $icon-size-xs,
+  icon-size-sm: $icon-size-sm,
+  icon-size-lg: $icon-size-lg,
+  icon-size-2x: $icon-size-2x,
+  icon-size-3x: $icon-size-3x,
+  icon-size-4x: $icon-size-4x,
+  icon-size-5x: $icon-size-5x,
+  icon-size-6x: $icon-size-6x,
+  icon-size-7x: $icon-size-7x,
+  icon-size-8x: $icon-size-8x,
+  icon-size-9x: $icon-size-9x,
+  icon-size-10x: $icon-size-10x,
+);
+
+// Mapa de ícones do Fontawesome
+$fa-icons: (
+  fa-xs: v(icon-size-xs),
+  fa-sm: v(icon-size-sm),
+  fa-lg: v(icon-size-lg),
+  fa-2x: v(icon-size-2x),
+  fa-3x: v(icon-size-3x),
+  fa-4x: v(icon-size-4x),
+  fa-5x: v(icon-size-5x),
+  fa-6x: v(icon-size-6x),
+  fa-7x: v(icon-size-7x),
+  fa-8x: v(icon-size-8x),
+  fa-9x: v(icon-size-9x),
+  fa-10x: v(icon-size-10x),
+);

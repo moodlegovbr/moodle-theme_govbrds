@@ -31,3 +31,14 @@ function theme_govbrds_get_main_scss_content($theme) {
     $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     return $scss;
 }
+
+function theme_govbrds_user_preferences(): array {
+    return [
+        'your_preference_name' => [
+            'type' => PARAM_ALPHA,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => false,
+            'permissioncallback' => [core_user::class, 'is_current_user'],
+        ]
+    ];
+}

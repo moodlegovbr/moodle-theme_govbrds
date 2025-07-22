@@ -1,0 +1,58 @@
+// Dependências
+@import "../button/mixins";
+
+// Mixins
+@mixin magic-configs {
+  @include magic-tokens;
+  @include magic-default;
+  @include magic-sizes;
+  @include magic-icons;
+}
+
+@mixin magic-tokens {
+  --magic-size: var(--magic-medium);
+  --magic-small: var(--spacing-scale-4xh);
+  --magic-medium: var(--spacing-scale-5xh);
+  --magic-large: var(--spacing-scale-6xh);
+  --magic-support-size: var(--magic-support-medium);
+  --magic-support-small: var(--spacing-scale-7x);
+  --magic-support-medium: var(--spacing-scale-8x);
+  --magic-support-large: var(--spacing-scale-9x);
+  --magic-z-index: var(--z-index-layer-1);
+}
+
+@mixin magic-default {
+  align-items: center;
+  background-color: var(--gray-5);
+  border-radius: 100em;
+  box-shadow: var(--surface-shadow-md);
+  display: inline-flex;
+  height: var(--magic-support-size);
+  padding: calc((var(--magic-support-size) - var(--magic-size)) * 0.5);
+}
+
+@mixin magic-button {
+  .#{$prefix}button {
+    background-color: var(--green-cool-vivid-50);
+    border: var(--gray-5) solid calc((var(--magic-support-size) - var(--magic-size)) * 0.5);
+    box-shadow: var(--surface-shadow-md);
+    color: var(--color-dark);
+    font-size: var(--font-size-scale-up-02);
+    z-index: var(--magic-z-index);
+  }
+}
+
+@mixin magic-sizes {
+  @each $size in small, medium, large {
+    &.#{$size} {
+      --magic-size: var(--magic-#{$size});
+      --magic-support-size: var(--magic-support-#{$size});
+    }
+  }
+}
+
+@mixin magic-icons {
+  @include icon {
+    --icon-size: var(--icon-size-lg);
+  }
+}

@@ -1,0 +1,57 @@
+// Espessura
+$width-none: 0;
+$width-sm: 1px;
+$width-md: 2px;
+$width-lg: 4px;
+
+$widths: (
+  width-none: $width-none,
+  width-sm: $width-sm,
+  width-md: $width-md,
+  width-lg: $width-lg,
+);
+
+// Bordas
+$border-solid-none: var(--surface-width-none) solid var(--color-secondary-06);
+$border-solid-sm: var(--surface-width-sm) solid var(--color-secondary-06);
+$border-solid-md: var(--surface-width-md) solid var(--color-secondary-06);
+$border-solid-lg: var(--surface-width-lg) solid var(--color-secondary-06);
+$border-dashed-none: var(--surface-width-none) dashed var(--color-secondary-06);
+$border-dashed-sm: var(--surface-width-sm) dashed var(--color-secondary-06);
+$border-dashed-md: var(--surface-width-md) dashed var(--color-secondary-06);
+$border-dashed-lg: var(--surface-width-lg) dashed var(--color-secondary-06);
+
+$borders: (
+  border-solid-none: $border-solid-none,
+  border-solid-sm: $border-solid-sm,
+  border-solid-md: $border-solid-md,
+  border-solid-lg: $border-solid-lg,
+  border-dashed-none: $border-dashed-none,
+  border-dashed-sm: $border-dashed-sm,
+  border-dashed-md: $border-dashed-md,
+  border-dashed-lg: $border-dashed-lg,
+);
+
+// Cantos
+$rounder-none: 0;
+$rounder-sm: 4px;
+$rounder-md: 8px;
+$rounder-lg: 16px;
+$rounder-pill: 999em;
+
+$rounders: (
+  rounder-none: $rounder-none,
+  rounder-sm: $rounder-sm,
+  rounder-md: $rounder-md,
+  rounder-lg: $rounder-lg,
+  rounder-pill: $rounder-pill,
+);
+
+// Scrim Foco
+$overlay-scrim: rgba(var(--rgb-secondary-09), var(--surface-opacity-md));
+
+// Scrim Legibilidade
+$overlay-text: linear-gradient(
+  rgba(var(--rgb-secondary-01), var(--surface-opacity-none)),
+  rgba(var(--rgb-secondary-09), var(--surface-opacity-default))
+);

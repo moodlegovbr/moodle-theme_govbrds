@@ -1,0 +1,780 @@
+@mixin step-configs {
+  @include step-tokens;
+  @include step-default;
+  @include step-button;
+  @include step-indicator;
+  @include step-lines;
+  @include step-label;
+  @include step-empty;
+  @include step-simple;
+  @include step-text;
+  @include step-scroll;
+  @include step-states;
+  @include step-dark;
+}
+
+@mixin step-tokens {
+  --step-empty: 16px;
+  --step-empty-border: 4px;
+  --step-line: 1px;
+  --step-size: var(--step-medium);
+  --step-small: 32px;
+  --step-medium: 40px;
+  --step-large: 48px;
+  --step-simple-size: var(--step-simple-medium);
+  --step-simple-medium: 8px;
+  --step-simple-large: 12px;
+  --step-alert-success-icon: "\f00c";
+  --step-alert-warning-icon: "\f071";
+  --step-alert-info-icon: "\f12a";
+  --step-alert-danger-icon: "\f00d";
+}
+
+@mixin step-default {
+  display: flex;
+  padding: var(--spacing-scale-base);
+
+  .step-progress {
+    display: flex;
+    flex-grow: 1;
+  }
+  // Step vertical
+  &.vertical {
+    flex-direction: column;
+
+    .step-progress {
+      flex-direction: column;
+    }
+  }
+}
+
+@mixin step-button {
+  .step-progress-btn {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    min-height: var(--step-size);
+    padding: 0;
+    position: relative;
+  }
+
+  &[data-label="left"] {
+    .step-progress-btn {
+      justify-content: end;
+    }
+  }
+
+  &[data-label="right"] {
+    .step-progress-btn {
+      justify-content: start;
+    }
+  }
+  // Vertical
+  &.vertical {
+    .step-progress-btn {
+      justify-content: start;
+    }
+
+    &[data-label="left"] {
+      .step-progress-btn {
+        justify-content: end;
+      }
+    }
+
+    &[data-label="right"] {
+      .step-progress-btn {
+        justify-content: start;
+      }
+    }
+  }
+}
+
+@mixin step-indicator {
+  // Indicador numérico
+  .step-progress-btn {
+    &::before {
+      align-items: center;
+      background-color: var(--background);
+      border: var(--step-line) solid var(--interactive);
+      border-radius: 50%;
+      color: var(--interactive);
+      content: attr(step-num);
+      display: inline-flex;
+      font-size: var(--font-size-scale-up-03);
+      font-weight: var(--font-weight-medium);
+      height: var(--step-size);
+      justify-content: center;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      width: var(--step-size);
+      z-index: 2;
+    }
+  }
+  // Indicador icônico
+  .step-icon {
+    align-items: center;
+    color: var(--interactive);
+    display: inline-flex;
+    height: var(--step-size);
+    justify-content: center;
+    position: absolute;
+    width: var(--step-size);
+    z-index: 4;
+  }
+  // Ícone de alerta
+  .step-alert {
+    align-items: center;
+    border-radius: 50%;
+    color: var(--color-dark);
+    display: flex;
+    height: var(--font-size-scale-up-04);
+    justify-content: center;
+    position: absolute;
+    width: var(--font-size-scale-up-04);
+    z-index: 4;
+
+    &::after {
+      display: flex;
+      font-family: "Font Awesome 5 Free";
+      font-size: var(--font-size-scale-up-01);
+      font-weight: 900;
+    }
+  }
+  // Indicador acima
+  &[data-label="bottom"] {
+    .step-progress-btn {
+      &::before {
+        top: 0;
+      }
+    }
+
+    .step-icon {
+      top: 0;
+    }
+
+    .step-alert {
+      transform: translate(calc(var(--step-size) * 0.5), calc(var(--step-size) * -0.75));
+    }
+  }
+  // Indicador abaixo
+  &[data-label="top"] {
+    .step-progress-btn {
+      &::before {
+        bottom: 0;
+      }
+    }
+
+    .step-icon {
+      bottom: 0;
+    }
+
+    .step-alert {
+      transform: translate(calc(var(--step-size) * 0.5), calc(var(--step-size) * 0.25));
+    }
+  }
+  // Indicador esquerda
+  &[data-label="left"] {
+    .step-progress-btn {
+      &::before {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .step-alert {
+      transform: translate(calc(var(--step-size) * 0.4), calc(var(--step-size) * -0.25));
+    }
+  }
+  // Indicador direita
+  &[data-label="right"] {
+    .step-progress-btn {
+      &::before {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    .step-alert {
+      transform: translate(calc(var(--step-size) * 0.65), calc(var(--step-size) * -0.25));
+    }
+  }
+  // Indicador vertical
+  &.vertical {
+    .step-progress-btn {
+      &::before {
+        bottom: 0;
+        left: auto;
+        right: auto;
+        top: 0;
+      }
+    }
+    // Indicador esquerda
+    &[data-label="left"] {
+      .step-progress-btn {
+        &::before {
+          right: 0;
+        }
+      }
+    }
+    // Indicador direita
+    &[data-label="right"] {
+      .step-progress-btn {
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin step-lines {
+  // Linha do tempo
+  .step-progress-btn {
+    &::after {
+      background-color: var(--interactive);
+      content: "";
+      display: block;
+      height: var(--step-line);
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+    }
+
+    &:first-child {
+      &::after {
+        left: 50%;
+      }
+    }
+
+    &:last-child {
+      &::after {
+        right: 50%;
+      }
+    }
+  }
+  // Linha do tempo acima
+  &[data-label="bottom"] {
+    .step-progress-btn {
+      &::after {
+        top: calc(var(--step-size) * 0.5);
+      }
+    }
+  }
+  // Linha do tempo abaixo
+  &[data-label="top"] {
+    .step-progress-btn {
+      &::after {
+        bottom: calc(var(--step-size) * 0.5);
+      }
+    }
+  }
+  // Linha do tempo esquerda
+  &[data-label="left"] {
+    .step-progress-btn {
+      &::after {
+        left: 0;
+      }
+
+      &:first-child {
+        &::after {
+          left: 100%;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          right: 0;
+        }
+      }
+    }
+  }
+  // Linha do tempo direita
+  &[data-label="right"] {
+    .step-progress-btn {
+      &::after {
+        right: 0;
+      }
+
+      &:first-child {
+        &::after {
+          left: 0;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          right: 100%;
+        }
+      }
+    }
+  }
+  // Linha do tempo vertical
+  &.vertical {
+    .step-progress-btn {
+      &::after {
+        bottom: 0;
+        height: auto;
+        left: auto;
+        right: auto;
+        top: 0;
+        width: var(--step-line);
+      }
+
+      &:first-child {
+        &::after {
+          left: auto;
+          top: 50%;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          bottom: 50%;
+          right: auto;
+        }
+      }
+    }
+    // Linha do tempo esquerda
+    &[data-label="left"] {
+      .step-progress-btn {
+        &::after {
+          right: calc(var(--step-size) * 0.5);
+        }
+      }
+    }
+    // Linha do tempo direita
+    &[data-label="right"] {
+      .step-progress-btn {
+        &::after {
+          left: calc(var(--step-size) * 0.5);
+        }
+      }
+    }
+  }
+}
+
+@mixin step-label {
+  // Rótulo
+  .step-info {
+    color: var(--interactive);
+    display: inline-block;
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-medium);
+  }
+  // Rótulo acima
+  &[data-label="bottom"] {
+    .step-info {
+      margin-top: var(--step-size);
+      padding-top: var(--spacing-scale-2x);
+    }
+  }
+  // Rótulo abaixo
+  &[data-label="top"] {
+    .step-info {
+      margin-bottom: var(--step-size);
+      padding-bottom: var(--spacing-scale-2x);
+    }
+  }
+  // Rótulo esquerda
+  &[data-label="left"] {
+    .step-info {
+      display: none;
+    }
+    @include media-breakpoint-up(sm) {
+      .step-info {
+        background-color: var(--background);
+        display: inline-block;
+        margin-right: var(--step-size);
+        padding: var(--spacing-scale-2x);
+        position: relative;
+        z-index: 3;
+      }
+    }
+  }
+  // Rótulo direita
+  &[data-label="right"] {
+    .step-info {
+      display: none;
+    }
+    @include media-breakpoint-up(sm) {
+      .step-info {
+        background-color: var(--background);
+        display: inline-block;
+        margin-left: var(--step-size);
+        padding: var(--spacing-scale-2x);
+        position: relative;
+        z-index: 3;
+      }
+    }
+  }
+  // Rótulo vertical
+  &.vertical {
+    // Rótulo esquerda
+    &[data-label="left"] {
+      .step-info {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: var(--step-size);
+        padding: var(--spacing-scale-2x);
+      }
+    }
+    // Rótulo direita
+    &[data-label="right"] {
+      .step-info {
+        display: inline-block;
+        margin-left: var(--step-size);
+        margin-right: 0;
+        padding: var(--spacing-scale-2x);
+      }
+    }
+  }
+}
+
+@mixin step-empty {
+  // Step vazio
+  &[data-type="void"] {
+    .step-progress-btn {
+      &::before {
+        content: "";
+        height: var(--step-empty);
+        width: var(--step-empty);
+      }
+    }
+
+    .step-info {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
+
+@mixin step-simple {
+  // Step simples
+  &[data-type="simple"] {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .step-progress {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .step-progress-btn {
+      flex-grow: 0;
+      width: 24px;
+
+      &::before {
+        background-color: var(--gray-20);
+        border-color: var(--gray-20);
+        content: "";
+        height: var(--step-simple-size);
+        width: var(--step-simple-size);
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+
+    .step-info {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
+
+@mixin step-text {
+  // Step textual
+  &[data-type="text"] {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .step-progress {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .step-progress-btn {
+      height: 0;
+      min-height: var(--font-size-scale-base);
+      overflow: hidden;
+      position: absolute;
+      width: 0;
+
+      &::before {
+        background-color: transparent;
+        border: 0;
+        color: var(--color);
+        font-size: var(--font-size-scale-base);
+        font-weight: var(--font-weight-regular);
+        width: auto;
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+
+    .step-info {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 0;
+    }
+  }
+}
+
+@mixin step-scroll {
+  &[scroll],
+  &[data-scroll] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include scrollbar;
+
+    .step-progress-btn {
+      min-width: 200px;
+    }
+
+    &.vertical {
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      .step-progress-btn {
+        min-height: 100px;
+        min-width: auto;
+      }
+    }
+  }
+}
+
+@mixin step-states {
+  .step-progress-btn {
+    // Concluído, Info, Alerta, Erro
+    @each $state in "success", "info", "warning", "danger" {
+      &[data-alert="#{$state}"] {
+        @if $state == "warning" {
+          color: var(--color-light);
+        } @else {
+          color: var(--#{$state});
+        }
+
+        .step-info {
+          @if $state == "warning" {
+            color: var(--color);
+          } @else {
+            color: var(--#{$state});
+          }
+        }
+
+        .step-alert {
+          background-color: var(--#{$state});
+
+          &::after {
+            content: var(--step-alert-#{$state}-icon);
+            @if $state == "warning" {
+              color: var(--color-light);
+            }
+          }
+        }
+      }
+    }
+    // Ativo
+    &.active,
+    &[active] {
+      &::before {
+        background-color: var(--active);
+        border-color: var(--active);
+        color: var(--background);
+      }
+
+      .step-icon {
+        color: var(--background);
+      }
+    }
+    // Focus
+    &:focus {
+      outline: none;
+    }
+
+    &.focus-visible,
+    &:focus-visible {
+      &::before {
+        outline-color: var(--focus);
+        outline-offset: var(--focus-offset);
+        outline-style: var(--focus-style);
+        outline-width: var(--focus-width);
+        z-index: 4;
+      }
+    }
+    // Hover
+    &:hover:not(:disabled) {
+      &::before {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--hover)),
+          rgba(var(--interactive-rgb), var(--hover))
+        );
+      }
+    }
+
+    &:disabled {
+      opacity: 1;
+
+      &::before {
+        border-color: rgba(var(--interactive-rgb), var(--disabled));
+      }
+
+      .step-icon {
+        color: rgba(var(--interactive-rgb), var(--disabled));
+      }
+    }
+  }
+  // Step vazio
+  &[data-type="void"] {
+    .step-progress-btn {
+      // Ativo
+      &.active,
+      &[active] {
+        .step-alert {
+          border: var(--step-empty-border) solid var(--active);
+          height: calc(var(--font-size-scale-up-04) + var(--step-empty-border));
+          width: calc(var(--font-size-scale-up-04) + var(--step-empty-border));
+        }
+      }
+      // Focus
+      &[data-alert] {
+        &.focus-visible,
+        &:focus-visible {
+          &::before {
+            outline: none;
+          }
+
+          .step-alert {
+            outline-color: var(--focus);
+            outline-offset: var(--focus-offset);
+            outline-style: var(--focus-style);
+            outline-width: var(--focus-width);
+            z-index: 4;
+          }
+        }
+      }
+    }
+  }
+  // Step textual
+  &[data-type="text"] {
+    .step-progress-btn {
+      cursor: default;
+
+      &.active,
+      &[active] {
+        height: auto;
+        position: static;
+        width: auto;
+
+        &::before {
+          background-color: transparent;
+          border: 0;
+          color: var(--color);
+          position: static;
+        }
+      }
+
+      &:focus,
+      &.focus-visible,
+      &:focus-visible {
+        &::before {
+          outline: none;
+        }
+      }
+
+      &:hover {
+        &::before {
+          background-image: none;
+        }
+      }
+    }
+  }
+}
+
+@mixin step-dark-mode {
+  @include dark-mode;
+
+  .step-progress-btn {
+    // Concluído, Info, Alerta, Erro
+    @each $state in "success", "info", "warning", "danger" {
+      &[data-alert="#{$state}"] {
+        @if $state != "warning" {
+          color: var(--#{$state}-alternative);
+        }
+
+        .step-info {
+          @if $state != "warning" {
+            color: var(--#{$state}-alternative);
+          }
+        }
+
+        .step-alert {
+          &::after {
+            content: var(--step-alert-#{$state}-icon);
+          }
+        }
+      }
+    }
+    // Ativo
+    &.active,
+    &[active] {
+      color: var(--color-dark);
+
+      &::before {
+        background-color: var(--background-light);
+        border-color: var(--background-light);
+        color: var(--active);
+      }
+
+      .step-icon {
+        color: var(--active);
+      }
+    }
+  }
+
+  &[data-type="void"] {
+    .step-progress-btn {
+      // Ativo
+      &.active,
+      &[active] {
+        .step-alert {
+          border-color: var(--color-dark);
+        }
+      }
+    }
+  }
+
+  &[data-type="text"] {
+    .step-progress-btn {
+      &::before {
+        background-color: transparent;
+        color: var(--color);
+      }
+    }
+  }
+}
+
+@mixin step-dark {
+  &.inverted,
+  &.dark-mode {
+    @include step-dark-mode;
+  }
+}

@@ -1,0 +1,172 @@
+// Dependências
+@import "../input/mixins";
+
+// Mixins
+@mixin select-configs {
+  @include select-tokens;
+  @include select-default;
+  @include select-list;
+  @include select-multiple;
+  @include select-dark-mode;
+}
+
+@mixin select-tokens {
+  // }
+  --select-divider: 1px solid var(--color-secondary-04);
+  --select-shadow: var(--surface-shadow-md);
+  // .overflow-text {
+  .#{$prefix}input {
+    input {
+      padding-right: 29px;
+      text-overflow: ellipsis;
+
+      &::after {
+        bottom: 0;
+        padding: 0 5px;
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}
+
+@mixin select-default {
+  max-width: 400px;
+  min-width: 100px;
+  position: relative;
+}
+
+// TODO: mover a customização abaixo para o List
+@mixin select-list {
+  .#{$prefix}list {
+    background: var(--bg-color);
+    box-shadow: var(--select-shadow);
+    display: none;
+    margin-top: -2px;
+    max-height: 404px;
+    overflow: auto;
+    position: absolute;
+    resize: none;
+    width: 100%;
+    z-index: 1;
+
+    @include scrollbar;
+
+    &:focus,
+    &:active {
+      color: var(--color-secondary-09);
+      outline: none;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: var(--color-secondary-07);
+      }
+    }
+
+    &[expanded] {
+      display: block;
+    }
+  }
+  .#{$prefix}item {
+    @include light-mode;
+    --item-padding-y: var(--spacing-scale-2x);
+
+    .content {
+      padding: 0;
+    }
+    .#{$prefix}checkbox,
+    .#{$prefix}radio {
+      --item-padding-x: var(--spacing-scale-2x);
+      --item-padding-y: var(--spacing-scale-2x);
+
+      input {
+        &:hover:not(:disabled) {
+          + label::before {
+            background-image: none;
+          }
+        }
+
+        + label {
+          padding-left: calc(var(--checkbox-padding) + var(--checkbox-size) + var(--item-padding-x));
+        }
+      }
+    }
+    .#{$prefix}radio {
+      input {
+        + label {
+          color: var(--text-color);
+          display: block;
+          height: auto;
+          min-height: 0;
+          padding: var(--item-padding);
+
+          &::before,
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: var(--select-divider);
+    }
+
+    &:not([disabled]) {
+      --focus-offset: calc(var(--spacing-scale-half) * -1);
+      @include focus;
+      @include hover("color");
+    }
+
+    &.selected,
+    &[selected] {
+      @include dark-mode;
+      @include focus;
+      @include hover("color");
+    }
+
+    &.disabled {
+      line-height: calc(var(--font-line-height-high) * 2);
+      padding-left: calc(var(--item-padding) + var(--spacing-scale-base));
+    }
+  }
+}
+
+@mixin select-multiple {
+  .#{$prefix}item {
+    &.highlighted,
+    &[highlighted] {
+      background-color: var(--gray-2);
+      padding-bottom: var(--spacing-scale-base);
+      padding-top: var(--spacing-scale-base);
+      // background: rgba(v(rgb-support-03), 0.16);
+      .#{$prefix}checkbox,
+      .#{$prefix}radio {
+        label {
+          font-weight: var(--font-weight-semi-bold);
+        }
+
+        &:hover {
+          background: linear-gradient(
+            rgba(var(--interactive-rgb), var(--hover)),
+            rgba(var(--interactive-rgb), var(--hover))
+          );
+
+          label {
+            color: var(--text-color);
+          }
+        }
+      }
+
+      &.selected,
+      &[selected] {
+        background-color: var(--selected);
+      }
+    }
+  }
+}
+
+@mixin select-dark-mode {
+  @include input-dark-mode;
+}

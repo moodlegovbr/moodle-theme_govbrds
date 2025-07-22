@@ -1,0 +1,49 @@
+@import "mixins";
+
+.br-footer {
+  @include footer-configs;
+
+  /// Para utilizar em um shadow dom reutiliza os mixins abaixo
+  .#{$prefix}list {
+    --background: var(--background-dark);
+
+    &.horizontal {
+      .#{$prefix}item,
+      .#{$prefix}list .#{$prefix}item {
+        @include footer-item-2linemax;
+      }
+    }
+  }
+
+  .br-item {
+    &.horizontal {
+      .#{$prefix} {
+        @include footer-list-hide-suport;
+      }
+
+      .#{$prefix}item {
+        @include footer-item-2linemax;
+      }
+
+      .col,
+      [class*="col-"] {
+        .#{$prefix}item.header.active {
+          border-bottom: 1px solid var(--border-color);
+          + .#{$prefix}list {
+            border-bottom: 1px solid var(--border-color);
+          }
+        }
+      }
+    }
+    @include item-center;
+    @include item-brackground-transparent;
+    @include footer-item-hide-suport;
+  }
+
+  &[inverted],
+  &.inverted {
+    .#{$prefix}list {
+      --background: var(--background-light);
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "mixins";
+
+.#{$prefix}tag {
+  @include tag-configs;
+}
+
+// TODO: Remover o código abaixo na versão 3.x.x
+.br-tag-input {
+  @include input-box;
+  display: flex;
+  flex-wrap: wrap;
+
+  input {
+    flex: 1;
+  }
+}
+
+.input-tag {
+  border: 0;
+  box-sizing: border-box;
+  color: inherit;
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0.9em 0.5em;
+}

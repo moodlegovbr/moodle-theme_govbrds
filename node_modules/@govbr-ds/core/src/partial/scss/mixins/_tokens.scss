@@ -1,0 +1,19 @@
+@mixin tokens($map, $name: "") {
+  @each $index, $value in $map {
+    --#{$name}#{$index}: #{$value};
+  }
+}
+
+// Retorna token de cor no formato hex
+@mixin token-color($map) {
+  @each $key, $value in $map {
+    --#{$key}: #{$value};
+  }
+}
+
+// Retorna token de cor no formato rgb
+@mixin token-color-rgb($map) {
+  @each $key, $value in $map {
+    --#{$key}-rgb: #{get-rgb($value)};
+  }
+}

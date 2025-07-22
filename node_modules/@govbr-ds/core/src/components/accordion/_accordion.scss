@@ -1,0 +1,68 @@
+.#{$prefix}accordion {
+  background: v(bg-color);
+  border-top: 1px solid v(color-secondary-04);
+
+  .item {
+    border-bottom: 1px solid v(color-secondary-04);
+    display: flex;
+    flex-direction: column;
+
+    &[active] {
+      border-bottom: 0;
+
+      .header {
+        font-weight: v(font-weight-semi-bold);
+      }
+
+      + .content {
+        border-bottom: 1px solid v(color-secondary-04);
+        display: block;
+      }
+    }
+  }
+
+  .header {
+    --bg-color: transparent;
+    background: v(bg-color);
+    border: 0;
+    color: var(--interactive);
+    display: flex;
+    font-size: v(font-size-scale-up-01);
+    justify-content: space-between;
+    outline: none;
+    padding: v(spacing-scale-2x) 0;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+
+    .icon {
+      margin: 0 v(spacing-scale-2x) 0 v(spacing-scale-baseh);
+    }
+
+    .title {
+      flex: 1;
+      margin: 0;
+    }
+    @include focus;
+    @include hover;
+  }
+
+  .content {
+    color: v(text-color);
+    display: none;
+    font-size: v(font-size-scale-base);
+    margin: 0 v(spacing-scale-base);
+    padding: v(spacing-scale-base) v(spacing-scale-8x) v(spacing-scale-2x);
+
+    * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &[negative] {
+    @include dark-mode;
+    --bg-color: var(--background-dark);
+  }
+}

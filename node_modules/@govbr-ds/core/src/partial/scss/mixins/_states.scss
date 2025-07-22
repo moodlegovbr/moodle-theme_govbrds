@@ -1,0 +1,57 @@
+// Desabilitado
+@mixin disabled {
+  cursor: not-allowed;
+  opacity: var(--disabled);
+
+  * {
+    pointer-events: none;
+  }
+}
+
+// Dark mode
+@mixin dark-mode(
+  $color: "color-dark",
+  $color-rgb: "color-dark-rgb",
+  $text-color: $color,
+  $interactive: "interactive-dark",
+  $interactive-rgb: "interactive-dark-rgb",
+  $visited: "visited-dark",
+  $hover: "hover-dark",
+  $pressed: "pressed-dark",
+  $focus-color: "focus-color-dark",
+  $focus: $focus-color
+) {
+  --color: var(--#{$color});
+  --color-rgb: var(--#{$color-rgb});
+  --text-color: var(--#{$text-color});
+  --interactive: var(--#{$interactive});
+  --interactive-rgb: var(--#{$interactive-rgb});
+  --visited: var(--#{$visited});
+  --hover: var(--#{$hover});
+  --pressed: var(--#{$pressed});
+  --focus-color: var(--#{$focus-color});
+  --focus: var(--#{$focus});
+}
+@mixin light-mode(
+  $color: "color-light",
+  $color-rgb: "color-light-rgb",
+  $text-color: $color,
+  $interactive: "interactive-light",
+  $interactive-rgb: "interactive-light-rgb",
+  $visited: "visited-light",
+  $hover: "hover-light",
+  $pressed: "pressed-light",
+  $focus-color: "focus-color-light",
+  $focus: $focus-color
+) {
+  --color: var(--#{$color});
+  --color-rgb: var(--#{$color-rgb});
+  --text-color: var(--#{$text-color});
+  --interactive: var(--#{$interactive});
+  --interactive-rgb: var(--#{$interactive-rgb});
+  --visited: var(--#{$visited});
+  --hover: var(--#{$hover});
+  --pressed: var(--#{$pressed});
+  --focus-color: var(--#{$focus-color});
+  --focus: var(--#{$focus});
+}

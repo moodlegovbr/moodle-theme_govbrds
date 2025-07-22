@@ -1,0 +1,49 @@
+// Cria classes de cores
+@if $enable-lite {
+  @each $map in $blue, $blue-warm, $blue-warm-vivid, $gold-vivid, $gray, $green-cool-vivid, $pure, $red-vivid,
+    $red-warm-vivid, $yellow-vivid
+  {
+    @each $key, $value in $map {
+      @include make-bg-color($key, $value);
+      @include make-text-color($key, $value);
+      @include make-border-color($key, $value);
+    }
+  }
+} @else {
+  @each $map in $blue, $blue-cool, $blue-warm, $blue-vivid, $blue-cool-vivid, $blue-warm-vivid, $cyan, $cyan-vivid,
+    $gold, $gold-vivid, $gray, $gray-cool, $gray-warm, $green, $green-cool, $green-warm, $green-vivid, $green-cool-vivid,
+    $green-warm-vivid, $indigo, $indigo-cool, $indigo-warm, $indigo-vivid, $indigo-cool-vivid, $indigo-warm-vivid,
+    $magenta, $magenta-vivid, $mint, $mint-cool, $mint-vivid, $mint-cool-vivid, $orange, $orange-warm, $orange-vivid,
+    $orange-warm-vivid, $pure, $red, $red-cool, $red-warm, $red-vivid, $red-cool-vivid, $red-warm-vivid, $violet,
+    $violet-warm, $violet-vivid, $violet-warm-vivid, $yellow, $yellow-vivid
+  {
+    @each $key, $value in $map {
+      @include make-bg-color($key, $value);
+      @include make-text-color($key, $value);
+      @include make-border-color($key, $value);
+    }
+  }
+}
+
+// Cria classes de cores para estados
+$states-colors: (
+  interactive: $interactive,
+  interactive-dark: $interactive-dark,
+  danger: $danger,
+  warning: $warning,
+  success: $success,
+  info: $info,
+);
+
+@each $key, $value in $states-colors {
+  @include make-bg-color($key, $value);
+  @include make-text-color($key, $value);
+  @include make-border-color($key, $value);
+}
+
+// Compatibilidade com versões anteriores do Design System
+@each $item, $value in $br-colors {
+  @include bg-colors($item, $value);
+  @include text-colors($item, $value);
+  @include border-colors($item, $value);
+}

@@ -1,0 +1,28 @@
+@mixin signin-configs {
+  @include signin-tokens;
+  @include signin-default;
+  @include signin-dark;
+}
+
+@mixin signin-tokens {
+  --background: var(--gray-2);
+  --sign-in-img: 20px;
+}
+
+@mixin signin-default {
+  background-color: var(--background);
+  padding: 0 var(--spacing-scale-2x);
+
+  img {
+    max-height: var(--sign-in-img);
+  }
+}
+
+@mixin signin-dark {
+  &.inverted,
+  &.is-inverted,
+  &[inverted],
+  &.dark-mode {
+    --background: var(--background-dark);
+  }
+}

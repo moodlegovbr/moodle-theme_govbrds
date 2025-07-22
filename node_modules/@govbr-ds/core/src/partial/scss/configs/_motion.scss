@@ -1,0 +1,29 @@
+// Escala de tempo
+$duration-very-fast: 0.1s;
+$duration-fast: 0.3s;
+$duration-moderate: 0.5s;
+$duration-slow: 0.8s;
+$duration-very-slow: 1s;
+
+$durations: (
+  very-fast: $duration-very-fast,
+  fast: $duration-fast,
+  moderate: $duration-moderate,
+  slow: $duration-slow,
+  very-slow: $duration-very-slow,
+);
+
+// Easing - Aceleração e Desaceleração
+$ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-in: cubic-bezier(0.42, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.58, 1);
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+$ease-linear: cubic-bezier(0, 0, 1, 1);
+
+$easings: (
+  ease: $ease,
+  ease-in: $ease-in,
+  ease-out: $ease-out,
+  ease-in-out: $ease-in-out,
+  ease-linear: $ease-linear,
+);

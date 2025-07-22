@@ -1,0 +1,79 @@
+// TODO: Verificar se os estados hover e focus estão funcionando
+@mixin input-box {
+  --input-background: var(--bg-color);
+  --input-border-color: var(--color-secondary-06);
+  --input-border-width: 1px;
+  --input-border-style: solid;
+  --input-padding: 0 var(--spacing-scale-half);
+  --input-radius: var(--surface-rounder-sm);
+  // Atenção! As seguintes propriedades devem seguir as definições em utilities/_typography.scss
+  // color
+  // font-size
+  // font-weight
+  background: var(--input-background);
+  border: var(--input-border-width) var(--input-border-style) var(--input-border-color);
+  border-radius: var(--input-radius);
+  color: var(--text-color);
+  display: block;
+  font-size: var(--font-size-scale-up-01);
+  font-weight: var(--font-weight-medium);
+  height: var(--input-size);
+  padding: var(--input-padding);
+  width: 100%;
+
+  @include hover("color");
+
+  &:focus,
+  &:focus-visible,
+  &.focus-visible {
+    @include focus-soft;
+  }
+
+  &.has-icon {
+    padding-right: v(spacing-scale-5x);
+  }
+
+  &[type="password"]::-ms-reveal,
+  &[type="password"]::-ms-clear {
+    display: none;
+  }
+}
+
+@mixin input-states {
+  @each $color in success, danger, warning, info {
+    &.#{$color},
+    &[data-#{$color}] {
+      input {
+        border: 2px solid var(--color-#{$color});
+      }
+      .feedback.color-#{$color} {
+        align-items: center;
+        background: $color;
+        color: var(--color-secondary-01) !important;
+        display: inline-flex;
+        height: 35px;
+        margin-bottom: var(--spacing-scale-base);
+        padding: 5px;
+      }
+      @if ($color == warning) {
+        .feedback.color-warning {
+          color: var(--color-secondary-08) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin input-sizes {
+  --input-small: 48px;
+  --input-medium: 40px;
+  --input-large: 32px;
+  --input-size: var(--input-medium);
+
+  @each $size in "small", "medium", "large" {
+    &.#{$size},
+    &[data-#{$size}] {
+      --input-size: var(--input-#{$size});
+    }
+  }
+}

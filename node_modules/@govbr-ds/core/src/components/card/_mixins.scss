@@ -1,0 +1,71 @@
+/// Carregar blocos internos
+/// @group Card
+@mixin card-configs {
+  @include card-tokens;
+  @include card-default;
+  @include card-h-fixed;
+  @include card-hover;
+  @include card-dark-mode;
+}
+
+@mixin card-tokens {
+  --card-padding: var(--spacing-scale-2x);
+  --card-height-fixed: 250px;
+}
+
+/// Criar configuração básica
+/// @group Card
+@mixin card-default {
+  background: var(--background);
+  box-shadow: var(--surface-shadow-sm);
+  color: var(--color);
+  margin-bottom: var(--spacing-scale-2x);
+
+  .card-content,
+  .front .content {
+    padding: var(--card-padding);
+    // Remove espaçamento extra de elementos com margem pra baixo
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .front .header,
+  .card-header {
+    padding: var(--card-padding) var(--card-padding) 0;
+  }
+
+  .front .footer,
+  .card-footer {
+    padding: 0 var(--card-padding) var(--card-padding);
+  }
+}
+
+@mixin card-h-fixed {
+  &.h-fixed {
+    .card-content {
+      max-height: var(--card-height-fixed);
+      overflow-y: auto;
+      @include scrollbar;
+    }
+
+    .card-footer {
+      padding-top: var(--card-padding);
+    }
+  }
+}
+
+@mixin card-hover {
+  &.hover {
+    &:hover {
+      background-image: linear-gradient(rgba(var(--color-rgb), var(--hover)), rgba(var(--color-rgb), var(--hover)));
+    }
+  }
+}
+
+@mixin card-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    @include dark-mode;
+  }
+}

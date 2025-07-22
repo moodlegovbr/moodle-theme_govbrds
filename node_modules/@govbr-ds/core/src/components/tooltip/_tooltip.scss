@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}tooltip {
+  @include tooltip-configs;
+}

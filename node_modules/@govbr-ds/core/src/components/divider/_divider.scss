@@ -1,0 +1,12 @@
+@import "mixins";
+
+.#{$prefix}divider,
+hr {
+  @include divider-configs;
+}
+
+// A tag HR reaproveita o estilo do Divider com margens pré-configurada
+hr {
+  --divider-padding: var(--spacing-scale-2x);
+  margin: var(--divider-padding) 0;
+}

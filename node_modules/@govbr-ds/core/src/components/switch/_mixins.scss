@@ -1,0 +1,256 @@
+@mixin switch-configs {
+  @include switch-tokens;
+  @include switch-default;
+  @include switch-directions;
+  @include switch-sizes;
+  @include switch-data-choice;
+  @include switch-icons;
+  @include switch-status;
+  @include switch-dark-mode;
+}
+
+@mixin switch-tokens {
+  --switch-height: var(--switch-height-medium);
+  --switch-width: var(--switch-width-medium);
+  --switch-toggle-size: var(--switch-toggle-medium);
+  --switch-icon-size: var(--switch-icon-medium);
+  --switch-height-small: 24px;
+  --switch-height-medium: 30px;
+  --switch-height-large: 36px;
+  --switch-width-small: 40px;
+  --switch-width-medium: 52px;
+  --switch-width-large: 64px;
+  --switch-toggle-small: 16px;
+  --switch-toggle-medium: 22px;
+  --switch-toggle-large: 28px;
+  --switch-icon-small: var(--icon-size-xs);
+  --switch-icon-medium: var(--icon-size-sm);
+  --switch-icon-large: var(--icon-size-base);
+}
+
+@mixin switch-default {
+  display: inline-flex;
+  min-height: var(--switch-height);
+
+  input {
+    opacity: 0;
+    position: absolute;
+
+    + label {
+      align-items: center;
+      color: var(--color);
+      cursor: pointer;
+      display: inline-flex;
+      font-size: var(--font-size-scale-base);
+      margin-bottom: 0;
+      position: relative;
+
+      &::before {
+        background: var(--background-light);
+        border: 1px solid var(--border-color);
+        border-radius: 100em;
+        content: "";
+        height: var(--switch-height);
+        position: absolute;
+        width: var(--switch-width);
+      }
+
+      &::after {
+        background-color: var(--off);
+        border-radius: 50%;
+        content: "";
+        height: var(--switch-toggle-size);
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        width: var(--switch-toggle-size);
+      }
+    }
+
+    &:checked + label {
+      &::after {
+        background-color: var(--on);
+      }
+    }
+  }
+}
+
+@mixin switch-directions {
+  input {
+    + label {
+      padding-right: calc(var(--spacing-scale-2x) + var(--switch-width));
+
+      &:empty {
+        padding-right: var(--switch-width);
+      }
+
+      &::before {
+        right: 0;
+      }
+
+      &::after {
+        right: calc(4px + var(--switch-toggle-size));
+      }
+    }
+
+    &:checked + label {
+      &::after {
+        right: 4px;
+      }
+    }
+  }
+  /* stylelint-disable no-descending-specificity */
+  &.right {
+    input {
+      + label {
+        padding-left: calc(var(--spacing-scale-2x) + var(--switch-width));
+        padding-right: 0;
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          left: 4px;
+        }
+      }
+
+      &:checked + label {
+        &::after {
+          left: calc(var(--switch-width) - var(--switch-toggle-size) - 4px);
+        }
+      }
+    }
+  }
+
+  &.top {
+    min-height: calc(var(--switch-height) * 2);
+
+    input {
+      + label {
+        align-items: flex-start;
+        padding-right: 0;
+
+        &::before {
+          bottom: 0;
+          left: 0;
+        }
+
+        &::after {
+          bottom: 4px;
+          left: 4px;
+        }
+      }
+
+      &:checked + label {
+        &::after {
+          left: calc(var(--switch-width) - var(--switch-toggle-size) - 4px);
+        }
+      }
+    }
+  }
+  /* stylelint-enable no-descending-specificity */
+}
+
+@mixin switch-sizes {
+  @each $size in "small", "medium", "large" {
+    &.#{$size} {
+      --switch-height: var(--switch-height-#{$size});
+      --switch-width: var(--switch-width-#{$size});
+      --switch-toggle-size: var(--switch-toggle-#{$size});
+      --switch-icon-size: var(--switch-icon-#{$size});
+    }
+  }
+}
+
+@mixin switch-data-choice {
+  input {
+    ~ .switch-data {
+      align-self: center;
+      color: var(--color);
+      font-size: var(--font-size-scale-base);
+      font-weight: var(--font-weight-regular);
+      margin-left: 8px;
+
+      &::before {
+        content: attr(data-disabled);
+      }
+    }
+
+    &:checked ~ .switch-data {
+      color: var(--color);
+
+      &::before {
+        content: attr(data-enabled);
+      }
+    }
+  }
+}
+
+@mixin switch-icons {
+  &.icon {
+    input {
+      + label {
+        &::after {
+          align-items: center;
+          color: var(--color-dark);
+          content: "\f00d";
+          display: inline-flex;
+          font-family: "Font Awesome 5 Free", sans-serif;
+          font-size: var(--switch-icon-size);
+          font-weight: var(--font-weight-black);
+          justify-content: center;
+        }
+      }
+
+      &:checked + label {
+        &::after {
+          content: "\f00c";
+        }
+      }
+    }
+  }
+}
+
+@mixin switch-status {
+  // Focus
+  input:focus-visible + label,
+  input.focus-visible + label {
+    &::before {
+      @include focus-soft;
+    }
+  }
+
+  input:hover:not([disabled]):checked + label {
+    &::before {
+      background-image: linear-gradient(rgba(var(--on-rgb), var(--hover)), rgba(var(--on-rgb), var(--hover)));
+    }
+  }
+
+  input:hover:not([disabled]):not(:checked) + label {
+    &::before {
+      background-image: linear-gradient(rgba(var(--off-rgb), var(--hover)), rgba(var(--off-rgb), var(--hover)));
+    }
+  }
+
+  input:active:not([disabled]):checked + label {
+    &::before {
+      background-image: linear-gradient(rgba(var(--on-rgb), var(--pressed)), rgba(var(--on-rgb), var(--pressed)));
+    }
+  }
+
+  input:active:not([disabled]):not(:checked) + label {
+    &::before {
+      background-image: linear-gradient(rgba(var(--off-rgb), var(--pressed)), rgba(var(--off-rgb), var(--pressed)));
+    }
+  }
+}
+
+@mixin switch-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    &,
+    label {
+      color: var(--color-dark);
+    }
+  }
+}

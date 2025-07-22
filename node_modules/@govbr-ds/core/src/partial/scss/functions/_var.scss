@@ -1,0 +1,20 @@
+/// Converter variável Sass para CSS
+/// @group Obsoleto
+/// @deprecated
+/// @param {String} $var - Nome da Variável Sass (sem $)
+/// @param {Variable} $fallback [null] - **Opcional!** Variável Sass
+/// @example scss - Conversão simples
+///  .#{$prefix}cookiebar {
+///    color: v(color-secondary-08);
+///  }
+/// @example scss - Conversão com fallback
+///  .#{$prefix}cookiebar {
+///    color: v(color-secondary-08, $color-secondary-08);
+///  }
+@function v($var, $fallback: null) {
+  @if ($fallback) {
+    @return var(--#{$var}, #{$fallback});
+  } @else {
+    @return var(--#{$var});
+  }
+}

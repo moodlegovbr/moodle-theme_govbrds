@@ -1,0 +1,15 @@
+/// Retornar RGB de uma variável Sass
+/// @group Reusável
+/// @param {Variable} $var - Variável Sass no formato Hexadecimal
+/// @example scss - Criar variável Sass no formato RGB
+///  $color-primary-default: #1351b4;
+///  $rgb-primary-default: get-rgb($color-primary-default);
+/// @example scss - Criar tokens no formato RGB
+///  @mixin token-color-rgb($map) {
+///    @each $key, $value in $map {
+///      --#{$key}-rgb: #{get-rgb($value)};
+///    }
+///  }
+@function get-rgb($var) {
+  @return red($var), green($var), blue($var);
+}

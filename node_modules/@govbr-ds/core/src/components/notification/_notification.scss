@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}notification {
+  @include notification-configs;
+}

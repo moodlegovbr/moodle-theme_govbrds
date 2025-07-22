@@ -1,0 +1,194 @@
+// Opacidade
+$opacity-none: 0;
+$opacity-default: 1;
+$opacity-xs: 0.16;
+$opacity-sm: 0.3;
+$opacity-md: 0.45;
+$opacity-lg: 0.65;
+$opacity-xl: 0.85;
+
+$opacities: (
+  opacity-none: $opacity-none,
+  opacity-default: $opacity-default,
+  opacity-xs: $opacity-xs,
+  opacity-sm: $opacity-sm,
+  opacity-md: $opacity-md,
+  opacity-lg: $opacity-lg,
+  opacity-xl: $opacity-xl,
+);
+
+// Deslocamento
+$offset-none: 0;
+$offset-sm: 1px;
+$offset-md: 3px;
+$offset-lg: 6px;
+$offset-xl: 9px;
+
+$offset-sm-n: -1px;
+$offset-md-n: -3px;
+$offset-lg-n: -6px;
+$offset-xl-n: -9px;
+
+$offsets: (
+  offset-none: $offset-none,
+  offset-sm: $offset-sm,
+  offset-md: $offset-md,
+  offset-lg: $offset-lg,
+  offset-xl: $offset-xl,
+  offset-sm-n: $offset-sm-n,
+  offset-md-n: $offset-md-n,
+  offset-lg-n: $offset-lg-n,
+  offset-xl-n: $offset-xl-n,
+);
+
+// Suavidade
+$blur-none: 0;
+$blur-sm: 1px;
+$blur-md: 3px;
+$blur-lg: 6px;
+$blur-xl: 9px;
+
+$blurs: (
+  blur-none: $blur-none,
+  blur-sm: $blur-sm,
+  blur-md: $blur-md,
+  blur-lg: $blur-lg,
+  blur-xl: $blur-xl,
+);
+
+// Cor da Sombra
+$shadow-color: var(--rgb-secondary-09);
+
+// Sombras Inferiores (Padrão)
+$shadow-none: none;
+$shadow-sm: var(--surface-offset-none) var(--surface-offset-sm) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md: var(--surface-offset-none) var(--surface-offset-md) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg: var(--surface-offset-none) var(--surface-offset-lg) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl: var(--surface-offset-none) var(--surface-offset-xl) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras Inferiores internas
+$shadow-sm-inset: var(--surface-offset-none) var(--surface-offset-sm-n) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset: var(--surface-offset-none) var(--surface-offset-md-n) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset: var(--surface-offset-none) var(--surface-offset-lg-n) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset: var(--surface-offset-none) var(--surface-offset-xl-n) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras Superiores
+$shadow-sm-up: var(--surface-offset-none) var(--surface-offset-sm-n) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-up: var(--surface-offset-none) var(--surface-offset-md-n) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-up: var(--surface-offset-none) var(--surface-offset-lg-n) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-up: var(--surface-offset-none) var(--surface-offset-xl-n) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras Superiores internas
+$shadow-sm-inset-up: var(--surface-offset-none) var(--surface-offset-sm) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-up: var(--surface-offset-none) var(--surface-offset-md) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-up: var(--surface-offset-none) var(--surface-offset-lg) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-up: var(--surface-offset-none) var(--surface-offset-xl) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras à direita
+$shadow-sm-right: var(--surface-offset-sm) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-right: var(--surface-offset-md) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-right: var(--surface-offset-lg) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-right: var(--surface-offset-xl) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras à direita internas
+$shadow-sm-inset-right: var(--surface-offset-sm-n) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-right: var(--surface-offset-md-n) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-right: var(--surface-offset-lg-n) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-right: var(--surface-offset-xl-n) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras à esquerda
+$shadow-sm-left: var(--surface-offset-sm-n) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-left: var(--surface-offset-md-n) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-left: var(--surface-offset-lg-n) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-left: var(--surface-offset-xl-n) var(--surface-offset-none) var(--surface-blur-lg)
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+// Sombras à esquerda internas
+$shadow-sm-inset-left: var(--surface-offset-sm) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-md-inset-left: var(--surface-offset-md) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-lg-inset-left: var(--surface-offset-lg) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+$shadow-xl-inset-left: var(--surface-offset-xl) var(--surface-offset-none) var(--surface-blur-lg) inset
+  rgba(var(--surface-shadow-color), var(--surface-opacity-xs));
+
+$shadows: (
+  shadow-color: $shadow-color,
+  shadow-none: $shadow-none,
+  shadow-sm: $shadow-sm,
+  shadow-md: $shadow-md,
+  shadow-lg: $shadow-lg,
+  shadow-xl: $shadow-xl,
+  shadow-sm-inset: $shadow-sm-inset,
+  shadow-md-inset: $shadow-md-inset,
+  shadow-lg-inset: $shadow-lg-inset,
+  shadow-xl-inset: $shadow-xl-inset,
+  shadow-sm-up: $shadow-sm-up,
+  shadow-md-up: $shadow-md-up,
+  shadow-lg-up: $shadow-lg-up,
+  shadow-xl-up: $shadow-xl-up,
+  shadow-sm-inset-up: $shadow-sm-inset-up,
+  shadow-md-inset-up: $shadow-md-inset-up,
+  shadow-lg-inset-up: $shadow-lg-inset-up,
+  shadow-xl-inset-up: $shadow-xl-inset-up,
+  shadow-sm-right: $shadow-sm-right,
+  shadow-md-right: $shadow-md-right,
+  shadow-lg-right: $shadow-lg-right,
+  shadow-xl-right: $shadow-xl-right,
+  shadow-sm-inset-right: $shadow-sm-inset-right,
+  shadow-md-inset-right: $shadow-md-inset-right,
+  shadow-lg-inset-right: $shadow-lg-inset-right,
+  shadow-xl-inset-right: $shadow-xl-inset-right,
+  shadow-sm-left: $shadow-sm-left,
+  shadow-md-left: $shadow-md-left,
+  shadow-lg-left: $shadow-lg-left,
+  shadow-xl-left: $shadow-xl-left,
+  shadow-sm-inset-left: $shadow-sm-inset-left,
+  shadow-md-inset-left: $shadow-md-inset-left,
+  shadow-lg-inset-left: $shadow-lg-inset-left,
+  shadow-xl-inset-left: $shadow-xl-inset-left,
+);
+
+// Camadas
+
+$layer-0: 0;
+$layer-1: 1000;
+$layer-2: 2000;
+$layer-3: 3000;
+$layer-4: 4000;
+
+$layers: (
+  layer-0: $layer-0,
+  layer-1: $layer-1,
+  layer-2: $layer-2,
+  layer-3: $layer-3,
+  layer-4: $layer-4,
+);

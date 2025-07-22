@@ -1,0 +1,24 @@
+/*!
+ * GOVBR-DS: Design System de Governo
+ * Versão 3.0.0
+ * Suporte:
+   - Serpro: DIDES/SUPSE/SESEP
+ */
+
+// Carregar configurações
+@import "base";
+
+// Gerar tokens
+@import "tokens";
+
+// Utilitários
+@import "utilities";
+
+// Templates
+@import "templates";
+
+// Componentes
+@import "components";
+
+// Vendors
+@import "vendors";

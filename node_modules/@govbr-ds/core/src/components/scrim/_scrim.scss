@@ -1,0 +1,9 @@
+@import "mixins";
+
+.#{$prefix}scrim {
+  @include scrim-configs;
+}
+
+.#{$prefix}scrim-util {
+  @include scrim-configs;
+}

@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}avatar {
+  @include avatar-configs;
+}

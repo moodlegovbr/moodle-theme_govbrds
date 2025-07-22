@@ -1,0 +1,127 @@
+@mixin message-configs {
+  @include message-tokens;
+  @include message-default;
+  @include message-colors;
+}
+
+@mixin feedback-configs {
+  @include message-tokens;
+  @include feedback-default;
+  @include message-colors;
+}
+
+@mixin message-tokens {
+  --message-background: var(--background);
+  --message-color-icon: var(--color);
+  --feedback-background: var(--background);
+  --message-text: var(--color);
+}
+
+@mixin message-default {
+  background: var(--message-background);
+  display: flex;
+  margin-bottom: var(--spacing-scale-2x);
+
+  .content {
+    color: var(--message-text);
+    flex: 1;
+    font-size: var(--font-size-scale-up-01);
+    padding: var(--spacing-scale-3x) var(--spacing-scale-base) var(--spacing-scale-3x) var(--spacing-scale-2x);
+
+    .message-title {
+      font-weight: var(--font-weight-semi-bold);
+    }
+
+    .message-body {
+      font-weight: var(--font-weigth-regular);
+    }
+
+    a {
+      font-weight: var(--font-weight-bold);
+      text-decoration: underline;
+    }
+
+    * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .icon {
+    align-items: center;
+    color: var(--message-color-icon);
+    display: flex;
+    justify-content: center;
+    margin: var(--spacing-vertical-center) var(--spacing-scale-2x);
+    padding-left: var(--spacing-scale-2x);
+    padding-right: var(--spacing-scale-2x);
+
+    + .content {
+      padding-left: 0;
+    }
+  }
+
+  .close {
+    margin-right: var(--spacing-scale-base);
+    margin-top: var(--spacing-scale-base);
+  }
+}
+
+@mixin feedback-default {
+  align-items: center;
+  background: var(--feedback-background);
+  color: var(--message-text);
+  display: inline-flex;
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0;
+  padding: var(--spacing-scale-half);
+
+  @include icon {
+    margin-right: var(--spacing-scale-half);
+  }
+
+  &:not(.is-warning):not(.warning):not([warning]) {
+    --message-text: var(--pure-0);
+  }
+
+  &.is-warning,
+  &.warning,
+  &[warning] {
+    @include light-mode;
+  }
+}
+
+@mixin message-colors {
+  @each $color in success, danger, info {
+    &.is-#{$color},
+    &.#{$color},
+    &[#{$color}] {
+      --message-background: var(--#{$color}-alternative);
+      --feedback-background: var(--#{$color});
+      --message-color-icon: var(--#{$color});
+
+      .close {
+        .#{$prefix}button {
+          --interactive: var(--message-color-icon);
+          --interactive-rgb: var(--#{$color}-rgb);
+        }
+      }
+    }
+  }
+
+  &.is-warning,
+  &.warning,
+  &[warning] {
+    --message-background: var(--warning-alternative);
+    --feedback-background: var(--warning);
+
+    .close {
+      .#{$prefix}button {
+        --interactive: var(--color);
+        --interactive-rgb: var(--color-rgb);
+      }
+    }
+  }
+}

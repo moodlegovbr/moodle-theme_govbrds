@@ -1,0 +1,140 @@
+@mixin upload($color: v(color-info, $color-info)) {
+  border: 1px solid v(color-secondary-01, $color-secondary-01);
+  box-shadow: 0 3px 6px v(color-secondary-04, $color-secondary-04);
+  margin-bottom: v(spacing-scale-2xh);
+  min-height: 248px;
+  padding-bottom: v(spacing-scale-2x);
+  padding-left: 360px;
+  padding-right: v(spacing-scale-6x);
+  padding-top: v(spacing-scale-4x);
+  @include media-breakpoint-down(sm) {
+    background-position: center 0;
+    padding-left: v(spacing-scale-2x);
+    padding-right: v(spacing-scale-2x);
+    padding-top: 180px;
+
+    .br-button {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    &:hover {
+      border: 1px solid v(color-primary-pastel-02, $color-primary-pastel-02);
+      // cursor: pointer;
+      cursor: copy;
+    }
+  }
+
+  &:hover {
+    border: 1px solid v(color-primary-pastel-02, $color-primary-pastel-02);
+    // cursor: pointer;
+    cursor: copy;
+  }
+
+  .upload-header {
+    color: v(color-secondary-07, $color-secondary-07);
+    font-size: v(font-size-scale-up-03, $font-size-scale-up-03) !important;
+    font-weight: v(font-weight-regular, $font-weight-regular) !important;
+  }
+
+  .upload-input {
+    display: none;
+  }
+
+  .upload-info {
+    color: v(color-info, $color-info);
+    display: block;
+    margin: v(spacing-scale-2x) 0;
+    padding-left: v(spacing-scale-5x);
+
+    .fa-info-circle {
+      font-size: v(font-size-scale-up-03, $font-size-scale-up-03) !important;
+      margin-left: calc(#{v(spacing-scale-5x)} * -1);
+      position: absolute;
+    }
+  }
+
+  .upload-file-list {
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      border-bottom: 1px solid v(color-secondary-04, $color-secondary-04);
+      color: v(color-info, $color-info);
+      font-size: v(font-size-scale-base, $font-size-scale-base) !important;
+      list-style: none;
+      padding: v(spacing-scale-base) 0 v(spacing-scale-base) v(spacing-scale-base);
+      position: relative;
+      width: 100%;
+
+      .del {
+        cursor: pointer;
+        display: inline;
+        line-height: 24px;
+        position: absolute;
+        right: 8px;
+      }
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      padding-right: v(spacing-scale-3x);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+
+  .upload-add {
+    color: v(color-info, $color-info);
+    // cursor: pointer;
+    cursor: copy;
+    display: block;
+    font-weight: v(font-weight-regular, $font-weight-regular);
+    margin: v(spacing-scale-4x) 0;
+    padding-left: v(spacing-scale-4x);
+
+    .fa-plus {
+      font-size: v(font-size-scale-up-01, $font-size-scale-up-01) !important;
+      margin-left: calc(#{v(spacing-scale-3xh)} * -1);
+      margin-top: 0;
+      position: relative;
+    }
+  }
+
+  .upload-size {
+    text-align: right;
+    visibility: hidden;
+  }
+}
+
+@mixin upload-state {
+  /*** Estados ***/
+  @each $state, $color in (success, v(color-success)), (danger, v(color-danger)), (warning, v(color-warning)),
+    (info, v(color-info))
+  {
+    &.#{$state},
+    &[data-#{$state}] {
+      .upload-button {
+        border-color: $color;
+      }
+      .feedback.color-#{$state} {
+        align-items: center;
+        background: $color;
+        color: var(--color-secondary-01) !important;
+        display: inline-flex;
+        height: 35px;
+        margin-bottom: var(--spacing-scale-base);
+        padding: 5px;
+      }
+      @if ($state == warning) {
+        .feedback.color-warning {
+          color: var(--color-secondary-08) !important;
+        }
+      }
+    }
+  }
+}

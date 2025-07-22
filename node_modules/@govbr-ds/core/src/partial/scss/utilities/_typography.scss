@@ -1,0 +1,352 @@
+// Texto padrão
+body {
+  --bg-color: var(--background);
+  --bg-color-rgb: var(--background-rgb);
+  --bg-color-hsl: var(--background-hsl);
+  --font-size: var(--font-size-scale-base);
+  --font-weight: var(--font-weight-regular);
+  --link-color: var(--interactive);
+  --link-color-rgb: var(--interactive-rgb);
+  --link-color-hsl: var(--interactive-hsl);
+  --line-height: var(--font-line-height-medium);
+  --text-color: var(--color);
+  --text-color-rgb: var(--color-rgb);
+  --text-color-hsl: var(--color-hsl);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+}
+
+// Parágrafos
+p {
+  color: var(--color);
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--font-line-height-medium);
+  margin-bottom: var(--spacing-scale-2x);
+  margin-top: 0;
+
+  a {
+    text-decoration: underline;
+  }
+}
+@include media-breakpoint-up(sm) {
+  p {
+    font-size: var(--font-size-scale-up-01);
+  }
+}
+
+// Links
+a {
+  --focus-offset: var(--spacing-scale-half); // reaplica offset padrão no link
+  @include focus;
+  @include hover;
+  @include active;
+  color: var(--interactive);
+  text-decoration: none;
+}
+
+// TODO: Este código ainda é necessário?
+.main-content {
+  a {
+    text-decoration: underline;
+  }
+}
+
+// Botões
+button {
+  cursor: pointer;
+}
+
+// Imagens
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+// Títulos
+h1,
+.h1 {
+  color: var(--color);
+  font-size: var(--font-size-scale-up-04);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2xh);
+  margin-top: 0;
+}
+@include media-breakpoint-up(sm) {
+  .h1,
+  h1 {
+    font-size: var(--font-size-scale-up-06);
+    font-weight: var(--font-weight-light);
+    margin-bottom: var(--spacing-scale-4x);
+  }
+}
+
+h2,
+.h2 {
+  color: var(--color);
+  font-size: var(--font-size-scale-up-03);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2xh);
+  margin-top: var(--spacing-scale-3xh);
+  padding-bottom: var(--spacing-scale-2xh);
+}
+@include media-breakpoint-up(sm) {
+  .h2,
+  h2 {
+    font-size: var(--font-size-scale-up-05);
+    font-weight: var(--font-weight-regular);
+  }
+}
+
+h3,
+.h3 {
+  color: var(--color);
+  font-size: var(--font-size-scale-up-02);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2xh);
+  margin-top: var(--spacing-scale-3xh);
+}
+@include media-breakpoint-up(sm) {
+  .h3,
+  h3 {
+    font-size: var(--font-size-scale-up-04);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+h4,
+.h4 {
+  color: var(--color);
+  font-size: var(--font-size-scale-up-01);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2xh);
+  margin-top: var(--spacing-scale-2x);
+}
+@include media-breakpoint-up(sm) {
+  .h4,
+  h4 {
+    font-size: var(--font-size-scale-up-03);
+    font-weight: var(--font-weight-semi-bold);
+    margin-top: var(--spacing-scale-3xh);
+  }
+}
+
+h5,
+.h5 {
+  color: var(--color);
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-extra-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2x);
+  margin-top: var(--spacing-scale-2x);
+  padding-bottom: var(--spacing-scale-base);
+  text-transform: uppercase;
+}
+@include media-breakpoint-up(sm) {
+  .h5,
+  h5 {
+    font-size: var(--font-size-scale-up-02);
+    font-weight: var(--font-weight-bold);
+    margin-top: var(--spacing-scale-3xh);
+  }
+}
+
+h6,
+.h6 {
+  color: var(--color);
+  font-size: var(--font-size-scale-down-01);
+  font-weight: var(--font-weight-extra-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2x);
+  margin-top: var(--spacing-scale-2x);
+  padding-bottom: var(--spacing-scale-base);
+  text-transform: uppercase;
+}
+@include media-breakpoint-up(sm) {
+  .h6,
+  h6 {
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-extra-bold);
+    margin-top: var(--spacing-scale-3xh);
+  }
+}
+
+// Listas
+ul,
+ol {
+  margin-bottom: var(--spacing-scale-2x);
+  margin-top: 0;
+  padding: 0 0 0 var(--spacing-scale-5x);
+}
+
+// Blockquotes
+blockquote {
+  background-color: var(--color-secondary-02);
+  border-left: 4px solid $color-highlight;
+  font-style: italic;
+  margin: var(--spacing-scale-2x) 0;
+  padding: var(--spacing-scale-2x);
+  position: relative;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Tabela padrão
+table {
+  --table-background: var(--background);
+  --table-color: var(--color);
+  --table-border-color: var(--gray-20);
+  --table-border-style: solid;
+  --table-border-width: 1px;
+  --table-hover: var(--color-rgb);
+  --table-padding: var(--spacing-scale-3x);
+  --table-font-weight: var(--font-weight-medium);
+  --table-th-background: var(--background-alternative);
+  --table-th-font-weight: var(--font-weight-semi-bold);
+  --table-row-size: var(--spacing-scale-2x);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: var(--background-alternative);
+  font-weight: var(--table-th-font-weight);
+}
+
+td {
+  font-weight: var(--table-font-weight);
+}
+
+th,
+td {
+  color: var(--color);
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--table-row-size) var(--table-padding);
+
+  &:not([align]) {
+    text-align: left;
+  }
+}
+
+tr {
+  &.selected,
+  &.is-selected {
+    @include dark-mode;
+
+    th,
+    td {
+      background-color: var(--selected);
+    }
+  }
+
+  &:hover {
+    td {
+      background-image: linear-gradient(rgba(var(--color-rgb), var(--hover)), rgba(var(--color-rgb), var(--hover)));
+    }
+  }
+}
+
+tbody {
+  th,
+  td {
+    border-bottom: var(--table-border-width) var(--table-border-style) var(--table-border-color);
+  }
+}
+
+// Formulários
+label,
+.label {
+  color: var(--color);
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--font-line-height-medium);
+  margin-bottom: var(--spacing-scale-half);
+}
+
+fieldset,
+.fieldset {
+  border: var(--surface-width-none);
+  margin-bottom: var(--spacing-scale-5x);
+  margin-top: 0;
+  padding: 0;
+}
+
+legend,
+.legend {
+  color: var(--color);
+  font-size: var(--font-size-scale-up-01);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-2x);
+  margin-top: var(--spacing-scale-2x);
+}
+
+::placeholder,
+.placeholder {
+  color: var(--color-light);
+  font-size: var(--font-size-scale-base);
+  font-style: italic;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--font-line-height-medium);
+  margin-bottom: var(--spacing-scale-half);
+  margin-top: var(--spacing-scale-half);
+  opacity: 1;
+}
+
+input,
+textarea,
+.input {
+  color: var(--color-light);
+  font-size: var(--font-size-scale-up-01);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-line-height-low);
+  margin-bottom: var(--spacing-scale-half);
+}
+
+// Help
+.help {
+  font-size: var(--font-size-scale-base);
+}
+
+// Exemplo de código
+code,
+.code {
+  background: var(--gray-5);
+  border-radius: 4px;
+  color: var(--gray-80);
+  display: inline-block;
+  font-family: monospace;
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--font-line-height-low);
+  padding: var(--spacing-scale-half);
+}
+
+pre,
+.pre {
+  background: var(--gray-5);
+  margin: var(--spacing-scale-2x) 0 var(--spacing-scale-4x);
+  padding: var(--spacing-scale-2x);
+
+  code {
+    display: inline;
+    padding: 0;
+  }
+}
+
+mark,
+.mark {
+  background: var(--red-warm-vivid-10);
+  color: var(--color);
+}

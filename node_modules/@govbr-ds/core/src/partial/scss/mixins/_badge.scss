@@ -1,0 +1,146 @@
+@mixin status {
+  font-size: v(font-size-scale-up-01, $font-size-scale-up-01);
+
+  .is-success {
+    background-color: v(color-success, $color-success);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-secondary-01, $color-secondary-01);
+    height: 1.5em;
+    padding: 0.3em;
+    width: 1.5em;
+  }
+
+  .is-warning {
+    background-color: v(color-warning, $color-warning);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-secondary-01, $color-secondary-01);
+    height: 1.5em;
+    padding: 0.3em;
+    width: 1.5em;
+  }
+
+  .is-info {
+    background-color: v(color-info, $color-info);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-secondary-01, $color-secondary-01);
+    height: 1.5em;
+    padding: 0.3em;
+    width: 1.5em;
+  }
+
+  .is-danger {
+    background-color: v(color-danger, $color-danger);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-secondary-01, $color-secondary-01);
+    height: 1.5em;
+    padding: 0.3em;
+    width: 1.5em;
+  }
+}
+
+@mixin colors-icon {
+  .is-success {
+    background-color: v(color-success, $color-success);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-success, $color-success);
+  }
+
+  .is-warning {
+    background-color: v(color-warning, $color-warning);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-warning, $color-warning);
+  }
+
+  .is-info {
+    background-color: v(color-info, $color-info);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-info, $color-info);
+  }
+
+  .is-danger {
+    background-color: v(color-danger, $color-danger);
+    border: 2px solid v(color-secondary-01, $color-secondary-01);
+    border-radius: 20px;
+    color: v(color-danger, $color-danger) !important;
+  }
+}
+
+@mixin type {
+  &:not(.is-right) {
+    padding: 0.1em;
+  }
+
+  &:not(.is-left) {
+    padding: 0.1em 0 0;
+  }
+
+  &:not(.is-right),
+  &:not(.is-left) {
+    &.icon {
+      @include colors-icon();
+      color: transparent;
+      font-size: v(font-size-scale-down-01, $font-size-scale-down-01) !important;
+      line-height: v(font-line-height-low, $font-line-height-low) !important;
+      min-height: 0.5em;
+      min-width: 0.5em;
+
+      &:not(.is-bottom) {
+        bottom: 0;
+        left: -0.5em;
+      }
+
+      &:not(.is-top) {
+        bottom: -0.2em;
+        left: -0.9em;
+      }
+    }
+  }
+
+  &.simbol {
+    @include status();
+    font-size: v(font-size-scale-up-01, $font-size-scale-up-01);
+    min-height: 0.8em;
+    min-width: 0.8em;
+  }
+}
+
+@mixin status-icon-top {
+  position: absolute;
+  top: 0;
+
+  &.is-right {
+    @include type();
+    left: auto;
+    right: -1.3em;
+  }
+
+  &.is-left {
+    @include type();
+    left: -1.3em;
+    right: auto;
+  }
+}
+
+@mixin status-icon-bottom {
+  bottom: -0.5em;
+  position: absolute;
+
+  &.is-right {
+    @include type();
+    left: auto;
+    right: -1.2em;
+  }
+
+  &.is-left {
+    @include type;
+    left: -1.2em;
+    right: auto;
+  }
+}

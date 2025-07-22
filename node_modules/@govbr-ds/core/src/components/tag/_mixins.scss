@@ -1,0 +1,263 @@
+// Dependências
+@import "../button/mixins";
+
+// Mixins
+@mixin tag-configs {
+  @include tag-tokens;
+  @include tag-default;
+  @include tag-interaction;
+  @include tag-status;
+  @include tag-count;
+  @include tag-icon;
+  @include tag-density;
+  // TODO: remover os mixins abaixo na próxima versão
+  @include tag-interaction-base;
+  @include tag-interaction-select;
+  @include tag-text;
+  @include tag-sizes;
+  @include tag-colors;
+}
+
+@mixin tag-tokens {
+  --tag-size: var(--tag-medium);
+  --tag-small: var(--spacing-scale-2xh);
+  --tag-medium: var(--spacing-scale-3xh);
+  --tag-large: var(--spacing-scale-4xh);
+}
+
+@mixin tag-default {
+  align-items: center;
+  background: var(--background-dark);
+  border-radius: var(--surface-rounder-sm);
+  color: var(--color-dark);
+  display: inline-flex;
+  font-size: var(--font-size-scale-base);
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  margin: 0;
+  min-height: var(--tag-size);
+  padding: 0 var(--spacing-scale-baseh);
+
+  // Espaçamento mínimo entre tags
+  & + & {
+    margin-left: var(--spacing-scale-half);
+  }
+
+  // Espaçamento para ícones
+  > {
+    @include icon {
+      &:first-child {
+        margin-right: var(--spacing-scale-baseh);
+      }
+    }
+  }
+}
+
+@mixin tag-interaction {
+  &.interaction,
+  &.interaction-select {
+    --tag-small: var(--spacing-scale-4x);
+    --tag-medium: var(--spacing-scale-5x);
+    --tag-large: var(--spacing-scale-5xh);
+    font-size: var(--font-size-scale-up-01);
+  }
+
+  &.interaction {
+    background: var(--interactive);
+
+    // Aplica botão circle
+    .#{$prefix}button {
+      --button-size: var(--spacing-scale-3xh);
+      --focus: var(--focus-color-dark);
+      --hover: var(--hover-dark);
+      --interactive-rgb: var(--color-dark-rgb);
+      background-color: var(--interactive-light);
+      border-radius: 50%;
+      color: var(--color-dark);
+      margin-left: var(--spacing-scale-baseh);
+      padding: 0;
+      width: var(--button-size);
+    }
+
+    &:hover {
+      .#{$prefix}button {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--hover)),
+          rgba(var(--interactive-rgb), var(--hover))
+        );
+      }
+    }
+
+    &:active {
+      .#{$prefix}button {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--pressed)),
+          rgba(var(--interactive-rgb), var(--pressed))
+        );
+      }
+    }
+  }
+
+  &.interaction-select {
+    background: transparent;
+    padding: 0;
+
+    label {
+      --interactive-rgb: var(--color-dark-rgb);
+      --hover: var(--hover-dark);
+      @include tag-default;
+      background: var(--interactive);
+      cursor: pointer;
+      font-size: var(--font-size-scale-up-01);
+      margin: 0;
+      transition: padding 150ms ease;
+    }
+
+    input {
+      height: 0;
+      opacity: 0;
+      position: relative;
+      width: 0;
+
+      &:checked {
+        + label::after {
+          border: solid var(--color-dark);
+          border-width: 0 3px 3px 0;
+          content: "";
+          height: var(--icon-size-sm);
+          transform: rotate(45deg) translate(12px, -14px);
+          width: 8px;
+        }
+      }
+
+      &:focus {
+        + label {
+          outline-color: var(--focus-color);
+          outline-offset: var(--focus-offset);
+          outline-style: var(--focus-style);
+          outline-width: var(--focus-width);
+        }
+      }
+
+      &:hover {
+        + label {
+          background-image: linear-gradient(
+            rgba(var(--interactive-rgb), var(--hover)),
+            rgba(var(--interactive-rgb), var(--hover))
+          );
+        }
+      }
+
+      &:active {
+        + label {
+          background-image: linear-gradient(
+            rgba(var(--interactive-rgb), var(--pressed)),
+            rgba(var(--interactive-rgb), var(--pressed))
+          );
+          color: var(--color-dark);
+        }
+      }
+    }
+
+    &.selected {
+      label {
+        background-color: var(--selected);
+        padding-right: var(--spacing-scale-4xh);
+      }
+    }
+  }
+
+  &.disabled {
+    input {
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin tag-status {
+  &.status {
+    --tag-small: var(--spacing-scale-baseh);
+    --tag-medium: var(--spacing-scale-2x);
+    --tag-large: var(--spacing-scale-3x);
+    border: 1px solid var(--background-light);
+    border-radius: 50%;
+    min-width: var(--tag-size);
+    padding: 0;
+  }
+}
+
+@mixin tag-count {
+  &.count {
+    --tag-small: var(--spacing-scale-2xh);
+    --tag-medium: var(--spacing-scale-3x);
+    --tag-large: var(--spacing-scale-3xh);
+    border: 1px solid var(--background-light);
+    border-radius: 100em;
+    min-width: var(--tag-size);
+    padding-left: var(--spacing-scale-base);
+    padding-right: var(--spacing-scale-base);
+  }
+}
+
+@mixin tag-icon {
+  &.icon {
+    --tag-small: var(--spacing-scale-3xh);
+    --tag-medium: var(--spacing-scale-4x);
+    --tag-large: var(--spacing-scale-5xh);
+    border-radius: 50%;
+    min-width: var(--tag-size);
+    padding: 0;
+    @include icon {
+      font-size: var(--icon-size-base);
+      margin: 0 !important;
+    }
+  }
+}
+
+@mixin tag-density {
+  @each $size in "small", "medium", "large" {
+    &.#{$size} {
+      --tag-size: var(--tag-#{$size});
+    }
+  }
+}
+
+// TODO: Remover os mixins abaixo na próxima versão
+@mixin tag-interaction-base {
+  @include tag-interaction;
+}
+
+@mixin tag-interaction-select {
+  @include tag-interaction;
+}
+
+@mixin tag-text {
+  @include tag-default;
+}
+
+@mixin tag-sizes {
+  @include tag-density;
+}
+
+@mixin tag-colors {
+  @each $color in ("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11") {
+    &.support-#{$color} {
+      --tag-background: var(--color-support-#{$color});
+    }
+  }
+
+  @each $key, $value in $br-colors {
+    &.is-#{$key},
+    &.#{$key},
+    &[#{$key}] {
+      background-color: $value;
+    }
+  }
+  @each $color in "success", "danger", "warning", "info" {
+    &.is-#{$color},
+    &.#{$color},
+    &[#{$color}] {
+      background-color: var(--#{$color});
+    }
+  }
+}

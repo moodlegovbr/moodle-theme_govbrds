@@ -1,0 +1,20 @@
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    height: var(--spacing-scale-base);
+    width: var(--spacing-scale-base);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--gray-10);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray-30);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray-40);
+    }
+  }
+}

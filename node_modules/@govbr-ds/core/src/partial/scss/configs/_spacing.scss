@@ -1,0 +1,88 @@
+// Escala
+$spacer: 8px;
+$spacer-variation: 10;
+
+// Mapa de tokens de espaçamento
+$tokens-spacing: (
+  spacing-scale-default: 0,
+  spacing-scale-half: $spacer * 0.5,
+  spacing-scale-base: $spacer,
+  spacing-scale-baseh: $spacer + $spacer * 0.5,
+);
+
+// Espaçamentos automáticos
+$spacers-automatic: ();
+@for $i from 2 through $spacer-variation {
+  $tokens-spacing: map-merge(
+    $tokens-spacing,
+    (
+      "spacing-scale-#{$i}x": $spacer * $i,
+    )
+  );
+  $tokens-spacing: map-merge(
+    $tokens-spacing,
+    (
+      "spacing-scale-#{$i}xh": $spacer * $i + $spacer * 0.5,
+    )
+  );
+  $spacers-automatic: map-merge(
+    $spacers-automatic,
+    (
+      "#{$i}x": var(--spacing-scale-#{$i}x),
+    )
+  );
+  $spacers-automatic: map-merge(
+    $spacers-automatic,
+    (
+      "#{$i}xh": var(--spacing-scale-#{$i}xh),
+    )
+  );
+}
+
+// Espaçamentos manuais
+$spacers-manual: (
+  0: var(--spacing-scale-default),
+  half: var(--spacing-scale-half),
+  base: var(--spacing-scale-base),
+  baseh: var(--spacing-scale-baseh),
+  1: var(--spacing-scale-half),
+  2: var(--spacing-scale-base),
+  3: var(--spacing-scale-2x),
+  4: var(--spacing-scale-3x),
+  5: var(--spacing-scale-4x),
+  6: var(--spacing-scale-5x),
+);
+
+// Mapa de espaçamentos completo
+$spacers: map-merge($spacers-manual, $spacers-automatic);
+
+// Mapa de espaçamentos lite
+$spacers-lite: (
+  0: var(--spacing-scale-default),
+  1: var(--spacing-scale-half),
+  2: var(--spacing-scale-base),
+  3: var(--spacing-scale-2x),
+  4: var(--spacing-scale-3x),
+  5: var(--spacing-scale-4x),
+  6: var(--spacing-scale-5x),
+);
+
+// Alinhamento Vertical
+$spacing-vertical-top: top;
+$spacing-vertical-center: center;
+$spacing-vertical-bottom: bottom;
+
+// Alinhamento Horizontal
+$spacing-horizontal-left: left;
+$spacing-horizontal-center: center;
+$spacing-horizontal-right: right;
+
+// Tokens de alinhamento
+$tokens-alinhamento: (
+  spacing-vertical-top: $spacing-vertical-top,
+  spacing-vertical-center: $spacing-vertical-center,
+  spacing-vertical-bottom: $spacing-vertical-bottom,
+  spacing-horizontal-left: $spacing-horizontal-left,
+  spacing-horizontal-center: $spacing-horizontal-center,
+  spacing-horizontal-right: $spacing-horizontal-right,
+);
