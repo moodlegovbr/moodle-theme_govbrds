@@ -1,0 +1,18 @@
+// Habilita versão lite
+$enable-lite: false !default;
+
+// Prefixo de uso nos componentes
+$prefix: "br-";
+
+// Bordas
+$input-border-color: $color-secondary-06;
+$input-border-width: 1px;
+
+// Arredondamentos
+$input-radius: var(--surface-rounder-sm);
+$button-radius: 8px;
+
+// Tamanhos
+$input-default: 40px;
+$input-medium: 40px;
+$input-small: 32px;

@@ -1,0 +1,23 @@
+$red-cool-90: #1e1517;
+$red-cool-80: #40282c;
+$red-cool-70: #68363f;
+$red-cool-60: #9e394b;
+$red-cool-50: #cd425b;
+$red-cool-40: #e16b80;
+$red-cool-30: #e09aa6;
+$red-cool-20: #ecbec6;
+$red-cool-10: #f3e1e4;
+$red-cool-5: #f8eff1;
+
+$red-cool: (
+  red-cool-90: $red-cool-90,
+  red-cool-80: $red-cool-80,
+  red-cool-70: $red-cool-70,
+  red-cool-60: $red-cool-60,
+  red-cool-50: $red-cool-50,
+  red-cool-40: $red-cool-40,
+  red-cool-30: $red-cool-30,
+  red-cool-20: $red-cool-20,
+  red-cool-10: $red-cool-10,
+  red-cool-5: $red-cool-5,
+);

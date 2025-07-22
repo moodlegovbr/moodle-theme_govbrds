@@ -1,0 +1,100 @@
+@mixin avatar-configs {
+  @include avatar-tokens;
+  @include avatar-default;
+  @include avatar-sizes;
+  @include avatar-change;
+  @include avatar-dropdown;
+  @include avatar-deprecated;
+}
+
+@mixin avatar-tokens {
+  --avatar-size: var(--avatar-small);
+  --avatar-icon-size: var(--avatar-icon-small);
+  --avatar-text-size: var(--avatar-text-small);
+  --avatar-small: 40px;
+  --avatar-medium: 100px;
+  --avatar-large: 160px;
+  --avatar-icon-small: var(--icon-size-2x);
+  --avatar-icon-medium: var(--icon-size-5x);
+  --avatar-icon-large: var(--icon-size-8x);
+  --avatar-text-small: var(--font-size-scale-up-03);
+  --avatar-text-medium: var(--font-size-scale-up-07);
+  --avatar-text-large: var(--font-size-scale-up-11);
+}
+
+@mixin avatar-default {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  display: inline-flex;
+  font-size: var(--avatar-text-size);
+  font-weight: var(--font-weight-bold);
+  justify-content: center;
+  line-height: var(--avatar-size);
+  vertical-align: middle;
+
+  .content {
+    @include avatar-content;
+  }
+}
+
+@mixin avatar-content {
+  align-items: center;
+  background-color: var(--blue-10);
+  border-radius: 50%;
+  color: var(--blue-warm-20);
+  display: inline-flex;
+  font-size: var(--avatar-text-size);
+  height: var(--avatar-size);
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: inherit;
+  width: var(--avatar-size);
+
+  img {
+    height: var(--avatar-size);
+    vertical-align: inherit;
+    width: var(--avatar-size);
+  }
+  @include icon {
+    --icon-size: var(--avatar-icon-size);
+    margin-top: 0.25em;
+  }
+}
+
+@mixin avatar-sizes {
+  @each $size in small, medium, large {
+    &.is-#{$size},
+    &.#{$size},
+    &[#{$size}] {
+      --avatar-size: var(--avatar-#{$size});
+      --avatar-icon-size: var(--avatar-icon-#{$size});
+      --avatar-text-size: var(--avatar-text-#{$size});
+    }
+  }
+}
+
+@mixin avatar-change {
+  &-action {
+    background: transparent;
+    border: 0;
+    @include hover;
+    @include focus;
+  }
+}
+
+@mixin avatar-dropdown {
+  &[data-toggle="dropdown"] {
+    @include focus;
+  }
+}
+
+@mixin avatar-deprecated {
+  // TODO: Remover na versão 4
+  .image,
+  .letter {
+    @include avatar-content;
+  }
+}

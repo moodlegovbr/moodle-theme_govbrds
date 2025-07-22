@@ -1,0 +1,7 @@
+@mixin layers {
+  @each $layer in map-keys($layers) {
+    .#{$layer} {
+      z-index: var(--z-index-#{$layer});
+    }
+  }
+}

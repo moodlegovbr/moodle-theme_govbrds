@@ -1,0 +1,189 @@
+@mixin list-configs {
+  // @include list-tokens;
+  @include list-default;
+  @include list-item;
+  // Lista dentro de lista
+  @include list-in-list;
+  @include list-header;
+  @include list-data-lines;
+}
+
+// @mixin list-tokens {
+// }
+
+// Item da lista complexa
+// É formado por: [support] content [support]
+@mixin list-item {
+  background-color: var(--background);
+  .#{$prefix}item {
+    @include list-item-config;
+  }
+}
+
+@mixin list-item-config {
+  text-align: left;
+  width: 100%;
+  @include icon {
+    text-align: center;
+  }
+
+  > .content {
+    align-items: var(--spacing-vertical-top);
+    display: flex;
+
+    > .content {
+      flex: 1;
+    }
+  }
+  .content:hover button.#{$prefix}button {
+    background-image: linear-gradient(
+      rgba(var(--interactive-rgb), var(--hover)),
+      rgba(var(--interactive-rgb), var(--hover))
+    );
+  }
+
+  &[data-toggle] {
+    cursor: pointer;
+
+    ~ .br-list {
+      .br-item {
+        padding: var(--spacing-scale-base) var(--spacing-scale-3x);
+      }
+    }
+  }
+}
+
+@mixin list-checkbox-radio-config {
+  --interactive-rgb: var(--rgb-primary-default);
+
+  input {
+    &:hover:not(:disabled) {
+      + label::before {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--hover)),
+          rgba(var(--interactive-rgb), var(--hover))
+        );
+      }
+    }
+  }
+}
+// Lista dentro de outra lista
+@mixin list-in-list {
+  & & {
+    overflow: hidden;
+    transition: all 400ms ease-in-out;
+  }
+}
+
+@mixin list-header {
+  .header {
+    align-items: v(spacing-vertical-center);
+    display: flex;
+    font-size: v(font-size-scale-base);
+    font-weight: v(font-weight-bold);
+    justify-content: space-between;
+    padding: v(spacing-scale-base) v(spacing-scale-2x);
+  }
+}
+
+@mixin list-default {
+  // @include list;
+  // Cabeçalho da lista complexa
+
+  &.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .header {
+      flex-grow: 1;
+      width: 100%;
+      + .#{$prefix}divider {
+        @include list-header-divider-config;
+      }
+    }
+    > .#{$prefix}item,
+    > .group {
+      + .#{$prefix}divider {
+        @include list-group-divider-config;
+      }
+      @include list-horizontal-group;
+    }
+
+    &[data-toggle] > .#{$prefix}item,
+    &.toggle > .#{$prefix}item {
+      display: block;
+    }
+  }
+}
+
+@mixin list-horizontal-group {
+  flex: 1;
+  height: auto;
+  min-height: 56px;
+  width: auto;
+
+  &.one-line {
+    > .content {
+      height: 56px;
+    }
+  }
+
+  &.two-lines {
+    > .content {
+      height: 72px;
+    }
+  }
+
+  &.three-lines {
+    > .content {
+      height: 6em;
+    }
+  }
+}
+
+@mixin list-group-divider-config {
+  border-width: 0 1px 0 0;
+  width: 1px;
+}
+
+@mixin list-header-divider-config {
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+}
+
+@mixin lista-data-lines-content {
+  height: auto;
+  overflow: hidden;
+  padding: 0 v(spacing-scale-2x);
+  text-overflow: unset;
+  white-space: initial;
+}
+
+@mixin list-data-lines {
+  &[data-one-line] .#{$prefix}item,
+  &[data-one-line] & .#{$prefix}item {
+    height: 2em;
+
+    .content {
+      @include lista-data-lines-content;
+    }
+  }
+
+  &[data-two-lines] .#{$prefix}item,
+  &[data-two-lines] & .#{$prefix}item {
+    height: 4em;
+
+    .content {
+      @include lista-data-lines-content;
+    }
+  }
+
+  &[data-three-lines] .#{$prefix}item,
+  &[data-three-lines] & .#{$prefix}item {
+    height: 6em;
+
+    .content {
+      @include lista-data-lines-content;
+    }
+  }
+}

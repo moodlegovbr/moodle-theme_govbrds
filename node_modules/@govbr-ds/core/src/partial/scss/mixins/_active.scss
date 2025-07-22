@@ -1,0 +1,15 @@
+/// Aplica active: feedback ao clicar no elemento
+/// @example scss - Uso prático
+///  a {
+///    @include active;
+///  }
+@mixin active($color: "interactive") {
+  &:not(:disabled) {
+    &:active {
+      background-image: linear-gradient(
+        rgba(var(--#{$color}-rgb), var(--pressed)),
+        rgba(var(--#{$color}-rgb), var(--pressed))
+      );
+    }
+  }
+}

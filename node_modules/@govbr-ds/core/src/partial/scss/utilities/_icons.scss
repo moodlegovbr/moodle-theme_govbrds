@@ -1,0 +1,38 @@
+// Formatação padrão
+.svg-inline--fa,
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
+  --icon-size: var(--icon-size-base);
+  display: inline-block;
+  font-size: var(--icon-size);
+  text-align: center;
+  width: calc(var(--icon-size) + 8px);
+}
+
+// Ajuste para versão svn do ícone
+%icon-width {
+  width: calc(var(--icon-size) + 8px);
+}
+
+.svg-inline--fa {
+  @for $i from 1 through 20 {
+    &.fa-w-#{$i} {
+      @extend %icon-width;
+    }
+  }
+}
+
+// Classes do Fontawesome
+@each $key, $value in $fa-icons {
+  .#{$key},
+  .svg-inline--fa.#{$key} {
+    --icon-size: #{$value};
+    @if $key == fa-lg {
+      vertical-align: -0.125em;
+    }
+  }
+}

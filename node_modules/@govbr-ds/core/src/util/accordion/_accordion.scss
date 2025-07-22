@@ -1,0 +1,164 @@
+*[data-toggle="accordion"] {
+  @include hover;
+  @include focus;
+}
+
+.accordion-example {
+  .#{$prefix}list {
+    // @include list;
+    // Cabeçalho da lista complexa
+    .header {
+      align-items: v(spacing-vertical-center);
+      display: flex;
+      font-size: v(font-size-scale-base);
+      font-weight: v(font-weight-bold);
+      justify-content: space-between;
+      padding: v(spacing-scale-base) v(spacing-scale-2x);
+    }
+    // Item da lista complexa
+    // É formado por: [support] content [support]
+    .#{$prefix}item {
+      text-align: v(spacing-horizontal-left);
+      width: 100%;
+      @include icon {
+        text-align: center;
+      }
+
+      > .content {
+        align-items: var(--spacing-vertical-center);
+        display: flex;
+
+        > .content {
+          flex: 1;
+        }
+      }
+      .content:hover button.#{$prefix}button {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--hover)),
+          rgba(var(--interactive-rgb), var(--hover))
+        );
+      }
+      .#{$prefix}checkbox,
+      .#{$prefix}radio {
+        --interactive-rgb: var(--rgb-primary-default);
+        --item-padding-x: 0;
+        --item-padding-y: 0;
+
+        input {
+          &:hover:not(:disabled) {
+            + label::before {
+              background-image: linear-gradient(
+                rgba(var(--interactive-rgb), var(--hover)),
+                rgba(var(--interactive-rgb), var(--hover))
+              );
+            }
+          }
+        }
+      }
+
+      &[data-toggle] {
+        cursor: pointer;
+
+        ~ .br-list {
+          .br-item {
+            padding: var(--spacing-scale-base) var(--spacing-scale-3x);
+          }
+        }
+      }
+    }
+    // Lista dentro de lista
+    .#{$prefix}list {
+      max-height: none;
+      overflow: hidden;
+      transition: all 400ms ease-in-out;
+    }
+
+    &.horizontal {
+      display: flex;
+      flex-wrap: wrap;
+
+      > .header {
+        flex-grow: 1;
+        width: 100%;
+        + .#{$prefix}divider {
+          border-top: 1px solid var(--color-secondary-04);
+          width: 100%;
+        }
+      }
+      > .#{$prefix}item,
+      > .group {
+        flex: 1;
+        height: auto;
+        min-height: 56px;
+        width: auto;
+
+        &.one-line {
+          > .content {
+            height: 56px;
+          }
+        }
+
+        &.two-lines {
+          > .content {
+            height: 72px;
+          }
+        }
+
+        &.three-lines {
+          > .content {
+            height: 6em;
+          }
+        }
+        + .#{$prefix}divider {
+          border-right: 1px solid var(--color-secondary-04);
+          border-top: 0;
+          width: 1px;
+        }
+      }
+
+      &[data-toggle] > .#{$prefix}item,
+      &.toggle > .#{$prefix}item {
+        display: block;
+      }
+    }
+
+    &[data-one-line] .#{$prefix}item,
+    &[data-one-line] & .#{$prefix}item {
+      height: 2em;
+
+      .content {
+        height: auto;
+        overflow: hidden;
+        padding: 0 v(spacing-scale-2x);
+        text-overflow: unset;
+        white-space: initial;
+      }
+    }
+
+    &[data-two-lines] .#{$prefix}item,
+    &[data-two-lines] & .#{$prefix}item {
+      height: 4em;
+
+      .content {
+        height: auto;
+        overflow: hidden;
+        padding: 0 v(spacing-scale-2x);
+        text-overflow: unset;
+        white-space: initial;
+      }
+    }
+
+    &[data-three-lines] .#{$prefix}item,
+    &[data-three-lines] & .#{$prefix}item {
+      height: 6em;
+
+      .content {
+        height: auto;
+        overflow: hidden;
+        padding: 0 v(spacing-scale-2x);
+        text-overflow: unset;
+        white-space: initial;
+      }
+    }
+  }
+}

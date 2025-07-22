@@ -1,0 +1,52 @@
+$interactive: var(--blue-warm-vivid-70);
+$interactive-dark: var(--blue-warm-20);
+$danger: var(--red-vivid-50);
+$warning: var(--yellow-vivid-20);
+$success: var(--green-cool-vivid-50);
+$info: var(--blue-warm-vivid-60);
+$states-colors: (
+  interactive: $interactive,
+  interactive-dark: $interactive-dark,
+  danger: $danger,
+  warning: $warning,
+  success: $success,
+  info: $info,
+);
+
+$disabled: var(--surface-opacity-md);
+$hover: var(--surface-opacity-xs);
+$hover-dark: var(--surface-opacity-sm);
+$pressed: var(--surface-opacity-md);
+$pressed-dark: var(--surface-opacity-lg);
+$focus: var(--gold-vivid-40);
+$focus-dark: var(--gold-vivid-20);
+$focus-border-width: var(--surface-width-lg);
+$focus-border-style: "dashed";
+$focus-offset: var(--spacing-scale-half);
+$focus-soft-border-width: var(--surface-width-md);
+$focus-soft-border-style: "solid";
+$active: var(--blue-warm-vivid-80);
+$selected: var(--blue-warm-vivid-50);
+$ondrag-rotate: -5deg;
+$ondrop-opacity: var(--surface-opacity-sm);
+$visited: var(--blue-warm-vivid-80);
+$visited-dark: var(--gray-20);
+$on: var(--blue-warm-vivid-40);
+$off: var(--gray-40);
+$states-configs: (
+  disabled: $disabled,
+  hover: $hover,
+  hover-dark: $hover-dark,
+  pressed: $pressed,
+  pressed-dark: $pressed-dark,
+  focus: $focus,
+  focus-dark: $focus-dark,
+  active: $active,
+  selected: $selected,
+  ondrag-rotate: $ondrag-rotate,
+  ondrop-opacity: $ondrop-opacity,
+  visited: $visited,
+  visited-dark: $visited-dark,
+  on: $on,
+  off: $off,
+);

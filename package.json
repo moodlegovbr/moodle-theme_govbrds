@@ -1,0 +1,30 @@
+{
+  "name": "govbrds",
+  "version": "1.0.0",
+  "description": "Identidade Digital de Governo para o Moodle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass scss/template-branco.scss style/template-branco.css",
+    "watch-css": "sass --watch scss/template-branco.scss style/template-branco.css"
+
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f4biosa/moodle-theme_govbrds.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f4biosa/moodle-theme_govbrds/issues"
+  },
+  "homepage": "https://github.com/f4biosa/moodle-theme_govbrds#readme",
+  "dependencies": {
+    "@govbr-ds/core": "^3.6.2"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+}

@@ -1,0 +1,220 @@
+@mixin button-configs {
+  @include button-tokens;
+  @include button-default;
+  @include button-block;
+  @include button-circle;
+  @include button-sizes;
+  @include button-emphasis;
+  @include button-colors;
+  @include button-states;
+  @include button-dark;
+}
+
+@mixin button-magicbutton {
+  --focus-offset: calc((var(--magic-support-size) - var(--magic-size)) * 0.5 + 4px);
+  --button-size: var(--magic-size);
+  background-color: var(--interactive-alternative);
+  color: var(--color-dark);
+  font-size: var(--font-size-scale-up-02);
+  font-weight: var(--font-weight-semi-bold);
+
+  &:not(:disabled) {
+    @include hover("color-dark");
+    @include active("color-dark");
+  }
+}
+
+@mixin button-tokens {
+  --button-radius: 100em;
+  --button-xsmall: 24px;
+  --button-small: 32px;
+  --button-medium: 40px;
+  --button-large: 48px;
+  --button-size: var(--button-medium);
+}
+
+@mixin button-default {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--button-radius);
+  color: var(--interactive);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-scale-up-01);
+  font-weight: var(--font-weight-semi-bold);
+  height: var(--button-size);
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 var(--spacing-scale-3x);
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+}
+
+@mixin button-block {
+  &.block {
+    width: 100%;
+  }
+  @each $breakpoint in "sm", "md", "lg", "xl" {
+    @include media-breakpoint-up(#{$breakpoint}) {
+      &.block-#{$breakpoint} {
+        width: 100%;
+      }
+      &.auto-#{$breakpoint} {
+        width: auto;
+      }
+    }
+  }
+}
+
+@mixin button-circle {
+  &.circle,
+  &[circle],
+  &.is-circle {
+    border-radius: 50%;
+    padding: 0;
+    width: var(--button-size);
+  }
+}
+
+@mixin button-sizes {
+  @each $size in "xsmall", "small", "medium", "large" {
+    &.#{$size},
+    &[#{$size}],
+    &.is-#{$size} {
+      --button-size: var(--button-#{$size});
+    }
+  }
+}
+
+@mixin button-emphasis {
+  &.primary,
+  &[primary],
+  &.is-primary {
+    --interactive-rgb: var(--color-dark-rgb);
+    background-color: var(--interactive-light);
+    color: var(--color-dark);
+  }
+
+  &.secondary,
+  &[secondary],
+  &.is-secondary {
+    background-color: var(--background-light);
+    border: 1px solid var(--interactive);
+  }
+}
+
+@mixin button-colors {
+  @each $color in "danger", "success", "warning", "info" {
+    &.#{$color},
+    &[#{$color}],
+    &.is-#{$color} {
+      background-color: var(--#{$color});
+      @if $color != "warning" {
+        --interactive-rgb: var(--color-dark-rgb);
+        color: var(--color-dark);
+      } @else {
+        --interactive-rgb: var(--color-light-rgb);
+        color: var(--color-light);
+      }
+    }
+  }
+}
+
+@mixin button-states {
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    --focus-offset: var(--spacing-scale-half);
+    @include focus;
+    @include hover;
+    @include active;
+  }
+
+  &.active,
+  &.is-active,
+  &[active] {
+    --hover: var(--hover-dark);
+    background-color: var(--active);
+    color: var(--color-dark);
+  }
+
+  &.loading {
+    color: transparent !important;
+    cursor: progress;
+
+    &:not(:disabled) {
+      &:hover {
+        background-image: none;
+      }
+    }
+
+    &::before {
+      border-color: var(--interactive) var(--interactive) transparent;
+      border-style: solid;
+    }
+
+    &.primary,
+    &.danger,
+    &.success,
+    &.info {
+      &::before {
+        border-color: var(--background) var(--background) transparent;
+      }
+    }
+  }
+}
+
+@mixin button-dark {
+  &.inverted,
+  &.is-inverted,
+  &[inverted],
+  &.dark-mode {
+    @include dark-mode;
+    color: var(--interactive-dark);
+
+    &.primary,
+    &[primary],
+    &.is-primary {
+      --interactive-rgb: var(--background-dark-rgb);
+      background-color: var(--interactive-dark);
+      color: var(--background-dark);
+    }
+
+    &.secondary,
+    &[secondary],
+    &.is-secondary {
+      background-color: var(--background-dark);
+    }
+
+    &.active {
+      --hover: var(--hover-light);
+      --interactive-rgb: var(--active-rgb);
+      background-color: var(--background-light);
+      color: var(--active);
+    }
+  }
+}
+
+@mixin button-dark-mode {
+  .#{$prefix}button {
+    &.primary,
+    &[primary],
+    &.is-primary {
+      @include light-mode($interactive-rgb: "background-dark-rgb");
+      background-color: var(--interactive-dark);
+      color: var(--background-dark);
+    }
+
+    &.secondary,
+    &[secondary],
+    &.is-secondary {
+      background-color: var(--background-dark);
+    }
+  }
+}

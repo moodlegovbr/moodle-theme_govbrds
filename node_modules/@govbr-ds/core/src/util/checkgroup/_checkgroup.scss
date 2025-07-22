@@ -1,0 +1,220 @@
+.checkgroup-example {
+  --checkbox-background: var(--bg-color);
+  --checkbox-color: var(--text-color);
+  --checkbox-font-weight: var(--font-weight-medium);
+  --checkbox-padding: var(--spacing-scale-base);
+  --checkbox-size: 24px;
+  --checkbox-line-height: 1.6em;
+
+  // Estados
+  $color-d: v(color-danger, $color-danger);
+  $color-s: v(color-success, $color-success);
+  display: block;
+  line-height: 0px;
+
+  // Texto
+  label {
+    color: var(--checkbox-color);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: var(--checkbox-font-weight);
+    line-height: var(--checkbox-line-height);
+    min-height: var(--checkbox-size);
+    padding-left: calc(var(--checkbox-size) + var(--checkbox-padding));
+    position: relative;
+
+    &:empty {
+      padding-left: var(--checkbox-size);
+    }
+  }
+
+  &.hidden-label {
+    label {
+      padding-left: calc(var(--checkbox-size) + var(--surface-width-md) * 2);
+      text-indent: -10000px;
+      white-space: nowrap;
+      width: 0;
+    }
+  }
+
+  &.d-inline {
+    label {
+      padding-right: v(spacing-scale-4x);
+    }
+  }
+
+  input {
+    // Remover o checkbox padrão do navegador
+    opacity: 0;
+    position: absolute;
+
+    &:focus-visible,
+    &.focus-visible {
+      &:checked + label::before,
+      + label::before {
+        @include focus-soft;
+      }
+    }
+    //hover
+    &:hover:not(:disabled) {
+      + label::before {
+        background-image: linear-gradient(
+          rgba(var(--interactive-rgb), var(--hover)),
+          rgba(var(--interactive-rgb), var(--hover))
+        );
+      }
+    }
+
+    &:disabled + label {
+      @include disabled;
+
+      &:hover::before {
+        background-image: none;
+      }
+    }
+
+    // Caixa
+    + label {
+      align-items: flex-start;
+      cursor: pointer;
+      display: inline-block;
+      font-size: v(font-size-scale-base);
+      font-weight: v(font-weight-medium);
+      min-height: v(spacing-scale-3x);
+      position: relative;
+
+      &::before {
+        background: v(color-secondary-01, $color-secondary-01);
+        border: 1px solid var(--color-secondary-04);
+        border-radius: 4px;
+        content: "";
+        height: var(--checkbox-size);
+        left: 0;
+        position: absolute;
+        width: var(--checkbox-size);
+      }
+
+      &:empty {
+        padding-left: v(spacing-scale-3x);
+      }
+    }
+
+    &[indeterminate],
+    &:indeterminate {
+      color: $color-d;
+
+      + label {
+        &::before {
+          background: v(color-primary-lighten-01);
+          border-color: v(color-primary-lighten-01);
+        }
+      }
+    }
+
+    // Checado
+    &:checked,
+    &:indeterminate {
+      + label::after {
+        border: solid v(color-primary-lighten-01);
+        border-width: 0 3px 3px 0;
+        content: "";
+        height: v(icon-size-sm);
+        left: 8px;
+        position: absolute;
+        top: 4px;
+        transform: rotate(45deg);
+        width: 8px;
+      }
+    }
+
+    &:checked[indeterminate],
+    &:indeterminate {
+      + label::after {
+        border-color: v(color-secondary-01);
+        border-width: 0 0 3px;
+        top: 2px;
+        transform: none;
+      }
+    }
+    // Inválido
+    &:invalid {
+      + label::before {
+        border-color: v(color-danger, $color-danger);
+        border-width: 2px;
+      }
+    }
+    // Desativado
+    &:disabled + label::before {
+      box-shadow: none;
+    }
+  }
+
+  // Versão pequena
+  &.is-small,
+  &.small,
+  &[small] {
+    input[type="checkbox"] {
+      // Texto
+      + label {
+        line-height: v(spacing-scale-2xh);
+        min-height: v(spacing-scale-2xh);
+      }
+
+      // Caixa
+      + label::before {
+        height: v(spacing-scale-2xh);
+        width: v(spacing-scale-2xh);
+      }
+
+      // Checado
+      &:checked + label::after {
+        border-width: 0 2px 2px 0;
+        height: v(icon-size-sm);
+        left: 7px;
+        top: 4px;
+        width: 6px;
+      }
+
+      &:checked[indeterminate],
+      &:indeterminate {
+        + label::after {
+          border-color: v(color-secondary-01);
+          border-width: 0 0 3px;
+          left: 7px;
+          top: 1px;
+          transform: none;
+          width: 6px;
+        }
+      }
+    }
+  }
+  @each $state, $color in (invalid, $color-d), (valid, $color-s) {
+    &.is-#{$state}:not(.is-inverted):not(.inverted):not([inverted]),
+    &.#{$state}:not(.is-inverted):not(.inverted):not([inverted]),
+    &[#{$state}]:not(.is-inverted):not(.inverted):not([inverted]) {
+      input[type="checkbox"] {
+        + label::before {
+          @if ($state== "valid") {
+            border-color: v(color-success, $color-success);
+            border-width: 2px;
+          }
+          @if ($state== "invalid") {
+            border-color: v(color-danger, $color-danger);
+            border-width: 2px;
+          }
+        }
+
+        &:focus {
+          &:checked + label::before,
+          + label::before {
+            border-color: $color;
+          }
+        }
+        // Checado
+        &:checked + label::before {
+          border-color: $color;
+        }
+      }
+    }
+  }
+}

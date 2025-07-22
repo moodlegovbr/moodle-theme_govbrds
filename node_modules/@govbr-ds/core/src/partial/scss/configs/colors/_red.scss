@@ -1,0 +1,23 @@
+$red-90: #1b1616;
+$red-80: #3e2927;
+$red-70: #6f3331;
+$red-60: #a23737;
+$red-50: #d83933;
+$red-40: #e9695f;
+$red-30: #f2938c;
+$red-20: #f7bbb1;
+$red-10: #f8e1de;
+$red-5: #f9eeee;
+
+$red: (
+  red-90: $red-90,
+  red-80: $red-80,
+  red-70: $red-70,
+  red-60: $red-60,
+  red-50: $red-50,
+  red-40: $red-40,
+  red-30: $red-30,
+  red-20: $red-20,
+  red-10: $red-10,
+  red-5: $red-5,
+);

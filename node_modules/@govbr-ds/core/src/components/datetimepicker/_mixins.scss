@@ -1,0 +1,273 @@
+// Dependências
+@import "../input/mixins";
+
+// Mixins
+@mixin datetimepicker-configs {
+  @include datetimepicker-dark-mode;
+  @include datetimepicker-disabled;
+}
+
+@mixin datetimepicker-dark-mode {
+  @include input-dark-mode;
+}
+
+@mixin datetimepicker-disabled {
+  input[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+// stylelint-disable selector-class-pattern
+@mixin flatpicker-configs {
+  @include flatpicker-tokens;
+  @include flatpicker-default;
+  @include flatpicker-months;
+  @include flatpicker-days;
+  @include flatpicker-timepicker;
+}
+
+@mixin flatpicker-tokens {
+  --flatpicker-padding: var(--spacing-scale-2x);
+  --datetimepicker-day-size: 24px;
+  --datetimepicker-arrows: 32px;
+}
+
+@mixin flatpicker-default {
+  box-shadow: var(--surface-shadow-md);
+  // Remover a seta do dropdown
+  &.arrowTop::before,
+  &.arrowTop::after {
+    border-color: transparent;
+  }
+
+  &.open {
+    z-index: var(--z-index-layer-2);
+  }
+}
+
+@mixin flatpicker-months {
+  .flatpickr-months {
+    align-items: center;
+    display: flex;
+    padding: var(--flatpicker-padding) var(--flatpicker-padding) 0;
+    // Setas de navegação
+    .flatpickr-prev-month,
+    .flatpickr-next-month {
+      height: auto;
+      padding: 0;
+      position: static;
+
+      &.flatpickr-disabled {
+        @include disabled;
+        display: block;
+      }
+    }
+    // Barra de mês
+    .flatpickr-month {
+      flex: 1;
+      height: auto;
+      overflow: visible;
+    }
+    // Container do mês
+    .flatpickr-current-month {
+      display: flex;
+      height: auto;
+      padding: 0 var(--flatpicker-padding);
+      position: static;
+      width: 100%;
+    }
+    // Select do mês
+    .flatpickr-monthDropdown-months {
+      border-radius: var(--surface-rounder-sm);
+      color: var(--interactive);
+      font-size: var(--font-size-scale-up-01);
+      font-weight: var(--font-weight-semi-bold);
+      margin: 0;
+      padding: 0;
+
+      .flatpickr-monthDropdown-month {
+        color: var(--color);
+      }
+
+      &:hover {
+        background: transparent;
+      }
+    }
+    // Input do ano
+    .numInputWrapper {
+      flex: 1;
+      margin-left: var(--flatpicker-padding);
+      width: auto;
+
+      input.cur-year {
+        border: var(--surface-width-sm) solid var(--border-color);
+        border-radius: var(--surface-rounder-sm);
+        color: var(--color);
+        font-size: var(--font-size-scale-base);
+        font-weight: var(--font-weight-semi-bold);
+        padding: 0 var(--spacing-scale-base);
+      }
+
+      span.arrowUp,
+      span.arrowDown {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin flatpicker-days {
+  // Semanas
+  .flatpickr-weekdaycontainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 var(--flatpicker-padding);
+  }
+
+  span.flatpickr-weekday {
+    color: var(--color);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+  }
+  // Dias
+  .dayContainer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 var(--flatpicker-padding) var(--flatpicker-padding);
+  }
+
+  .flatpickr-day {
+    color: var(--interactive);
+    font-weight: var(--font-weight-semi-bold);
+    height: var(--datetimepicker-day-size);
+    line-height: var(--font-line-height-medium);
+    margin: calc(var(--flatpicker-padding) * 0.25) auto;
+    max-width: var(--datetimepicker-day-size);
+    width: var(--datetimepicker-day-size);
+    @include focus;
+
+    &.focus-visible {
+      --focus-offset: 0;
+      background: transparent;
+      border-color: transparent;
+    }
+
+    &:hover {
+      background: var(--hover-effect);
+    }
+    // Dia de outros meses
+    &.prevMonthDay,
+    &.nextMonthDay {
+      font-weight: var(--font-weight-medium);
+      opacity: 0.6;
+    }
+    // Dia hoje
+    &.today {
+      background: var(--orange-vivid-5);
+      border-color: transparent;
+      color: var(--red-warm-vivid-50);
+    }
+    // Dia desativado
+    &.flatpickr-disabled {
+      @include disabled;
+      color: var(--color);
+
+      &:hover {
+        background: transparent;
+      }
+    }
+    // Intervalo de dias
+    &.inRange {
+      --interactive-rgb: var(--blue-warm-vivid-50-rgb);
+      --hover: var(--hover-dark);
+      background-image: linear-gradient(
+        rgba(var(--interactive-rgb), var(--hover)),
+        rgba(var(--interactive-rgb), var(--hover))
+      );
+      border-color: transparent;
+      box-shadow: none;
+      color: var(--color-dark);
+      opacity: 1;
+    }
+    // Dia selecionado
+    &.selected,
+    &.startRange,
+    &.endRange {
+      background: var(--selected);
+      border-color: transparent;
+      color: var(--color-dark);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin flatpicker-timepicker {
+  .flatpickr-time {
+    display: flex;
+    justify-content: center;
+    margin: 0 var(--flatpicker-padding);
+    max-height: none;
+    // Input
+    input {
+      @include input-box;
+      margin: calc(var(--flatpicker-padding) * 0.25) 0;
+    }
+    // Agrupador
+    .numInputWrapper {
+      align-items: center;
+      display: flex;
+      flex: 0 1 90px;
+      flex-flow: column;
+      height: auto;
+      padding: calc(var(--flatpicker-padding) * 0.5) var(--flatpicker-padding);
+
+      &:hover {
+        background: transparent;
+      }
+      // Setas
+      span {
+        @include hover;
+        align-items: center;
+        border: 0;
+        border-radius: 50px;
+        color: var(--interactive);
+        display: flex;
+        height: var(--datetimepicker-arrows);
+        justify-content: center;
+        opacity: 1;
+        padding: 0;
+        position: static;
+        width: var(--datetimepicker-arrows);
+
+        &::after {
+          border: none;
+
+          position: static;
+        }
+
+        &.arrowUp {
+          order: -1;
+
+          &::after {
+            transform: rotate(225deg) translate(-1px, -1px);
+          }
+        }
+      }
+    }
+  }
+  // Fora do DatePicker
+  &.hasTime {
+    .flatpickr-time {
+      border-color: var(--border-color);
+      height: auto;
+    }
+
+    &.noCalendar {
+      .flatpickr-time {
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+// stylelint-enable selector-class-pattern

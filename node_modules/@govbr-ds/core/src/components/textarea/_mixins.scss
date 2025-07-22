@@ -1,0 +1,85 @@
+@mixin textarea-configs {
+  @include textarea-tokens;
+  @include textarea-default;
+  @include textarea-density;
+  @include textarea-state;
+  @include textarea-dark-mode;
+}
+
+@mixin textarea-tokens {
+  --textarea-padding: var(--textarea-medium);
+  --textarea-small: var(--spacing-scale-base);
+  --textarea-medium: var(--spacing-scale-baseh);
+  --textarea-large: var(--spacing-scale-2x);
+}
+
+@mixin textarea-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    &,
+    label {
+      --color: var(--color-dark);
+      --focus-color: var(--focus-color-dark);
+    }
+
+    textarea {
+      color: var(--color-light);
+    }
+  }
+}
+
+@mixin textarea-default {
+  color: var(--color);
+
+  label {
+    display: inline-block;
+    margin-bottom: var(--spacing-scale-half);
+  }
+
+  textarea {
+    background: var(--background-light);
+    border: 1px solid var(--border-color-alternative);
+    border-radius: 6px;
+    color: var(--color);
+    display: block;
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-medium);
+    padding: var(--textarea-padding);
+    width: 100%;
+  }
+}
+
+@mixin textarea-state {
+  @each $color in success, danger, warning, info {
+    &.#{$color},
+    &[data-#{$color}] {
+      textarea {
+        border-color: var(--#{$color});
+        border-width: 2px;
+      }
+    }
+  }
+
+  textarea {
+    &:focus,
+    &:focus-visible,
+    &.focus-visible {
+      @include focus-soft;
+    }
+
+    &:hover {
+      @include hover("color");
+    }
+  }
+}
+
+@mixin textarea-density {
+  @each $size in "small", "medium", "large" {
+    &.#{$size},
+    &[data-#{$size}] {
+      textarea {
+        --textarea-padding: var(--textarea-#{$size});
+      }
+    }
+  }
+}

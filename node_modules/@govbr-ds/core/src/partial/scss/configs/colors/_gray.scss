@@ -1,0 +1,31 @@
+$gray-90: #1b1b1b;
+$gray-80: #333;
+$gray-70: #555;
+$gray-60: #636363;
+$gray-50: #757575;
+$gray-40: #888;
+$gray-30: #adadad;
+$gray-20: #ccc;
+$gray-10: #e6e6e6;
+$gray-5: #f0f0f0;
+$gray-4: #f3f3f3;
+$gray-3: #f6f6f6;
+$gray-2: #f8f8f8;
+$gray-1: #fcfcfc;
+
+$gray: (
+  gray-90: $gray-90,
+  gray-80: $gray-80,
+  gray-70: $gray-70,
+  gray-60: $gray-60,
+  gray-50: $gray-50,
+  gray-40: $gray-40,
+  gray-30: $gray-30,
+  gray-20: $gray-20,
+  gray-10: $gray-10,
+  gray-5: $gray-5,
+  gray-4: $gray-4,
+  gray-3: $gray-3,
+  gray-2: $gray-2,
+  gray-1: $gray-1,
+);

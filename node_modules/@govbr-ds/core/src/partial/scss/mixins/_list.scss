@@ -1,0 +1,42 @@
+@mixin list {
+  // Bullets da lista não ordenada
+  ul {
+    list-style: none;
+
+    li {
+      &::before {
+        color: currentColor;
+        content: "•";
+        display: inline-block;
+        opacity: 0.65;
+        padding-right: v(spacing-scale-base);
+        position: absolute;
+        transform: scale(3) translate(-2px, -1px);
+      }
+    }
+  }
+  // Estilo base para listas
+  ul,
+  ol {
+    margin: 0;
+
+    li {
+      padding: v(spacing-scale-base) 0;
+    }
+
+    ul,
+    ol {
+      margin: v(spacing-scale-base) 0 calc(#{v(spacing-scale-base)} * -1);
+    }
+  }
+  // Estilo base para lista de definição
+  dt {
+    font-weight: v(font-weight-semi-bold);
+    padding: v(spacing-scale-base) 0;
+  }
+
+  dd {
+    font-style: italic;
+    padding: v(spacing-scale-base) 0;
+  }
+}

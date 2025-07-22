@@ -1,0 +1,253 @@
+@mixin input-configs {
+  @include input-tokens;
+  @include input-default;
+  @include input-inline;
+  @include input-icon;
+  @include input-button;
+  @include input-highlight;
+  @include input-autocomplete;
+  @include input-states;
+  @include input-densities;
+  @include input-dark;
+}
+
+@mixin input-tokens {
+  --input-button-margin: var(--spacing-scale-half);
+  --input-padding: 0 var(--spacing-scale-2x);
+  --input-padding-button: var(--spacing-scale-5x);
+  --input-padding-icon: var(--spacing-scale-5x);
+  --input-size: var(--input-medium);
+  --input-small: 32px;
+  --input-medium: 40px;
+  --input-large: 48px;
+  --input-highlight: 56px;
+}
+
+@mixin input-default {
+  @include light-mode;
+  color: var(--color);
+  position: relative;
+
+  input {
+    background-color: var(--background-light);
+    border-color: var(--border-color-alternative);
+    border-radius: var(--surface-rounder-sm);
+    border-style: var(--border-style);
+    border-width: var(--border-width);
+    color: var(--color-light);
+    display: block;
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-medium);
+    height: var(--input-size);
+    margin-top: var(--spacing-scale-half);
+    padding-bottom: 0;
+    padding-left: var(--spacing-scale-2x);
+    padding-right: var(--spacing-scale-2x);
+    padding-top: 0;
+    width: 100%;
+
+    // Remove ícones nativos de browsers
+    // mostrar senha IE/Edge
+    &::-ms-reveal,
+    &::-ms-clear,
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+    // busca no Chrome
+    &[type="search"]::-webkit-search-decoration,
+    &[type="search"]::-webkit-search-cancel-button,
+    &[type="search"]::-webkit-search-results-button,
+    &[type="search"]::-webkit-search-results-decoration {
+      appearance: none;
+    }
+  }
+}
+
+@mixin input-inline {
+  &.input-inline {
+    display: flex;
+
+    .input-label {
+      margin-right: var(--spacing-scale-baseh);
+      margin-top: calc(var(--input-size) * 0.5 - var(--spacing-scale-half));
+    }
+
+    .input-content {
+      flex: 1;
+    }
+  }
+}
+
+@mixin input-icon {
+  .input-group {
+    position: relative;
+  }
+
+  .input-icon {
+    align-items: center;
+    color: var(--border-color-alternative);
+    display: flex;
+    height: var(--input-size);
+    margin-left: var(--spacing-scale-baseh);
+    position: absolute;
+
+    + input {
+      padding-left: var(--input-padding-icon);
+    }
+  }
+}
+
+@mixin input-button {
+  .#{$prefix}button {
+    --button-size: var(--button-small);
+    @include light-mode;
+    border-radius: 50%;
+    float: right;
+    margin-right: var(--input-button-margin);
+    margin-top: calc((var(--input-size) + var(--spacing-scale-half)) * -1);
+    padding: 0;
+    position: relative;
+    // Centraliza botão
+    transform: translateY(calc((var(--input-size) - var(--button-size)) * 0.5));
+    width: var(--button-size);
+  }
+
+  &.input-button {
+    input {
+      padding-right: var(--input-padding-button);
+    }
+  }
+  // Manter compatibilidade com versão 15.0.2 e anteriores
+  &.has-icon {
+    input {
+      padding-right: var(--input-padding-icon);
+    }
+    .#{$prefix}button.circle {
+      float: right;
+      margin-right: var(--spacing-scale-half);
+      margin-top: calc((var(--button-size) + var(--spacing-scale-half) + var(--spacing-scale-half)) * -1);
+      transform: translateY(0);
+    }
+
+    &.small {
+      .#{$prefix}button.circle {
+        margin-top: calc((var(--button-size) + var(--spacing-scale-base)) * -1);
+      }
+    }
+
+    &.large {
+      .#{$prefix}button.circle {
+        margin-top: calc(var(--button-size) * -1);
+      }
+    }
+  }
+}
+
+@mixin input-highlight {
+  &.input-highlight {
+    --input-button-margin: var(--spacing-scale-2x);
+    --input-padding: 0 var(--spacing-scale-3x);
+    --input-padding-button: var(--spacing-scale-7x);
+    --input-padding-icon: var(--spacing-scale-7x);
+    --input-size: var(--input-highlight);
+
+    input {
+      background-color: var(--gray-2);
+      border-color: transparent;
+      padding-left: var(--spacing-scale-3x);
+      padding-right: var(--spacing-scale-3x);
+    }
+
+    .input-icon {
+      margin-left: var(--spacing-scale-3x);
+
+      + input {
+        padding-left: var(--spacing-scale-7x);
+      }
+    }
+  }
+}
+
+// TODO: Este mixin ainda é necessário?
+@mixin input-autocomplete {
+  .#{$prefix}list {
+    box-shadow: var(--surface-shadow-md);
+    max-height: 530px;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    z-index: var(--z-index-layer-2);
+
+    @include scrollbar;
+
+    .#{$prefix}item {
+      --item-padding-y: var(--spacing-scale-2x);
+      @include hover("color");
+
+      &:not(:first-child) {
+        border-top: var(--surface-width-sm) solid var(--border-color);
+      }
+    }
+  }
+}
+
+@mixin input-states {
+  // Borda do input
+  @each $color in "success", "danger", "warning", "info" {
+    &.#{$color},
+    &[data-#{$color}] {
+      input {
+        border-color: var(--#{$color});
+        border-width: 2px;
+      }
+    }
+  }
+
+  input {
+    // Hover
+    @include hover("color");
+    // Foco tênue
+    &:focus,
+    &:focus-visible,
+    &.focus-visible {
+      @include focus-soft;
+    }
+  }
+  // Componente Message (Feedback)
+  .feedback {
+    margin-bottom: var(--spacing-scale-half);
+  }
+}
+
+@mixin input-densities {
+  @each $size in small, medium, large {
+    &.#{$size},
+    &[data-#{$size}] {
+      --input-size: var(--input-#{$size});
+    }
+  }
+}
+
+@mixin input-dark {
+  &.inverted,
+  &.dark-mode {
+    &,
+    label {
+      --color: var(--color-dark);
+      --focus-color: var(--focus-color-dark);
+    }
+  }
+}
+
+@mixin input-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    .#{$prefix}input {
+      &,
+      label {
+        --color: var(--color-dark);
+        --focus-color: var(--focus-color-dark);
+      }
+    }
+  }
+}

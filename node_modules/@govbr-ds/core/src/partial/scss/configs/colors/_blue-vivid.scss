@@ -1,0 +1,21 @@
+$blue-vivid-80: #112f4e;
+$blue-vivid-70: #0b4778;
+$blue-vivid-60: #005ea2;
+$blue-vivid-50: #0076d6;
+$blue-vivid-40: #2491ff;
+$blue-vivid-30: #58b4ff;
+$blue-vivid-20: #a1d3ff;
+$blue-vivid-10: #cfe8ff;
+$blue-vivid-5: #e8f5ff;
+
+$blue-vivid: (
+  blue-vivid-80: $blue-vivid-80,
+  blue-vivid-70: $blue-vivid-70,
+  blue-vivid-60: $blue-vivid-60,
+  blue-vivid-50: $blue-vivid-50,
+  blue-vivid-40: $blue-vivid-40,
+  blue-vivid-30: $blue-vivid-30,
+  blue-vivid-20: $blue-vivid-20,
+  blue-vivid-10: $blue-vivid-10,
+  blue-vivid-5: $blue-vivid-5,
+);

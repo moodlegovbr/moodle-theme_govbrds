@@ -1,0 +1,11 @@
+// Criar espaçamentos
+@include make-spacing("margin");
+@include make-spacing("padding");
+
+// Criar espaçamentos com breakpoints
+@each $breakpoint in "sm", "md", "lg", "xl" {
+  @include media-breakpoint-up($breakpoint) {
+    @include make-spacing("margin", $breakpoint);
+    @include make-spacing("padding", $breakpoint);
+  }
+}

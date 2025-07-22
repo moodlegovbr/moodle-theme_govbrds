@@ -1,0 +1,20 @@
+// Tipos de displays
+$displays: none, block, flex, inline, inline-block, inline-flex;
+
+// Cria as classes de displays
+@each $display in $displays {
+  .d-#{$display} {
+    display: $display !important;
+  }
+}
+
+// Criar displays com breakpoints
+@each $breakpoint in "sm", "md", "lg", "xl" {
+  @include media-breakpoint-up($breakpoint) {
+    @each $display in $displays {
+      .d-#{$breakpoint}-#{$display} {
+        display: $display !important;
+      }
+    }
+  }
+}

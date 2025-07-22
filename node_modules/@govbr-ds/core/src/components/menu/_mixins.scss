@@ -1,0 +1,492 @@
+@mixin menu-configs {
+  @include menu-tokens;
+  @include menu-default;
+  @include menu-header;
+  @include menu-body;
+  @include menu-footer;
+  @include menu-items;
+  @include menu-side-menu;
+  @include menu-items-sizes;
+  @include menu-push;
+  @include menu-contextual;
+  @include menu-states;
+}
+
+@mixin menu-tokens {
+  --menu-zindex: var(--z-index-layer-3);
+  --menu-background-submenu: var(--gray-2);
+  --menu-logo: 40px;
+  --menu-item-ng: var(--menu-item-medium);
+  --menu-item-padding: var(--menu-item-medium);
+  --menu-item-small: var(--spacing-scale-base);
+  --menu-item-medium: var(--spacing-scale-2x);
+  --menu-item-large: var(--spacing-scale-3x);
+}
+
+@mixin menu-default {
+  // A base é aplicado no seguinte html:
+  // <div class="br-menu">
+  //   <div class="menu-trigger">
+  //   <div class="menu-container">
+  //     <div class="menu-scrim">
+  //     <div class="menu-panel">
+  .menu-container {
+    display: none;
+  }
+
+  .menu-scrim {
+    background: var(--surface-overlay-scrim);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .menu-panel {
+    --focus-offset: calc(var(--spacing-scale-half) * -1);
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  // Menu ativo
+  &.active {
+    .menu-container {
+      bottom: 0;
+      display: flex;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: var(--menu-zindex);
+    }
+
+    .menu-panel {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+      z-index: calc(var(--menu-zindex) + 1);
+    }
+
+    .menu-scrim {
+      position: absolute;
+    }
+  }
+}
+
+@mixin menu-header {
+  // O header é aplicado no seguinte html:
+  // <div class="menu-header">
+  //   <div class="menu-close">
+  //   <div class="menu-title">
+
+  .menu-header {
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    padding: var(--spacing-scale-base) var(--spacing-scale-base);
+
+    .menu-title {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      margin-left: var(--spacing-scale-base);
+
+      img {
+        max-height: var(--menu-logo);
+
+        + * {
+          margin-left: var(--spacing-scale-base);
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-body {
+  // O header é aplicado no seguinte html:
+  // <div class="menu-body">
+  //   <div class="folder">
+
+  // stylelint-disable no-descending-specificity
+  .menu-body {
+    // Resetar estilos
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    // Aplica separador nos itens de primeiro nível
+    > .divider {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .menu-folder {
+      // Aplica separador entre pastas
+      > ul {
+        > li:last-child {
+          > .menu-item {
+            border-bottom: 1px solid var(--border-color);
+          }
+        }
+      }
+
+      // Cor de fundo para nível 2
+      > .menu-item {
+        + ul {
+          background: var(--menu-background-submenu);
+
+          .menu-item {
+            padding-left: var(--spacing-scale-5x);
+          }
+        }
+      }
+    }
+
+    // Aplica separador no menu dropdown de primeiro nível
+    .drop-menu {
+      > .menu-item {
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      &.active {
+        > .menu-item {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    // Estilo padrão para menu dropdown e side menu
+    .drop-menu {
+      > ul {
+        background: var(--menu-background-submenu);
+        display: none;
+      }
+
+      &.active {
+        > .menu-item {
+          &:not(:hover) {
+            background-color: var(--background);
+          }
+
+          .support {
+            @include icon {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        > ul {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // stylelint-enable no-descending-specificity
+}
+
+@mixin menu-footer {
+  // O header é aplicado no seguinte html:
+  // <div class="menu-footer">
+  //   <div class="menu-logos">
+  //   <div class="menu-links">
+  //   <div class="menu-social">
+  //   <div class="menu-info">
+
+  .menu-footer {
+    // Adiciona borda automaticamente entre as sessões
+    > *:not(:last-child) {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .menu-logos {
+      column-gap: var(--spacing-scale-2x);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: var(--spacing-scale-base) var(--spacing-scale-5x);
+      row-gap: var(--spacing-scale-2x);
+    }
+
+    .menu-links {
+      --focus-offset: var(--spacing-scale-half);
+      padding: var(--spacing-scale-2x) var(--spacing-scale-5x);
+
+      a {
+        display: block;
+
+        &:not(:last-child) {
+          margin-bottom: var(--spacing-scale-2x);
+        }
+
+        @include hover;
+      }
+    }
+    // FIXME: .menu-social e .sharegroup estão depreciados serão retirados na proxima versão
+    .social-network,
+    .menu-social {
+      padding: var(--spacing-scale-base) var(--spacing-scale-5x);
+
+      .social-network-title {
+        font-weight: var(--font-weight-semi-bold);
+        margin-bottom: var(--spacing-scale-half);
+      }
+
+      .sharegroup {
+        display: flex;
+      }
+    }
+
+    .menu-info {
+      padding: var(--spacing-scale-2x);
+    }
+  }
+}
+
+@mixin menu-items {
+  // O header é aplicado no seguinte html:
+  // <div class="menu-item">
+  //   <div class="icon">
+  //   <div class="content">
+  //   <div class="support">
+
+  .menu-item {
+    --focus-offset: calc(var(--spacing-scale-half) * -1);
+    background: transparent;
+    display: flex;
+    padding: var(--menu-item-padding) var(--spacing-scale-2x);
+
+    .icon {
+      margin-right: var(--spacing-scale-2x);
+    }
+
+    .content {
+      flex: 1;
+    }
+  }
+
+  a.menu-item {
+    color: var(--interactive);
+  }
+}
+
+@mixin menu-side-menu {
+  .side-menu {
+    > ul {
+      background: var(--menu-background-submenu);
+      display: none;
+    }
+
+    &.active {
+      > .menu-item {
+        --interactive: var(--active);
+        --interactive-rgb: var(--active-rgb);
+        background-color: var(--background);
+        flex-direction: row-reverse;
+        font-weight: var(--font-weight-semi-bold);
+
+        .icon {
+          margin-right: 0;
+        }
+
+        .support {
+          margin-right: var(--spacing-scale-2x);
+
+          @include icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      > ul {
+        display: block;
+      }
+
+      .menu-item {
+        padding-left: var(--spacing-scale-2x) !important;
+      }
+    }
+  }
+}
+
+@mixin menu-items-sizes {
+  @each $size in "small", "medium", "large" {
+    &.#{$size} {
+      .menu-item {
+        --menu-item-padding: var(--menu-item-#{$size});
+      }
+    }
+  }
+}
+
+@mixin menu-push {
+  // Mobile First
+  &.push {
+    .menu-trigger,
+    .menu-scrim {
+      display: none;
+    }
+
+    @include media-breakpoint-up(sm) {
+      --menu-zindex: var(--z-index-layer-0);
+    }
+  }
+
+  // Tablet
+  @include media-breakpoint-up(sm) {
+    &.push {
+      .menu-header,
+      .menu-footer {
+        display: none;
+      }
+
+      .menu-header[data-visible="true"] {
+        display: flex;
+      }
+
+      .menu-footer[data-visible="true"] {
+        display: block;
+      }
+
+      .menu-panel {
+        height: auto;
+      }
+
+      .menu-scrim {
+        display: none;
+      }
+
+      // Menu ativo
+      &.active {
+        .menu-container {
+          position: static;
+        }
+      }
+    }
+  }
+}
+
+@mixin menu-contextual {
+  // Mobile First
+  &.contextual {
+    --menu-zindex: calc(var(--z-index-layer-3) - 10);
+    overflow: auto;
+
+    .menu-body .menu-folder {
+      > .menu-item + ul .menu-item {
+        padding-left: var(--spacing-scale-2x);
+      }
+
+      > ul > li:last-child > .menu-item {
+        border-bottom: 0;
+      }
+    }
+
+    .menu-trigger {
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: calc(var(--menu-zindex) - 1);
+
+      .#{$prefix}button {
+        --button-radius: 0;
+      }
+    }
+
+    .menu-container {
+      display: none;
+      flex-direction: column-reverse;
+      position: static;
+    }
+
+    .menu-panel {
+      height: auto;
+    }
+
+    &.active {
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: flex-end;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: var(--menu-zindex);
+
+      .menu-trigger {
+        position: relative;
+        z-index: calc(var(--menu-zindex) + 1);
+
+        @include icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      .menu-container {
+        display: flex;
+        overflow: auto;
+      }
+    }
+  }
+
+  // Tablet
+  @include media-breakpoint-up(md) {
+    &.contextual {
+      .menu-trigger {
+        display: none;
+        position: absolute;
+      }
+
+      .menu-container {
+        display: block;
+      }
+
+      &.active {
+        height: 100%;
+        position: absolute;
+      }
+    }
+  }
+}
+
+@mixin menu-states {
+  // Aplicáveis para item texto e link
+  .menu-item {
+    // Escondido
+    &[hidden] {
+      display: none;
+    }
+
+    // Desativado
+    &:disabled {
+      @include disabled;
+    }
+  }
+
+  // Aplicável somente para links
+  a.menu-item {
+    &:not(:disabled) {
+      // Ativo
+      &.active {
+        --interactive: var(--color-dark);
+        --interactive-rgb: var(--color-dark-rgb);
+        background-color: var(--active);
+
+        &:focus {
+          outline-color: var(--focus-color-dark);
+        }
+      }
+
+      // Hover
+      @include hover;
+    }
+  }
+}

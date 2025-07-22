@@ -1,0 +1,139 @@
+@mixin modal-configs {
+  @include modal-token;
+  @include modal-default;
+  @include modal-header;
+  @include modal-body;
+  @include modal-footer;
+  @include modal-sizes;
+  @include modal-loading;
+  @include modal-deprecated;
+}
+@mixin modal-token {
+  --modal-size: var(--modal-medium);
+  --modal-xsmall: 220px;
+  --modal-small: 300px;
+  --modal-medium: 500px;
+  --modal-large: 640px;
+  --modal-auto: auto;
+}
+
+@mixin modal-default {
+  background: var(--background);
+  box-shadow: var(--surface-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  max-width: var(--modal-size);
+  z-index: var(--z-index-layer-4);
+}
+
+@mixin modal-header {
+  &-header {
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-scale-2x) var(--spacing-scale-2x) 0;
+    position: relative;
+
+    .close {
+      position: absolute;
+      right: var(--spacing-scale-base);
+      top: var(--spacing-scale-base);
+    }
+  }
+
+  .modal-title {
+    font-size: var(--font-size-scale-up-01);
+    font-weight: var(--font-weight-bold);
+    margin-right: 40px;
+    max-height: calc(var(--font-size-scale-up-01) * 3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@mixin modal-body {
+  &-body {
+    flex: 1;
+    margin: var(--spacing-scale-3x) 0 var(--spacing-scale-2x);
+    overflow: auto;
+    padding: 0 var(--spacing-scale-2x);
+    width: auto;
+    @include scrollbar;
+
+    > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin modal-footer {
+  &-footer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--spacing-scale-2x);
+  }
+}
+
+@mixin modal-sizes {
+  @each $size in "xsmall", "small", "medium", "large", "auto" {
+    &.is-#{$size},
+    &.#{$size} {
+      --modal-size: var(--modal-#{$size});
+    }
+  }
+}
+
+@mixin modal-loading {
+  .loading {
+    &.medium {
+      min-height: calc(var(--loading-indetermined-diameter-md) + var(--spacing-scale-2x) * 2);
+    }
+  }
+}
+
+@mixin modal-deprecated {
+  .terms {
+    border: 0;
+    box-shadow: var(--surface-shadow-sm-inset), var(--surface-shadow-sm-inset-up);
+    font-size: v(font-size-scale-base);
+    height: 216px;
+    margin-bottom: var(--spacing-scale-2x);
+    margin-left: calc(#{v(spacing-scale-2x)} * -1);
+    margin-right: calc(#{v(spacing-scale-2x)} * -1);
+    overflow: auto;
+    padding: var(--spacing-scale-2x);
+    resize: none;
+    width: auto;
+
+    @include scrollbar;
+
+    &:active {
+      outline: none;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: v(color-secondary-07);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .terms {
+      margin-left: unset !important;
+      margin-right: unset !important;
+    }
+
+    &-header {
+      .close {
+        top: 0;
+      }
+    }
+  }
+}
+
+@mixin modal-responsive {
+  @include modal-sizes;
+  @include modal-deprecated;
+}

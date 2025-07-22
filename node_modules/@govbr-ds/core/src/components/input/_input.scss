@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}input {
+  @include input-configs;
+}

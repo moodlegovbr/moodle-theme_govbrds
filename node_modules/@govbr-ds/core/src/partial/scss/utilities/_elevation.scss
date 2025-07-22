@@ -1,0 +1,9 @@
+// Sombras
+@each $key, $value in $shadows {
+  .#{$key} {
+    box-shadow: $value;
+  }
+}
+
+// Camadas
+@include layers;

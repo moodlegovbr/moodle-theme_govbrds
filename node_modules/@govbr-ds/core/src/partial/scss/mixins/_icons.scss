@@ -1,0 +1,17 @@
+@mixin icon-size($value) {
+  @include icon {
+    --icon-size: #{$value};
+  }
+}
+
+@mixin icon {
+  .svg-inline--fa,
+  .fa,
+  .fab,
+  .fad,
+  .fal,
+  .far,
+  .fas {
+    @content;
+  }
+}

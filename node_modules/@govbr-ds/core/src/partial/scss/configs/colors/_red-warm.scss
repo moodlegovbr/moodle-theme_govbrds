@@ -1,0 +1,23 @@
+$red-warm-90: #1f1c18;
+$red-warm-80: #332d29;
+$red-warm-70: #524236;
+$red-warm-60: #805039;
+$red-warm-50: #c3512c;
+$red-warm-40: #d27a56;
+$red-warm-30: #dca081;
+$red-warm-20: #ecc0a7;
+$red-warm-10: #f4e3db;
+$red-warm-5: #f6efea;
+
+$red-warm: (
+  red-warm-90: $red-warm-90,
+  red-warm-80: $red-warm-80,
+  red-warm-70: $red-warm-70,
+  red-warm-60: $red-warm-60,
+  red-warm-50: $red-warm-50,
+  red-warm-40: $red-warm-40,
+  red-warm-30: $red-warm-30,
+  red-warm-20: $red-warm-20,
+  red-warm-10: $red-warm-10,
+  red-warm-5: $red-warm-5,
+);

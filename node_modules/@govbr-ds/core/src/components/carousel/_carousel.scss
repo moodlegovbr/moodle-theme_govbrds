@@ -1,0 +1,5 @@
+@import "mixins";
+
+.#{$prefix}carousel {
+  @include carousel-configs;
+}

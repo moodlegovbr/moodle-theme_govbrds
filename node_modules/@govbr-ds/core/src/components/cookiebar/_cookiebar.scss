@@ -1,0 +1,6 @@
+@import "mixins";
+
+.#{$prefix}cookiebar {
+  @include cookiebar-configs;
+  @include cookiebar-modal;
+}

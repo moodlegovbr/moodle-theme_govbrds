@@ -1,0 +1,9 @@
+@mixin placeholder {
+  &::placeholder {
+    color: $placeholder-color;
+    font-size: $placeholder-font-size;
+    font-style: $placeholder-font-style;
+    font-weight: $placeholder-font-weight;
+    opacity: 1;
+  }
+}

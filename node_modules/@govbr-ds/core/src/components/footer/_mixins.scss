@@ -1,0 +1,197 @@
+@import "../item/mixins";
+
+@mixin footer-configs {
+  @include footer-tokens;
+  @include footer-default;
+  @include footer-dark;
+  @include footer-light;
+  @include footer-logo;
+  @include footer-list;
+  @include footer-social;
+  @include footer-info;
+  @include footer-divider;
+  @include footer-secondary-content;
+}
+
+@mixin footer-tokens {
+  --footer-logo-height: 48px;
+  --footer-logo-width: 180px;
+  --footer-padding: var(--spacing-scale-6x) 0 0;
+  --footer-padding-bottom: 0 0 var(--spacing-scale-6x);
+  --footer-assigns-height: 46px;
+  --footer-assigns-width: 180px;
+}
+
+@mixin footer-default {
+  background: var(--background);
+  border-top: 1px solid var(--border-color);
+  color: var(--color);
+  display: block;
+  padding: var(--footer-padding);
+
+  &.no-divider {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+@mixin footer-dark {
+  --background: var(--background-dark);
+  @include dark-mode;
+
+  .#{$prefix}item {
+    @include dark-mode;
+  }
+}
+
+@mixin footer-light {
+  &[inverted],
+  &.inverted {
+    --background: var(--background-light);
+    @include light-mode;
+
+    .#{$prefix}item {
+      @include light-mode;
+    }
+  }
+}
+
+@mixin footer-logo {
+  .logo {
+    padding: var(--footer-padding-bottom);
+
+    img {
+      max-height: var(--footer-logo-height);
+      max-width: var(--footer-logo-width);
+    }
+  }
+}
+
+@mixin footer-list {
+  .#{$prefix}list {
+    @include footer-list-config;
+  }
+}
+
+@mixin footer-list-config {
+  &.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--footer-padding-bottom);
+
+    .header {
+      width: 100%;
+    }
+
+    //  Para ser compatível com outros navegadores no
+    //  uso máximo de 2 linhas, foram adicionados os
+    //  comandos line-height e max-height.
+
+    .col,
+    [class*="col-"] {
+      flex-grow: 0;
+      padding: 0;
+
+      @include media-breakpoint-down(sm) {
+        flex-basis: 100% !important;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@mixin footer-item-hide-suport {
+  @include media-breakpoint-up(md) {
+    .support:last-child {
+      display: none;
+      pointer-events: none;
+    }
+
+    .content {
+      flex: 1;
+    }
+  }
+}
+
+@mixin footer-list-hide-suport {
+  // evita collapse no breakpoint
+  @include media-breakpoint-up(md) {
+    // .#{$prefix}list {
+    background-image: none;
+    max-height: 200em !important;
+    // }
+  }
+}
+
+//  Para ser compatível com outros navegadores no
+//  uso máximo de 2 linhas, foram adicionados os
+//  comandos line-height e max-height.
+@mixin footer-item-2linemax {
+  min-height: 4em;
+
+  .content {
+    height: auto;
+    line-height: 16px;
+    padding: 0 var(--spacing-scale-2x);
+  }
+}
+
+@mixin footer-social {
+  .social-network {
+    border: 0;
+
+    .social-network-title {
+      font-size: var(--font-size-scale-up-01);
+      font-weight: var(--font-weight-extra-bold);
+      margin-bottom: var(--spacing-scale-3x);
+      text-transform: uppercase;
+    }
+
+    a:not(:last-of-type) {
+      margin-right: var(--spacing-scale-2x);
+    }
+
+    a:hover {
+      background-image: none;
+    }
+
+    img {
+      max-height: var(--footer-assigns-height);
+      max-width: var(--footer-assigns-height);
+    }
+  }
+
+  .assigns {
+    img {
+      max-height: var(--footer-assigns-height);
+      max-width: var(--footer-assigns-width);
+    }
+  }
+}
+
+@mixin footer-info {
+  .info {
+    text-align: center;
+  }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Código criado para ajustar os espaçamentos entre as áreas do footer     */
+/* Deve ser removido na V4                                                 */
+/* ----------------------------------------------------------------------- */
+@mixin footer-divider {
+  .#{$prefix}divider {
+    @include footer-divider-config;
+  }
+}
+
+@mixin footer-divider-config {
+  margin-top: 0 !important;
+}
+
+@mixin footer-secondary-content {
+  & .d-none.d-sm-block > .row.align-items-end.justify-content-between.py-5 {
+    padding: var(--footer-padding-bottom) !important;
+  }
+}
+/* ----------------------------------------------------------------------- */

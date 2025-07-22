@@ -1,0 +1,45 @@
+// Bordas
+@each $key, $value in $borders {
+  .#{$key} {
+    border: $value !important;
+  }
+}
+
+.border {
+  @each $direction in top, right, bottom, left {
+    &-#{$direction} {
+      border-#{$direction}: var(--border-width) var(--border-style) var(--border-color) !important;
+    }
+  }
+}
+
+// Cantos
+@each $key, $value in $rounders {
+  .#{$key} {
+    --radius: var(--surface-#{$key});
+    border-radius: var(--radius) !important;
+  }
+}
+
+// Opacidades
+@each $key, $value in $opacities {
+  .#{$key} {
+    opacity: $value;
+  }
+}
+
+// Sombras
+@each $key, $value in $shadows {
+  .#{$key} {
+    box-shadow: $value;
+  }
+}
+
+// Scrims
+.overlay-scrim {
+  background: $overlay-scrim;
+}
+
+.overlay-text {
+  background: $overlay-text;
+}

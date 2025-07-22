@@ -1,0 +1,87 @@
+// Breakpoint
+$grid-breakpoint-xs: 0;
+$grid-breakpoint-xs-max-width: 100%;
+$grid-breakpoint-sm: 576px;
+$grid-breakpoint-sm-max-width: 536px;
+$grid-breakpoint-md: 992px;
+$grid-breakpoint-md-max-width: 952px;
+$grid-breakpoint-lg: 1280px;
+$grid-breakpoint-lg-max-width: 1200px;
+$grid-breakpoint-xl: 1600px;
+$grid-breakpoint-xl-max-width: 1560px;
+$tokens-breakpoints: (
+  grid-breakpoint-xs: $grid-breakpoint-xs,
+  grid-breakpoint-xs-max-width: $grid-breakpoint-xs-max-width,
+  grid-breakpoint-sm: $grid-breakpoint-sm,
+  grid-breakpoint-sm-max-width: $grid-breakpoint-sm-max-width,
+  grid-breakpoint-md: $grid-breakpoint-md,
+  grid-breakpoint-md-max-width: $grid-breakpoint-md-max-width,
+  grid-breakpoint-lg: $grid-breakpoint-lg,
+  grid-breakpoint-lg-max-width: $grid-breakpoint-lg-max-width,
+  grid-breakpoint-xl: $grid-breakpoint-xl,
+  grid-breakpoint-xl-max-width: $grid-breakpoint-xl-max-width,
+);
+
+// Mapa de breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: $grid-breakpoint-sm,
+  md: $grid-breakpoint-md,
+  lg: $grid-breakpoint-lg,
+  xl: $grid-breakpoint-xl,
+);
+$breakpoints-name: (
+  xs: "portrait",
+  sm: "tablet",
+  md: "tablet",
+  lg: "desktop",
+  xl: "tv",
+);
+
+// Smartphone Portrait
+$grid-portrait-maxwidth: 100%;
+$grid-portrait-gutter: 16px;
+$grid-portrait-columns: 4;
+$grid-portrait-margin: 8px;
+$tokens-portrait: (
+  grid-portrait-maxwidth: $grid-portrait-maxwidth,
+  grid-portrait-gutter: $grid-portrait-gutter,
+  grid-portrait-columns: $grid-portrait-columns,
+  grid-portrait-margin: $grid-portrait-margin,
+);
+
+// Smartphone Landscape, Tablet Portrait e Tablet Landscape
+$grid-tablet-maxwidth: 100%;
+$grid-tablet-gutter: 24px;
+$grid-tablet-columns: 8;
+$grid-tablet-margin: 40px;
+$tokens-tablet: (
+  grid-tablet-maxwidth: $grid-tablet-maxwidth,
+  grid-tablet-gutter: $grid-tablet-gutter,
+  grid-tablet-columns: $grid-tablet-columns,
+  grid-tablet-margin: $grid-tablet-margin,
+);
+
+// Desktop
+$grid-desktop-maxwidth: 1200px;
+$grid-desktop-gutter: 24px;
+$grid-desktop-columns: 12;
+$grid-desktop-margin: 40px;
+$tokens-desktop: (
+  grid-desktop-maxwidth: $grid-desktop-maxwidth,
+  grid-desktop-gutter: $grid-desktop-gutter,
+  grid-desktop-columns: $grid-desktop-columns,
+  grid-desktop-margin: $grid-desktop-margin,
+);
+
+// TV
+$grid-tv-maxwidth: 1520px;
+$grid-tv-gutter: 40px;
+$grid-tv-columns: 12;
+$grid-tv-margin: 40px;
+$tokens-tv: (
+  grid-tv-maxwidth: $grid-tv-maxwidth,
+  grid-tv-gutter: $grid-tv-gutter,
+  grid-tv-columns: $grid-tv-columns,
+  grid-tv-margin: $grid-tv-margin,
+);

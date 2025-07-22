@@ -1,0 +1,7 @@
+@mixin durations {
+  @each $duration in map-keys($durations) {
+    .#{$duration} {
+      animation-duration: var(--duration-#{$duration});
+    }
+  }
+}

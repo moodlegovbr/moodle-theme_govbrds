@@ -1,0 +1,17 @@
+// Destacado
+.highlight {
+  background: v(status-highlight-background) linear-gradient(v(status-highlight-overlay), v(status-highlight-overlay));
+  color: v(status-highlight-text);
+  padding: 0 v(spacing-scale-half);
+}
+// Desativado
+[disabled],
+.disabled {
+  @include disabled;
+}
+// Arrastado
+.dragged {
+  background: v(status-dragged-background);
+  box-shadow: 0 3px 6px v(status-dragged-shadow);
+  color: v(status-dragged-text);
+}

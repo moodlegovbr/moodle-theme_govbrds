@@ -1,0 +1,163 @@
+:root {
+  // Novas cores
+  @include family-blue;
+  @include family-cyan;
+  @include family-gold;
+  @include family-gray;
+  @include family-green;
+  @include family-indigo;
+  @include family-magenta;
+  @include family-mint;
+  @include family-orange;
+  @include family-pure;
+  @include family-red;
+  @include family-violet;
+  @include family-yellow;
+  // Superfície
+  --background: var(--background-light);
+  --background-rgb: var(--background-light-rgb);
+  --background-light: var(--pure-0);
+  --background-light-rgb: var(--pure-0-rgb);
+  --background-alternative: var(--gray-5);
+  --background-alternative-rgb: var(--gray-5-rgb);
+  --background-dark: var(--blue-warm-vivid-90);
+  --background-dark-rgb: var(--blue-warm-vivid-90-rgb);
+  // Bordas
+  --border-color: var(--gray-20);
+  --border-color-alternative: var(--gray-40);
+  --border-style: solid;
+  --border-width: var(--surface-width-sm);
+  // Leitura
+  --color: var(--color-light);
+  --color-rgb: var(--color-light-rgb);
+  --color-light: var(--gray-80);
+  --color-light-rgb: var(--gray-80-rgb);
+  --color-dark: var(--pure-0);
+  --color-dark-rgb: var(--pure-0-rgb);
+  // Interativa
+  --interactive: var(--interactive-light);
+  --interactive-rgb: var(--interactive-light-rgb);
+  --interactive-light: var(--blue-warm-vivid-70);
+  --interactive-light-rgb: var(--blue-warm-vivid-70-rgb);
+  --interactive-dark: var(--blue-warm-20);
+  --interactive-dark-rgb: var(--blue-warm-20-rgb);
+  --interactive-alternative: var(--green-cool-vivid-50);
+  --interactive-alternative-rgb: var(--green-cool-vivid-50-rgb);
+  // Feedback Informação
+  --info: var(--blue-warm-vivid-60);
+  --info-alternative: var(--blue-warm-vivid-10);
+  --info-rgb: var(--blue-warm-vivid-60-rgb);
+  --info-alternative-rgb: var(--blue-warm-vivid-10-rgb);
+  // Feedback Sucesso
+  --success: var(--green-cool-vivid-50);
+  --success-alternative: var(--green-cool-vivid-5);
+  --success-rgb: var(--green-cool-vivid-50-rgb);
+  --success-alternative-rgb: var(--green-cool-vivid-5-rgb);
+  // Feedback Alerta
+  --warning: var(--yellow-vivid-20);
+  --warning-alternative: var(--yellow-vivid-5);
+  --warning-rgb: var(--yellow-vivid-20-rgb);
+  --warning-alternative-rgb: var(--yellow-vivid-5-rgb);
+  // Feedback Erro
+  --danger: var(--red-vivid-50);
+  --danger-alternative: var(--red-vivid-10);
+  --danger-rgb: var(--red-vivid-50-rgb);
+  --danger-alternative-rgb: var(--red-vivid-20-rgb);
+  // Fonte Family
+  --font-family-base: #{$font-family-base};
+  --surface-overlay-scrim: #{$overlay-scrim};
+  --surface-overlay-text: #{$overlay-text};
+  // Estados
+  --visited: var(--visited-light);
+  --visited-light: var(--blue-warm-vivid-80);
+  --visited-dark: var(--gray-20);
+  --disabled: var(--surface-opacity-md);
+  --hover: var(--hover-light);
+  --hover-light: var(--surface-opacity-xs);
+  --hover-dark: var(--surface-opacity-sm);
+  --hover-effect: linear-gradient(
+    rgba(var(--interactive-rgb), var(--hover)),
+    rgba(var(--interactive-rgb), var(--hover))
+  );
+  --pressed: var(--pressed-light);
+  --pressed-light: var(--surface-opacity-md);
+  --pressed-dark: var(--surface-opacity-lg);
+  --pressed-effect: linear-gradient(
+    rgba(var(--interactive-rgb), var(--pressed)),
+    rgba(var(--interactive-rgb), var(--pressed))
+  );
+  --focus-style: dashed;
+  --focus-color: var(--focus-color-light);
+  --focus-color-light: var(--gold-vivid-40);
+  --focus-color-dark: var(--gold-vivid-20);
+  --focus: var(--focus-color);
+  --focus-offset: var(--spacing-scale-half);
+  --focus-width: var(--surface-width-lg);
+  --active: var(--blue-warm-vivid-80);
+  --active-rgb: var(--blue-warm-vivid-80-rgb);
+  --selected: var(--blue-warm-vivid-50);
+  --on: var(--blue-warm-vivid-40);
+  --on-rgb: var(--blue-warm-vivid-40-rgb);
+  --off: var(--gray-20);
+  --off-rgb: var(--gray-20-rgb);
+  --ondrag-border-color: var(--interactive);
+  --ondrag-border-width: var(--surface-width-md);
+  --ondrag-border-style: solid;
+  --ondrag-shadow-offset-x: var(--surface-offset-none);
+  --ondrag-shadow-offset-y: var(--surface-offset-md);
+  --ondrag-shadow-blur: var(--surface-blur-lg);
+  --ondrag-shadow-color: var(--interactive-rgb);
+  --ondrag-shadow-opacity: var(--surface-opacity-sm);
+  --ondrag-opacity: var(--surface-opacity-xl);
+  --ondrag-rotate: -5deg;
+  --ondrag-cursor: grabbing;
+  --draggable-icon: grip-vertical;
+  --draggable-cursor: grab;
+  --dropzone-border-color: var(--interactive);
+  --dropzone-border-width: var(--surface-width-sm);
+  --dropzone-border-style: dashed;
+  --ondrop-background: var(--interactive-rgb);
+  --ondrop-opacity: var(--surface-opacity-sm);
+  --ondrop-cursor: copy;
+  // Camadas
+  --z-index-layer-0: 0;
+  --z-index-layer-1: 1000;
+  --z-index-layer-2: 2000;
+  --z-index-layer-3: 3000;
+  --z-index-layer-4: 4000;
+  // Cor hexadecimal
+  @include tokens($br-colors, "color-");
+  // Iconografia
+  @include tokens($tokens-icons);
+  // Superfície
+  @include tokens($widths, "surface-");
+  @include tokens($rounders, "surface-");
+  @include tokens($opacities, "surface-");
+  @include tokens($borders, "surface-");
+  @include tokens($blurs, "surface-");
+  @include tokens($offsets, "surface-");
+  @include tokens($shadows, "surface-");
+
+  // Movimento
+  @include tokens($easings, "animation-");
+  @include tokens($durations, "duration-");
+
+  // Tipografia
+  @include tokens($font-weights, "font-weight-");
+  @include tokens($text-font-size, "font-size-scale-");
+  @include tokens($tokens-line-height);
+  // Grid
+  @include tokens($tokens-breakpoints);
+  @include tokens($tokens-portrait);
+  @include tokens($tokens-tablet);
+  @include tokens($tokens-desktop);
+  @include tokens($tokens-tv);
+  // Alinhamento
+  @include tokens($tokens-alinhamento);
+  // Espaçamento
+  @include tokens($tokens-spacing);
+  // Cor rgb
+  @each $key, $value in $br-colors {
+    --rgb-#{$key}: #{get-rgb($value)};
+  }
+}

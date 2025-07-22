@@ -1,0 +1,550 @@
+// Dependências
+@import "../button/mixins";
+
+// Mixins
+@mixin wizard-configs {
+  @include wizard-tokens;
+  @include wizard-default;
+  @include wizard-progress;
+  @include wizard-progress-btn;
+  @include wizard-progress-collapsed;
+  @include wizard-form;
+  @include wizard-vertical;
+  @include wizard-dark-mode;
+}
+
+@mixin wizard-tokens {
+  --wizard-min-height: 300px;
+  --wizard-max-height: 800px;
+}
+
+@mixin wizard-default {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: var(--spacing-scale-4x);
+  max-height: var(--wizard-max-height);
+  max-width: none;
+  min-height: var(--wizard-min-height);
+}
+
+@mixin wizard-progress {
+  .wizard-progress {
+    background-color: var(--background-alternative);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-rows: none;
+    min-height: 164px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-top: var(--spacing-scale-7x);
+    width: 100%;
+  }
+  @include media-breakpoint-down(sm) {
+    .wizard-progress {
+      max-height: 100px;
+      min-height: 100px;
+      overflow-y: hidden;
+      padding-top: var(--spacing-scale-3x);
+      position: relative;
+      transition-delay: 0s;
+      transition-duration: 0.25s;
+      transition-property: all;
+      transition-timing-function: linear;
+
+      // Ajuste Grip Lines
+      &::after {
+        background-color: transparent;
+        bottom: 2px;
+        color: var(--interactive);
+        content: "\f7a4";
+        display: block;
+        font-family: "Font Awesome 5 Free", sans-serif;
+        font-size: var(--switch-icon-size);
+        font-weight: var(--font-weight-black);
+        height: 1em;
+        left: 50%;
+        margin-left: -0.5em;
+        position: absolute;
+        top: unset;
+        transition-delay: 0s;
+        transition-duration: 0.25s;
+        transition-property: all;
+        transition-timing-function: linear;
+        width: auto;
+      }
+    }
+  }
+}
+
+@mixin wizard-progress-btn {
+  .wizard-progress-btn {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none !important;
+    color: var(--interactive);
+    font-size: var(--font-size-scale-up-01, 16.8px);
+    line-height: 19px;
+    max-height: 90px;
+    padding-bottom: 0;
+    padding-top: var(--spacing-scale-2x);
+    position: relative;
+    text-indent: 0;
+    transition-delay: 0s;
+    transition-duration: 0.15s;
+    transition-property: all;
+    transition-timing-function: linear;
+
+    &[disabled] {
+      color: rgba(var(--interactive-rgb), var(--disabled));
+      opacity: 1;
+
+      &::before {
+        opacity: var(--disabled);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.focus-visible:not([disabled]):not(.disabled)::before,
+    &:focus-visible:not([disabled]):not(.disabled)::before {
+      outline-color: var(--focus-color);
+      outline-offset: var(--focus-offset);
+      outline-style: var(--focus-style);
+      outline-width: var(--focus-width);
+    }
+
+    &:hover:not([disabled])::before {
+      background-image: linear-gradient(
+        rgba(var(--interactive-rgb), var(--hover)),
+        rgba(var(--interactive-rgb), var(--hover))
+      );
+    }
+
+    &:active:not([disabled])::before {
+      background-image: linear-gradient(
+        rgba(var(--interactive-rgb), var(--pressed)),
+        rgba(var(--interactive-rgb), var(--pressed))
+      );
+    }
+
+    &::before {
+      background-color: var(--background);
+      border: 2px solid var(--interactive);
+      border-radius: 50%;
+      box-sizing: border-box;
+      color: var(--interactive);
+      content: attr(step) !important;
+      display: block;
+      font-size: var(--font-size-scale-up-02, 20.16px);
+      font-weight: var(--font-weight-semi-bold, 600);
+      height: 36px;
+      left: 50%;
+      line-height: 29px;
+      margin-top: -13px;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      transition:
+        all 0.15s linear 0s,
+        transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+      width: 36px;
+      z-index: 3;
+    }
+
+    &::after {
+      background-color: var(--interactive) !important;
+      content: "";
+      display: block;
+      height: 1px;
+      left: calc(-50% + 17px);
+      position: absolute;
+      top: 5px;
+      transition-delay: 0s;
+      transition-duration: 0.15s;
+      transition-property: all;
+      transition-timing-function: linear;
+      width: calc(100% - 34px);
+      z-index: 1;
+    }
+
+    &:first-child::after {
+      display: none;
+    }
+
+    &[active] {
+      color: var(--active);
+      font-weight: var(--font-weight-semi-bold, $font-weight-semi-bold);
+
+      &::after {
+        background-color: var(--active);
+      }
+
+      &::before {
+        background-color: var(--active);
+        border: 2px solid var(--background-light);
+        color: var(--background-light);
+        font-weight: var(--font-weight-bold, $font-weight-bold);
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .wizard-progress-btn {
+      .info {
+        font-size: var(--font-size-scale-down-02, $font-size-scale-down-02);
+        line-height: 1em;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@mixin wizard-progress-collapsed {
+  @include media-breakpoint-down(sm) {
+    &[collapsed] {
+      .wizard-progress {
+        max-height: 64px;
+        min-height: 64px;
+        overflow-y: hidden;
+        padding-bottom: var(--spacing-scale-3x);
+        padding-top: var(--spacing-scale-3x);
+
+        &::after {
+          margin-top: var(--spacing-scale-4xh);
+        }
+      }
+
+      .wizard-progress-btn {
+        padding-bottom: var(--spacing-scale-base);
+
+        .info {
+          display: none;
+        }
+      }
+
+      .wizard-form {
+        height: auto;
+      }
+
+      .wizard-panel-content {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+@mixin wizard-form {
+  .wizard-form {
+    display: flex;
+    flex: 1;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .wizard-panel {
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    left: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    position: static;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+
+    &[active] {
+      display: flex;
+      height: auto;
+      left: 0 !important;
+      opacity: 1;
+      transition-delay: 0s;
+      transition-duration: 0.5s;
+      transition-property: all;
+      transition-timing-function: linear;
+      visibility: visible;
+      // animation: slide-left 0.5s linear both;
+    }
+
+    @keyframes slide-left {
+      0% {
+        opacity: 0;
+        transform: translateX(1%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .wizard-panel-content {
+    border-top: 1px solid var(--border-color);
+    flex-grow: 1;
+    height: auto;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: var(--spacing-scale-base) var(--spacing-scale-2x);
+    @include scrollbar;
+
+    &:focus,
+    &:focus-visible,
+    &.focus-visible {
+      @include focus-soft;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .wizard-panel-btn {
+    align-self: flex-end;
+    background-color: var(--background-alternative);
+    border-top: 1px solid var(--border-color);
+    height: fit-content;
+    margin-top: 1px;
+    padding: var(--spacing-scale-2x) 1.5%;
+    width: 100%;
+  }
+
+  .wizard-btn-next,
+  .wizard-btn,
+  .wizard-btn-prev {
+    float: right;
+    margin-left: var(--spacing-scale-2x);
+  }
+
+  .wizard-btn-canc {
+    float: left;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .wizard-form {
+      height: auto;
+    }
+
+    .wizard-panel {
+      border-top: 0;
+      display: none;
+      flex-wrap: nowrap;
+      margin-bottom: 0;
+      max-height: none;
+    }
+
+    .wizard-panel-content {
+      height: auto;
+      max-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: var(--spacing-scale-half) var(--spacing-scale-base);
+      transition-delay: 0s;
+      transition-duration: 0.25s;
+      transition-property: all;
+      transition-timing-function: linear;
+    }
+
+    .wizard-panel-btn {
+      align-items: flex-end;
+      background-color: var(--background-alternative);
+      display: flex;
+      flex-wrap: wrap;
+      height: fit-content;
+      justify-content: center;
+      padding: 0 !important;
+      position: static;
+      width: 100%;
+    }
+
+    .wizard-btn-canc,
+    .wizard-btn-next,
+    .wizard-btn-prev,
+    .wizard-btn {
+      float: none;
+      margin: var(--spacing-scale-base) 5%;
+      width: 90%;
+    }
+
+    .wizard-btn-next,
+    .wizard-btn {
+      order: 1;
+    }
+  }
+}
+
+@mixin wizard-vertical {
+  &[vertical] {
+    flex-direction: row;
+
+    .wizard-progress {
+      flex: 1;
+      float: none;
+      grid-template-columns: 1fr;
+      height: auto;
+      max-width: 260px;
+      overflow-x: hidden;
+      padding-top: 0;
+      position: relative;
+      text-align: right;
+    }
+
+    .wizard-progress-btn {
+      height: 100%;
+      line-height: 100%;
+      max-height: 100%;
+      padding-bottom: 0;
+      padding-right: 70px;
+      padding-top: 0;
+      text-align: right;
+
+      &::before {
+        left: calc(100% - 32px);
+        line-height: 26px;
+        margin-top: calc(var(--spacing-scale-2x) * -1);
+        position: absolute;
+        text-align: center;
+        top: 50%;
+      }
+
+      &::after {
+        height: calc(100% - 34px);
+        left: calc(100% - 33px);
+        position: absolute;
+        top: calc(-50% + 18px);
+        width: 1px;
+      }
+
+      &[active]::after {
+        width: 1px;
+      }
+    }
+
+    &[scroll] {
+      .wizard-progress {
+        overflow-y: auto;
+        @include scrollbar;
+
+        .wizard-progress-btn {
+          min-height: 100px;
+        }
+      }
+    }
+
+    .wizard-form {
+      float: none;
+      height: auto;
+      width: calc(100% - 260px);
+
+      .wizard-panel {
+        .wizard-panel-content {
+          border-top: 0;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &[vertical] {
+      .wizard-progress {
+        max-height: 100%;
+        max-width: 110px;
+
+        &::after {
+          height: 1em;
+          left: unset;
+          margin-top: -0.5em;
+          right: 2px;
+          top: 50%;
+          transform: rotate(-90deg);
+          width: 1em;
+        }
+      }
+
+      .wizard-progress-btn {
+        line-height: 18px;
+        padding-right: var(--spacing-scale-7x);
+
+        .info {
+          line-height: 1.6em;
+          margin-top: -0.5em;
+          position: absolute;
+          right: 54px;
+        }
+      }
+
+      .wizard-form {
+        height: auto;
+        max-width: calc(100% - 110px);
+        min-width: calc(100% - 110px);
+        transition-delay: 0s;
+        transition-duration: 0.25s;
+        transition-property: all;
+        transition-timing-function: linear;
+      }
+
+      .wizard-panel {
+        height: 100%;
+        max-height: 100%;
+      }
+
+      &[collapsed] {
+        .wizard-progress {
+          max-width: 60px;
+          padding-bottom: 0;
+          padding-top: 0;
+        }
+
+        .wizard-progress-btn {
+          padding-right: 0;
+
+          .info {
+            display: none;
+          }
+        }
+
+        .wizard-form {
+          max-width: calc(100% - 60px);
+          min-width: calc(100% - 60px);
+        }
+      }
+    }
+  }
+}
+
+@mixin wizard-dark-mode {
+  &.inverted,
+  &.dark-mode {
+    @include dark-mode;
+    @include button-dark-mode;
+
+    .wizard-progress {
+      background-color: transparent;
+    }
+
+    .wizard-progress-btn {
+      &[active] {
+        color: var(--color);
+
+        &::before {
+          --interactive-rgb: var(--active-rgb);
+          background-color: var(--color);
+          color: var(--active);
+        }
+      }
+    }
+
+    .wizard-panel {
+      .wizard-panel-btn {
+        background-color: transparent;
+      }
+    }
+  }
+}

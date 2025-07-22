@@ -1,0 +1,151 @@
+@use "sass:math";
+
+@mixin loading-configs {
+  @include loading-token;
+  @include loading-default;
+  @include loading-indetermined;
+  @include loading-sizes;
+  @include loading-animations;
+}
+
+@mixin loading-token {
+  --loading-size: var(--loading-indetermined-diameter-sm);
+  --loading-diameter: 84px;
+  --loading-stroke: 5px;
+  --loading-indetermined-color: var(--interactive);
+  --loading-indetermined-diameter-md: 44px;
+  --loading-indetermined-diameter-sm: 24px;
+}
+
+@mixin loading-default {
+  position: relative;
+  z-index: var(--z-index-layer-4);
+
+  &[data-progress] {
+    // Não aplica estilo "determinado" quando não houver elementos filhos
+    &:not(:empty) {
+      background-color: var(--border-color);
+      border-radius: 50%;
+
+      &::before {
+        content: none;
+      }
+    }
+
+    // Mostrar número com porcentagem
+    &::after {
+      --loading-size: calc(var(--loading-diameter) - var(--loading-stroke) * 2);
+      background: var(--background);
+      border-radius: 50%;
+      color: var(--interactive);
+      content: attr(data-progress) "%";
+      font-size: var(--font-size-scale-up-02);
+      font-weight: var(--font-weight-semi-bold);
+      height: var(--loading-size);
+      line-height: var(--loading-size);
+      margin: var(--loading-stroke);
+      position: absolute;
+      text-align: center;
+      width: var(--loading-size);
+    }
+
+    &.loading,
+    .#{$prefix}loading {
+      &-mask,
+      &-fill {
+        backface-visibility: hidden;
+        border-radius: 50%;
+        clip: rect(0, var(--loading-diameter), var(--loading-diameter), calc(var(--loading-diameter) * 0.5));
+        height: var(--loading-diameter);
+        overflow: hidden;
+        position: absolute;
+        width: var(--loading-diameter);
+      }
+
+      &-fill {
+        background: var(--interactive);
+        clip: rect(0, calc(var(--loading-diameter) * 0.5), var(--loading-diameter), 0);
+      }
+    }
+  }
+}
+
+@mixin loading-indetermined {
+  &::before {
+    animation: spinAround 1.3s infinite linear;
+    border: 2px solid var(--loading-indetermined-color);
+    border-radius: 50%;
+    border-right-color: transparent;
+    content: "";
+    display: block;
+    height: var(--loading-size);
+    left: calc(50% - (var(--loading-size) * 0.5));
+    position: absolute;
+    top: calc(50% - (var(--loading-size) * 0.5));
+    width: var(--loading-size);
+  }
+}
+
+@mixin loading-sizes {
+  // Não aplica a regra no componente Button
+  &:not(.#{$prefix}button) {
+    // O tamanho padrão é o pequeno
+    height: var(--loading-size);
+    width: var(--loading-size);
+
+    // Aplica o tamanho médio
+    &.medium {
+      --loading-size: var(--loading-indetermined-diameter-md);
+
+      &::before {
+        border-width: 4px;
+      }
+    }
+
+    // Aplica o tamanho com progressão
+    &[data-progress] {
+      --loading-size: var(--loading-diameter);
+
+      &::before {
+        border-width: var(--loading-stroke);
+      }
+    }
+  }
+}
+
+@mixin loading-animations {
+  // Quantidade de classes estáticas para animações
+  $rotation-steps: 100;
+
+  // Cria valores estáticos para animações
+  @for $step from 1 through $rotation-steps {
+    $rotation: math.div($step, 100) * 360;
+    &[data-progress="#{$step}"] {
+      $rotate: $step * 1.8;
+      .#{$prefix}loading-mask.full,
+      .#{$prefix}loading-fill {
+        animation: fill ease-in-out 2s;
+        transform: rotate(#{$rotate}deg);
+      }
+    }
+  }
+
+  @keyframes spinAround {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes fill {
+    0% {
+      transform: rotate(0deg);
+    }
+    @for $step from 1 through $rotation-steps {
+      $rotation: math.div($step, 100) * 360;
+    }
+  }
+}

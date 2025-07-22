@@ -1,0 +1,88 @@
+/// Cria as classes de espaçamento para a propriedade informada.
+/// @group 03
+/// @param {String} $property - **Usar**: margin ou padding
+/// @param {String} $breakpoint [null] - **Usar**: xs, sm, md, lg ou xl **(Opcional)**
+/// @example scss - Criar margens e paddings
+///  @include make-spacing("margin");
+///  @include make-spacing("padding");
+/// @example scss - Criar margens e paddings por breakpoint
+///  @each $breakpoint in "sm", "md", "lg", "xl" {
+///    @include media-breakpoint-up($breakpoint) {
+///      @include make-spacing("margin", $breakpoint);
+///      @include make-spacing("padding", $breakpoint);
+///    }
+///  }
+@mixin make-spacing($property, $breakpoint: null) {
+  @if $enable-lite == true {
+    @include spacing-directions($property, $spacers-lite, $breakpoint);
+  } @else {
+    @include spacing-directions($property, $spacers-manual, $breakpoint);
+    @include spacing-directions($property, $spacers-automatic, $breakpoint);
+  }
+
+  @if $property == "margin" {
+    $map: (
+      "auto": auto,
+    );
+    @include spacing-directions($property, $map, $breakpoint);
+  }
+}
+
+/// Cria direções e orientações para o utilitário de espaçamento
+/// @group 04
+/// @param {String} $property - **Usar**: margin ou padding
+/// @param {Map} $map - Mapa de espaçamentos
+/// @param {String} $breakpoint [null] - **Usar**: xs, sm, md, lg ou xl **(Opcional)**
+/// @example scss - Uso prático
+///  @include spacing-directions("padding", $spacers-manual);
+@mixin spacing-directions($property, $map, $breakpoint) {
+  $directions: "top", "right", "bottom", "left";
+  $property-shortcut: str-slice($property, 1, 1);
+  @each $key, $value in $map {
+    // Todas as direções
+    .#{$property-shortcut}#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key} {
+      #{$property}: $value !important;
+    }
+
+    // Horizontal
+    .#{$property-shortcut}x#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key} {
+      #{$property}-left: $value !important;
+      #{$property}-right: $value !important;
+    }
+
+    // Vertical
+    .#{$property-shortcut}y#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key} {
+      #{$property}-bottom: $value !important;
+      #{$property}-top: $value !important;
+    }
+
+    // Direção específica
+    @each $direction in $directions {
+      $direction-shortcut: str-slice($direction, 1, 1);
+      .#{$property-shortcut}#{$direction-shortcut}#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key} {
+        #{$property}-#{$direction}: $value !important;
+      }
+      // Ignorar valor 0 e auto
+      @if $key != 0 and $key != "auto" {
+        .#{$property-shortcut}#{$direction-shortcut}#{if($breakpoint, "-#{$breakpoint}", "")}-n#{$key} {
+          #{$property}-#{$direction}: calc(#{$value} * -1) !important;
+        }
+      }
+    }
+
+    // Valores negativos tirando o zero a auto
+    @if $key != 0 and $key != "auto" {
+      .#{$property-shortcut}#{if($breakpoint, "-#{$breakpoint}", "")}-n#{$key} {
+        #{$property}: calc(#{$value} * -1) !important;
+      }
+      .#{$property-shortcut}x#{if($breakpoint, "-#{$breakpoint}", "")}-n#{$key} {
+        #{$property}-left: calc(#{$value} * -1) !important;
+        #{$property}-right: calc(#{$value} * -1) !important;
+      }
+      .#{$property-shortcut}y#{if($breakpoint, "-#{$breakpoint}", "")}-n#{$key} {
+        #{$property}-bottom: calc(#{$value} * -1) !important;
+        #{$property}-top: calc(#{$value} * -1) !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "mixins";
+
+.#{$prefix}item {
+  background: var(--background);
+  @include item-configs;
+}
+
+// Item aplicado em link/botão
+a.#{$prefix}item {
+  color: var(--interactive);
+  @include hover;
+  @include active;
+}
+
+button.#{$prefix}item {
+  background-color: transparent;
+  color: var(--color);
+  @include focus;
+  @include hover("color");
+  @include active("color");
+}
