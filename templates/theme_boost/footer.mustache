@@ -1,73 +1,63 @@
-<div class="footer-atalhos">
-    <div class="container">
-        <div class="pull-right voltar-ao-topo">
-            <a href="#topo"><i accesskey="8" class="fa fa-chevron-up"></i>&nbsp;Voltar para o topo</a>
-        </div>
+<footer id="page-footer" class="footer-popover bg-white">
+    <div data-region="footer-container-popover">
+        {{#output.has_communication_links}}
+            <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon bg-primary text-white icon-no-margin btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
+                {{#pix}}t/messages-o, core{{/pix}}
+            </button>
+        {{/output.has_communication_links}}
+        <button class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
+            {{#pix}}e/question, core{{/pix}}
+        </button>
     </div>
-</div>
+    <div class="footer-content-popover container" data-region="footer-content-popover">
+        {{#output.has_communication_links}}
+            <div class="footer-section p-3 border-bottom footer-link-communication">
+                <div class="footer-support-link">{{{ output.communication_link }}}</div>
+            </div>
+        {{/output.has_communication_links}}
+        {{# output.has_popover_links }}
+            <div class="footer-section p-3 border-bottom">
+                {{# output.page_doc_link }}
+                    <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
+                {{/ output.page_doc_link }}
 
+                {{# output.services_support_link }}
+                    <div class="footer-support-link">{{{ output.services_support_link }}}</div>
+                {{/ output.services_support_link }}
 
-<footer id="page-footer" class="py-3 text-light">
-    <div class="container-menus">
-        <div class="container">
-            <div id="footer" class="footer-menus">
-                <span class="hide">Início da navegação de rodapé</span>
-                <div class="col-md-3">
-                    <nav class="assuntos nav">
-                        <address>
-
-                        </address>
-                    </nav>
-                </div>
-
-                <div class="col-md-12">
-
-                    <div class="rodapesaida">
-
-                        <div id="course-footer">{{{ output.course_footer }}}</div>
-
-                        {{# output.page_doc_link }}
-                            <p class="helplink">{{{ output.page_doc_link }}}</p>
-                        {{/ output.page_doc_link }}
-
-                        {{{ output.login_info }}}
-                        <div class="tool_usertours-resettourcontainer"></div>
-                        {{{ output.home_link }}}
-                        <nav class="nav navbar-nav d-md-none">
-                            {{# output.custom_menu_flat }}
-                                <ul class="list-unstyled pt-3">
-                                    {{> theme_boost/custom_menu_footer }}
-                                </ul>
-                            {{/ output.custom_menu_flat }}
-                        </nav>
-                        {{{ output.standard_footer_html }}}
-                        {{{ output.standard_end_of_body_html }}}
-
-                    </div>
-
-                </div>
-                <span class="hide">Fim da navegação de rodapé</span>
-
+                {{# output.supportemail }}
+                    <div class="footer-support-link">{{{ output.supportemail }}}</div>
+                {{/ output.supportemail }}
+            </div>
+        {{/ output.has_popover_links }}
+        <div class="footer-section p-3 border-bottom">
+            <div class="logininfo">
+                {{{ output.login_info }}}
+            </div>
+            <div class="tool_usertours-resettourcontainer">
             </div>
 
-            <!-- fim .row -->
+            {{{ output.standard_footer_html }}}
+            {{{ output.standard_end_of_body_html }}}
         </div>
-        <!-- fim .container -->
+        <div class="footer-section p-3">
+            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
+            {{#output.moodle_release}}
+                <div>
+                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
+                </div>
+            {{/output.moodle_release}}
+        </div>
     </div>
 
-
-    <div class="footer-logos">
-        <div id="footer-brasil"></div>
+    <div class="footer-content-debugging footer-dark bg-dark text-light">
+        <div class="container-fluid footer-dark-inner">
+            {{{ output.debug_footer_html }}}
+        </div>
     </div>
 </footer>
-
-<script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
-</body>
-</html>
-
 {{#js}}
-    require(['theme_boost/loader']);
-    require(['theme_boost/drawer'], function(mod) {
-    mod.init();
-    });
+require(['theme_boost/footer-popover'], function(FooterPopover) {
+    FooterPopover.init();
+});
 {{/js}}
