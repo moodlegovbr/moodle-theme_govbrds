@@ -1,9 +1,0 @@
-@import "mixins";
-
-.#{$prefix}magic-button {
-  @include magic-configs;
-
-  .#{$prefix}button {
-    @include button-magicbutton;
-  }
-}

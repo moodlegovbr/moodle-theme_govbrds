@@ -1,9 +1,0 @@
-@import "mixins";
-
-.#{$prefix}message {
-  @include message-configs;
-}
-
-.feedback {
-  @include feedback-configs;
-}
