@@ -1,8 +1,0 @@
-@import "mixins";
-@import "../button/mixins";
-
-.#{$prefix}sign-in,
-.#{$prefix}button.sign-in {
-  @include button-configs;
-  @include signin-configs;
-}

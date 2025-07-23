@@ -1,9 +1,0 @@
-@import "mixins";
-
-.flatpickr-calendar {
-  @include flatpicker-configs;
-}
-
-.#{$prefix}datetimepicker {
-  @include datetimepicker-configs;
-}
