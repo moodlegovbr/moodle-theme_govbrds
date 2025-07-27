@@ -1,0 +1,30 @@
+<div {{!
+    }} class="{{$drawerclasses}}{{/drawerclasses}} d-print-none not-initialized"{{!
+    }} data-region="fixed-drawer"{{!
+    }} id="{{$id}}{{/id}}"{{!
+    }} data-preference="{{$drawerpreferencename}}{{/drawerpreferencename}}"{{!
+    }} data-state="{{$drawerstate}}{{/drawerstate}}"{{!
+    }} data-forceopen="{{$forceopen}}0{{/forceopen}}"{{!
+    }} data-close-on-resize="{{$drawercloseonresize}}0{{/drawercloseonresize}}"{{!
+    }}>
+    <div class="drawerheader">
+        <button
+            class="btn drawertoggle icon-no-margin hidden"
+            data-toggler="drawers"
+            data-action="closedrawer"
+            data-target="{{$id}}{{/id}}"
+            data-toggle="tooltip"
+            data-placement="{{$tooltipplacement}}right{{/tooltipplacement}}"
+            title="{{$closebuttontext}}{{#str}}closedrawer, core{{/str}}{{/closebuttontext}}"
+        >
+            {{#pix}} e/cancel, core {{/pix}}
+        </button>
+        {{$drawerheading}}{{/drawerheading}}
+        <div class="drawerheadercontent hidden">
+            {{$drawerheadercontent}}{{/drawerheadercontent}}
+        </div>
+    </div>
+    <div class="drawercontent drag-container" data-usertour="scroller">
+        {{$drawercontent}}{{/drawercontent}}
+    </div>
+</div>

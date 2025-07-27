@@ -59,8 +59,12 @@ $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 
 $container = get_config('theme_govbrds', 'layout')?'container-fluid':'container';
 
+$primary = new core\navigation\output\primary($PAGE);
+$renderer = $PAGE->get_renderer('core');
+$primarymenu = $primary->export_for_template($renderer);
+
 $templatecontext = [
-    // GOvBRDS
+    // GovBRDS
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'shortname' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'organization' => get_config('theme_govbrds', 'organization'),
@@ -78,6 +82,8 @@ $templatecontext = [
 
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
+    'usermenu' => $primarymenu['user'],
+    'langmenu' => $primarymenu['lang'],
 
     'bodyattributes' => $bodyattributes,
     'navdraweropen' => $navdraweropen,
@@ -94,6 +100,4 @@ $templatecontext = [
 $templatecontext['primarynavigation'] = $PAGE->primarynav;
 $templatecontext['secondarynavigation'] = $PAGE->secondarynav;
 
-$PAGE->requires->jquery();
-$PAGE->requires->js('/theme/govbrds/javascript/sticky_navbar.js');
-$PAGE->requires->js('/theme/govbrds/javascript/govbrds.js');
+$PAGE->requires->js_call_amd('theme_govbrds/govbr', 'init');

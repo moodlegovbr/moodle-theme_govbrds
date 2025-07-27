@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "sass scss/template-branco.scss style/template-branco.css",
-    "watch-css": "sass --watch scss/template-branco.scss style/template-branco.css"
-
-
+    "watch-css": "sass --watch scss/template-branco.scss style/template-branco.css",
+    "build-js": "webpack"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,8 @@
     "@govbr-ds/core": "^3.6.2"
   },
   "devDependencies": {
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "webpack": "^5.100.2",
+    "webpack-cli": "^6.0.1"
   }
 }
