@@ -109,4 +109,4 @@ $string['region-footer-right'] = 'Footer (Right)';
 $string['region-hidden-dock'] = 'Hidden from users';
 
 
-
+$string['privacy:metadata:govbrds_user_setting'] = 'Stores user-specific theme configuration preferences.';
