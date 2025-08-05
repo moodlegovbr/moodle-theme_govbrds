@@ -59,6 +59,24 @@ $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 
 $container = get_config('theme_govbrds', 'layout')?'container-fluid':'container';
 
+
+$secondarynavigation = false;
+$overflow = '';
+if ($PAGE->has_secondary_navigation()) {
+    $tablistnav = $PAGE->has_tablist_secondary_navigation();
+    $moremenu = new \core\navigation\output\more_menu($PAGE->secondarynav, 'nav-tabs', true, $tablistnav);
+    $secondarynavigation = $moremenu->export_for_template($OUTPUT);
+    $overflowdata = $PAGE->secondarynav->get_overflow_menu_data();
+    if (!is_null($overflowdata)) {
+        $overflow = $overflowdata->export_for_template($OUTPUT);
+    }
+}
+
+$primary = new core\navigation\output\primary($PAGE);
+$renderer = $PAGE->get_renderer('core');
+$primarymenu = $primary->export_for_template($renderer);
+
+
 $templatecontext = [
     // GOvBRDS
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
@@ -84,15 +102,10 @@ $templatecontext = [
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
 
+    'primarymoremenu' => $primarymenu['moremenu'],
+    'secondarymoremenu' => $secondarynavigation ?: false,
+
 ];
-
-/* 
- * Flat navigation has been deprecated in favour of primary/secondary navigation concepts
- * $templatecontext['flatnavigation'] = $PAGE->flatnav;
- */
-
-$templatecontext['primarynavigation'] = $PAGE->primarynav;
-$templatecontext['secondarynavigation'] = $PAGE->secondarynav;
 
 $PAGE->requires->jquery();
 $PAGE->requires->js('/theme/govbrds/javascript/sticky_navbar.js');
