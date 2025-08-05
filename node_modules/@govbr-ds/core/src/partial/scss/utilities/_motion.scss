@@ -1,9 +1,0 @@
-// Tempos das animações
-@each $key, $value in $easings {
-  .#{$key} {
-    animation-timing-function: $value;
-  }
-}
-
-// Duração
-@include durations;
