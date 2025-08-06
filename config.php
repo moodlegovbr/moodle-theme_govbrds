@@ -39,15 +39,8 @@ $THEME->requiredblocks = '';
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
 $THEME->sheets = array(
-    'fonts',
-    'font-awesome\css\font-awesome',
-    'sticky-navbar',
-    get_config('theme_govbrds', 'preset')
+    'core',
 );
-
-$THEME->javascripts_footer = [
-    'govbrds'
-];
 
 
 $THEME->scss = function($theme) {
@@ -55,17 +48,6 @@ $THEME->scss = function($theme) {
 };
 
 $THEME->layouts = [
-    // Most backwards compatible layout without the blocks - this is the layout used by default
-    'base' => array(
-        'file' => 'columns2.php',
-        'regions' => array(),
-    ),
-    // Standard layout with blocks, this is recommended for most pages with default information
-    'standard' => array(
-        'file' => 'columns2.php',
-        'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-    ),
     // The site home page.
     'frontpage' => array(
         'file' => 'frontpage.php',

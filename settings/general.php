@@ -30,14 +30,14 @@ $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettin
 
 // Organization.
 $setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
-    'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'Instituto Federal de Educação, Ciência e Tecnologia de Roraima',
+    'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'University Demo',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Subordination.
-$setting = new admin_setting_configtext('theme_govbrds/subordination', get_string('subordination',
-    'theme_govbrds'), get_string('subordination_desc', 'theme_govbrds'), 'Ministério da Educação',
+// Organization URL.
+$setting = new admin_setting_configtext('theme_govbrds/organization_url', get_string('organization_url',
+    'theme_govbrds'), get_string('organization_url_desc', 'theme_govbrds'), 'https://www.universitydemo.com',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
@@ -70,26 +70,6 @@ $description = get_string('brandcolor_desc', 'theme_govbrds');
 $setting = new admin_setting_configcolourpicker($name, $title, $description, '');
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
-
-$name = 'theme_govbrds/preset';
-$title = get_string('preset', 'theme_govbrds');
-$description = get_string('preset_desc', 'theme_govbrds');
-$default = 'template-verde.scss';
-
-$context = context_system::instance();
-$fs = get_file_storage();
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'preset', 0,
-    'itemid, filepath, filename', false);
-
-$choices = [];
-foreach ($files as $file) {
-    $choices[$file->get_filename()] = $file->get_filename();
-}
-
-$choices['template-verde'] = 'template-verde';
-$choices['template-amarelo'] = 'template-amarelo';
-$choices['template-azul'] = 'template-azul';
-$choices['template-branco'] = 'template-branco';
 
 $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
 $setting->set_updatedcallback('theme_reset_all_caches');
