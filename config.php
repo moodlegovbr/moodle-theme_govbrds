@@ -45,6 +45,11 @@ $THEME->sheets = array(
     get_config('theme_govbrds', 'preset')
 );
 
+$THEME->javascripts_footer = [
+    'govbrds'
+];
+
+
 $THEME->scss = function($theme) {
     return theme_govbrds_get_main_scss_content($theme);
 };

@@ -51,9 +51,6 @@
                     <div class="col mb-5">
                         <div id="content">
                             {{{ output.full_header }}}
-                            <div>
-                                {{>theme_govbrds/gridmarkup}}
-                            </div>
                         </div>
                         {{#hasregionmainsettingsmenu}}
                             <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
@@ -86,11 +83,3 @@
     </div>
 </body>
 </html>
-{{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
-    Drawer.init();
-    M.util.js_complete('theme_boost/loader');
-});
-{{/js}}
-
