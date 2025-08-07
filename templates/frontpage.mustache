@@ -45,33 +45,41 @@
         {{> theme_govbrds/header }}
         <main class="d-flex flex-fill mb-5" id="main">
             <div class="container-lg d-flex">
+            
                 <div class="row">
                     {{> theme_govbrds/navbar }}
                     
-                    <div class="col mb-5">
-                        <div id="content">
-                            {{{ output.full_header }}}
-                        </div>
-                        {{#hasregionmainsettingsmenu}}
-                            <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
-                                <div> {{{ output.region_main_settings_menu }}} </div>
+                    <div class="col mb-5 main">
+                       <div class="main-content pl-sm-3 mt-4" id="main-content">
+                            {{> theme_govbrds/feature }}
+                            
+                            <div class="row main-inner">
+                                <div class="col mb-5 main">
+                                    <div id="content">
+                                        {{{ output.full_header }}}
+                                    </div>
+                                    {{#hasregionmainsettingsmenu}}
+                                        <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
+                                            <div> {{{ output.region_main_settings_menu }}} </div>
+                                        </div>
+                                    {{/hasregionmainsettingsmenu}}
+                                    <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
+                                        {{#hasregionmainsettingsmenu}}
+                                        <div class="region_main_settings_menu_proxy"></div>
+                                        {{/hasregionmainsettingsmenu}}
+                                        {{{ output.course_content_header }}}
+                                        {{{ output.main_content }}}
+                                        {{{ output.activity_navigation }}}
+                                        {{{ output.course_content_footer }}}
+                                    </section>
+                                    {{#hasblocks}}
+                                        <section data-region="blocks-column" class="d-print-none">
+                                            {{{ sidepreblocks }}}
+                                        </section>
+                                    {{/hasblocks}}
+                                </div>
                             </div>
-                        {{/hasregionmainsettingsmenu}}
-                        <section id="region-main" {{#hasblocks}}class="has-blocks mb-3"{{/hasblocks}}>
-                            {{#hasregionmainsettingsmenu}}
-                            <div class="region_main_settings_menu_proxy"></div>
-                            {{/hasregionmainsettingsmenu}}
-                            {{{ output.course_content_header }}}
-                            {{{ output.main_content }}}
-                            {{{ output.activity_navigation }}}
-                            {{{ output.course_content_footer }}}
-                        </section>
-                        {{#hasblocks}}
-                            <section data-region="blocks-column" class="d-print-none">
-                                {{{ sidepreblocks }}}
-                            </section>
-                        {{/hasblocks}}
-                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,5 +89,13 @@
         <div class="br-cookiebar default d-none" tabindex="-1"></div>
         {{{ output.standard_after_main_region_html }}}
     </div>
+    <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
 </body>
 </html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+    Drawer.init();
+    M.util.js_complete('theme_boost/loader');
+});
+{{/js}}

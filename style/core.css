@@ -32249,4 +32249,24 @@ button.br-item:not(:disabled):active {
   outline-width: var(--focus-width);
 }
 
+body {
+  background-color: #E1ECFF;
+}
+
+.main-inner {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+  padding: 1.5rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.dropdown {
+  z-index: 100;
+}
+
+.br-sign-in, .br-button.sign-in {
+  --sign-in-img: 35px;
+}
+
 /*# sourceMappingURL=core.css.map */
