@@ -15,8 +15,8 @@ $string['generalsettings'] = 'Configurações Gerais';
 $string['organization'] = 'Organização';
 $string['organization_desc'] = 'Denominação do órgão.';
 
-$string['subordination'] = 'Subordinação';
-$string['subordination_desc'] = 'Ministério ao qual faz parte.';
+$string['organization_url'] = 'Link para Organização';
+$string['organization_url_desc'] = 'Para redirecionar para o orgão que pertence';
 
 $string['address'] = 'Endereço';
 $string['address_desc'] = 'json do endereço que você deseja colocar no rodapé.';

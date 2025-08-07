@@ -1,0 +1,61 @@
+<div class="header-login">
+    {{#unauthenticateduser}}
+        <div class="header-sign-in">
+            {{#guest}}
+                {{#str}} loggedinasguest, core {{/str}}
+                <div class="divider border-start h-75 align-self-center mx-2"></div>
+            {{/guest}}
+            {{#url}}
+                <a href="{{url}}" class="br-sign-in small" data-trigger="login">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="d-sm-inline">{{#str}} login, core {{/str}}</span>
+                </a>
+            {{/url}}
+        </div>
+        <div class="header-avatar"></div>
+    {{/unauthenticateduser}}
+    {{^unauthenticateduser}}
+        <button class="br-sign-in" type="button" id="avatar-dropdown-trigger" data-toggle="dropdown" data-target="avatar-menu" aria-label="{{#str}}usermenu{{/str}}">
+            {{> theme_govbrds/user_menu_metadata }}
+        </button>
+        <div class="br-list" id="avatar-menu" hidden="hidden" role="menu" aria-labelledby="avatar-dropdown-trigger">
+            {{> core/user_action_menu_items }}
+        </div>
+        
+
+
+        <div class="dropdown show">
+            <div id="user-action-menu" class="dropdown-menu dropdown-menu-right">
+                <div id="usermenu-carousel" class="carousel slide" data-touch="false" data-interval="false" data-keyboard="false">
+                    <div class="carousel-inner">
+                        <div id="carousel-item-main" class="carousel-item active" role="menu" tabindex="-1" aria-label="{{#str}}user{{/str}}">
+                            {{> core/user_action_menu_items }}
+                        </div>
+                        {{#submenus}}
+                            <div id="carousel-item-{{id}}" role="menu" class="carousel-item submenu" tabindex="-1" aria-label="{{title}}">
+                                <div class="d-flex flex-column h-100">
+                                    <div class="header">
+                                        <button type="button" class="btn btn-icon carousel-navigation-link text-decoration-none text-body" data-carousel-target-id="carousel-item-main" aria-label="{{#str}}usermenugoback{{/str}}">
+                                            <span class="dir-rtl-hide">{{#pix}}i/arrow-left{{/pix}}</span>
+                                            <span class="dir-ltr-hide">{{#pix}}i/arrow-right{{/pix}}</span>
+                                        </button>
+                                        <span class="ps-2" id="carousel-item-title-{{id}}">{{title}}</span>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="items h-100 overflow-auto" role="menu" aria-labelledby="carousel-item-title-{{id}}">
+                                        {{> core/user_action_menu_submenu_items }}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/submenus}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/unauthenticateduser}}
+</div>
+{{#js}}
+    require(['core/usermenu'], function(UserMenu) {
+        UserMenu.init();
+    });
+{{/js}}

@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass scss/template-branco.scss style/template-branco.css",
-    "watch-css": "sass --watch scss/template-branco.scss style/template-branco.css"
-
-
+    "build-css": "sass scss/core.scss style/core.css",
+    "watch-css": "sass --watch scss/core.scss style/core.css"
   },
   "repository": {
     "type": "git",

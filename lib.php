@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 
 function theme_govbrds_get_main_scss_content($theme) {
     global $CFG;
-    $scss = file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    $scss = file_get_contents($CFG->dirroot . '/theme/boost/style/preset/default.scss');
     return $scss;
 }
 
