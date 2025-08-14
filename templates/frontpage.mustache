@@ -56,9 +56,6 @@
                             
                             <div class="row main-inner">
                                 <div class="col mb-5 main">
-                                    <div id="content">
-                                        {{{ output.full_header }}}
-                                    </div>
                                     {{#hasregionmainsettingsmenu}}
                                         <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
                                             <div> {{{ output.region_main_settings_menu }}} </div>
@@ -87,13 +84,7 @@
             </div>
 
         </main>
-        <div style="background-color: #8AABC3">
-            <div class="container-lg" >
-                <div class="row" >
-                    {{> theme_govbrds/how_works }}
-                </div>
-            </div>
-        </div>
+        {{> theme_govbrds/how_works }}
 
         {{> theme_govbrds/footer }}
     <!-- ... -->
