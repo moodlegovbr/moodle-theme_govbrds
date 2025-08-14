@@ -36,13 +36,14 @@
 
 {{> theme_govbrds/head }}
 
-<body {{{ bodyattributes }}}>
+<body {{{ bodyattributes }}} >
     {{> core/local/toast/wrapper}}
     <div id="page-wrapper" class="d-print-block">
 
         {{{ output.standard_top_of_body_html }}}
 
         {{> theme_govbrds/header }}
+
         <main class="d-flex flex-fill mb-5" id="main">
             <div class="container-lg d-flex">
             
@@ -79,23 +80,20 @@
                                     {{/hasblocks}}
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
         </main>
+        <div style="background-color: #8AABC3">
+            <div class="container-lg" >
+                <div class="row" >
+                    {{> theme_govbrds/how_works }}
+                </div>
+            </div>
+        </div>
+
         {{> theme_govbrds/footer }}
-        <div class="br-cookiebar default d-none" tabindex="-1"></div>
-        {{{ output.standard_after_main_region_html }}}
-    </div>
-    <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
-</body>
-</html>
-{{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
-    Drawer.init();
-    M.util.js_complete('theme_boost/loader');
-});
-{{/js}}
+    <!-- ... -->

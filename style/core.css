@@ -32269,4 +32269,8 @@ body {
   --sign-in-img: 35px;
 }
 
+body.admin .col {
+  flex: auto;
+}
+
 /*# sourceMappingURL=core.css.map */

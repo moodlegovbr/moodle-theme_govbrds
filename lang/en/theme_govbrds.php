@@ -12,6 +12,9 @@ $string['choosereadme'] = 'O tema GovBR-DS é um tema filho do boost. É um tema
 $string['configtitle'] = 'Configurações do GovBR-DS';
 $string['generalsettings'] = 'Configurações Gerais';
 
+$string['logo'] = 'Logo da organização';
+$string['logo_desc'] = 'Envie a imagem da logo que será exibida no cabeçalho do site.';
+
 $string['organization'] = 'Organização';
 $string['organization_desc'] = 'Denominação do órgão.';
 

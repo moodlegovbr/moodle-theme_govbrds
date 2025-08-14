@@ -20,3 +20,8 @@ body {
 .br-sign-in, .br-button.sign-in {
     --sign-in-img: 35px;
 }
+
+body.admin .col {
+  flex: auto;
+}
+

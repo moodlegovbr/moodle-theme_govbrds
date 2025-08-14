@@ -42,3 +42,22 @@ function theme_govbrds_user_preferences(): array {
         ]
     ];
 }
+
+function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+    if ($context->contextlevel !== CONTEXT_SYSTEM || $filearea !== 'logo') {
+        send_file_not_found();
+    }
+
+    $itemid = array_shift($args);
+    $filename = array_pop($args);
+    $filepath = $args ? '/' . implode('/', $args) . '/' : '/';
+
+    $fs = get_file_storage();
+    $file = $fs->get_file($context->id, 'theme_govbrds', $filearea, $itemid, $filepath, $filename);
+
+    if (!$file) {
+        send_file_not_found();
+    }
+
+    send_stored_file($file, null, 0, $forcedownload, $options);
+}

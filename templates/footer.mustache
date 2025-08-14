@@ -1,7 +1,23 @@
-<footer class="br-footer pt-3" id="footer">
-    <div class="container-lg">
-        <div class="info">
-        <div class="text-down-01 text-medium pb-3">Texto destinado a exibição de informações relacionadas à&nbsp;<strong><a href="">licença de uso</a>.</strong></div>
+<!-- ... -->
+            <footer class="br-footer pt-3" id="footer">
+                <div class="container-lg">
+                    <div class="info">
+                    <div class="text-down-01 text-medium pb-3">
+                        {{{ addressm }}}
+                    </div>
+                    </div>
+                </div>
+            </footer>
+            <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
+
+            {{{ output.standard_after_main_region_html }}}
         </div>
-    </div>
-</footer>
+    </body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+    Drawer.init();
+    M.util.js_complete('theme_boost/loader');
+});
+{{/js}}

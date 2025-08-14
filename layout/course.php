@@ -127,10 +127,8 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton,
-
-   'autocadastro_ativo' => $CFG->registerauth === 'email'
-
+    'addblockbutton' => $addblockbutton
 ];
 
-echo $OUTPUT->render_from_template('theme_govbrds/frontpage', $templatecontext);
+
+echo $OUTPUT->render_from_template('theme_govbrds/course', $templatecontext);
