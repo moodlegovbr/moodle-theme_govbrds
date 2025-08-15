@@ -32273,4 +32273,14 @@ body.admin .col {
   flex: auto;
 }
 
+.br-tab .tab-item button,
+.br-tab .tab-item a {
+  font-size: var(--font-size-scale-base);
+}
+
+.br-feature img {
+  margin: auto;
+  display: block; /* Necessário para que o margin funcione */
+}
+
 /*# sourceMappingURL=core.css.map */

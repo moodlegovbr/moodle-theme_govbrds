@@ -13,5 +13,25 @@
     {{#usermenu}}
         {{> theme_govbrds/user_menu }}
     {{/usermenu}}
+
+    {{{ output.edit_switch }}}
     
 </div>
+
+{{> theme_boost/primary-drawer-mobile }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const switchInput = document.querySelector('.editmode-switch-form input[type="checkbox"]');
+
+  if (switchInput) {
+    switchInput.addEventListener('change', function () {
+      const form = switchInput.closest('form');
+      if (form) {
+        form.submit();
+      }
+    });
+  }
+});
+</script>
+
