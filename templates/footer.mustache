@@ -1,16 +1,33 @@
 <!-- ... -->
             <footer class="br-footer pt-3" id="footer">
                 <div class="container-lg">
+                    <div class="mt-2 mb-2">
+                        <img src="{{{ logo }}}" alt="{{sitename}}" style="filter: brightness(0) invert(1); max-width: 300px">
+                    </div>
+                    <div class="my-3 d-flex mt-1 align-self-end">
+                        <div class="m-half p-1 flex-fill">
+                            <h6>Links importantes:</h6>
+                            {{#primarymoremenu}}
+                                {{> core/moremenu}}
+                            {{/primarymoremenu}}
+                        </div>
+                        <div class="m-half p-1 align-self-end flex-fill">
+                            <h6>Parceiros:</h6>
+                            <img src="{{{ partners_url }}}" style="filter: brightness(0) invert(1); max-width: 480px">
+                        </div>
+                    </div>
                     <div class="info">
-                    <div class="text-down-01 text-medium pb-3">
-                        {{{ addressm }}}
+                        <div class="text-down-01 text-medium pb-3">
+                            {{{ addressm }}}
+                        </div>
                     </div>
-                    </div>
+
                 </div>
             </footer>
             <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
 
             {{{ output.standard_after_main_region_html }}}
+            
         </div>
     </body>
 </html>

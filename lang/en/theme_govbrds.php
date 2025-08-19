@@ -15,6 +15,9 @@ $string['generalsettings'] = 'Configurações Gerais';
 $string['logo'] = 'Logo da organização';
 $string['logo_desc'] = 'Envie a imagem da logo que será exibida no cabeçalho do site.';
 
+$string['partners'] = 'Logos dos Parceiros';
+$string['partners_desc'] = 'Envie a imagem das logos para o rodapé do site.';
+
 $string['organization'] = 'Organização';
 $string['organization_desc'] = 'Denominação do órgão.';
 
