@@ -28,33 +28,50 @@ defined('MOODLE_INTERNAL') || die();
 require_once(__DIR__ . '/lib.php');
 
 $THEME->name = 'govbrds';
-$THEME->sheets = [];
+$THEME->sheets = ['core'];
 $THEME->editor_sheets = [];
-$THEME->parents = ['boost'];
-$THEME->haseditswitch = false;
-$THEME->enable_dock = false;
-$THEME->yuicssmodules = array();
-$THEME->rendererfactory = 'theme_overridden_renderer_factory';
-$THEME->requiredblocks = '';
-$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
-
-$THEME->sheets = array(
-    'core',
-);
-
-
+$THEME->editor_scss = ['editor'];
+$THEME->usefallback = true;
 $THEME->scss = function($theme) {
     return theme_govbrds_get_main_scss_content($theme);
 };
 
 $THEME->layouts = [
+
     // The site home page.
-    'frontpage' => array(
+    'frontpage' => [
         'file' => 'frontpage.php',
-        'regions' => array('side-pre',
+        'regions' => ['side-pre',
             'home-left', 'home-middle', 'home-right',
-            'footer-left', 'footer-middle', 'footer-right'),
+            'footer-left', 'footer-middle', 'footer-right'],
         'defaultregion' => 'side-pre',
-        'options' => array('nonavbar' => true),
-    ),
+        'options' => ['nonavbar' => true],
+    ],
+    'login' => [
+        'file' => 'login.php',
+        'regions' => [],
+        'options' => ['langmenu' => true],
+    ],
+    // Main course page.
+    'course' => [
+        'file' => 'course.php',
+        'regions' => ['side-pre', 'content'],
+        'defaultregion' => 'side-pre',
+        'options' => ['langmenu' => true],
+    ],
+    'coursecategory' => [
+        'file' => 'course.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+    ],
+
 ];
+
+$THEME->parents = ['boost'];
+$THEME->enable_dock = false;
+$THEME->haseditswitch = false;
+
+$THEME->yuicssmodules = array();
+$THEME->rendererfactory = 'theme_overridden_renderer_factory';
+$THEME->requiredblocks = '';
+$THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;

@@ -36,18 +36,21 @@
 
 {{> theme_govbrds/head }}
 
-<body {{{ bodyattributes }}}>
+<body {{{ bodyattributes }}} >
     {{> core/local/toast/wrapper}}
     <div id="page-wrapper" class="d-print-block">
 
         {{{ output.standard_top_of_body_html }}}
 
         {{> theme_govbrds/header }}
+        {{> theme_govbrds/navbar2 }}
+
         <main class="d-flex flex-fill mb-5" id="main">
             <div class="container-lg d-flex">
             
                 <div class="row">
                     {{> theme_govbrds/navbar }}
+                    
                     
                     <div class="col mb-5 main">
                        <div class="main-content pl-sm-3 mt-4" id="main-content">
@@ -55,9 +58,6 @@
                             
                             <div class="row main-inner">
                                 <div class="col mb-5 main">
-                                    <div id="content">
-                                        {{{ output.full_header }}}
-                                    </div>
                                     {{#hasregionmainsettingsmenu}}
                                         <div id="region-main-settings-menu" class="d-print-none {{#hasblocks}}has-blocks{{/hasblocks}}">
                                             <div> {{{ output.region_main_settings_menu }}} </div>
@@ -79,23 +79,14 @@
                                     {{/hasblocks}}
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
         </main>
+        {{> theme_govbrds/how_works }}
+
         {{> theme_govbrds/footer }}
-        <div class="br-cookiebar default d-none" tabindex="-1"></div>
-        {{{ output.standard_after_main_region_html }}}
-    </div>
-    <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
-</body>
-</html>
-{{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
-    Drawer.init();
-    M.util.js_complete('theme_boost/loader');
-});
-{{/js}}
+    <!-- ... -->

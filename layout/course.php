@@ -89,21 +89,7 @@ $files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, 
 
 if ($files) {
     $file = reset($files);
-    $logo_url = moodle_url::make_pluginfile_url(
-        $file->get_contextid(),
-        $file->get_component(),
-        $file->get_filearea(),
-        $file->get_itemid(),
-        $file->get_filepath(),
-        $file->get_filename()
-    );
-}
-
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'partners', 0, 'itemid, filepath, filename', false);
-
-if ($files) {
-    $file = reset($files);
-    $partners_url = moodle_url::make_pluginfile_url(
+    $url = moodle_url::make_pluginfile_url(
         $file->get_contextid(),
         $file->get_component(),
         $file->get_filearea(),
@@ -117,9 +103,7 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
 
-    'logo' => $logo_url,
-
-    'partners_url' => $partners_url,
+    'logo' => $url,
 
     'organization' => get_config('theme_govbrds', 'organization'),
     'subordination' => get_config('theme_govbrds', 'subordination'),
@@ -143,10 +127,8 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton,
-
-   'autocadastro_ativo' => $CFG->registerauth === 'email'
-
+    'addblockbutton' => $addblockbutton
 ];
 
-echo $OUTPUT->render_from_template('theme_govbrds/frontpage', $templatecontext);
+
+echo $OUTPUT->render_from_template('theme_govbrds/course', $templatecontext);

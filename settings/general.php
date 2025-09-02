@@ -28,6 +28,15 @@ $settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
 
 $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
 
+
+// Logo da organização.
+$name = 'theme_govbrds/logo';
+$title = get_string('logo', 'theme_govbrds');
+$description = get_string('logo_desc', 'theme_govbrds');
+$setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
 // Organization.
 $setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
     'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'University Demo',
@@ -75,7 +84,6 @@ $setting = new admin_setting_configselect($name, $title, $description, $default,
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-
 // Código da Instituição para a Barra do Governo.
 $setting = new admin_setting_configtext('theme_govbrds/barracodigo', get_string('barracodigo',
     'theme_govbrds'), get_string('barracodigo_desc', 'theme_govbrds'), '',
@@ -87,6 +95,14 @@ $page->add($setting);
 $setting = new admin_setting_configtext('theme_govbrds/googlemetasearch', get_string('googlemetasearch',
     'theme_govbrds'), get_string('googlemetasearch_desc', 'theme_govbrds'), '',
     PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Logos dos parceiros.
+$name = 'theme_govbrds/partners';
+$title = get_string('partners', 'theme_govbrds');
+$description = get_string('partners_desc', 'theme_govbrds');
+$setting = new admin_setting_configstoredfile($name, $title, $description, 'partners');
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
