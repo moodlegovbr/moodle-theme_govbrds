@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * GovBR-DS Version
+ * GovBR-DS Version.
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
