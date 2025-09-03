@@ -18,8 +18,7 @@
 /**
  * GovBR-DS Version
  *
- * @package    theme
- * @subpackage govbrds
+ * @package    theme_govbrds
  * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

@@ -1,3 +1,7 @@
+/**
+ * @copyright 2018 Fábio Santos <fabio.santos@ifrr.edu.br>
+ */
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
