@@ -30,11 +30,6 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
-
-    'logovertical' => $OUTPUT->image_url('logovertical', 'theme'),
-    '25anos' => $OUTPUT->image_url('25anos', 'theme'),
-    '10anos' => $OUTPUT->image_url('10anos', 'theme'),
-    'diretoria' => $OUTPUT->image_url('diretoria', 'theme'),
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
