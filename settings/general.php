@@ -29,34 +29,34 @@ $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettin
 
 // Organization.
 $setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
-    'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'Instituto Federal de Educação, Ciência e Tecnologia de Roraima',
+    'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'Sitename here',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Subordination.
 $setting = new admin_setting_configtext('theme_govbrds/subordination', get_string('subordination',
-    'theme_govbrds'), get_string('subordination_desc', 'theme_govbrds'), 'Ministério da Educação',
+    'theme_govbrds'), get_string('subordination_desc', 'theme_govbrds'), 'Site subordination here',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Rodapé Manual.
+// Footer Manual.
 $setting = new admin_setting_confightmleditor('theme_govbrds/addressm', get_string('addressm',
     'theme_govbrds'), get_string('addressm_desc', 'theme_govbrds'), '',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Layout Fixo ou Fluid.
+// Layout Fix or Fluid.
 $setting = new admin_setting_configcheckbox('theme_govbrds/layout', get_string('layout',
     'theme_govbrds'), get_string('layout_desc', 'theme_govbrds'), 'Fluid', 'Fluid', 'Fixed');
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Acessibilidade.
-$setting = new admin_setting_confightmleditor('theme_govbrds/acessibilidade', get_string('acessibilidade',
-    'theme_govbrds'), get_string('acessibilidade_desc', 'theme_govbrds'), '',
+// Accessibility.
+$setting = new admin_setting_confightmleditor('theme_govbrds/accessibility', get_string('accessibility',
+    'theme_govbrds'), get_string('accessibility_desc', 'theme_govbrds'), '',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);

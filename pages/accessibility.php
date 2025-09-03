@@ -26,15 +26,15 @@ require_once('../../../config.php');
 require_once('../lib.php');
 
 $PAGE->set_context(context_system::instance());
-$thispageurl = new moodle_url('/theme/govbrds/pages/acessibilidade.php');
+$thispageurl = new moodle_url('/theme/govbrds/pages/accessibility.php');
 $PAGE->set_context(get_system_context());
 $PAGE->set_pagelayout('admin');
-$PAGE->set_title("Acessibilidade");
-$PAGE->set_heading("Acessibilidade"); // colocar um titulo em cima
+$PAGE->set_title("Accessibility");
+$PAGE->set_heading("Accessibility"); 
 $PAGE->set_url($thispageurl, $thispageurl->params());
 $PAGE->set_docs_path('');
 $PAGE->set_pagelayout('standard');
 
 echo $OUTPUT->header();
-echo get_config('theme_govbrds', 'acessibilidade');
+echo get_config('theme_govbrds', 'accessibility');
 echo $OUTPUT->footer();

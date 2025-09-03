@@ -18,7 +18,10 @@
 <div class="footer-atalhos">
     <div class="container">
         <div class="pull-right voltar-ao-topo">
-            <a href="#topo"><i accesskey="8" class="fa fa-chevron-up"></i>&nbsp;Voltar para o topo</a>
+            <a href="#topo">
+                <i accesskey="8" class="fa fa-chevron-up"></i>
+                &nbsp;{{footer_returtop}}
+            </a>
         </div>
     </div>
 </div>
@@ -28,7 +31,7 @@
     <div class="container-menus">
         <div class="container">
             <div id="footer" class="footer-menus">
-                <span class="hide">Início da navegação de rodapé</span>
+                <span class="hide">{{footer_startnav}}</span>
                 <div class="col-md-3">
                     <nav class="assuntos nav">
                         <address>
@@ -38,9 +41,7 @@
                 </div>
 
                 <div class="col-md-12">
-
                     <div class="rodapesaida">
-
                         <div id="course-footer">{{{ output.course_footer }}}</div>
 
                         {{# output.page_doc_link }}
@@ -63,7 +64,7 @@
                     </div>
 
                 </div>
-                <span class="hide">Fim da navegação de rodapé</span>
+                <span class="hide">{{footer_endnav}}</span>
 
             </div>
 
