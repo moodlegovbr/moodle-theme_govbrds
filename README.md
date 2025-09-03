@@ -1,15 +1,19 @@
-# moodle-govbrds
+# Moodle Tema GovBR-DS
 Identidade Digital de Governo para o Moodle
 
 Estas instruções descrevem como fazer a instalação correta do Plugin "moodle-govbrds".
 
-Esse plugin é desenvolvido e suportado pela Coordenação de Tecnologia e Suporte - CTS / IPEAD / IFRR e pela Diretoria de Tecnologia da Informação DTI / IFRR
+Esse plugin é desenvolvido e suportado por Fábio Santos
+
+Com apoio do Instituto Federal de Educação, Ciência e Tecnologia de Roraima - IFRR, por meio dos seguintes setores: 
+- Coordenação de Tecnologia e Suporte - CTS / DIPEAD / IFRR 
+- Diretoria de Tecnologia da Informação - DTI / IFRR
 
 Pré-requisitos:
 ============
 Você irá precisar no mínimo de:
 
-1.  Um servidor rodando Moodle 3.0, ou superior;
+1.  Um servidor rodando Moodle 3.5+;
 
 Instalação:
 ============
