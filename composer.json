@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "moodlehq/moodle-plugin-ci": "^1.5"
+    }
+}

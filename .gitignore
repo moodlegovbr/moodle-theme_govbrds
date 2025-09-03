@@ -1,3 +1,56 @@
+# This file specifies intentionally untracked files that all Moodle git
+# repositories should ignore. 
+
+# Swap files (vim)
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+# Temporary files including undo
+*~
+#
+/tags
+/TAGS
+/cscope.*
+/.patches/
+/.idea/
+.phpstorm.*
+!/.phpstorm.meta.php/
+/.phpstorm.meta.php/*
+!/.phpstorm.meta.php/di.php
+/nbproject/
+CVS
+.DS_Store
+/.settings/
+/.project
+/.buildpath
+/.cache
+.phpunit.result.cache
+phpunit.xml
+# Composer support. Do not ignore composer.json, or composer.lock. These should be shipped by us.
+composer.phar
+/vendor/
+/behat.yml
+*/yui/build/*/*-coverage.js
+/lib/yuilib/*/build/*/*-coverage.js
+# lib/yuilib/version/module/module-coverage.js
+/lib/yuilib/*/*/*-coverage.js
+atlassian-ide-plugin.xml
+/node_modules/
+/.vscode/
+moodle-plugin-ci.phar
+.eslintignore
+.stylelintignore
+/jsdoc
+/admin/tool/componentlibrary/docs
+/admin/tool/componentlibrary/hugo/site/data/my-index.json
+.hugo_build.lock
+phpcs.xml
+jsconfig.json
+UPGRADING-CURRENT.md
+
+# Node.js dependencies
 /node_modules
 /vendor
 /.idea

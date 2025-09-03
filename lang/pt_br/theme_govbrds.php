@@ -1,10 +1,28 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Created by PhpStorm.
- * User: Lucart
- * Date: 18/08/2017
- * Time: 09:57
+ * GovBR-DS file.
+ *
+ * @package   theme_govbrds
+ * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'GovBR-DS';
 $string['configtitle'] = 'GovBR-DS';
@@ -12,17 +30,11 @@ $string['choosereadme'] = 'O tema govbrds é um tema filho do boost. É um tema 
 $string['configtitle'] = 'Configurações do GovBR-DS';
 $string['generalsettings'] = 'Configurações Gerais';
 
-$string['logo'] = 'Logo da organização';
-$string['logo_desc'] = 'Envie a imagem da logo que será exibida no cabeçalho do site.';
-
-$string['partners'] = 'Logos dos Parceiros';
-$string['partners_desc'] = 'Envie a imagem das logos para o rodapé do site.';
-
 $string['organization'] = 'Organização';
 $string['organization_desc'] = 'Denominação do órgão.';
 
-$string['organization_url'] = 'Link para Organização';
-$string['organization_url_desc'] = 'Para redirecionar para o orgão que pertence';
+$string['subordination'] = 'Subordinação';
+$string['subordination_desc'] = 'Ministério ao qual faz parte.';
 
 $string['address'] = 'Endereço';
 $string['address_desc'] = 'json do endereço que você deseja colocar no rodapé.';

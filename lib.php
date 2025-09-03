@@ -15,20 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * GovBR-DS Lib
+ * GovBR-DS Theme functions.
  *
- * @package    theme
- * @subpackage govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @package    theme_govbrds
+ * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-
 function theme_govbrds_get_main_scss_content($theme) {
     global $CFG;
-    $scss = file_get_contents($CFG->dirroot . '/theme/boost/style/preset/default.scss');
+    $scss = file_get_contents($CFG->dirroot . '/theme/govbrds/style/preset/default.scss');
     return $scss;
 }
 

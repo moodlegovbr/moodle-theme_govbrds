@@ -3,7 +3,12 @@ Identidade Digital de Governo para o Moodle
 
 Estas instruções descrevem como fazer a instalação correta do Plugin "moodle-govbrds".
 
-Esse plugin é desenvolvido e suportado pela Coordenação de Tecnologia e Suporte - CTS / IPEAD / IFRR e pela Diretoria de Tecnologia da Informação DTI / IFRR
+Essa versão do plugin foi desenvolvida no âmbito do IFRR com financiamento da Fundape.
+
+É atualmente suportado por Fábio Santos 
+Bolsista da Fundape e Servidor do IFRR
+
+Contamos com o apoio da Coordenação de Tecnologia e Suporte - CTS / DIPEAD / IFRR e da Diretoria de Tecnologia da Informação DTI / IFRR
 
 Pré-requisitos:
 ============
