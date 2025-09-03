@@ -84,8 +84,8 @@ $string['saibamais3_desc'] = 'Link the user will be redirected to when clicking 
 $string['layout'] = 'Fluid or Fixed Layout';
 $string['layout_desc'] = 'This option sets the layout to fluid by default. The fixed layout is still in testing phase.';
 
-$string['acessibilidade'] = 'Accessibility';
-$string['acessibilidade_desc'] = 'Content of the accessibility page.';
+$string['accessibility'] = 'Accessibility';
+$string['accessibility_desc'] = 'Content of the accessibility page.';
 
 $string['brandcolor'] = 'Brand Color';
 $string['brandcolor_desc'] = 'Select a color to apply to links and titles.';
@@ -95,6 +95,13 @@ $string['barracodigo_desc'] = 'Institution code to be added to the Government Ba
 
 $string['googlemetasearch'] = 'HTML Tag - Google Search Console';
 $string['googlemetasearch_desc'] = 'Copy the meta tag below to be added in the <head> section of your homepage, before the first <body> section.';
+
+$string['footer_returtop'] = "Return to top";
+$string['footer_startnav'] = "Start of footer navigation";
+$string['footer_endnav'] = "End of footer navigation";
+
+$string['portal_govbar'] = "Portal of the Brazilian Government";
+$string['portal_govbar_update'] = "Update your Government Bar";
 
 // BOOST
 

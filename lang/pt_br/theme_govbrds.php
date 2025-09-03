@@ -82,9 +82,15 @@ $string['saibamais3_desc'] = 'Link que o usuario será redirecionado quando clic
 $string['layout'] = 'Layout Fluído ou Fixo';
 $string['layout_desc'] = 'Esta opção por padrão torna o layout fluído, o layout fixo ainda está em fase de teste';
 
-$string['acessibilidade'] = 'Acessibilidade';
-$string['acessibilidade_desc'] = 'Conteúdo da página de acessibilidade.';
+$string['accessibility'] = 'Acessibilidade';
+$string['accessibility_desc'] = 'Conteúdo da página de acessibilidade.';
 
+$string['footer_returtop'] = "Voltar ao topo";
+$string['footer_startnav'] = "Início da navegação de rodapé";
+$string['footer_endnav'] = "Fim da navegação de rodapé";
+
+$string['portal_govbar'] = "Portal do Governo Brasileiro";
+$string['portal_govbar_update'] = "Atualize sua Barra de Governo";
 
 // BOOST
 
