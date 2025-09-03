@@ -84,5 +84,4 @@ $templatecontext = [
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 
 $PAGE->requires->jquery();
-$PAGE->requires->js('/theme/govbrds/javascript/sticky_navbar.js');
 $PAGE->requires->js('/theme/govbrds/javascript/govbrds.js');
