@@ -1,4 +1,4 @@
-# moodle-govbrds
+# Moodle Tema GovBR-DS
 Identidade Digital de Governo para o Moodle
 
 Estas instruções descrevem como fazer a instalação correta do Plugin "moodle-govbrds".
