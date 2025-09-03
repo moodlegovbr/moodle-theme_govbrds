@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -18,8 +17,7 @@
 /**
  * GovBR-DS Version
  *
- * @package    theme
- * @subpackage govbrds
+ * @package    theme_govbrds
  * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -42,5 +40,5 @@ $plugin->requires = 2018050800;
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'theme_boost' => 2024100700
+    'theme_boost' => 2024100700,
 ];
