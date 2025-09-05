@@ -82,10 +82,16 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
+// Site context.
 $context = context_system::instance();
+// File storage.
 $fs = get_file_storage();
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, filepath, filename', false);
 
+$logo_url="";
+$partners_url="";
+$hero_url="";
+
+$files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, filepath, filename', false);
 if ($files) {
     $file = reset($files);
     $logo_url = moodle_url::make_pluginfile_url(
@@ -98,11 +104,11 @@ if ($files) {
     );
 }
 
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'partners', 0, 'itemid, filepath, filename', false);
+$files = $fs->get_area_files($context->id, 'theme_govbrds', 'heroimage', 0, 'itemid, filepath, filename', false);
 
 if ($files) {
     $file = reset($files);
-    $partners_url = moodle_url::make_pluginfile_url(
+    $hero_url = moodle_url::make_pluginfile_url(
         $file->get_contextid(),
         $file->get_component(),
         $file->get_filearea(),
@@ -144,8 +150,12 @@ $templatecontext = [
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
 
-   'autocadastro_ativo' => $CFG->registerauth === 'email'
+    'autocadastro_ativo' => $CFG->registerauth === 'email',
+
+    'herohtml' => get_config('theme_govbrds', 'herohtml'),
+    'heroimage' => $OUTPUT->image_url('heroimage', 'theme'),
+    'hero_url' => $hero_url,
 
 ];
 
-echo $OUTPUT->render_from_template('theme_govbrds/frontpage', $templatecontext);
+echo $OUTPUT->render_from_template('theme_govbrds/homepage', $templatecontext);

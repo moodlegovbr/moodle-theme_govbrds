@@ -86,6 +86,7 @@ $context = context_system::instance();
 $fs = get_file_storage();
 $files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, filepath, filename', false);
 
+$url = "";
 if ($files) {
     $file = reset($files);
     $url = moodle_url::make_pluginfile_url(

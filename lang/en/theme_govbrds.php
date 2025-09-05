@@ -30,6 +30,8 @@ $string['configtitle'] = 'GovBR-DS';
 $string['configtitle'] = 'GovBR-DS';
 $string['choosereadme'] = 'The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.';
 $string['configtitle'] = 'GovBR-DS Settings';
+
+// General settings tab
 $string['generalsettings'] = 'General Settings';
 
 $string['organization'] = 'Organization';
@@ -37,6 +39,18 @@ $string['organization_desc'] = 'Name of the institution.';
 
 $string['subordination'] = 'Subordination';
 $string['subordination_desc'] = 'Ministry to which it belongs.';
+
+$string['logo'] = 'Your Logo';
+$string['logo_desc'] = 'Upload the logo image that will be displayed in the website header. The recommended size is 280x80 pixels.';
+
+$string['partners'] = 'Logos dos Parceiros';
+$string['partners_desc'] = 'Envie a imagem das logos para o rodapé do site.';
+
+$string['organization'] = 'Organization';
+$string['organization_desc'] = 'Description of the institution.';
+
+$string['organization_url'] = 'Organization URL';
+$string['organization_url_desc'] = 'Link to the institution\'s homepage.';
 
 $string['address'] = 'Address';
 $string['address_desc'] = 'JSON of the address you want to display in the footer.';
@@ -52,7 +66,14 @@ $string['message_title_desc'] = 'Title of the highlighted message on the homepag
 $string['message_content'] = 'Highlighted Message Content';
 $string['message_content_desc'] = 'Content of the highlighted message on the homepage.';
 
+// Homepage settings tab
+$string['homepage_settings'] = 'Homepage Settings';
 $string['homepage'] = 'Homepage';
+
+$string['herohtml'] = 'Hero section';
+$string['herohtml_desc'] = 'Content of the hero section on the homepage.';
+$string['heroimage'] = 'Hero Image';
+$string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended size is 1920x1080 pixels.';
 
 $string['card1_title'] = 'First Card Title';
 $string['card1_title_desc'] = 'Title that will appear on the first card on the homepage.';
@@ -95,6 +116,21 @@ $string['barracodigo_desc'] = 'Institution code to be added to the Government Ba
 
 $string['googlemetasearch'] = 'HTML Tag - Google Search Console';
 $string['googlemetasearch_desc'] = 'Copy the meta tag below to be added in the <head> section of your homepage, before the first <body> section.';
+
+// Social settings tab
+$string['socialsettings'] = 'Social Settings';
+$string['tiktok'] = 'Tik Tok';
+$string['tiktokdesc'] = 'Link to your Tik Tok profile.';
+$string['facebook'] = 'Facebook';
+$string['facebookdesc'] = 'Link to your Facebook profile.';
+$string['twitter'] = 'Twitter';
+$string['twitterdesc'] = 'Link to your Twitter profile.';
+$string['linkedin'] = 'LinkedIn';
+$string['linkedindesc'] = 'Link to your LinkedIn profile.';
+$string['youtube'] = 'YouTube';
+$string['youtubedesc'] = 'Link to your YouTube profile.';
+$string['instagram'] = 'Instagram';
+$string['instagramdesc'] = 'Link to your Instagram profile.';
 
 // BOOST
 

@@ -36,6 +36,18 @@ $string['organization_desc'] = 'Denominação do órgão.';
 $string['subordination'] = 'Subordinação';
 $string['subordination_desc'] = 'Ministério ao qual faz parte.';
 
+$string['logo'] = 'Your Logo';
+$string['logo_desc'] = 'Upload the logo image that will be displayed in the website header. The recommended size is 280x80 pixels.';
+
+$string['partners'] = 'Logos dos Parceiros';
+$string['partners_desc'] = 'Envie a imagem das logos para o rodapé do site.';
+
+$string['organization'] = 'Organization';
+$string['organization_desc'] = 'Description of the institution.';
+
+$string['organization_url'] = 'Organization URL';
+$string['organization_url_desc'] = 'Link to the institution\'s homepage.';
+
 $string['address'] = 'Endereço';
 $string['address_desc'] = 'json do endereço que você deseja colocar no rodapé.';
 

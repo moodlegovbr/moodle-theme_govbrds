@@ -43,7 +43,7 @@ function theme_govbrds_user_preferences(): array {
 
 function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     // Permitir acesso apenas no contexto do sistema e para áreas específicas
-    if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, ['logo', 'partners'])) {
+    if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, ['logo', 'partners', 'heroimage'])) {
         send_file_not_found();
     }
 

@@ -23,11 +23,24 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// This is used for performance, we don't need to know about these settings on every page in Moodle, only when
+// we are looking at the admin settings pages.
+defined('MOODLE_INTERNAL') || die();
+
+
+
+// Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
 $settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
     get_string('configtitle', 'theme_govbrds'));
 
-$page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
 
+/*
+* ----------------------
+* General settings tab
+* ----------------------
+*/
+
+$page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
 
 // Logo da organização.
 $name = 'theme_govbrds/logo';

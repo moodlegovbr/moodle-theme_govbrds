@@ -39,7 +39,7 @@ $THEME->layouts = [
 
     // The site home page.
     'frontpage' => [
-        'file' => 'frontpage.php',
+        'file' => 'homepage.php',
         'regions' => ['side-pre',
             'home-left', 'home-middle', 'home-right',
             'footer-left', 'footer-middle', 'footer-right'],
