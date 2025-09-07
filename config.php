@@ -46,16 +46,16 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre',
         'options' => ['nonavbar' => true],
     ],
+    // Enrol Page
+    'enrol-index' => [
+        'file' => 'landingpage.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+        'options' => ['langmenu' => true],
+    ],
     'login' => [
         'file' => 'login.php',
         'regions' => [],
-        'options' => ['langmenu' => true],
-    ],
-    // Main course page.
-    'course' => [
-        'file' => 'course.php',
-        'regions' => ['side-pre', 'content'],
-        'defaultregion' => 'side-pre',
         'options' => ['langmenu' => true],
     ],
     'coursecategory' => [
@@ -63,7 +63,6 @@ $THEME->layouts = [
         'regions' => ['side-pre'],
         'defaultregion' => 'side-pre',
     ],
-
 ];
 
 $THEME->parents = ['boost'];

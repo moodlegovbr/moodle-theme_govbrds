@@ -61,3 +61,11 @@ function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $for
     send_stored_file($file, null, 0, $forcedownload, $options);
 }
 
+// Force enrol-index layout for enrolment pages
+function theme_govbrds_page_init(moodle_page $page) {
+    if ($page->pagetype === 'enrol-index') {
+        $page->set_pagelayout('enrol-index'); // Use the landingpage layout
+    }
+}
+
+

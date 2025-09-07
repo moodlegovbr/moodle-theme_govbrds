@@ -18,7 +18,7 @@
  * GovBR-DS Language file.
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2018 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -43,8 +43,8 @@ $string['subordination_desc'] = 'Ministry to which it belongs.';
 $string['logo'] = 'Your Logo';
 $string['logo_desc'] = 'Upload the logo image that will be displayed in the website header. The recommended size is 280x80 pixels.';
 
-$string['partners'] = 'Logos dos Parceiros';
-$string['partners_desc'] = 'Envie a imagem das logos para o rodapé do site.';
+$string['partners'] = 'Partners Logo';
+$string['partners_desc'] = 'Upload the logo image that will be displayed in the website footer. The recommended size is 280x80 pixels.';
 
 $string['organization'] = 'Organization';
 $string['organization_desc'] = 'Description of the institution.';
@@ -73,7 +73,7 @@ $string['homepage'] = 'Homepage';
 $string['herohtml'] = 'Hero section';
 $string['herohtml_desc'] = 'Content of the hero section on the homepage.';
 $string['heroimage'] = 'Hero Image';
-$string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended size is 1920x1080 pixels.';
+$string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended is .png (PNG-24) without background and size is 450x600 (3x4 proportinal) pixels.';
 
 $string['card1_title'] = 'First Card Title';
 $string['card1_title_desc'] = 'Title that will appear on the first card on the homepage.';
@@ -104,9 +104,6 @@ $string['saibamais3_desc'] = 'Link the user will be redirected to when clicking 
 
 $string['layout'] = 'Fluid or Fixed Layout';
 $string['layout_desc'] = 'This option sets the layout to fluid by default. The fixed layout is still in testing phase.';
-
-$string['acessibilidade'] = 'Accessibility';
-$string['acessibilidade_desc'] = 'Content of the accessibility page.';
 
 $string['brandcolor'] = 'Brand Color';
 $string['brandcolor_desc'] = 'Select a color to apply to links and titles.';

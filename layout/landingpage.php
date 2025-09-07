@@ -100,9 +100,6 @@ if ($files) {
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-    'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-
-    'logo' => $url,
 
     'organization' => get_config('theme_govbrds', 'organization'),
     'subordination' => get_config('theme_govbrds', 'subordination'),
@@ -126,7 +123,11 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
+
+    'course' => $COURSE,
 ];
 
 echo $OUTPUT->render_from_template('theme_govbrds/landingpage', $templatecontext);
+echo $OUTPUT->standard_footer_html();
+echo $OUTPUT->standard_end_of_body_html();

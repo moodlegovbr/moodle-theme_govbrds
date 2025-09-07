@@ -17,9 +17,8 @@
 /**
  * GovBR-DS General Settings
  *
- * @package    theme
- * @subpackage govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @package    theme_govbrds
+ * @copyright  2018 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -64,23 +63,16 @@ $setting = new admin_setting_configtext('theme_govbrds/organization_url', get_st
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Rodapé Manual.
+// Footer.
 $setting = new admin_setting_confightmleditor('theme_govbrds/addressm', get_string('addressm',
     'theme_govbrds'), get_string('addressm_desc', 'theme_govbrds'), '',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Layout Fixo ou Fluid.
+// Fix or Fluid Layout.
 $setting = new admin_setting_configcheckbox('theme_govbrds/layout', get_string('layout',
     'theme_govbrds'), get_string('layout_desc', 'theme_govbrds'), 'Fluid', 'Fluid', 'Fixed');
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Acessibilidade.
-$setting = new admin_setting_confightmleditor('theme_govbrds/acessibilidade', get_string('acessibilidade',
-    'theme_govbrds'), get_string('acessibilidade_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -97,21 +89,7 @@ $setting = new admin_setting_configselect($name, $title, $description, $default,
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Código da Instituição para a Barra do Governo.
-$setting = new admin_setting_configtext('theme_govbrds/barracodigo', get_string('barracodigo',
-    'theme_govbrds'), get_string('barracodigo_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Tag Meta para o Google Search Console.
-$setting = new admin_setting_configtext('theme_govbrds/googlemetasearch', get_string('googlemetasearch',
-    'theme_govbrds'), get_string('googlemetasearch_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Logos dos parceiros.
+// Partners logo.
 $name = 'theme_govbrds/partners';
 $title = get_string('partners', 'theme_govbrds');
 $description = get_string('partners_desc', 'theme_govbrds');
