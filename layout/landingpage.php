@@ -98,6 +98,21 @@ if ($files) {
     );
 }
 
+$course = get_course($COURSE->id);
+$data = \core_course\customfield\course_handler::create()->get_instance_data($course->id);
+$content = [];
+
+$customfields = []; // array de data_controller
+
+foreach ($data as $fieldcontroller) {
+    $field = $fieldcontroller->get_field(); // field_controller
+    $customfields[] = [
+        'name' => $field->get('name'),
+        'value' => $fieldcontroller->get_value()
+    ];
+}
+
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
 
@@ -126,6 +141,8 @@ $templatecontext = [
     'addblockbutton' => $addblockbutton,
 
     'course' => $COURSE,
+    'fields' => $customfields
+    
 ];
 
 echo $OUTPUT->render_from_template('theme_govbrds/landingpage', $templatecontext);

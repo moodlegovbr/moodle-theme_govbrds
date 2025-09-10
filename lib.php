@@ -67,5 +67,3 @@ function theme_govbrds_page_init(moodle_page $page) {
         $page->set_pagelayout('enrol-index'); // Use the landingpage layout
     }
 }
-
-
