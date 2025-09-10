@@ -41,14 +41,6 @@ $settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
 
 $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
 
-// Logo da organização.
-$name = 'theme_govbrds/logo';
-$title = get_string('logo', 'theme_govbrds');
-$description = get_string('logo_desc', 'theme_govbrds');
-$setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
 // Organization.
 $setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
     'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'University Demo',
