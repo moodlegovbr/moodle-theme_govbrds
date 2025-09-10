@@ -106,10 +106,12 @@ $customfields = []; // array de data_controller
 
 foreach ($data as $fieldcontroller) {
     $field = $fieldcontroller->get_field(); // field_controller
-    $customfields[] = [
-        'name' => $field->get('name'),
-        'value' => $fieldcontroller->get_value()
-    ];
+    if ($field->get('type') == 'textarea') {
+        $customfields[] = [
+            'name' => $field->get('name'),
+            'value' => $fieldcontroller->get_value()
+        ];
+    } 
 }
 
 
