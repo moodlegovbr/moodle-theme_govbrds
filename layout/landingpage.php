@@ -114,11 +114,17 @@ foreach ($data as $fieldcontroller) {
     } 
 }
 
+include_once(__DIR__ . '/images.php');
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
 
+    'logo' => $logo_url,
+
+    'partners_url' => $partners_url,
+
     'organization' => get_config('theme_govbrds', 'organization'),
+
     'subordination' => get_config('theme_govbrds', 'subordination'),
 
     'addressm' => get_config('theme_govbrds', 'addressm'),

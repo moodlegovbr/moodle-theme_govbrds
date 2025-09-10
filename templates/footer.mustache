@@ -37,8 +37,15 @@
 <!-- ... -->
             <footer class="br-footer pt-3" id="footer">
                 <div class="container-lg">
-                    <div class="mt-2 mb-2">
-                        <img src="{{{ logo }}}" alt="{{sitename}}" style="filter: brightness(0) invert(1); max-width: 300px">
+                    <div class="mt-2">
+                        <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
+                            {{# output.should_display_navbar_logo }}
+                                <img src="{{output.get_compact_logo_url}}" class="pb-0 logo me-1" alt="{{sitename}}" style="filter: brightness(0) invert(1); max-width: 40px">
+                            {{/ output.should_display_navbar_logo }}
+                            {{^ output.should_display_navbar_logo }}
+                                {{{ sitename }}}
+                            {{/ output.should_display_navbar_logo }}
+                        </a>   
                     </div>
                     <div class="my-3 d-flex mt-1 align-self-end">
                         <div class="m-half p-1 flex-fill">

@@ -82,41 +82,7 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
-// Site context.
-$context = context_system::instance();
-// File storage.
-$fs = get_file_storage();
-
-$logo_url="";
-$partners_url="";
-$hero_url="";
-
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, filepath, filename', false);
-if ($files) {
-    $file = reset($files);
-    $logo_url = moodle_url::make_pluginfile_url(
-        $file->get_contextid(),
-        $file->get_component(),
-        $file->get_filearea(),
-        $file->get_itemid(),
-        $file->get_filepath(),
-        $file->get_filename()
-    );
-}
-
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'heroimage', 0, 'itemid, filepath, filename', false);
-
-if ($files) {
-    $file = reset($files);
-    $hero_url = moodle_url::make_pluginfile_url(
-        $file->get_contextid(),
-        $file->get_component(),
-        $file->get_filearea(),
-        $file->get_itemid(),
-        $file->get_filepath(),
-        $file->get_filename()
-    );
-}
+include_once(__DIR__ . '/images.php');
 
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
