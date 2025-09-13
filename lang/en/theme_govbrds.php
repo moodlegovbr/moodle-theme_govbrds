@@ -125,7 +125,7 @@ $string['feature4content'] = 'Feature 4 Content';
 $string['feature4icon'] = 'Feature {$a} Icon';
 $string['feature4icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-    $string['feature4_btntext'] = 'Feature {$a} Button Text';
+$string['feature4_btntext'] = 'Feature {$a} Button Text';
 $string['feature4_btnurl'] = 'Feature {$a} Button URL';
 
 // Navbar template
@@ -136,6 +136,14 @@ $string['searchtext'] = 'Search text';
 $string['about'] = 'About';
 $string['how_do_you_searh'] = 'How do you search?';
 $string['search'] = 'Search';
+$string['development_team'] = 'Development Team';
+$string['course_details'] = 'Course Details';
+$string['related_courses'] = 'Related Courses';
+$string['course_deadline'] = 'Course Deadline';
+$string['startdate'] = 'Start Date';
+$string['enddate'] = 'End Date';
+$string['no_related_course'] = 'No related courses';
+$string['no_teacher'] = 'No teacher';
 
 //Footer template
 $string['partners'] = 'Partners';

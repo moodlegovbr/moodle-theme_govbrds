@@ -153,6 +153,31 @@ $templatecontext = [
     
 ];
 
+$startdate = $COURSE->startdate;
+$enddate = $COURSE->enddate ?? null; // enddate pode não estar definido
+
+if ($startdate) {
+    $templatecontext['startdate'] = userdate($startdate, get_string('strftimedate', 'langconfig'));
+}
+if ($enddate) {
+    $templatecontext['enddate'] = userdate($enddate, get_string('strftimedate', 'langconfig'));
+}
+
+// Search for other courses in the same category
+$relatedcourses = get_courses($course->category, 'fullname ASC', 'c.id, c.fullname, c.summary');
+
+// Filter the current course
+$relatedcourses = array_filter($relatedcourses, function($c) use ($course) {
+    return $c->id !== $course->id;
+});
+
+$templatecontext['relatedcourses'] = $relatedcourses ;
+if (!empty($courseid)) {
+
+$context = context_course::instance($courseid);
+$teachers = get_role_users(3, $context, false, 'u.id, u.firstname, u.lastname, u.email');
+$templatecontext['teachers'] = $teachers;
+}
 echo $OUTPUT->render_from_template('theme_govbrds/landingpage', $templatecontext);
 echo $OUTPUT->standard_footer_html();
 echo $OUTPUT->standard_end_of_body_html();

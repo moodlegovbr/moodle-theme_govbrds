@@ -23,11 +23,14 @@
         <div class="br-card main-inner">
             <div class="card-content">
                 <h1><i class="fas fa-users" style="font-size:larger"></i></h1>
-                <h6>Equipe de desenvolvimento</h6>
+                <h6>{{development_team}}</h6>
                 <ul>
-                    <li>Fulano</li>
-                    <li>Ciclano</li>
-                    <li>Beltrano</li>
+                {{#teachers}}
+                    <li>{{fullname}}</li>
+                {{/teachers}}
+                {{^teachers}}
+                    <li>{{no_rteacher}}</li>
+                {{/teachers}}
                 </ul>
             </div>
         </div>
@@ -36,9 +39,12 @@
         <div class="br-card main-inner">
             <div class="card-content">
                 <h1><i class="fas fa-calendar" style="font-size:larger"></i></h1>
-                <h6>Prazo do curso</h6>
-                <p>26 nov - 03 dez 2024</p>
-                <p>Ver prazo</p>
+                <h6>{{course_deadline}}</h6>
+               <p>{{{startdate}}}
+                {{#enddate}}
+                 <br>até {{{enddate}}}
+                {{/enddate}}
+                </p>
             </div>
         </div>
     </div>
@@ -46,11 +52,14 @@
         <div class="br-card main-inner">
             <div class="card-content">
                 <h1><i class="fas fa-link" style="font-size:larger"></i></h1>
-                <h6>Cursos relacioandos</h6>
+                <h6>{{ related_courses }}</h6>
                 <ul>
-                    <li>Tal</li>
-                    <li>Qual</li>
-                    <li>Qual</li>
+                {{#relatedcourses}}
+                    <li>{{ fullname }}</li>
+                {{/relatedcourses}}
+                {{^relatedcourses}}
+                    <li>{{no_related_course}}</li>
+                {{/relatedcourses}}
                 </ul>
             </div>
         </div>
