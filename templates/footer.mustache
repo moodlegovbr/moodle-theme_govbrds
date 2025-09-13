@@ -49,13 +49,13 @@
                     </div>
                     <div class="my-3 d-flex mt-1 align-self-end">
                         <div class="m-half p-1 flex-fill">
-                            <h6>{{useful_links}}:</h6>
+                            <h6>{{#str}} useful_links, theme_govbrds {{/str}}:</h6>
                             {{#primarymoremenu}}
                                 {{> core/moremenu}}
                             {{/primarymoremenu}}
                         </div>
                         <div class="m-half p-1 align-self-end flex-fill">
-                            <h6>{{partners}}:</h6>
+                            <h6>{{#str}} partners, theme_govbrds {{/str}}:</h6>
                             <img src="{{{ partners_url }}}" style="filter: brightness(0) invert(1); max-width: 480px">
                         </div>
                     </div>
