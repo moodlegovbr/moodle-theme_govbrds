@@ -17,25 +17,29 @@
 /**
  * GovBR-DS General Settings
  *
- * @package    theme
- * @subpackage govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @package    theme_govbrds
+ * @copyright  2018 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// This is used for performance, we don't need to know about these settings on every page in Moodle, only when
+// we are looking at the admin settings pages.
+defined('MOODLE_INTERNAL') || die();
+
+
+
+// Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
 $settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
     get_string('configtitle', 'theme_govbrds'));
 
+
+/*
+* ----------------------
+* General settings tab
+* ----------------------
+*/
+
 $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
-
-
-// Logo da organização.
-$name = 'theme_govbrds/logo';
-$title = get_string('logo', 'theme_govbrds');
-$description = get_string('logo_desc', 'theme_govbrds');
-$setting = new admin_setting_configstoredfile($name, $title, $description, 'logo');
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
 
 // Organization.
 $setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
@@ -51,23 +55,16 @@ $setting = new admin_setting_configtext('theme_govbrds/organization_url', get_st
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Rodapé Manual.
+// Footer.
 $setting = new admin_setting_confightmleditor('theme_govbrds/addressm', get_string('addressm',
     'theme_govbrds'), get_string('addressm_desc', 'theme_govbrds'), '',
     PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Layout Fixo ou Fluid.
+// Fix or Fluid Layout.
 $setting = new admin_setting_configcheckbox('theme_govbrds/layout', get_string('layout',
     'theme_govbrds'), get_string('layout_desc', 'theme_govbrds'), 'Fluid', 'Fluid', 'Fixed');
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Acessibilidade.
-$setting = new admin_setting_confightmleditor('theme_govbrds/acessibilidade', get_string('acessibilidade',
-    'theme_govbrds'), get_string('acessibilidade_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -84,21 +81,7 @@ $setting = new admin_setting_configselect($name, $title, $description, $default,
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Código da Instituição para a Barra do Governo.
-$setting = new admin_setting_configtext('theme_govbrds/barracodigo', get_string('barracodigo',
-    'theme_govbrds'), get_string('barracodigo_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Tag Meta para o Google Search Console.
-$setting = new admin_setting_configtext('theme_govbrds/googlemetasearch', get_string('googlemetasearch',
-    'theme_govbrds'), get_string('googlemetasearch_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
-// Logos dos parceiros.
+// Partners logo.
 $name = 'theme_govbrds/partners';
 $title = get_string('partners', 'theme_govbrds');
 $description = get_string('partners_desc', 'theme_govbrds');

@@ -2,9 +2,6 @@
     <a href="{{courseurl}}" tabindex="-1">
         <div class="card-img dashboard-card-img" style="background-image: url({{{image}}});">
             <span class="sr-only">{{fullname}}</span>
-            <div class="course-category">
-                {{{category}}}
-            </div>
             {{#hasenrolmenticons}}
                 <div class="enrolmenticons d-flex">
                     {{#enrolmenticons}}
@@ -17,20 +14,17 @@
         </div>
     </a>
     <div class="card-body course-info-container">
-        <div class="d-flex align-items-start">
-            <div class="w-100">
-                <a href="{{courseurl}}" class="aalink coursename mr-2 mb-1 {{^visible}}dimmed{{/visible}}">
-                    {{{fullname}}}
-                </a>
+        <div class="text-weight-semi-bold text-up-02">
+            <a href="{{courseurl}}" class="aalink coursename mr-2 mb-1 {{^visible}}dimmed{{/visible}}">
+                {{{fullname}}}
+            </a>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex">
+            <div class="course-category">
+                {{{category}}}
             </div>
-        </div>
-
-        <div class="customfields">
-            {{{customfields}}}
-        </div>
-
-        <div class="course-summary">
-            {{{summary}}}
         </div>
     </div>
     {{#hasprogress}}

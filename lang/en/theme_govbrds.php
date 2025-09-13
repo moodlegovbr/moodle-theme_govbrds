@@ -18,7 +18,7 @@
  * GovBR-DS Language file.
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2018 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,6 +30,8 @@ $string['configtitle'] = 'GovBR-DS';
 $string['configtitle'] = 'GovBR-DS';
 $string['choosereadme'] = 'The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.';
 $string['configtitle'] = 'GovBR-DS Settings';
+
+// General settings tab
 $string['generalsettings'] = 'General Settings';
 
 $string['organization'] = 'Organization';
@@ -37,6 +39,21 @@ $string['organization_desc'] = 'Name of the institution.';
 
 $string['subordination'] = 'Subordination';
 $string['subordination_desc'] = 'Ministry to which it belongs.';
+
+$string['layout'] = 'Layout';
+$string['layout_desc'] = 'Choose the layout for the site.';
+
+$string['logo'] = 'Your Logo';
+$string['logo_desc'] = 'Upload the logo image that will be displayed in the website header. The recommended size is 280x80 pixels.';
+
+$string['partners'] = 'Partners Logo';
+$string['partners_desc'] = 'Upload the logo image that will be displayed in the website footer. The recommended size is 280x80 pixels.';
+
+$string['organization'] = 'Organization';
+$string['organization_desc'] = 'Description of the institution.';
+
+$string['organization_url'] = 'Organization URL';
+$string['organization_url_desc'] = 'Link to the institution\'s homepage.';
 
 $string['address'] = 'Address';
 $string['address_desc'] = 'JSON of the address you want to display in the footer.';
@@ -52,49 +69,108 @@ $string['message_title_desc'] = 'Title of the highlighted message on the homepag
 $string['message_content'] = 'Highlighted Message Content';
 $string['message_content_desc'] = 'Content of the highlighted message on the homepage.';
 
+// Homepage settings tab
+$string['homepage_settings'] = 'Homepage Settings';
 $string['homepage'] = 'Homepage';
 
-$string['card1_title'] = 'First Card Title';
-$string['card1_title_desc'] = 'Title that will appear on the first card on the homepage.';
+$string['herohtml'] = 'Hero section';
+$string['herohtml_desc'] = 'Content of the hero section on the homepage.';
+$string['heroimage'] = 'Hero Image';
+$string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended is .png (PNG-24) without background and size is 450x600 (3x4 proportinal) pixels.';
 
-$string['card1_content'] = 'First Card Content';
-$string['card1_content_desc'] = 'Content that will appear on the first card on the homepage.';
+$string['features'] = 'Display Features Boxes';
+$string['featuresdesc'] = 'Choose whether to display the features boxes section on the homepage.';
 
-$string['saibamais1'] = 'First Card Link';
-$string['saibamais1_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the first card.';
+$string['featuresheading'] = 'Features Section Heading';
+$string['featurescontent'] = 'Features Section Content';
 
-$string['card2_title'] = 'Second Card Title';
-$string['card2_title_desc'] = 'Title that will appear on the second card on the homepage.';
+$string['featureheading'] = 'Feature Heading';
+$string['featurecontent'] = 'Feature Content';
+$string['featureicon'] = 'Feature {$a} Icon';
+$string['featureicon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['card2_content'] = 'Second Card Content';
-$string['card2_content_desc'] = 'Content that will appear on the second card on the homepage.';
+$string['feature_btntext'] = 'Feature {$a} Button Text';
+$string['feature_btntext_desc'] = 'Text for the button of feature {$a}.'; 
+$string['feature_btnurl'] = 'Feature {$a} Button URL';
+$string['feature_btnurl_desc'] = 'URL for the button of feature {$a}.';
 
-$string['saibamais2'] = 'Second Card Link';
-$string['saibamais2_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the second card.';
+$string['feature1heading'] = 'Feature 1 Heading';
+$string['feature1content'] = 'Feature 1 Content';
 
-$string['card3_title'] = 'Third Card Title';
-$string['card3_title_desc'] = 'Title that will appear on the third card on the homepage.';
+$string['feature1icon'] = 'Feature {$a} Icon';
+$string['feature2con_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['card3_content'] = 'Third Card Content';
-$string['card3_content_desc'] = 'Content that will appear on the third card on the homepage.';
+$string['feature2_btntext'] = 'Feature {$a} Button Text';
+$string['feature2_btnurl'] = 'Feature {$a} Button URL';
+    
 
-$string['saibamais3'] = 'Third Card Link';
-$string['saibamais3_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the third card.';
+$string['feature2heading'] = 'Feature 2 Heading';
+$string['feature2content'] = 'Feature 2 Content';
+$string['feature2icon'] = 'Feature {$a} Icon';
+$string['feature2icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['layout'] = 'Fluid or Fixed Layout';
-$string['layout_desc'] = 'This option sets the layout to fluid by default. The fixed layout is still in testing phase.';
+$string['feature3_btntext'] = 'Feature {$a} Button Text';
+$string['feature3_btnurl'] = 'Feature {$a} Button URL';
 
-$string['acessibilidade'] = 'Accessibility';
-$string['acessibilidade_desc'] = 'Content of the accessibility page.';
+$string['feature3heading'] = 'Feature 3 Heading';
+$string['feature3content'] = 'Feature 3 Content';
+$string['feature3icon'] = 'Feature {$a} Icon';
+$string['feature3icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+
+$string['feature3_btntext'] = 'Feature {$a} Button Text';
+$string['feature3_btnurl'] = 'Feature {$a} Button URL';
+
+$string['feature4heading'] = 'Feature 4 Heading';
+$string['feature4content'] = 'Feature 4 Content';
+$string['feature4icon'] = 'Feature {$a} Icon';
+$string['feature4icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+
+$string['feature4_btntext'] = 'Feature {$a} Button Text';
+$string['feature4_btnurl'] = 'Feature {$a} Button URL';
+
+// Navbar template
+$string['courses'] = 'Courses';
+
+//Landing template
+$string['searchtext'] = 'Search text';
+$string['about'] = 'About';
+$string['how_do_you_searh'] = 'How do you search?';
+$string['search'] = 'Search';
+$string['development_team'] = 'Development Team';
+$string['course_details'] = 'Course Details';
+$string['related_courses'] = 'Related Courses';
+$string['course_deadline'] = 'Course Deadline';
+$string['startdate'] = 'Start Date';
+$string['enddate'] = 'End Date';
+$string['no_related_course'] = 'No related courses';
+$string['no_teacher'] = 'No teacher';
+
+//Footer template
+$string['partners'] = 'Partners';
+$string['useful_links'] = 'Useful Links';
+
+//features template
+$string['how_to'] = 'How it works?';
+
+//Header template
 
 $string['brandcolor'] = 'Brand Color';
 $string['brandcolor_desc'] = 'Select a color to apply to links and titles.';
 
-$string['barracodigo'] = 'Government Bar Code';
-$string['barracodigo_desc'] = 'Institution code to be added to the Government Bar.';
-
-$string['googlemetasearch'] = 'HTML Tag - Google Search Console';
-$string['googlemetasearch_desc'] = 'Copy the meta tag below to be added in the <head> section of your homepage, before the first <body> section.';
+// Social settings tab
+$string['socialsettings'] = 'Social Settings';
+$string['tiktok'] = 'Tik Tok';
+$string['tiktokdesc'] = 'Link to your Tik Tok profile.';
+$string['facebook'] = 'Facebook';
+$string['facebookdesc'] = 'Link to your Facebook profile.';
+$string['twitter'] = 'Twitter';
+$string['twitterdesc'] = 'Link to your Twitter profile.';
+$string['linkedin'] = 'LinkedIn';
+$string['linkedindesc'] = 'Link to your LinkedIn profile.';
+$string['youtube'] = 'YouTube';
+$string['youtubedesc'] = 'Link to your YouTube profile.';
+$string['instagram'] = 'Instagram';
+$string['instagramdesc'] = 'Link to your Instagram profile.';
 
 // BOOST
 

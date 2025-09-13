@@ -41,6 +41,7 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_renderer extends \core_course_renderer {
+    
 
     /**
      * Returns HTML to print tree of course categories (with number of courses) for the frontpage
