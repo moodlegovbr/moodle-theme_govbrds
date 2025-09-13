@@ -148,6 +148,18 @@ $string['no_teacher'] = 'No teacher';
 //Footer template
 $string['partners'] = 'Partners';
 $string['useful_links'] = 'Useful Links';
+$string['contact'] = 'Contact';
+$string['address'] = 'Address';
+$string['phone'] = 'Phone';
+$string['email'] = 'Email';
+$string['all_rights_reserved'] = 'All rights reserved';
+$string['privacy_policy'] = 'Privacy Policy';
+$string['terms_of_use'] = 'Terms of Use';
+$string['accessibility'] = 'Accessibility';
+$string['sitemap'] = 'Sitemap';
+$string['follow_us'] = 'Follow us';
+$string['to'] = 'to';
+
 
 //features template
 $string['how_to'] = 'How it works?';
