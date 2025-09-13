@@ -143,58 +143,11 @@ class settings {
 
                 $templatecontext['features'][$j]['btntext'] = $this->$feature_btntext;
                 $templatecontext['features'][$j]['btnurl'] = $this->$feature_btnurl;
+                
             }
         }
 
         return $templatecontext;
     }
 
-    /**
-     * Get config theme slideshow
-     *
-     * @return array
-     */
-    public function frontpage_numbers() {
-        global $DB;
-
-        if ($templatecontext['numbersfrontpage'] = $this->numbersfrontpage) {
-            $templatecontext['numberscontent'] = $this->numbersfrontpagecontent ? format_text($this->numbersfrontpagecontent) : '';
-            $templatecontext['numbersusers'] = $DB->count_records('user', ['deleted' => 0, 'suspended' => 0]) - 1;
-            $templatecontext['numberscourses'] = $DB->count_records('course', ['visible' => 1]) - 1;
-        }
-
-        return $templatecontext;
-    }
-
-    /**
-     * Get config theme slideshow
-     *
-     * @return array
-     */
-    public function faq() {
-        $templatecontext['faqenabled'] = false;
-
-        if ($this->faqcount) {
-            for ($i = 1; $i <= $this->faqcount; $i++) {
-                $faqquestion = 'faqquestion' . $i;
-                $faqanswer = 'faqanswer' . $i;
-
-                if (!$this->$faqquestion || !$this->$faqanswer) {
-                    continue;
-                }
-
-                $templatecontext['faq'][] = [
-                    'id' => $i,
-                    'question' => format_text($this->$faqquestion),
-                    'answer' => format_text($this->$faqanswer),
-                ];
-            }
-
-            if (!empty($templatecontext['faq'])) {
-                $templatecontext['faqenabled'] = true;
-            }
-        }
-
-        return $templatecontext;
-    }
 }
