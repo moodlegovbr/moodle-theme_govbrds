@@ -40,6 +40,9 @@ $string['organization_desc'] = 'Name of the institution.';
 $string['subordination'] = 'Subordination';
 $string['subordination_desc'] = 'Ministry to which it belongs.';
 
+$string['layout'] = 'Layout';
+$string['layout_desc'] = 'Choose the layout for the site.';
+
 $string['logo'] = 'Your Logo';
 $string['logo_desc'] = 'Upload the logo image that will be displayed in the website header. The recommended size is 280x80 pixels.';
 
@@ -75,44 +78,76 @@ $string['herohtml_desc'] = 'Content of the hero section on the homepage.';
 $string['heroimage'] = 'Hero Image';
 $string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended is .png (PNG-24) without background and size is 450x600 (3x4 proportinal) pixels.';
 
-$string['card1_title'] = 'First Card Title';
-$string['card1_title_desc'] = 'Title that will appear on the first card on the homepage.';
+$string['features'] = 'Display Features Boxes';
+$string['featuresdesc'] = 'Choose whether to display the features boxes section on the homepage.';
 
-$string['card1_content'] = 'First Card Content';
-$string['card1_content_desc'] = 'Content that will appear on the first card on the homepage.';
+$string['featuresheading'] = 'Features Section Heading';
+$string['featurescontent'] = 'Features Section Content';
 
-$string['saibamais1'] = 'First Card Link';
-$string['saibamais1_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the first card.';
+$string['featureheading'] = 'Feature Heading';
+$string['featurecontent'] = 'Feature Content';
+$string['featureicon'] = 'Feature {$a} Icon';
+$string['featureicon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['card2_title'] = 'Second Card Title';
-$string['card2_title_desc'] = 'Title that will appear on the second card on the homepage.';
+$string['feature_btntext'] = 'Feature {$a} Button Text';
+$string['feature_btntext_desc'] = 'Text for the button of feature {$a}.'; 
+$string['feature_btnurl'] = 'Feature {$a} Button URL';
+$string['feature_btnurl_desc'] = 'URL for the button of feature {$a}.';
 
-$string['card2_content'] = 'Second Card Content';
-$string['card2_content_desc'] = 'Content that will appear on the second card on the homepage.';
+$string['feature1heading'] = 'Feature 1 Heading';
+$string['feature1content'] = 'Feature 1 Content';
 
-$string['saibamais2'] = 'Second Card Link';
-$string['saibamais2_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the second card.';
+$string['feature1icon'] = 'Feature {$a} Icon';
+$string['feature2con_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['card3_title'] = 'Third Card Title';
-$string['card3_title_desc'] = 'Title that will appear on the third card on the homepage.';
+$string['feature2_btntext'] = 'Feature {$a} Button Text';
+$string['feature2_btnurl'] = 'Feature {$a} Button URL';
+    
 
-$string['card3_content'] = 'Third Card Content';
-$string['card3_content_desc'] = 'Content that will appear on the third card on the homepage.';
+$string['feature2heading'] = 'Feature 2 Heading';
+$string['feature2content'] = 'Feature 2 Content';
+$string['feature2icon'] = 'Feature {$a} Icon';
+$string['feature2icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
-$string['saibamais3'] = 'Third Card Link';
-$string['saibamais3_desc'] = 'Link the user will be redirected to when clicking "Learn more" on the third card.';
+$string['feature3_btntext'] = 'Feature {$a} Button Text';
+$string['feature3_btnurl'] = 'Feature {$a} Button URL';
 
-$string['layout'] = 'Fluid or Fixed Layout';
-$string['layout_desc'] = 'This option sets the layout to fluid by default. The fixed layout is still in testing phase.';
+$string['feature3heading'] = 'Feature 3 Heading';
+$string['feature3content'] = 'Feature 3 Content';
+$string['feature3icon'] = 'Feature {$a} Icon';
+$string['feature3icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+
+$string['feature3_btntext'] = 'Feature {$a} Button Text';
+$string['feature3_btnurl'] = 'Feature {$a} Button URL';
+
+$string['feature4heading'] = 'Feature 4 Heading';
+$string['feature4content'] = 'Feature 4 Content';
+$string['feature4icon'] = 'Feature {$a} Icon';
+$string['feature4icon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+
+    $string['feature4_btntext'] = 'Feature {$a} Button Text';
+$string['feature4_btnurl'] = 'Feature {$a} Button URL';
+
+// Navbar template
+$string['courses'] = 'Courses';
+
+//Landing template
+$string['searchtext'] = 'Search text';
+$string['about'] = 'About';
+$string['how_do_you_searh'] = 'How do you search?';
+$string['search'] = 'Search';
+
+//Footer template
+$string['partners'] = 'Partners';
+$string['useful_links'] = 'Useful Links';
+
+//features template
+$string['how_to'] = 'How it works?';
+
+//Header template
 
 $string['brandcolor'] = 'Brand Color';
 $string['brandcolor_desc'] = 'Select a color to apply to links and titles.';
-
-$string['barracodigo'] = 'Government Bar Code';
-$string['barracodigo_desc'] = 'Institution code to be added to the Government Bar.';
-
-$string['googlemetasearch'] = 'HTML Tag - Google Search Console';
-$string['googlemetasearch_desc'] = 'Copy the meta tag below to be added in the <head> section of your homepage, before the first <body> section.';
 
 // Social settings tab
 $string['socialsettings'] = 'Social Settings';

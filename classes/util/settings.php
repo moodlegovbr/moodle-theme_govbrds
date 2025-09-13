@@ -38,15 +38,6 @@ class settings {
      * @var \stdClass $theme The theme object.
      */
     protected $theme;
-    /**
-     * @var array $files Theme file settings.
-     */
-    protected $files = [
-        'loginbg',
-        'sliderimage1', 'sliderimage2', 'sliderimage3', 'sliderimage4', 'sliderimage5', 'sliderimage6',
-        'sliderimage7', 'sliderimage8', 'sliderimage9', 'sliderimage10', 'sliderimage11', 'sliderimage12',
-        'marketing1icon', 'marketing2icon', 'marketing3icon', 'marketing4icon',
-    ];
 
     /**
      * Class constructor
@@ -63,9 +54,6 @@ class settings {
      * @return false|string|null
      */
     public function __get(string $name) {
-        if (in_array($name, $this->files)) {
-            return $this->theme->setting_file_url($name, $name);
-        }
 
         if (empty($this->theme->settings->$name)) {
             return false;
@@ -122,70 +110,39 @@ class settings {
      */
     public function frontpage() {
         return array_merge(
-            $this->frontpage_slideshow(),
-            $this->frontpage_marketingboxes(),
-            $this->frontpage_numbers(),
-            $this->faq()
+            $this->frontpage_features()
         );
     }
 
+
     /**
-     * Get config theme slideshow
+     * Get config theme features
      *
      * @return array
      */
-    public function frontpage_slideshow() {
-        $templatecontext['slidercount'] = $this->slidercount;
+    public function frontpage_features() {
+        if ($templatecontext['display_features'] = $this->features) {
+            $templatecontext['featuresheading'] = format_text($this->featuresheading, FORMAT_HTML);
+            $templatecontext['featurescontent'] = format_text($this->featurescontent, FORMAT_HTML);
 
-        $defaultimage = new \moodle_url('/theme/govbrds/pix/default_slide.jpg');
-        for ($i = 1, $j = 0; $i <= $templatecontext['slidercount']; $i++, $j++) {
-            $sliderimage = "sliderimage{$i}";
-            $slidertitle = "slidertitle{$i}";
-            $slidercap = "slidercap{$i}";
-            $slidercapcontent = $this->$slidercap ?: null;
-
-            $slidetitle = format_string($this->$slidertitle) ?: null;
-            $slidecontent = format_text($slidercapcontent, FORMAT_MOODLE, ['noclean' => false]) ?: null;
-            $image = $this->$sliderimage;
-
-            $hascaption = isset($slidetitle) || isset($slidecontent);
-
-            $templatecontext['slides'][$j]['key'] = $j;
-            $templatecontext['slides'][$j]['active'] = $i === 1;
-            $templatecontext['slides'][$j]['image'] = $image ?: $defaultimage->out();
-            $templatecontext['slides'][$j]['title'] = $slidetitle;
-            $templatecontext['slides'][$j]['caption'] = $slidecontent;
-            $templatecontext['slides'][$j]['hascaption'] = $hascaption;
-        }
-
-        $templatecontext['slidersingleslide'] = $this->slidercount == 1;
-
-        return $templatecontext;
-    }
-
-    /**
-     * Get config theme slideshow
-     *
-     * @return array
-     */
-    public function frontpage_marketingboxes() {
-        if ($templatecontext['displaymarketingbox'] = $this->displaymarketingbox) {
-            $templatecontext['marketingheading'] = format_text($this->marketingheading, FORMAT_HTML);
-            $templatecontext['marketingcontent'] = format_text($this->marketingcontent, FORMAT_HTML);
-
-            $defaultimage = new \moodle_url('/theme/govbrds/pix/default_markegingicon.svg');
 
             for ($i = 1, $j = 0; $i < 5; $i++, $j++) {
-                $marketingicon = 'marketing' . $i . 'icon';
-                $marketingheading = 'marketing' . $i . 'heading';
-                $marketingcontent = 'marketing' . $i . 'content';
+                $featureicon = 'feature' . $i . 'icon';
+                $featureheading = 'feature' . $i . 'heading';
+                $featurecontent = 'feature' . $i . 'content';
+                $feature_btntext = 'feature' . $i . '_btntext';
+                $feature_btnurl = 'feature' . $i . '_btnurl';
 
-                $templatecontext['marketingboxes'][$j]['icon'] = $this->$marketingicon ?: $defaultimage->out();
-                $templatecontext['marketingboxes'][$j]['heading'] = $this->$marketingheading ?
-                    format_text($this->$marketingheading, FORMAT_HTML) : 'Lorem';
-                $templatecontext['marketingboxes'][$j]['content'] = $this->$marketingcontent ?
-                    format_text($this->$marketingcontent, FORMAT_HTML) :
+                $templatecontext['features'][$j]['icon'] = $this->$featureicon ?
+                    $this->$featureicon : 'fa-id-card';
+                $templatecontext['features'][$j]['heading'] = $this->$featureheading ?
+                    format_text($this->$featureheading, FORMAT_HTML) : 'Lorem';
+                $templatecontext['features'][$j]['content'] = $this->$featurecontent ?
+                    format_text($this->$featurecontent, FORMAT_HTML) :
                     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.';
+
+                $templatecontext['features'][$j]['btntext'] = $this->$feature_btntext;
+                $templatecontext['features'][$j]['btnurl'] = $this->$feature_btnurl;
             }
         }
 

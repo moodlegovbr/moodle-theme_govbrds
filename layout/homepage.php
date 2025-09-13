@@ -125,7 +125,9 @@ $templatecontext = [
 ];
 
 $themesettings = new \theme_govbrds\util\settings();
+
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
+$templatecontext = array_merge($templatecontext, $themesettings->frontpage());
 
 echo $OUTPUT->render_from_template('theme_govbrds/homepage', $templatecontext);
 

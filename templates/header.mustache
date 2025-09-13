@@ -56,9 +56,9 @@
        <form autocomplete="off" action="{{{config.wwwroot}}}/course/search.php" method="get" accept-charset="utf-8" 
           class="mform d-flex flex-wrap align-items-center simplesearchform">
           <div class="br-input has-icon">
-            <label for="searchbox">Texto da pesquisa</label>
-            <input id="searchbox" name="q" type="text" placeholder="O que você procura?"/>
-            <button class="br-button circle small" type="submit" aria-label="Pesquisar">
+            <label for="searchbox">{{searchtext}}</label>
+            <input id="searchbox" name="q" type="text" placeholder="{{how_do_you_searh}}"/>
+            <button class="br-button circle small" type="submit" aria-label="{{search}}">
               <i class="fas fa-search" aria-hidden="true"></i>
             </button>
           </div>
