@@ -108,6 +108,7 @@ foreach ($data as $fieldcontroller) {
     $field = $fieldcontroller->get_field(); // field_controller
     if ($field->get('type') == 'textarea') {
         $customfields[] = [
+            'id' => $field->get('id'),
             'name' => $field->get('name'),
             'value' => $fieldcontroller->get_value()
         ];
