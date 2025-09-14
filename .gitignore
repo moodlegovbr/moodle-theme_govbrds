@@ -58,3 +58,5 @@ UPGRADING-CURRENT.md
 /nbproject
 .DS_Store
 .vscode
+
+./lang/pt_br/theme_govbrds.php
