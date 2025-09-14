@@ -102,7 +102,6 @@ $string['feature2con_desc'] = 'Choose an icon for feature {$a}. See the list of 
 
 $string['feature2_btntext'] = 'Feature {$a} Button Text';
 $string['feature2_btnurl'] = 'Feature {$a} Button URL';
-    
 
 $string['feature2heading'] = 'Feature 2 Heading';
 $string['feature2content'] = 'Feature 2 Content';

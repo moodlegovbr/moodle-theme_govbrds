@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_govbrds';
 
 // This is the version of the plugin.
-$plugin->version = 2025091313;
+$plugin->version = 2025091400;
 
 // This is the named version.
 $plugin->release = 'v2.01 alpha';
