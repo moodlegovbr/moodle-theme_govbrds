@@ -31,8 +31,6 @@ use core_course_list_element;
 use theme_govbrds\util\course;
 use moodle_url;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Custom course renderer for the theme.
  *
@@ -41,8 +39,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_renderer extends \core_course_renderer {
-    
-
     /**
      * Returns HTML to print tree of course categories (with number of courses) for the frontpage
      *
@@ -52,37 +48,34 @@ class course_renderer extends \core_course_renderer {
         global $DB;
         
         try {
-            // Buscar categorias visíveis de nível superior
+            // Search for visible top-level categories.
             $categories = $DB->get_records_sql("
                 SELECT cc.id, cc.name, cc.coursecount, cc.visible, cc.sortorder
-                FROM {course_categories} cc 
-                WHERE cc.parent = 0 
-                AND cc.visible = 1 
+                FROM {course_categories} cc
+                WHERE cc.parent = 0
+                AND cc.visible = 1
                 ORDER BY cc.sortorder ASC
                 LIMIT 20
             ");
-            
+
             if (empty($categories)) {
                 return '';
             }
-            
+            // start building the HTML.
             $output = '';
             $output .= \html_writer::start_div('frontpage-category-buttons-container');
-            
-            // Título
-            $output .= \html_writer::tag('h2', "As habilidades essenciais para você, reunidas aqui!", 
+            // Title.
+            $title = \theme_config::load('govbrds')->settings->listcoursestitle;
+            $output .= \html_writer::tag('h2', $title,
                 array('class' => 'frontpage-categories-title'));
-
-            // Container flex para os botões
+            // Container flex for buttons.
             $output .= \html_writer::start_div('category-buttons-flex p-3');
-            
             foreach ($categories as $category) {
-                // URL para a categoria
+                // URL for category.
                 $categoryurl = new \moodle_url('/course/index.php', array('categoryid' => $category->id));
                 $categoryname = format_string($category->name);
                 $coursecount = intval($category->coursecount);
-                
-                // Criar botão
+                // Create button.
                 $buttonattributes = array(
                     'class' => 'br-button primary mr-3 mb-3',
                     'data-categoryid' => $category->id,
@@ -92,24 +85,19 @@ class course_renderer extends \core_course_renderer {
                 $buttoncontent = \html_writer::div($categoryname, 'category-name');
                 $output .= \html_writer::link($categoryurl, $buttoncontent, $buttonattributes);
             }
-            
             $output .= \html_writer::end_div(); // category-buttons-flex
-            $output .= \html_writer::end_div(); // frontpage-category-buttons-container
-            
+            $output .= \html_writer::end_div(); // frontpage-category-buttons-container 
             return $output;
-            
         } catch (Exception $e) {
-            debugging('Erro ao carregar categorias: ' . $e->getMessage(), DEBUG_DEVELOPER);
-            
-            // Fallback: retornar mensagem amigável
+            debugging('Error loading categories: ' . $e->getMessage(), DEBUG_DEVELOPER);
+            // Fallback: return friendly message
             $output = \html_writer::div(
-                'Não foi possível carregar as categorias no momento.',
+                'Unable to load categories at this time.',
                 'alert alert-info'
             );
             return $output;
         }
     }
-
 
     /**
      * Renders the list of courses
@@ -136,7 +124,6 @@ class course_renderer extends \core_course_renderer {
             // Courses count is cached during courses retrieval.
             return '';
         }
-
         if ($chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_AUTO) {
             // In 'auto' course display mode we analyse if number of courses is more or less than $CFG->courseswithsummarieslimit.
             if ($totalcount <= $CFG->courseswithsummarieslimit) {
@@ -145,7 +132,6 @@ class course_renderer extends \core_course_renderer {
                 $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_COLLAPSED);
             }
         }
-
         // Prepare content of paging bar if it is needed.
         $paginationurl = $chelper->get_courses_display_option('paginationurl');
         $paginationallowall = $chelper->get_courses_display_option('paginationallowall');
@@ -176,40 +162,30 @@ class course_renderer extends \core_course_renderer {
                 html_writer::link($paginationurl->out(false, ['perpage' => $CFG->coursesperpage]),
                 get_string('showperpage', '', $CFG->coursesperpage)), ['class' => 'paging paging-showperpage']);
         }
-
         // Display list of courses.
         $attributes = $chelper->get_and_erase_attributes('courses');
         $content = html_writer::start_tag('div', $attributes);
-
         if (!empty($pagingbar)) {
             $content .= $pagingbar;
         }
-
         $coursecount = 1;
         $content .= html_writer::start_tag('div', ['class' => 'card-deck dashboard-card-deck mt-2']);
         foreach ($courses as $course) {
             $content .= $this->coursecat_coursebox($chelper, $course);
-
             if ($coursecount % 3 == 0) {
                 $content .= html_writer::end_tag('div');
                 $content .= html_writer::start_tag('div', ['class' => 'card-deck dashboard-card-deck mt-2']);
             }
-
             $coursecount ++;
         }
-
         $content .= html_writer::end_tag('div');
-
         if (!empty($pagingbar)) {
             $content .= $pagingbar;
         }
-
         if (!empty($morelink)) {
             $content .= $morelink;
         }
-
         $content .= html_writer::end_tag('div'); // End courses.
-
         return $content;
     }
 
@@ -233,15 +209,12 @@ class course_renderer extends \core_course_renderer {
         if (!isset($this->strings->summary)) {
             $this->strings->summary = get_string('summary');
         }
-
         if ($chelper->get_show_courses() <= self::COURSECAT_SHOW_COURSES_COUNT) {
             return '';
         }
-
         if ($course instanceof stdClass) {
             $course = new core_course_list_element($course);
         }
-
         return $this->coursecat_coursebox_content($chelper, $course);
     }
 
@@ -263,17 +236,12 @@ class course_renderer extends \core_course_renderer {
         if ($course instanceof stdClass) {
             $course = new core_course_list_element($course);
         }
-
         $courseutil = new course($course);
-
         $coursecontacts = $courseutil->get_course_contacts();
-
         $courseenrolmenticons = $courseutil->get_enrolment_icons();
         $courseenrolmenticons = !empty($courseenrolmenticons) ? $this->render_enrolment_icons($courseenrolmenticons) : false;
-
         $courseprogress = $courseutil->get_progress();
         $hasprogress = $courseprogress != null;
-
         $data = [
             'id' => $course->id,
             'fullname' => $chelper->get_course_formatted_name($course),
@@ -290,7 +258,6 @@ class course_renderer extends \core_course_renderer {
             'contacts' => $coursecontacts,
             'courseurl' => $this->get_course_url($course->id),
         ];
-
         return $this->render_from_template('theme_govbrds/coursecard', $data);
     }
 
@@ -323,8 +290,6 @@ class course_renderer extends \core_course_renderer {
         if (class_exists('\local_course\output\index')) {
             return new moodle_url('/local/course/index.php', ['id' => $courseid]);
         }
-
         return new moodle_url('/course/view.php', ['id' => $courseid]);
     }
-
 }

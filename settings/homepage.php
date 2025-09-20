@@ -48,7 +48,28 @@ $page->add(new admin_setting_configstoredfile(
     'heroimage' // Internal ID of file
 ));
 
-$setting = new admin_setting_heading('slidercountseparator', '', '<hr>');
+// Alt image.
+$setting = new admin_setting_configtext('theme_govbrds/heroimagealt', get_string('heroimagealt',
+    'theme_govbrds'), get_string('heroimagealt_desc', 'theme_govbrds'), '',
+    PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Hero CTA.
+$setting = new admin_setting_configtext('theme_govbrds/herocta', get_string('herocta',
+    'theme_govbrds'), get_string('herocta_desc', 'theme_govbrds'), '',
+    PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+// Hero Link.
+$setting = new admin_setting_configtext('theme_govbrds/heroctalink', get_string('heroctalink',
+    'theme_govbrds'), get_string('heroctalink_desc', 'theme_govbrds'), '',
+    PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
+$setting = new admin_setting_heading('separator', '', '<hr>');
 $page->add($setting);
 
 $setting->set_updatedcallback('theme_reset_all_caches');

@@ -55,6 +55,13 @@ $setting = new admin_setting_configtext('theme_govbrds/organization_url', get_st
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
+// List Courses Title.
+$setting = new admin_setting_configtext('theme_govbrds/listcoursestitle', get_string('listcoursestitle',
+    'theme_govbrds'), get_string('listcoursestitle_desc', 'theme_govbrds'), 'Our Courses',
+    PARAM_RAW);
+$setting->set_updatedcallback('theme_reset_all_caches');
+$page->add($setting);
+
 // Footer.
 $setting = new admin_setting_confightmleditor('theme_govbrds/addressm', get_string('addressm',
     'theme_govbrds'), get_string('addressm_desc', 'theme_govbrds'), '',
