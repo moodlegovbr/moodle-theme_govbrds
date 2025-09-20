@@ -121,6 +121,9 @@ $templatecontext = [
     'herohtml' => get_config('theme_govbrds', 'herohtml'),
     'heroimage' => $OUTPUT->image_url('heroimage', 'theme'),
     'hero_url' => $hero_url,
+    'heroimagealt' => get_config('theme_govbrds', 'heroimagealt'),
+    'herocta' => get_config('theme_govbrds', 'herocta'),
+    'heroctalink' => get_config('theme_govbrds', 'heroctalink'),
 
 ];
 

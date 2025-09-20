@@ -55,6 +55,9 @@ $string['organization_desc'] = 'Description of the institution.';
 $string['organization_url'] = 'Organization URL';
 $string['organization_url_desc'] = 'Link to the institution\'s homepage.';
 
+$string['listcoursestitle'] = 'List Courses Title';
+$string['listcoursestitle_desc'] = 'Title for the courses section on the homepage.';
+
 $string['address'] = 'Address';
 $string['address_desc'] = 'JSON of the address you want to display in the footer.';
 
@@ -77,6 +80,12 @@ $string['herohtml'] = 'Hero section';
 $string['herohtml_desc'] = 'Content of the hero section on the homepage.';
 $string['heroimage'] = 'Hero Image';
 $string['heroimage_desc'] = 'Image to be displayed in the hero section. The recommended is .png (PNG-24) without background and size is 450x600 (3x4 proportinal) pixels.';
+$string['heroimagealt'] = 'Hero Image Alt Text';
+$string['heroimagealt_desc'] = 'Alternative text for the hero image, used for accessibility purposes.';
+$string['herocta'] = 'Hero Call to Action (CTA)';
+$string['herocta_desc'] = 'Text for the call to action button in the hero section.';
+$string['heroctalink'] = 'Hero Call to Action (CTA) Link';
+$string['heroctalink_desc'] = 'URL for the call to action button in the hero section.';
 
 $string['features'] = 'Display Features Boxes';
 $string['featuresdesc'] = 'Choose whether to display the features boxes section on the homepage.';
@@ -216,6 +225,8 @@ $string['region-footer-left'] = 'Footer (Left)';
 $string['region-footer-middle'] = 'Footer (Middle)';
 $string['region-footer-right'] = 'Footer (Right)';
 $string['region-hidden-dock'] = 'Hidden from users';
+$string['prev_activity'] = 'Previous activity';
+$string['next_activity'] = 'Next activity';
 
 
 $string['privacy:metadata:govbrds_user_setting'] = 'Stores user-specific theme configuration preferences.';
