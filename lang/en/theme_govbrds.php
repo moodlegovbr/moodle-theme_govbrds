@@ -136,9 +136,6 @@ $string['feature4icon_desc'] = 'Choose an icon for feature {$a}. See the list of
 $string['feature4_btntext'] = 'Feature {$a} Button Text';
 $string['feature4_btnurl'] = 'Feature {$a} Button URL';
 
-// Navbar template
-$string['courses'] = 'Courses';
-
 //Landing template
 $string['searchtext'] = 'Search text';
 $string['about'] = 'About';
@@ -152,6 +149,13 @@ $string['startdate'] = 'Start Date';
 $string['enddate'] = 'End Date';
 $string['no_related_course'] = 'No related courses';
 $string['no_teacher'] = 'No teacher';
+
+// Login template
+$string['donthaveanaccount'] = 'Don\'t have an account?';
+$string['signinwith'] = 'Sign in with';
+
+// Navbar template
+$string['courses'] = 'Courses';
 
 //Footer template
 $string['partners'] = 'Partners';
@@ -168,12 +172,10 @@ $string['sitemap'] = 'Sitemap';
 $string['follow_us'] = 'Follow us';
 $string['to'] = 'to';
 
-
 //features template
 $string['how_to'] = 'How it works?';
 
 //Header template
-
 $string['brandcolor'] = 'Brand Color';
 $string['brandcolor_desc'] = 'Select a color to apply to links and titles.';
 
@@ -193,7 +195,6 @@ $string['instagram'] = 'Instagram';
 $string['instagramdesc'] = 'Link to your Instagram profile.';
 
 // BOOST
-
 $string['advancedsettings'] = 'Advanced Settings';
 $string['backgroundimage'] = 'Background Image';
 $string['backgroundimage_desc'] = 'The image to be displayed as the site background. The image you upload here will replace the default background image in the theme files.';
