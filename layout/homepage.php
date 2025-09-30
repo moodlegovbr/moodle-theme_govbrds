@@ -88,8 +88,6 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
 
-    'logo' => $logo_url,
-
     'partners_url' => $partners_url,
 
     'organization' => get_config('theme_govbrds', 'organization'),
