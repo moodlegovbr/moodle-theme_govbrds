@@ -32,5 +32,5 @@ if ($ADMIN->fulltree) {
     require_once(__DIR__ . '/settings/general.php');
     require_once(__DIR__ . '/settings/homepage.php');
     require_once(__DIR__ . '/settings/social.php');
-    
+    require_once(__DIR__ . '/settings/login.php');
 }

@@ -40,7 +40,7 @@
                     <div class="mt-2">
                         <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
                             {{# output.should_display_navbar_logo }}
-                                <img src="{{output.get_compact_logo_url}}" class="pb-0 logo me-1" alt="{{sitename}}" style="filter: brightness(0) invert(1); max-width: 40px">
+                                <img src="{{output.get_logo_url}}" class="pb-0 logo me-1" alt="{{sitename}}" style="filter: brightness(0) invert(1); max-width: 400px">
                             {{/ output.should_display_navbar_logo }}
                             {{^ output.should_display_navbar_logo }}
                                 {{{ sitename }}}
@@ -49,37 +49,28 @@
                     </div>
                     <div class="my-3 d-flex mt-1 align-self-end">
                         <div class="m-half p-1 flex-fill">
-                            <h6>{{#str}} useful_links, theme_govbrds {{/str}}:</h6>
                             {{#primarymoremenu}}
-                                {{> core/moremenu}}
+                                {{> theme_govbrds/footer_menu}}
                             {{/primarymoremenu}}
+
                         </div>
-                        <div class="m-half p-1 align-self-end flex-fill">
-                            <h6>{{#str}} partners, theme_govbrds {{/str}}:</h6>
-                            <img src="{{{ partners_url }}}" style="filter: brightness(0) invert(1); max-width: 480px">
+                    </div>
+                    <div class="d-none d-sm-block">
+                    <div class="row align-items-end justify-content-between py-5">
+                        <div class="col">
+                            {{> theme_govbrds/footer_social}}
                         </div>
+                    </div>
                     </div>
                     <div class="info">
                         <div class="text-down-01 text-medium pb-3">
                             {{{ addressm }}}
                         </div>
                     </div>
-
                 </div>
-
-
             </footer>
             <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
-
             {{{ output.standard_after_main_region_html }}}
-            
         </div>
     </body>
 </html>
-{{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
-    Drawer.init();
-    M.util.js_complete('theme_boost/loader');
-});
-{{/js}}

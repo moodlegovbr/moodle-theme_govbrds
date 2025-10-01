@@ -26,16 +26,32 @@ defined('MOODLE_INTERNAL') || die();
 
 $bodyattributes = $OUTPUT->body_attributes();
 
+$lines = explode("\n", trim(get_config('theme_govbrds', 'tab')));
+$tabs = [];
+
+foreach ($lines as $line) {
+    $cols = explode('|', $line);
+    $name = trim($cols[0] ?? '');
+    $url  = trim($cols[1] ?? '');
+
+    if ($name && $url) {
+        $tabs[] = [
+            'name' => $name,
+            'url'  => $url
+        ];
+    }
+}
+
 $templatecontext = [
+    // GOvBRDS
+    'tabs' => $tabs,
+
+    //Boost
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
 
-    'logovertical' => $OUTPUT->image_url('logovertical', 'theme'),
-    '25anos' => $OUTPUT->image_url('25anos', 'theme'),
-    '10anos' => $OUTPUT->image_url('10anos', 'theme'),
-    'diretoria' => $OUTPUT->image_url('diretoria', 'theme'),
 ];
 
-echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
+echo $OUTPUT->render_from_template('theme_govbrds/login', $templatecontext);
 

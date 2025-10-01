@@ -73,7 +73,7 @@ class course {
      * @return array
      */
     public function get_course_contacts() {
-        $theme = \theme_config::load('moove');
+        $theme = \theme_config::load('govbrds');
 
         $contacts = [];
         if ($this->course->has_course_contacts() && !($theme->settings->disableteacherspic)) {

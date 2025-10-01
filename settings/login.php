@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * GovBR-DS Version.
+ * GovBR-DS Login Settings
  *
  * @package    theme_govbrds
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
@@ -25,21 +25,19 @@
 // This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
-// This is the component name of the plugin - it always starts with 'theme_'
-// for themes and should be the same as the name of the folder.
-$plugin->component = 'theme_govbrds';
+/*
+* --------------------
+* Login settings tab links to another Moodle instance
+* --------------------
+*/
+$page = new admin_settingpage('theme_govbrds_login', get_string('loginsettings', 'theme_govbrds'));
 
-// This is the version of the plugin.
-$plugin->version = 2025100101;
+// TAB-1 url setting.
+$name = 'theme_govbrds/tab';
+$title = get_string('tab', 'theme_govbrds');
+$description = get_string('tabdesc', 'theme_govbrds');
+$setting = new admin_setting_configtextarea($name, $title, $description, '');
+$page->add($setting);
 
-// This is the named version.
-$plugin->release = 'v2.10 alpha';
-$plugin->maturity  = MATURITY_ALPHA;
+$settings->add($page);
 
-// This is the version of Moodle this plugin requires.
-$plugin->requires = 2018050800;
-
-// This is a list of plugins, this plugin depends on (and their versions).
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-];

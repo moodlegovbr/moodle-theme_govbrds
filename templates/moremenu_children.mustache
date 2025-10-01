@@ -1,0 +1,38 @@
+{{#haschildren}}
+    <div class="menu-folder" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
+        <a class="menu-item {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" id="drop-down-{{moremenuid}}"
+            href="javascript: void(0)" role="treeitem"
+            {{#title}}title="{{.}}"{{/title}}>
+            <span class="icon"></span>
+            <span class="content">{{{text}}}</span>
+        </a>
+        <ul>
+        {{#children}}
+            <li>
+                <a class="menu-item divider {{#isactive}}active{{/isactive}}"
+                    role="treeitem"
+                    href="{{{url}}}{{{action}}}"
+                    {{#title}}title="{{.}}"{{/title}} 
+                    data-key="{{key}}"
+                    data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
+                    <span class="icon">
+                    </span>
+                    <span class="content">{{{text}}}</span>
+                </a>
+            </li>
+        {{/children}}
+        </ul>
+    </div>
+{{/haschildren}}
+{{^haschildren}}
+    <a class="menu-item divider {{#isactive}}active{{/isactive}}"
+        role="treeitem"
+        href="{{{url}}}{{{action}}}"
+        {{#title}}title="{{.}}"{{/title}} 
+        data-key="{{key}}"
+        data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
+        <span class="icon">
+        </span>
+        <span class="content">{{{text}}}</span>
+    </a>
+{{/haschildren}}

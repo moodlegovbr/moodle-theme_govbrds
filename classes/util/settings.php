@@ -73,12 +73,25 @@ class settings {
         $templatecontext = [];
 
         $settings = [
-            'facebook', 'twitter', 'linkedin', 'youtube', 'instagram', 'whatsapp', 'telegram',
-            'website', 'mobile', 'mail',
+            'tiktok', 'facebook', 'twitter', 'linkedin', 'youtube', 'instagram'
         ];
 
+        $templatecontext['hasfootercontact'] = false;
+        $templatecontext['hasfootersocial'] = false;
         foreach ($settings as $setting) {
             $templatecontext[$setting] = $this->$setting;
+
+            if (in_array($setting, ['website', 'mobile', 'mail']) && !empty($templatecontext[$setting])) {
+                $templatecontext['hasfootercontact'] = true;
+            }
+
+            $socialsettings = [
+                'facebook', 'twitter', 'linkedin', 'youtube', 'instagram', 'whatsapp', 'telegram', 'tiktok', 'pinterest'
+            ];
+
+            if (in_array($setting, $socialsettings) && !empty($templatecontext[$setting])) {
+                $templatecontext['hasfootersocial'] = true;
+            }
         }
 
         $templatecontext['enablemobilewebservice'] = $CFG->enablemobilewebservice;
