@@ -1,0 +1,67 @@
+body {
+    background-color: #E1ECFF;
+}
+
+.main-inner {
+    box-shadow: 0 .5rem 1rem rgb(0 0 0 / .15);
+    margin-top: 1.5rem;
+    padding: 1.5rem .5rem;
+
+    border-radius: .5rem;
+    background-color: #fff;
+}
+
+.dropdown {
+    z-index: 100;
+}
+
+.br-sign-in, .br-button.sign-in {
+    --sign-in-img: 35px;
+}
+
+body.admin .col {
+  flex: auto;
+}
+
+.br-tab .tab-item button,
+.br-tab .tab-item a {
+  font-size: var(--font-size-scale-base);
+}
+
+.br-feature img {
+    margin: auto;
+    display: block; /* Necessário para que o margin funcione */
+}
+
+img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.dashboard-card-img {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.dashboard-card .dashboard-card-img {
+    padding: .5rem;
+    position: relative;
+    height: 10rem !important;
+    background-position: center;
+    background-size: cover;
+}
+
+.card-img, .card-img-bottom {
+    border-bottom-right-radius: calc(0.5rem - 1px);
+    border-bottom-left-radius: calc(0.5rem - 1px);
+}
+
+.card-img, .card-img-top {
+    border-top-left-radius: calc(0.5rem - 1px);
+    border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.dashboard-card .dashboard-card-img .course-category {
+    background-color: #0f47ad;
+    color: #fff;
+    padding: 4px 6px;
+    margin-bottom: .25rem;
+    border-radius: .5rem;
+    width: fit-content;
+    font-size: 80%;
+}
