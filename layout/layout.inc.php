@@ -15,49 +15,47 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * GovBR-DS Layout
+ * A frontpage layout for the GovBR-DS theme
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2025 Fábio Santos {@link https://www.ifrr.edu.br}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-/*
- * user_preference_allow_ajax_update() is deprecated. Please use the "core_user/repository" module instead.
- * user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
- */
-
-require_once($CFG->libdir . '/behat/lib.php');
+// Add block button in editing mode.
+$addblockbutton = $OUTPUT->addblockbutton();
 
 if (isloggedin()) {
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
+    $blockdraweropen = (get_user_preferences('drawer-open-block') == true);
 } else {
-    $navdraweropen = false;
+    $courseindexopen = false;
+    $blockdraweropen = false;
 }
-$extraclasses = [];
-if ($navdraweropen) {
-    $extraclasses[] = 'drawer-open-left';
+
+if (defined('BEHAT_SITE_RUNNING') && get_user_preferences('behat_keep_drawer_closed') != 1) {
+    $blockdraweropen = true;
 }
-$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+
+$extraclasses = ['uses-drawers'];
+if ($courseindexopen) {
+    $extraclasses[] = 'drawer-open-index';
+}
 
 $blockshtml = $OUTPUT->blocks('side-pre');
-$hasblocks = strpos($blockshtml, 'data-block=') !== false;
+$hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbutton));
+if (!$hasblocks) {
+    $blockdraweropen = false;
+}
+$courseindex = core_course_drawer();
+if (!$courseindex) {
+    $courseindexopen = false;
+}
 
-$homeleftblock = $OUTPUT->blocks('home-left');
-$homelefthasblocks = strpos($homeleftblock, 'data-block=') !== false;
-
-$homemiddleblock = $OUTPUT->blocks('home-middle');
-$homemiddlehasblocks = strpos($homemiddleblock, 'data-block=') !== false;
-
-$homerightblock = $OUTPUT->blocks('home-right');
-$homerighthasblocks = strpos($homerightblock, 'data-block=') !== false;
-
-$regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
-
-$container = get_config('theme_govbrds', 'layout')?'container-fluid':'container';
-
+$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+$forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
 
 $secondarynavigation = false;
 $overflow = '';
@@ -74,36 +72,36 @@ if ($PAGE->has_secondary_navigation()) {
 $primary = new core\navigation\output\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
+$buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions() && !$PAGE->has_secondary_navigation();
+// If the settings menu will be included in the header then don't add it here.
+$regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
 
+$header = $PAGE->activityheader;
+$headercontent = $header->export_for_template($renderer);
 
 $templatecontext = [
-    // GOvBRDS
+    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'fullname' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-    'shortname' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'organization' => get_config('theme_govbrds', 'organization'),
     'subordination' => get_config('theme_govbrds', 'subordination'),
     'addressm' => get_config('theme_govbrds', 'addressm'),
-    'container' => $container,
-    'brand' => $OUTPUT->image_url('ifrr-brand','theme_govbrds'),
-    'barracodigo' => get_config('theme_govbrds', 'barracodigo'),
-    'googlemetasearch' => get_config('theme_govbrds', 'googlemetasearch'),
 
-
-    //Boost
-    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
-
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
-
     'bodyattributes' => $bodyattributes,
-    'navdraweropen' => $navdraweropen,
-    'regionmainsettingsmenu' => $regionmainsettingsmenu,
-    'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-
+    'courseindexopen' => $courseindexopen,
+    'blockdraweropen' => $blockdraweropen,
+    'courseindex' => $courseindex,
     'primarymoremenu' => $primarymenu['moremenu'],
     'secondarymoremenu' => $secondarynavigation ?: false,
-
+    'mobileprimarynav' => $primarymenu['mobileprimarynav'],
+    'usermenu' => $primarymenu['user'],
+    'langmenu' => $primarymenu['lang'],
+    'forceblockdraweropen' => $forceblockdraweropen,
+    'regionmainsettingsmenu' => $regionmainsettingsmenu,
+    'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
+    'overflow' => $overflow,
+    'headercontent' => $headercontent,
+    'addblockbutton' => $addblockbutton,
 ];
-
-$PAGE->requires->jquery();

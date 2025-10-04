@@ -139,8 +139,9 @@ $string['feature4_btnurl'] = 'Feature {$a} Button URL';
 //Landing template
 $string['searchtext'] = 'Search text';
 $string['about'] = 'About';
-$string['how_do_you_searh'] = 'How do you search?';
+$string['how_do_you_search'] = 'How do you search?';
 $string['search'] = 'Search';
+$string['search_close'] = 'Close Search';
 $string['development_team'] = 'Development Team';
 $string['course_details'] = 'Course Details';
 $string['related_courses'] = 'Related Courses';
@@ -153,6 +154,13 @@ $string['no_teacher'] = 'No teacher';
 // Login template
 $string['donthaveanaccount'] = 'Don\'t have an account?';
 $string['signinwith'] = 'Sign in with';
+$string['loginsettings'] = 'Login Settings';
+$string['tab'] = 'Tab';
+$string['tabdesc'] = 'A custom menu may be configured here. Enter each menu item on a new line with format: menu text, a link URL and a tooltip title, separated by pipe characters. 
+<pre>
+eLearn|https://example.com/|Online Study Platform
+Mooc|https://example.com/mooc|MOOC Platform
+Workspace|https://example.com/workspace|Corporative Training Environment</pre>';
 
 // Navbar template
 $string['courses'] = 'Courses';
@@ -169,8 +177,9 @@ $string['privacy_policy'] = 'Privacy Policy';
 $string['terms_of_use'] = 'Terms of Use';
 $string['accessibility'] = 'Accessibility';
 $string['sitemap'] = 'Sitemap';
-$string['follow_us'] = 'Follow us';
+$string['socialnetworks'] = 'Social Networks';
 $string['to'] = 'to';
+
 
 //features template
 $string['how_to'] = 'How it works?';

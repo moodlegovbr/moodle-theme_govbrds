@@ -242,6 +242,22 @@ class course_renderer extends \core_course_renderer {
         $courseenrolmenticons = !empty($courseenrolmenticons) ? $this->render_enrolment_icons($courseenrolmenticons) : false;
         $courseprogress = $courseutil->get_progress();
         $hasprogress = $courseprogress != null;
+
+        $metadata = []; // array de data_controller
+        // Obtém o handler de custom fields para cursos
+        $handler = \core_course\customfield\course_handler::create();
+        // Recupera todos os dados de custom fields do curso
+        $customfields = $handler->get_instance_data($course->id, true);
+        foreach ($customfields as $fieldcontroller) {
+            $field = $fieldcontroller->get_field(); // field_controller
+            if ($field->get('type') != 'textarea') {
+                $metadata[] = [
+                    'id' => $field->get('id'),
+                    'name' => $field->get('name'),
+                    'value' => $fieldcontroller->get_value()
+                ];
+            } 
+        }
         $data = [
             'id' => $course->id,
             'fullname' => $chelper->get_course_formatted_name($course),
@@ -257,6 +273,7 @@ class course_renderer extends \core_course_renderer {
             'hascontacts' => !empty($coursecontacts),
             'contacts' => $coursecontacts,
             'courseurl' => $this->get_course_url($course->id),
+            'metadata' => $metadata,
         ];
         return $this->render_from_template('theme_govbrds/coursecard', $data);
     }

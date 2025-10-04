@@ -18,15 +18,13 @@
 {{!
     @template theme_govbrds/moremenu
 }}
-<nav class="tab-nav">
-    <ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="nav more-nav {{navbarstyle}}">
-        {{#nodecollection}}
-            {{#children}}
-                {{> core/moremenu_children}}
-            {{/children}}
-        {{/nodecollection}}
-        {{#nodearray}}
-            {{> core/moremenu_children}}
-        {{/nodearray}}
-    </ul>
-</nav>
+<div class="br-list horizontal" data-toggle="data-toggle" data-sub="data-sub">
+    {{#nodecollection}}
+        {{#children}}
+            {{> theme_govbrds/footer_moremenu_children}}
+        {{/children}}
+    {{/nodecollection}}
+    {{#nodearray}}
+        {{> theme_govbrds/footer_moremenu_children}}
+    {{/nodearray}}
+</div>

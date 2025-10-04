@@ -18,7 +18,7 @@
  * A frontpage layout for the GovBR-DS theme
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2025 Fábio Santos {@link https://www.ifrr.edu.br}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,14 +28,13 @@ $context = context_system::instance();
 // File storage.
 $fs = get_file_storage();
 
-$logo_url="";
 $partners_url="";
 $hero_url="";
 
-$files = $fs->get_area_files($context->id, 'theme_govbrds', 'logo', 0, 'itemid, filepath, filename', false);
+$files = $fs->get_area_files($context->id, 'theme_govbrds', 'partners', 0, 'itemid, filepath, filename', false);
 if ($files) {
     $file = reset($files);
-    $logo_url = moodle_url::make_pluginfile_url(
+    $partners_url = moodle_url::make_pluginfile_url(
         $file->get_contextid(),
         $file->get_component(),
         $file->get_filearea(),

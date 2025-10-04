@@ -88,12 +88,4 @@ $setting = new admin_setting_configselect($name, $title, $description, $default,
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
-// Partners logo.
-$name = 'theme_govbrds/partners';
-$title = get_string('partners', 'theme_govbrds');
-$description = get_string('partners_desc', 'theme_govbrds');
-$setting = new admin_setting_configstoredfile($name, $title, $description, 'partners');
-$setting->set_updatedcallback('theme_reset_all_caches');
-$page->add($setting);
-
 $settings->add($page);

@@ -1,4 +1,3 @@
-
 {{!
     This file is part of Moodle - http://moodle.org/
 
@@ -16,17 +15,17 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_govbrds/moremenu
+    Moremenu section.
 }}
-<nav class="tab-nav">
-    <ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="nav more-nav {{navbarstyle}}">
-        {{#nodecollection}}
-            {{#children}}
-                {{> core/moremenu_children}}
-            {{/children}}
-        {{/nodecollection}}
-        {{#nodearray}}
-            {{> core/moremenu_children}}
-        {{/nodearray}}
-    </ul>
-</nav>
+{{#nodecollection}}
+  {{#children}}
+    {{> theme_govbrds/moremenu_children}}
+  {{/children}}
+{{/nodecollection}}
+
+{{#nodearray}}
+  {{> theme_govbrds/moremenu_children}}
+{{/nodearray}}
+
+
+

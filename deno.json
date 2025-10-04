@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "build-css": "deno run -A sass --quiet-deps scss:style",
+    "watch-css": "deno run -A sass --quiet-deps --watch scss:style/core.css"
+  },
+  "nodeModulesDir": "auto",
+  "imports": {
+    "@govbr-ds/core": "npm:@govbr-ds/core@^3.6.2",
+    "@std/assert": "jsr:@std/assert@1",
+    "sass": "npm:sass@^1.93.2"
+  }
+}
