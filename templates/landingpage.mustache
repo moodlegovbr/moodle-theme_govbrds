@@ -38,14 +38,10 @@
                 </div>
             </div>
         </div>
-
-
         <main class="d-flex flex-fill mb-5" id="main">
-            <div class="container-lg d-flex">
-            
+            <div class="container-lg d-flex">            
                 <div class="row">
                     {{> theme_govbrds/navbar }}
-                    
                     <div class="col mb-5 main">
                        <div class="main-content pl-sm-3 mt-4" id="main-content">
                             <div class="row">
@@ -95,6 +91,26 @@
                                     <div class="card main-inner"" style="margin-top: -220px !important;">
                                         <div class="card-content">
                                             {{{ output.main_content }}}
+                                            <a class="ml-6 br-button small block auto-sm" href="#" onclick="copyLink()"> 
+                                            <i class="fas fa-share" aria-hidden="true"></i> Compartilhar</a>
+
+                                            <script>
+                                            function copyLink() {
+                                                const link = window.location.href;
+                                                navigator.clipboard.writeText(link)
+                                                .then(() => {
+                                                    // Exibe uma notificação usando o sistema de notificações do Moodle
+                                                    require(['core/notification'], function(notification) {
+                                                    //notification.alert('Sucesso', 'Link copiado para a área de transferência!', 'ok');
+                                                    });
+                                                })
+                                                .catch(err => {
+                                                    require(['core/notification'], function(notification) {
+                                                    //notification.alert('Erro', 'Não foi possível copiar o link: ' + err, 'error');
+                                                    });
+                                                });
+                                            }
+                                            </script>
                                         </div>
                                     </div>
                                 </div>

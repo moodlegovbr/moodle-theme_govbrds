@@ -11,20 +11,26 @@
                     {{/enrolmenticons}}
                 </div>
             {{/hasenrolmenticons}}
+            <div class="d-flex align-items-center">
+                <span class="br-tag bg-mint-cool-vivid-70" aria-describedby="tag-text01">
+                    <span id="tag-text01">{{{category}}}</span>
+                </span>
+            </div>
         </div>
+        
     </a>
     <div class="card-body course-info-container">
         <div class="text-weight-semi-bold text-up-02">
             <a href="{{courseurl}}" class="aalink coursename mr-2 mb-1 {{^visible}}dimmed{{/visible}}">
                 {{{fullname}}}
-            </a>
+            </a><br/>
         </div>
     </div>
     <div class="card-footer">
         <div class="d-flex">
-            <div class="course-category">
-                {{{category}}}
-            </div>
+            {{#metadata}}
+                <strong>{{{name}}}:</strong> {{{value}}}<br/>
+            {{/metadata}}
         </div>
     </div>
     {{#hasprogress}}

@@ -76,7 +76,7 @@ class course {
         $theme = \theme_config::load('govbrds');
 
         $contacts = [];
-        if ($this->course->has_course_contacts() && !($theme->settings->disableteacherspic)) {
+        if ($this->course->has_course_contacts()) {
             $instructors = $this->course->get_course_contacts();
 
             foreach ($instructors as $instructor) {

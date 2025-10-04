@@ -139,8 +139,9 @@ $string['feature4_btnurl'] = 'Feature {$a} Button URL';
 //Landing template
 $string['searchtext'] = 'Search text';
 $string['about'] = 'About';
-$string['how_do_you_searh'] = 'How do you search?';
+$string['how_do_you_search'] = 'How do you search?';
 $string['search'] = 'Search';
+$string['search_close'] = 'Close Search';
 $string['development_team'] = 'Development Team';
 $string['course_details'] = 'Course Details';
 $string['related_courses'] = 'Related Courses';
