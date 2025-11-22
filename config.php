@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -31,7 +32,7 @@ $THEME->sheets = ['core', 'custom'];
 $THEME->editor_sheets = [];
 $THEME->editor_scss = ['editor'];
 $THEME->usefallback = true;
-$THEME->scss = function($theme) {
+$THEME->scss = function ($theme) {
     return theme_govbrds_get_main_scss_content($theme);
 };
 

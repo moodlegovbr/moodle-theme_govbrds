@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -38,15 +39,17 @@ use moodle_url;
  * @copyright  2019 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class course_renderer extends \core_course_renderer {
+class course_renderer extends \core_course_renderer
+{
     /**
      * Returns HTML to print tree of course categories (with number of courses) for the frontpage
      *
      * @return string
      */
-    public function frontpage_categories_list() {
+    public function frontpage_categories_list()
+    {
         global $DB;
-        
+
         try {
             // Search for visible top-level categories.
             $categories = $DB->get_records_sql("
@@ -66,8 +69,11 @@ class course_renderer extends \core_course_renderer {
             $output .= \html_writer::start_div('frontpage-category-buttons-container');
             // Title.
             $title = \theme_config::load('govbrds')->settings->listcoursestitle;
-            $output .= \html_writer::tag('h2', $title,
-                array('class' => 'frontpage-categories-title'));
+            $output .= \html_writer::tag(
+                'h2',
+                $title,
+                array('class' => 'frontpage-categories-title')
+            );
             // Container flex for buttons.
             $output .= \html_writer::start_div('category-buttons-flex p-3');
             foreach ($categories as $category) {
@@ -86,7 +92,7 @@ class course_renderer extends \core_course_renderer {
                 $output .= \html_writer::link($categoryurl, $buttoncontent, $buttonattributes);
             }
             $output .= \html_writer::end_div(); // category-buttons-flex
-            $output .= \html_writer::end_div(); // frontpage-category-buttons-container 
+            $output .= \html_writer::end_div(); // frontpage-category-buttons-container
             return $output;
         } catch (Exception $e) {
             debugging('Error loading categories: ' . $e->getMessage(), DEBUG_DEVELOPER);
@@ -115,7 +121,8 @@ class course_renderer extends \core_course_renderer {
      *     defaulted to count($courses)
      * @return string
      */
-    protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null) {
+    protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null)
+    {
         global $CFG;
         if ($totalcount === null) {
             $totalcount = count($courses);
@@ -141,13 +148,19 @@ class course_renderer extends \core_course_renderer {
                 // The option paginationurl was specified, display pagingbar.
                 $perpage = $chelper->get_courses_display_option('limit', $CFG->coursesperpage);
                 $page = $chelper->get_courses_display_option('offset') / $perpage;
-                $pagingbar = $this->paging_bar($totalcount, $page, $perpage,
-                    $paginationurl->out(false, ['perpage' => $perpage]));
+                $pagingbar = $this->paging_bar(
+                    $totalcount,
+                    $page,
+                    $perpage,
+                    $paginationurl->out(false, ['perpage' => $perpage])
+                );
                 if ($paginationallowall) {
-                    $pagingbar .= html_writer::tag('div', html_writer::link($paginationurl->out(false, ['perpage' => 'all']),
-                        get_string('showall', '', $totalcount)), ['class' => 'paging paging-showall']);
+                    $pagingbar .= html_writer::tag('div', html_writer::link(
+                        $paginationurl->out(false, ['perpage' => 'all']),
+                        get_string('showall', '', $totalcount)
+                    ), ['class' => 'paging paging-showall']);
                 }
-            } else if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
+            } elseif ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
                 // The option for 'View more' link was specified, display more link.
                 $viewmoretext = $chelper->get_courses_display_option('viewmoretext', new \lang_string('viewmore'));
                 $morelink = html_writer::tag(
@@ -156,11 +169,16 @@ class course_renderer extends \core_course_renderer {
                     ['class' => 'paging paging-morelink']
                 );
             }
-        } else if (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
+        } elseif (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
             // There are more than one page of results and we are in 'view all' mode, suggest to go back to paginated view mode.
-            $pagingbar = html_writer::tag('div',
-                html_writer::link($paginationurl->out(false, ['perpage' => $CFG->coursesperpage]),
-                get_string('showperpage', '', $CFG->coursesperpage)), ['class' => 'paging paging-showperpage']);
+            $pagingbar = html_writer::tag(
+                'div',
+                html_writer::link(
+                    $paginationurl->out(false, ['perpage' => $CFG->coursesperpage]),
+                    get_string('showperpage', '', $CFG->coursesperpage)
+                ),
+                ['class' => 'paging paging-showperpage']
+            );
         }
         // Display list of courses.
         $attributes = $chelper->get_and_erase_attributes('courses');
@@ -176,7 +194,7 @@ class course_renderer extends \core_course_renderer {
                 $content .= html_writer::end_tag('div');
                 $content .= html_writer::start_tag('div', ['class' => 'card-deck dashboard-card-deck mt-2']);
             }
-            $coursecount ++;
+            $coursecount++;
         }
         $content .= html_writer::end_tag('div');
         if (!empty($pagingbar)) {
@@ -205,7 +223,8 @@ class course_renderer extends \core_course_renderer {
      * @throws \dml_exception
      * @throws \moodle_exception
      */
-    protected function coursecat_coursebox(coursecat_helper $chelper, $course, $additionalclasses = '') {
+    protected function coursecat_coursebox(coursecat_helper $chelper, $course, $additionalclasses = '')
+    {
         if (!isset($this->strings->summary)) {
             $this->strings->summary = get_string('summary');
         }
@@ -232,7 +251,8 @@ class course_renderer extends \core_course_renderer {
      * @throws \dml_exception
      * @throws \moodle_exception
      */
-    protected function coursecat_coursebox_content(coursecat_helper $chelper, $course) {
+    protected function coursecat_coursebox_content(coursecat_helper $chelper, $course)
+    {
         if ($course instanceof stdClass) {
             $course = new core_course_list_element($course);
         }
@@ -256,7 +276,7 @@ class course_renderer extends \core_course_renderer {
                     'name' => $field->get('name'),
                     'value' => $fieldcontroller->get_value()
                 ];
-            } 
+            }
         }
         $data = [
             'id' => $course->id,
@@ -285,7 +305,8 @@ class course_renderer extends \core_course_renderer {
      *
      * @return array
      */
-    protected function render_enrolment_icons(array $icons): array {
+    protected function render_enrolment_icons(array $icons): array
+    {
         $data = [];
 
         foreach ($icons as $icon) {
@@ -303,7 +324,8 @@ class course_renderer extends \core_course_renderer {
      * @return moodle_url
      * @throws \moodle_exception
      */
-    private function get_course_url($courseid) {
+    private function get_course_url($courseid)
+    {
         if (class_exists('\local_course\output\index')) {
             return new moodle_url('/local/course/index.php', ['id' => $courseid]);
         }

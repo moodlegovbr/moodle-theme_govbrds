@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -49,23 +50,44 @@ $page->add(new admin_setting_configstoredfile(
 ));
 
 // Alt image.
-$setting = new admin_setting_configtext('theme_govbrds/heroimagealt', get_string('heroimagealt',
-    'theme_govbrds'), get_string('heroimagealt_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/heroimagealt',
+    get_string(
+        'heroimagealt',
+        'theme_govbrds'
+    ),
+    get_string('heroimagealt_desc', 'theme_govbrds'),
+    '',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Hero CTA.
-$setting = new admin_setting_configtext('theme_govbrds/herocta', get_string('herocta',
-    'theme_govbrds'), get_string('herocta_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/herocta',
+    get_string(
+        'herocta',
+        'theme_govbrds'
+    ),
+    get_string('herocta_desc', 'theme_govbrds'),
+    '',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Hero Link.
-$setting = new admin_setting_configtext('theme_govbrds/heroctalink', get_string('heroctalink',
-    'theme_govbrds'), get_string('heroctalink_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/heroctalink',
+    get_string(
+        'heroctalink',
+        'theme_govbrds'
+    ),
+    get_string('heroctalink_desc', 'theme_govbrds'),
+    '',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
@@ -84,7 +106,7 @@ $page->add($setting);
 
 $features = get_config('theme_govbrds', 'features');
 
-if($features){
+if ($features) {
 
     // featuresheading.
     $name = 'theme_govbrds/featuresheading';
@@ -92,7 +114,7 @@ if($features){
     $default = 'Awesome App Features';
     $setting = new admin_setting_configtext($name, $title, '', $default);
     $page->add($setting);
-    
+
     // featurescontent.
     $name = 'theme_govbrds/featurescontent';
     $title = get_string('featurescontent', 'theme_govbrds');
@@ -128,15 +150,29 @@ if($features){
         $page->add($setting);
 
         // Button Text.
-        $setting = new admin_setting_configtext("theme_govbrds/feature{$i}_btntext", get_string('feature_btntext',
-            'theme_govbrds'), get_string('feature_btntext_desc', 'theme_govbrds'), '',
-            PARAM_RAW);
+        $setting = new admin_setting_configtext(
+            "theme_govbrds/feature{$i}_btntext",
+            get_string(
+                'feature_btntext',
+                'theme_govbrds'
+            ),
+            get_string('feature_btntext_desc', 'theme_govbrds'),
+            '',
+            PARAM_RAW
+        );
         $page->add($setting);
 
         // Button Link.
-        $setting = new admin_setting_configtext("theme_govbrds/feature{$i}_btnurl", get_string('feature_btnurl',
-            'theme_govbrds'), get_string('feature_btnurl_desc', 'theme_govbrds'), '',
-            PARAM_RAW);
+        $setting = new admin_setting_configtext(
+            "theme_govbrds/feature{$i}_btnurl",
+            get_string(
+                'feature_btnurl',
+                'theme_govbrds'
+            ),
+            get_string('feature_btnurl_desc', 'theme_govbrds'),
+            '',
+            PARAM_RAW
+        );
         $page->add($setting);
 
     }

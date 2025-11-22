@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -24,13 +25,15 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-function theme_govbrds_get_main_scss_content($theme) {
+function theme_govbrds_get_main_scss_content($theme)
+{
     global $CFG;
-    $scss = file_get_contents($CFG->dirroot . '/theme/govbrds/style/preset/default.scss');
+    $scss = file_get_contents($CFG->dirroot . '/theme/govbrds/scss/preset/default.scss');
     return $scss;
 }
 
-function theme_govbrds_user_preferences(): array {
+function theme_govbrds_user_preferences(): array
+{
     return [
         'your_preference_name' => [
             'type' => PARAM_ALPHA,
@@ -41,7 +44,8 @@ function theme_govbrds_user_preferences(): array {
     ];
 }
 
-function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = [])
+{
     // Permitir acesso apenas no contexto do sistema e para áreas específicas
     if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, ['logo', 'partners', 'heroimage'])) {
         send_file_not_found();
@@ -62,7 +66,8 @@ function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $for
 }
 
 // Force enrol-index layout for enrolment pages
-function theme_govbrds_page_init(moodle_page $page) {
+function theme_govbrds_page_init(moodle_page $page)
+{
     if ($page->pagetype === 'enrol-index') {
         $page->set_pagelayout('enrol-index'); // Use the landingpage layout
     }

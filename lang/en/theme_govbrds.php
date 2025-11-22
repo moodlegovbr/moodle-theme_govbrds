@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -25,9 +26,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'GovBR-DS';
-$string['configtitle'] = 'GovBR-DS';
-
-$string['configtitle'] = 'GovBR-DS';
 $string['choosereadme'] = 'The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.';
 $string['configtitle'] = 'GovBR-DS Settings';
 
@@ -99,7 +97,7 @@ $string['featureicon'] = 'Feature {$a} Icon';
 $string['featureicon_desc'] = 'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 
 $string['feature_btntext'] = 'Feature {$a} Button Text';
-$string['feature_btntext_desc'] = 'Text for the button of feature {$a}.'; 
+$string['feature_btntext_desc'] = 'Text for the button of feature {$a}.';
 $string['feature_btnurl'] = 'Feature {$a} Button URL';
 $string['feature_btnurl_desc'] = 'URL for the button of feature {$a}.';
 

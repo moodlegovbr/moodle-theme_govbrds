@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,8 +29,8 @@ $context = context_system::instance();
 // File storage.
 $fs = get_file_storage();
 
-$partners_url="";
-$hero_url="";
+$partners_url = "";
+$hero_url = "";
 
 $files = $fs->get_area_files($context->id, 'theme_govbrds', 'partners', 0, 'itemid, filepath, filename', false);
 if ($files) {

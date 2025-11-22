@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -44,7 +45,7 @@ foreach ($data as $fieldcontroller) {
             'name' => $field->get('name'),
             'value' => $fieldcontroller->get_value()
         ];
-    } 
+    }
 }
 
 $templatecontext = $templatecontext + [
@@ -66,16 +67,16 @@ if ($enddate) {
 $relatedcourses = get_courses($course->category, 'fullname ASC', 'c.id, c.fullname, c.summary');
 
 // Filter the current course
-$relatedcourses = array_filter($relatedcourses, function($c) use ($course) {
+$relatedcourses = array_filter($relatedcourses, function ($c) use ($course) {
     return $c->id !== $course->id;
 });
 
 $templatecontext['relatedcourses'] = $relatedcourses ;
 if (!empty($courseid)) {
 
-$context = context_course::instance($courseid);
-$teachers = get_role_users(3, $context, false, 'u.id, u.firstname, u.lastname, u.email');
-$templatecontext['teachers'] = $teachers;
+    $context = context_course::instance($courseid);
+    $teachers = get_role_users(3, $context, false, 'u.id, u.firstname, u.lastname, u.email');
+    $templatecontext['teachers'] = $teachers;
 }
 echo $OUTPUT->render_from_template('theme_govbrds/landingpage', $templatecontext);
 echo $OUTPUT->standard_footer_html();
