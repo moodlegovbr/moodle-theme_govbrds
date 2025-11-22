@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -54,4 +55,3 @@ $templatecontext = [
 ];
 
 echo $OUTPUT->render_from_template('theme_govbrds/login', $templatecontext);
-

@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -34,7 +35,8 @@ use user_picture;
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class user {
+class user
+{
     /**
      * @var \stdClass $user The user object.
      */
@@ -46,7 +48,8 @@ class user {
      * @param stdClass|int|null $user
      *
      */
-    public function __construct(stdClass|int|null $user = null) {
+    public function __construct(stdClass|int|null $user = null)
+    {
         global $USER, $DB;
 
         if (!is_object($user) && is_numeric($user)) {
@@ -68,7 +71,8 @@ class user {
      * @return \moodle_url
      * @throws \coding_exception
      */
-    public function get_user_picture($imgsize = 100) {
+    public function get_user_picture($imgsize = 100)
+    {
         global $PAGE;
 
         $userimg = new user_picture($this->user);

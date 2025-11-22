@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -30,7 +31,7 @@ require_once($CFG->dirroot . '/course/lib.php');
 include_once(__DIR__ . '/layout.inc.php');
 include_once(__DIR__ . '/images.inc.php');
 
-$templatecontext = $templatecontext+ [
+$templatecontext = $templatecontext + [
 
     'autocadastro_ativo' => $CFG->registerauth === 'email',
 
@@ -49,4 +50,3 @@ $templatecontext = array_merge($templatecontext, $themesettings->footer());
 $templatecontext = array_merge($templatecontext, $themesettings->frontpage());
 
 echo $OUTPUT->render_from_template('theme_govbrds/homepage', $templatecontext);
-

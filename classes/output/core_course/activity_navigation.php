@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -21,6 +22,7 @@
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace theme_govbrds\output\core_course;
 
 use renderable;
@@ -34,8 +36,8 @@ use url_select;
  * @copyright  2025 Willian Mano <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class activity_navigation extends \core_course\output\activity_navigation {
-
+class activity_navigation extends \core_course\output\activity_navigation
+{
     /**
      * Constructor.
      *
@@ -43,7 +45,8 @@ class activity_navigation extends \core_course\output\activity_navigation {
      * @param \cm_info|null $nextmod The next module to display, null if none.
      * @param array $activitylist The list of activity URLs (as key) and names (as value) for the activity dropdown menu.
      */
-    public function __construct(?\cm_info $prevmod, ?\cm_info $nextmod, array $activitylist = []) {
+    public function __construct(?\cm_info $prevmod, ?\cm_info $nextmod, array $activitylist = [])
+    {
         // Check if there is a previous module to display.
         if ($prevmod) {
             $linkurl = new \moodle_url($prevmod->url, ['forceview' => 1]);
@@ -89,7 +92,8 @@ class activity_navigation extends \core_course\output\activity_navigation {
      * @param \renderer_base $output Renderer base.
      * @return \stdClass
      */
-    public function export_for_template(\renderer_base $output) {
+    public function export_for_template(\renderer_base $output)
+    {
         $data = new \stdClass();
         if ($this->prevlink) {
             $data->prevlink = $this->prevlink->export_for_template($output);

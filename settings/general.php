@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -29,8 +30,10 @@ defined('MOODLE_INTERNAL') || die();
 
 
 // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
-$settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
-    get_string('configtitle', 'theme_govbrds'));
+$settings = new theme_boost_admin_settingspage_tabs(
+    'themesettinggovbrds',
+    get_string('configtitle', 'theme_govbrds')
+);
 
 
 /*
@@ -42,36 +45,66 @@ $settings = new theme_boost_admin_settingspage_tabs('themesettinggovbrds',
 $page = new admin_settingpage('theme_govbrds_general', get_string('generalsettings', 'theme_govbrds'));
 
 // Organization.
-$setting = new admin_setting_configtext('theme_govbrds/organization', get_string('organization',
-    'theme_govbrds'), get_string('organization_desc', 'theme_govbrds'), 'University Demo',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/organization',
+    get_string(
+        'organization',
+        'theme_govbrds'
+    ),
+    get_string('organization_desc', 'theme_govbrds'),
+    'University Demo',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Organization URL.
-$setting = new admin_setting_configtext('theme_govbrds/organization_url', get_string('organization_url',
-    'theme_govbrds'), get_string('organization_url_desc', 'theme_govbrds'), 'https://www.universitydemo.com',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/organization_url',
+    get_string(
+        'organization_url',
+        'theme_govbrds'
+    ),
+    get_string('organization_url_desc', 'theme_govbrds'),
+    'https://www.universitydemo.com',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // List Courses Title.
-$setting = new admin_setting_configtext('theme_govbrds/listcoursestitle', get_string('listcoursestitle',
-    'theme_govbrds'), get_string('listcoursestitle_desc', 'theme_govbrds'), 'Our Courses',
-    PARAM_RAW);
+$setting = new admin_setting_configtext(
+    'theme_govbrds/listcoursestitle',
+    get_string(
+        'listcoursestitle',
+        'theme_govbrds'
+    ),
+    get_string('listcoursestitle_desc', 'theme_govbrds'),
+    'Our Courses',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Footer.
-$setting = new admin_setting_confightmleditor('theme_govbrds/addressm', get_string('addressm',
-    'theme_govbrds'), get_string('addressm_desc', 'theme_govbrds'), '',
-    PARAM_RAW);
+$setting = new admin_setting_confightmleditor(
+    'theme_govbrds/addressm',
+    get_string(
+        'addressm',
+        'theme_govbrds'
+    ),
+    get_string('addressm_desc', 'theme_govbrds'),
+    '',
+    PARAM_RAW
+);
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 
 // Fix or Fluid Layout.
-$setting = new admin_setting_configcheckbox('theme_govbrds/layout', get_string('layout',
-    'theme_govbrds'), get_string('layout_desc', 'theme_govbrds'), 'Fluid', 'Fluid', 'Fixed');
+$setting = new admin_setting_configcheckbox('theme_govbrds/layout', get_string(
+    'layout',
+    'theme_govbrds'
+), get_string('layout_desc', 'theme_govbrds'), 'Fluid', 'Fluid', 'Fixed');
 $setting->set_updatedcallback('theme_reset_all_caches');
 $page->add($setting);
 

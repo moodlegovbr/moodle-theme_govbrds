@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -27,11 +28,12 @@ namespace theme_govbrds\privacy;
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\user_preference_provider;
 
-class provider implements 
+class provider implements
     \core_privacy\local\metadata\provider,
-    user_preference_provider {
-
-    public static function get_metadata(collection $items): collection {
+    user_preference_provider
+{
+    public static function get_metadata(collection $items): collection
+    {
         $items->add_user_preference(
             'govbrds_user_setting',
             'privacy:metadata:govbrds_user_setting'
@@ -39,7 +41,8 @@ class provider implements
         return $items;
     }
 
-    public static function export_user_preferences(int $userid) {
+    public static function export_user_preferences(int $userid)
+    {
         $value = get_user_preferences('yourtheme_user_setting', null, $userid);
         if ($value !== null) {
             \core_privacy\local\request\writer::export_user_preference(

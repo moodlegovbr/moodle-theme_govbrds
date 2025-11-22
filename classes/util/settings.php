@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -33,7 +34,8 @@ use theme_config;
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class settings {
+class settings
+{
     /**
      * @var \stdClass $theme The theme object.
      */
@@ -42,7 +44,8 @@ class settings {
     /**
      * Class constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->theme = theme_config::load('govbrds');
     }
 
@@ -53,7 +56,8 @@ class settings {
      *
      * @return false|string|null
      */
-    public function __get(string $name) {
+    public function __get(string $name)
+    {
 
         if (empty($this->theme->settings->$name)) {
             return false;
@@ -67,7 +71,8 @@ class settings {
      *
      * @return array
      */
-    public function footer() {
+    public function footer()
+    {
         global $CFG;
 
         $templatecontext = [];
@@ -121,7 +126,8 @@ class settings {
      *
      * @return array
      */
-    public function frontpage() {
+    public function frontpage()
+    {
         return array_merge(
             $this->frontpage_features()
         );
@@ -133,7 +139,8 @@ class settings {
      *
      * @return array
      */
-    public function frontpage_features() {
+    public function frontpage_features()
+    {
         if ($templatecontext['display_features'] = $this->features) {
             $templatecontext['featuresheading'] = format_text($this->featuresheading, FORMAT_HTML);
             $templatecontext['featurescontent'] = format_text($this->featurescontent, FORMAT_HTML);
@@ -156,7 +163,7 @@ class settings {
 
                 $templatecontext['features'][$j]['btntext'] = $this->$feature_btntext;
                 $templatecontext['features'][$j]['btnurl'] = $this->$feature_btnurl;
-                
+
             }
         }
 
