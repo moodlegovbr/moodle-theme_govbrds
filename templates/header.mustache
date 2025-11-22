@@ -22,14 +22,18 @@
     <div class="header-top">
       <div class="header-logo">
           <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
-          {{# output.should_display_navbar_logo }}
-                <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
+            {{# output.should_display_navbar_logo }}
+                  <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
+              {{/ output.should_display_navbar_logo }}
+              {{^ output.should_display_navbar_logo }}
+                  {{{ sitename }}}
             {{/ output.should_display_navbar_logo }}
-            {{^ output.should_display_navbar_logo }}
-                {{{ sitename }}}
-          {{/ output.should_display_navbar_logo }}
           </a>
-        <div class="header-sign">{{{ organization }}}</div>
+        <div class="header-sign">
+          <a href="{{{organization_url}}}">
+            {{{ organization }}}
+          </a>
+        </div>
       </div>
         {{> theme_govbrds/header_actions}}
     </div>
@@ -47,7 +51,11 @@
             {{/ output.should_display_navbar_logo }}
           </a>
           </div>
-          <div class="header-subtitle">{{{ fullname }}}</div>
+          <div class="header-subtitle">
+            <a href="/?redirect=0">
+              {{{ fullname }}}
+            </a>
+          </div>
         </div>
       </div>
 
