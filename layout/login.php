@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -38,16 +37,16 @@ foreach ($lines as $line) {
     if ($name && $url) {
         $tabs[] = [
             'name' => $name,
-            'url'  => $url
+            'url' => $url,
         ];
     }
 }
 
 $templatecontext = [
-    // GOvBRDS
+    // GOvBRDS.
     'tabs' => $tabs,
 
-    //Boost
+    // Boost.
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,

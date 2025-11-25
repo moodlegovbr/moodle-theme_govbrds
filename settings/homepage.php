@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -46,7 +45,7 @@ $page->add(new admin_setting_configstoredfile(
     'theme_govbrds/heroimage',
     get_string('heroimage', 'theme_govbrds'),
     get_string('heroimage_desc', 'theme_govbrds'),
-    'heroimage' // Internal ID of file
+    'heroimage' // Internal ID of file.
 ));
 
 // Alt image.
@@ -107,15 +106,14 @@ $page->add($setting);
 $features = get_config('theme_govbrds', 'features');
 
 if ($features) {
-
-    // featuresheading.
+    // Features heading.
     $name = 'theme_govbrds/featuresheading';
     $title = get_string('featuresheading', 'theme_govbrds');
     $default = 'Awesome App Features';
     $setting = new admin_setting_configtext($name, $title, '', $default);
     $page->add($setting);
 
-    // featurescontent.
+    // Features content.
     $name = 'theme_govbrds/featurescontent';
     $title = get_string('featurescontent', 'theme_govbrds');
     $default = 'govbrds is a Moodle template based on Boost with modern and creative design.';
@@ -123,7 +121,6 @@ if ($features) {
     $page->add($setting);
 
     for ($i = 1; $i < 5; $i++) {
-
         $icons = [
             'fa-id-card' => 'ID Card',
             'fa-hand-pointer' => 'Pointer',
@@ -174,11 +171,8 @@ if ($features) {
             PARAM_RAW
         );
         $page->add($setting);
-
     }
     $setting = new admin_setting_heading('displayfeaturesseparator', '', '<hr>');
     $page->add($setting);
 }
-
-
 $settings->add($page);

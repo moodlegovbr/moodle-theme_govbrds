@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -47,7 +46,7 @@ $THEME->layouts = [
         'defaultregion' => 'side-pre',
         'options' => ['nonavbar' => true],
     ],
-    // Enrol Page
+    // Enrol Page.
     'enrol-index' => [
         'file' => 'landingpage.php',
         'regions' => ['side-pre'],
@@ -70,7 +69,7 @@ $THEME->parents = ['boost'];
 $THEME->enable_dock = false;
 $THEME->haseditswitch = false;
 
-$THEME->yuicssmodules = array();
+$THEME->yuicssmodules = [];
 $THEME->rendererfactory = 'theme_overridden_renderer_factory';
 $THEME->requiredblocks = '';
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;

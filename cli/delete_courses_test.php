@@ -16,12 +16,11 @@
 
 /**
  * CLI script to delete trial courses in Moodle.
- * 
  * This script deletes courses created by the create_test_courses.php script.
- * 
+ *
  * Use:
  * php delete_courses_test.php --prefix="Course Test"
- * 
+ *
  * @package    theme_govbrds
  * @copyright  2025
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -33,39 +32,36 @@ require_once(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/clilib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
-// Obter parâmetros da linha de comando
-list($options, $unrecognized) = cli_get_params(
-    array(
-        'help' => false,
-        'prefix' => 'Curso Teste',
-        'category' => null,
-        'confirm' => false
-    ),
-    array(
-        'h' => 'help',
-        'p' => 'prefix',
-        'c' => 'category'
-    )
-);
+// Get command-line parameters.
+[$options, $unrecognized] = cli_get_params([
+    'help' => false,
+    'prefix' => 'Curso Teste',
+    'category' => null,
+    'confirm' => false,
+], [
+    'h' => 'help',
+    'p' => 'prefix',
+    'c' => 'category',
+]);
 
 if ($options['help']) {
-    echo "Script para deletar cursos de teste no Moodle
+    echo "Script to delete trial courses in Moodle.
 
-Uso:
-    php delete_test_courses.php [opções]
+Use:
+    php delete_courses_test.php [options]
 
-Opções:
-    -h, --help              Mostra esta mensagem de ajuda
-    -p, --prefix=TEXT       Prefixo dos cursos a deletar (padrão: 'Curso Teste')
-    -c, --category=ID       ID da categoria (opcional, busca em todas se não especificado)
-    --confirm               Pula confirmação (use com cuidado!)
+Options:
+    -h, --help              Display this help message.
+    -p, --prefix=TEXT       Prefix for courses to be deleted (default: 'Test Course')
+    -c, --category=ID       Category ID (optional, search all categories if not specified)
+    --confirm               Skip confirmation (use with caution!)
 
-Exemplos:
-    php delete_test_courses.php --prefix='Curso Teste'
+Examples:
+    php delete_test_courses.php --prefix='Test Course'
     php delete_test_courses.php --prefix='Demo' --category=2
-    php delete_test_courses.php --prefix='Curso Teste' --confirm
+    php delete_test_courses.php --prefix='Test Course' --confirm
 
-ATENÇÃO: Este script deleta cursos permanentemente!
+WARNING: This script permanently deletes courses!
 
 ";
     exit(0);
@@ -76,53 +72,53 @@ $categoryid = $options['category'];
 $skipconfirm = $options['confirm'];
 
 echo "========================================\n";
-echo "Deletar Cursos de Teste - Moodle\n";
+echo "Delete Test Courses - Moodle\n";
 echo "========================================\n";
-echo "Prefixo a buscar: {$prefix}\n";
+echo "Prefix to search for: {$prefix}\n";
 
-// Construir query para buscar cursos
-$sql = "SELECT id, fullname, shortname, category 
-        FROM {course} 
-        WHERE fullname LIKE :prefix 
+// Build a query to search for courses.
+$sql = "SELECT id, fullname, shortname, category
+        FROM {course}
+        WHERE fullname LIKE :prefix
         AND id != :siteid";
-        
-$params = array(
+
+$params = [
     'prefix' => $prefix . '%',
-    'siteid' => SITEID
-);
+    'siteid' => SITEID,
+];
 
 if ($categoryid !== null) {
     $sql .= " AND category = :category";
     $params['category'] = (int)$categoryid;
-    echo "Categoria: {$categoryid}\n";
+    echo "Category: {$categoryid}\n";
 } else {
-    echo "Categoria: Todas\n";
+    echo "Category: All\n";
 }
 
 $sql .= " ORDER BY id ASC";
 
 echo "========================================\n\n";
 
-// Buscar cursos
+// Search courses.
 $courses = $DB->get_records_sql($sql, $params);
 
 if (empty($courses)) {
-    echo "Nenhum curso encontrado com o prefixo '{$prefix}'.\n";
+    echo "No courses found with the prefix '{$prefix}'.\n";
     exit(0);
 }
 
 $count = count($courses);
-echo "Cursos encontrados: {$count}\n\n";
+echo "Courses found: {$count}\n\n";
 
-// Mostrar lista de cursos
-echo "Lista de cursos que serão deletados:\n";
+// Show list of courses.
+echo "List of courses that will be deleted:\n";
 echo "-----------------------------------\n";
 $i = 1;
 foreach ($courses as $course) {
     echo "{$i}. [{$course->id}] {$course->fullname} ({$course->shortname})\n";
     $i++;
     if ($i > 20 && $count > 20) {
-        echo "... e mais " . ($count - 20) . " cursos\n";
+        echo "... and more " . ($count - 20) . " courses\n";
         break;
     }
 }
@@ -130,51 +126,46 @@ echo "\n";
 
 if (!$skipconfirm) {
     echo "========================================\n";
-    echo "⚠️  ATENÇÃO: Esta operação não pode ser desfeita!\n";
+    echo "⚠️  WARNING: This operation cannot be undone!\n";
     echo "========================================\n";
-    echo "Deseja realmente deletar {$count} curso(s)? (s/n): ";
+    echo "Do you really want to delete {$count} course(s)? (y/n): ";
     $handle = fopen("php://stdin", "r");
     $line = fgets($handle);
-    if (trim($line) != 's' && trim($line) != 'S') {
-        echo "Operação cancelada.\n";
+    if (trim($line) != 'y' && trim($line) != 'Y') {
+        echo "Operation canceled.\n";
         exit(0);
     }
     fclose($handle);
 }
 
-echo "\nIniciando deleção de cursos...\n\n";
+echo "\nStarting course deletion...\n\n";
 
 $deleted = 0;
 $errors = 0;
 
 foreach ($courses as $course) {
     try {
-        // Deletar curso
-        delete_course($course->id, false); // false = não mostrar feedback na web
-        
+        // Delete course.
+        delete_course($course->id, false); // If false = do not show feedback on the web.
         $deleted++;
-        
-        // Mostrar progresso
+        // Show progress.
         if ($deleted % 10 == 0) {
-            echo "Progresso: {$deleted}/{$count} cursos deletados\n";
+            echo "Progress: {$deleted}/{$count} deleted courses\n";
         }
-        
     } catch (Exception $e) {
         $errors++;
-        echo "ERRO ao deletar curso {$course->id} ({$course->fullname}): " . $e->getMessage() . "\n";
+        echo "ERROR deleting course {$course->id} ({$course->fullname}): " . $e->getMessage() . "\n";
     }
 }
-
 echo "\n========================================\n";
-echo "Processo finalizado!\n";
+echo "Process finished!\n";
 echo "========================================\n";
-echo "Cursos deletados com sucesso: {$deleted}\n";
-echo "Erros: {$errors}\n";
+echo "Courses successfully deleted: {$deleted}\n";
+echo "Errors: {$errors}\n";
 echo "========================================\n";
 
-// Limpar cache
-echo "\nLimpando cache...\n";
+// Clear cache.
+echo "\nClearing cache...\n";
 rebuild_course_cache(0, true);
-echo "Cache limpo!\n";
-
+echo "Clear cache!\n";
 exit(0);

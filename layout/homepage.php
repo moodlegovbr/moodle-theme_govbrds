@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,20 +27,17 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
-include_once(__DIR__ . '/layout.inc.php');
-include_once(__DIR__ . '/images.inc.php');
+require_once(__DIR__ . '/layout.inc.php');
+require_once(__DIR__ . '/images.inc.php');
 
 $templatecontext = $templatecontext + [
-
     'autocadastro_ativo' => $CFG->registerauth === 'email',
-
     'herohtml' => get_config('theme_govbrds', 'herohtml'),
     'heroimage' => $OUTPUT->image_url('heroimage', 'theme'),
-    'hero_url' => $hero_url,
+    'hero_url' => $herourl,
     'heroimagealt' => get_config('theme_govbrds', 'heroimagealt'),
     'herocta' => get_config('theme_govbrds', 'herocta'),
     'heroctalink' => get_config('theme_govbrds', 'heroctalink'),
-
 ];
 
 $themesettings = new \theme_govbrds\util\settings();

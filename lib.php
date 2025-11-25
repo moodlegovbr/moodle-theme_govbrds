@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -23,30 +22,68 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-function theme_govbrds_get_main_scss_content($theme)
-{
+/**
+ * Get the main SCSS content for the govbrds theme.
+ *
+ * This function loads the default SCSS preset file used by the govbrds theme
+ * and returns its contents as a string. Moodle uses this SCSS to compile
+ * the theme’s CSS during rendering.
+ *
+ * @param theme_config $theme The theme configuration object (currently unused).
+ * @return string The SCSS content from the default preset file.
+ */
+function theme_govbrds_get_main_scss_content($theme) {
     global $CFG;
     $scss = file_get_contents($CFG->dirroot . '/theme/govbrds/scss/preset/default.scss');
     return $scss;
 }
 
-function theme_govbrds_user_preferences(): array
-{
+/**
+ * Defines user preferences for the theme_govbrds plugin.
+ *
+ * This function registers custom user preferences that can be stored
+ * and retrieved by Moodle's user preference system. Each preference
+ * includes validation rules, default values, and permission checks.
+ *
+ * @return array An associative array of user preference definitions,
+ *               keyed by preference name. Each definition includes:
+ *               - type (PARAM_* constant): Validation type
+ *               - null (NULL_ALLOWED/NULL_NOT_ALLOWED): Whether null is permitted
+ *               - default (mixed): Default value if none is set
+ *               - permissioncallback (callable): Function to check access permissions
+ */
+function theme_govbrds_user_preferences(): array {
     return [
         'your_preference_name' => [
             'type' => PARAM_ALPHA,
             'null' => NULL_NOT_ALLOWED,
             'default' => false,
             'permissioncallback' => [core_user::class, 'is_current_user'],
-        ]
+        ],
     ];
 }
 
-function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = [])
-{
-    // Permitir acesso apenas no contexto do sistema e para áreas específicas
+/**
+ * Serves theme files for the theme_govbrds plugin.
+ *
+ * This function is responsible for delivering files stored in specific
+ * file areas of the theme (such as logo, partners, and heroimage).
+ * It restricts access to the system context and ensures only allowed
+ * file areas are served. If the requested file does not exist or the
+ * context/filearea is invalid, a "file not found" response is sent.
+ *
+ * @param stdClass      $course        The course object (unused in this context).
+ * @param stdClass|null $cm            The course module object (unused in this context).
+ * @param context       $context       The context in which the file is requested.
+ * @param string        $filearea      The file area name (only 'logo', 'partners', 'heroimage' allowed).
+ * @param array         $args          Arguments that define the file path and name.
+ * @param bool          $forcedownload Whether the file should be forced to download.
+ * @param array         $options       Additional options affecting file serving.
+ *
+ * @return void
+ */
+function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+    // Allow access only within the context of the system and for specific areas.
     if ($context->contextlevel !== CONTEXT_SYSTEM || !in_array($filearea, ['logo', 'partners', 'heroimage'])) {
         send_file_not_found();
     }
@@ -65,10 +102,21 @@ function theme_govbrds_pluginfile($course, $cm, $context, $filearea, $args, $for
     send_stored_file($file, null, 0, $forcedownload, $options);
 }
 
-// Force enrol-index layout for enrolment pages
-function theme_govbrds_page_init(moodle_page $page)
-{
+/**
+ * Initializes page settings for the theme_govbrds plugin.
+ *
+ * This function customizes the page layout for specific Moodle page types.
+ * In particular, it applies a custom layout when the enrolment index page
+ * (`enrol-index`) is being displayed, ensuring that the theme uses the
+ * appropriate landing page layout.
+ *
+ * @param moodle_page $page The Moodle page object being initialized.
+ *
+ * @return void
+ */
+function theme_govbrds_page_init(moodle_page $page) {
+    // Force enrol-index layout for enrolment pages.
     if ($page->pagetype === 'enrol-index') {
-        $page->set_pagelayout('enrol-index'); // Use the landingpage layout
+        $page->set_pagelayout('enrol-index'); // Use the landingpage layout.
     }
 }
