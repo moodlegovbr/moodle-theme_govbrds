@@ -134,3 +134,7 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 .tool_dataprivacy{
     display: none;
 }
+
+.br-header[data-sticky] {
+    z-index: var(--z-index-layer-1);
+}

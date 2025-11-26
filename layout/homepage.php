@@ -46,3 +46,5 @@ $templatecontext = array_merge($templatecontext, $themesettings->footer());
 $templatecontext = array_merge($templatecontext, $themesettings->frontpage());
 
 echo $OUTPUT->render_from_template('theme_govbrds/homepage', $templatecontext);
+echo $OUTPUT->standard_footer_html();
+echo $OUTPUT->standard_end_of_body_html();
