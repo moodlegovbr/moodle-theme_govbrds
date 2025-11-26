@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
-include_once(__DIR__ . '/layout.inc.php');
+require_once(__DIR__ . '/layout.inc.php');
 
 echo $OUTPUT->render_from_template('theme_govbrds/course', $templatecontext);

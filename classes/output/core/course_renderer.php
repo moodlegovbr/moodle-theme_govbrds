@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -39,15 +38,13 @@ use moodle_url;
  * @copyright  2019 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class course_renderer extends \core_course_renderer
-{
+class course_renderer extends \core_course_renderer {
     /**
      * Returns HTML to print tree of course categories (with number of courses) for the frontpage
      *
      * @return string
      */
-    public function frontpage_categories_list()
-    {
+    public function frontpage_categories_list() {
         global $DB;
 
         try {
@@ -64,7 +61,7 @@ class course_renderer extends \core_course_renderer
             if (empty($categories)) {
                 return '';
             }
-            // start building the HTML.
+            // Start building the HTML.
             $output = '';
             $output .= \html_writer::start_div('frontpage-category-buttons-container');
             // Title.
@@ -72,31 +69,31 @@ class course_renderer extends \core_course_renderer
             $output .= \html_writer::tag(
                 'h2',
                 $title,
-                array('class' => 'frontpage-categories-title')
+                ['class' => 'frontpage-categories-title']
             );
             // Container flex for buttons.
             $output .= \html_writer::start_div('category-buttons-flex p-3');
             foreach ($categories as $category) {
                 // URL for category.
-                $categoryurl = new \moodle_url('/course/index.php', array('categoryid' => $category->id));
+                $categoryurl = new \moodle_url('/course/index.php', ['categoryid' => $category->id]);
                 $categoryname = format_string($category->name);
                 $coursecount = intval($category->coursecount);
                 // Create button.
-                $buttonattributes = array(
+                $buttonattributes = [
                     'class' => 'br-button primary mr-3 mb-3',
                     'data-categoryid' => $category->id,
                     'title' => $categoryname . ($coursecount > 0 ? " ( {$coursecount} )" : ''),
-                    'role' => 'button'
-                );
+                    'role' => 'button',
+                ];
                 $buttoncontent = \html_writer::div($categoryname, 'category-name');
                 $output .= \html_writer::link($categoryurl, $buttoncontent, $buttonattributes);
             }
-            $output .= \html_writer::end_div(); // category-buttons-flex
-            $output .= \html_writer::end_div(); // frontpage-category-buttons-container
+            $output .= \html_writer::end_div(); // Category buttons flex.
+            $output .= \html_writer::end_div(); // Frontpage category buttons container.
             return $output;
         } catch (Exception $e) {
             debugging('Error loading categories: ' . $e->getMessage(), DEBUG_DEVELOPER);
-            // Fallback: return friendly message
+            // Fallback: return friendly message.
             $output = \html_writer::div(
                 'Unable to load categories at this time.',
                 'alert alert-info'
@@ -121,8 +118,7 @@ class course_renderer extends \core_course_renderer
      *     defaulted to count($courses)
      * @return string
      */
-    protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null)
-    {
+    protected function coursecat_courses(coursecat_helper $chelper, $courses, $totalcount = null) {
         global $CFG;
         if ($totalcount === null) {
             $totalcount = count($courses);
@@ -160,7 +156,7 @@ class course_renderer extends \core_course_renderer
                         get_string('showall', '', $totalcount)
                     ), ['class' => 'paging paging-showall']);
                 }
-            } elseif ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
+            } else if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
                 // The option for 'View more' link was specified, display more link.
                 $viewmoretext = $chelper->get_courses_display_option('viewmoretext', new \lang_string('viewmore'));
                 $morelink = html_writer::tag(
@@ -169,7 +165,7 @@ class course_renderer extends \core_course_renderer
                     ['class' => 'paging paging-morelink']
                 );
             }
-        } elseif (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
+        } else if (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
             // There are more than one page of results and we are in 'view all' mode, suggest to go back to paginated view mode.
             $pagingbar = html_writer::tag(
                 'div',
@@ -223,8 +219,7 @@ class course_renderer extends \core_course_renderer
      * @throws \dml_exception
      * @throws \moodle_exception
      */
-    protected function coursecat_coursebox(coursecat_helper $chelper, $course, $additionalclasses = '')
-    {
+    protected function coursecat_coursebox(coursecat_helper $chelper, $course, $additionalclasses = '') {
         if (!isset($this->strings->summary)) {
             $this->strings->summary = get_string('summary');
         }
@@ -251,8 +246,7 @@ class course_renderer extends \core_course_renderer
      * @throws \dml_exception
      * @throws \moodle_exception
      */
-    protected function coursecat_coursebox_content(coursecat_helper $chelper, $course)
-    {
+    protected function coursecat_coursebox_content(coursecat_helper $chelper, $course) {
         if ($course instanceof stdClass) {
             $course = new core_course_list_element($course);
         }
@@ -263,18 +257,18 @@ class course_renderer extends \core_course_renderer
         $courseprogress = $courseutil->get_progress();
         $hasprogress = $courseprogress != null;
 
-        $metadata = []; // array de data_controller
-        // Obtém o handler de custom fields para cursos
+        $metadata = []; // Array de data_controller.
+        // Get the custom field handler for courses.
         $handler = \core_course\customfield\course_handler::create();
-        // Recupera todos os dados de custom fields do curso
+        // Retrieves all custom field data for the course.
         $customfields = $handler->get_instance_data($course->id, true);
         foreach ($customfields as $fieldcontroller) {
-            $field = $fieldcontroller->get_field(); // field_controller
+            $field = $fieldcontroller->get_field();
             if ($field->get('type') != 'textarea') {
                 $metadata[] = [
                     'id' => $field->get('id'),
                     'name' => $field->get('name'),
-                    'value' => $fieldcontroller->get_value()
+                    'value' => $fieldcontroller->get_value(),
                 ];
             }
         }
@@ -305,8 +299,7 @@ class course_renderer extends \core_course_renderer
      *
      * @return array
      */
-    protected function render_enrolment_icons(array $icons): array
-    {
+    protected function render_enrolment_icons(array $icons): array {
         $data = [];
 
         foreach ($icons as $icon) {
@@ -324,8 +317,7 @@ class course_renderer extends \core_course_renderer
      * @return moodle_url
      * @throws \moodle_exception
      */
-    private function get_course_url($courseid)
-    {
+    private function get_course_url($courseid) {
         if (class_exists('\local_course\output\index')) {
             return new moodle_url('/local/course/index.php', ['id' => $courseid]);
         }

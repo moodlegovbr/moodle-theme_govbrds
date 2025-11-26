@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -16,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for theme_govbrds.
+ * Course class utility for theme_govbrds.
  *
  * @package    theme_govbrds
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
@@ -30,8 +29,14 @@ use core_course_list_element;
 use coursecat_helper;
 use core_course_category;
 
-class course
-{
+/**
+ * Course class utility.
+ *
+ * @package    theme_govbrds
+ * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course {
     /**
      * @var \stdClass $course The course object.
      */
@@ -43,8 +48,7 @@ class course
      * @param core_course_list_element $course
      *
      */
-    public function __construct(core_course_list_element $course)
-    {
+    public function __construct(core_course_list_element $course) {
         $this->course = $course;
     }
 
@@ -53,8 +57,7 @@ class course
      *
      * @return string
      */
-    public function get_summary_image()
-    {
+    public function get_summary_image() {
         global $CFG, $OUTPUT;
 
         foreach ($this->course->get_course_overviewfiles() as $file) {
@@ -78,8 +81,7 @@ class course
      *
      * @return array
      */
-    public function get_course_contacts()
-    {
+    public function get_course_contacts() {
         $theme = \theme_config::load('govbrds');
 
         $contacts = [];
@@ -109,8 +111,7 @@ class course
      *
      * @throws \moodle_exception
      */
-    public function get_category(): string
-    {
+    public function get_category(): string {
         $cat = core_course_category::get($this->course->category, IGNORE_MISSING);
 
         if (!$cat) {
@@ -125,15 +126,13 @@ class course
      *
      * @param coursecat_helper $chelper
      */
-    public function get_summary(coursecat_helper $chelper): string
-    {
+    public function get_summary(coursecat_helper $chelper): string {
         if ($this->course->has_summary()) {
             return $chelper->get_course_formatted_summary(
                 $this->course,
                 ['overflowdiv' => true, 'noclean' => true, 'para' => false]
             );
         }
-
         return false;
     }
 
@@ -142,8 +141,7 @@ class course
      *
      * @return string
      */
-    public function get_custom_fields(): string
-    {
+    public function get_custom_fields(): string {
         if ($this->course->has_custom_fields()) {
             $handler = \core_course\customfield\course_handler::create();
 
@@ -158,8 +156,7 @@ class course
      *
      * @return array
      */
-    public function get_enrolment_icons(): array
-    {
+    public function get_enrolment_icons(): array {
         if ($icons = enrol_get_course_info_icons($this->course)) {
             return $icons;
         }
@@ -174,8 +171,7 @@ class course
      *
      * @return mixed
      */
-    public function get_progress($userid = null)
-    {
+    public function get_progress($userid = null) {
         return \core_completion\progress::get_course_progress_percentage(get_course($this->course->id), $userid);
     }
 }

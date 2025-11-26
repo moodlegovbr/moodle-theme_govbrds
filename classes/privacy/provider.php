@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,12 +27,25 @@ namespace theme_govbrds\privacy;
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\user_preference_provider;
 
+/**
+ * Privacy provider class for this plugin.
+ *
+ * Implements metadata and user preference export functionality
+ * required by Moodle's privacy subsystem.
+ *
+ * @package   theme_govbrds
+ * @category  privacy
+ */
 class provider implements
     \core_privacy\local\metadata\provider,
-    user_preference_provider
-{
-    public static function get_metadata(collection $items): collection
-    {
+    user_preference_provider {
+    /**
+     * Returns metadata about this plugin's stored data.
+     *
+     * @param \core_privacy\local\metadata\collection $items The collection to add metadata to.
+     * @return \core_privacy\local\metadata\collection Updated collection of metadata.
+     */
+    public static function get_metadata(collection $items): collection {
         $items->add_user_preference(
             'govbrds_user_setting',
             'privacy:metadata:govbrds_user_setting'
@@ -41,8 +53,13 @@ class provider implements
         return $items;
     }
 
-    public static function export_user_preferences(int $userid)
-    {
+    /**
+     * Exports user preferences for this plugin.
+     *
+     * @param int $userid The user ID whose preferences are to be exported.
+     * @return void
+     */
+    public static function export_user_preferences(int $userid) {
         $value = get_user_preferences('yourtheme_user_setting', null, $userid);
         if ($value !== null) {
             \core_privacy\local\request\writer::export_user_preference(

@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -26,8 +25,6 @@
 // This is used for performance, we don't need to know about these settings on every page in Moodle, only when
 // we are looking at the admin settings pages.
 defined('MOODLE_INTERNAL') || die();
-
-
 
 // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
 $settings = new theme_boost_admin_settingspage_tabs(

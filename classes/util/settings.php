@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -34,8 +33,7 @@ use theme_config;
  * @copyright  2025 Fábio Santos <fabio.santos@ifrr.edu.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class settings
-{
+class settings {
     /**
      * @var \stdClass $theme The theme object.
      */
@@ -44,8 +42,7 @@ class settings
     /**
      * Class constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->theme = theme_config::load('govbrds');
     }
 
@@ -56,8 +53,7 @@ class settings
      *
      * @return false|string|null
      */
-    public function __get(string $name)
-    {
+    public function __get(string $name) {
 
         if (empty($this->theme->settings->$name)) {
             return false;
@@ -71,14 +67,13 @@ class settings
      *
      * @return array
      */
-    public function footer()
-    {
+    public function footer() {
         global $CFG;
 
         $templatecontext = [];
 
         $settings = [
-            'tiktok', 'facebook', 'twitter', 'linkedin', 'youtube', 'instagram'
+            'tiktok', 'facebook', 'twitter', 'linkedin', 'youtube', 'instagram',
         ];
 
         $templatecontext['hasfootercontact'] = false;
@@ -91,7 +86,7 @@ class settings
             }
 
             $socialsettings = [
-                'facebook', 'twitter', 'linkedin', 'youtube', 'instagram', 'whatsapp', 'telegram', 'tiktok', 'pinterest'
+                'facebook', 'twitter', 'linkedin', 'youtube', 'instagram', 'whatsapp', 'telegram', 'tiktok', 'pinterest',
             ];
 
             if (in_array($setting, $socialsettings) && !empty($templatecontext[$setting])) {
@@ -126,8 +121,7 @@ class settings
      *
      * @return array
      */
-    public function frontpage()
-    {
+    public function frontpage() {
         return array_merge(
             $this->frontpage_features()
         );
@@ -139,19 +133,17 @@ class settings
      *
      * @return array
      */
-    public function frontpage_features()
-    {
+    public function frontpage_features() {
         if ($templatecontext['display_features'] = $this->features) {
             $templatecontext['featuresheading'] = format_text($this->featuresheading, FORMAT_HTML);
             $templatecontext['featurescontent'] = format_text($this->featurescontent, FORMAT_HTML);
-
 
             for ($i = 1, $j = 0; $i < 5; $i++, $j++) {
                 $featureicon = 'feature' . $i . 'icon';
                 $featureheading = 'feature' . $i . 'heading';
                 $featurecontent = 'feature' . $i . 'content';
-                $feature_btntext = 'feature' . $i . '_btntext';
-                $feature_btnurl = 'feature' . $i . '_btnurl';
+                $featurebtntext = 'feature' . $i . '_btntext';
+                $featurebtnurl = 'feature' . $i . '_btnurl';
 
                 $templatecontext['features'][$j]['icon'] = $this->$featureicon ?
                     $this->$featureicon : 'fa-id-card';
@@ -161,13 +153,10 @@ class settings
                     format_text($this->$featurecontent, FORMAT_HTML) :
                     'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.';
 
-                $templatecontext['features'][$j]['btntext'] = $this->$feature_btntext;
-                $templatecontext['features'][$j]['btnurl'] = $this->$feature_btnurl;
-
+                $templatecontext['features'][$j]['btntext'] = $this->$featurebtntext;
+                $templatecontext['features'][$j]['btnurl'] = $this->$featurebtnurl;
             }
         }
-
         return $templatecontext;
     }
-
 }

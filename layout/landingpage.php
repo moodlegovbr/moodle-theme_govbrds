@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,33 +27,33 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/behat/lib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
-include_once(__DIR__ . '/layout.inc.php');
-include_once(__DIR__ . '/images.inc.php');
+require_once(__DIR__ . '/layout.inc.php');
+require_once(__DIR__ . '/images.inc.php');
 
 $course = get_course($COURSE->id);
 $data = \core_course\customfield\course_handler::create()->get_instance_data($course->id);
 $content = [];
 
-$customfields = []; // array de data_controller
+$customfields = []; // Array of data_controller.
 
 foreach ($data as $fieldcontroller) {
-    $field = $fieldcontroller->get_field(); // field_controller
+    $field = $fieldcontroller->get_field();
     if ($field->get('type') == 'textarea') {
         $customfields[] = [
             'id' => $field->get('id'),
             'name' => $field->get('name'),
-            'value' => $fieldcontroller->get_value()
+            'value' => $fieldcontroller->get_value(),
         ];
     }
 }
 
 $templatecontext = $templatecontext + [
     'course' => $COURSE,
-    'fields' => $customfields
+    'fields' => $customfields,
 ];
 
 $startdate = $COURSE->startdate;
-$enddate = $COURSE->enddate ?? null; // enddate pode não estar definido
+$enddate = $COURSE->enddate ?? null;
 
 if ($startdate) {
     $templatecontext['startdate'] = userdate($startdate, get_string('strftimedate', 'langconfig'));
@@ -63,17 +62,16 @@ if ($enddate) {
     $templatecontext['enddate'] = userdate($enddate, get_string('strftimedate', 'langconfig'));
 }
 
-// Search for other courses in the same category
+// Search for other courses in the same category.
 $relatedcourses = get_courses($course->category, 'fullname ASC', 'c.id, c.fullname, c.summary');
 
-// Filter the current course
+// Filter the current course.
 $relatedcourses = array_filter($relatedcourses, function ($c) use ($course) {
     return $c->id !== $course->id;
 });
 
-$templatecontext['relatedcourses'] = $relatedcourses ;
+$templatecontext['relatedcourses'] = $relatedcourses;
 if (!empty($courseid)) {
-
     $context = context_course::instance($courseid);
     $teachers = get_role_users(3, $context, false, 'u.id, u.firstname, u.lastname, u.email');
     $templatecontext['teachers'] = $teachers;
