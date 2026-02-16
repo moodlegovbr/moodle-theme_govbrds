@@ -138,3 +138,11 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 .br-header[data-sticky] {
     z-index: var(--z-index-layer-1);
 }
+
+.features-section {
+    background-color: var(--blue-warm-30); // Usando variável GOV.BR-DS
+}
+
+.br-card h1 i {
+    font-size: var(--font-size-scale-up-02);
+}

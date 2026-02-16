@@ -48,52 +48,30 @@ $string["course_details"] = "Course Details";
 $string["courses"] = "Courses";
 $string["currentinparentheses"] = "(current)";
 $string["development_team"] = "Development Team";
-$string["donthaveanaccount"] = 'Don\'t have an account?';
+$string["donthaveanaccount"] = "Don't have an account yet?";
 $string["email"] = "Email";
 $string["enddate"] = "End Date";
 $string["facebook"] = "Facebook";
 $string["facebookdesc"] = "Link to your Facebook profile.";
-$string["feature1content"] = "Feature 1 Content";
-$string["feature1heading"] = "Feature 1 Heading";
-$string["feature1icon"] = 'Feature {$a} Icon';
-$string["feature2_btntext"] = 'Feature {$a} Button Text';
-$string["feature2_btnurl"] = 'Feature {$a} Button URL';
-$string["feature2con_desc"] =
+
+$string["feature_content"] = 'Feature {$a} Content';
+$string["feature_content_desc"] =
     'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
-$string["feature2content"] = "Feature 2 Content";
-$string["feature2heading"] = "Feature 2 Heading";
-$string["feature2icon"] = 'Feature {$a} Icon';
-$string["feature2icon_desc"] =
-    'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
-$string["feature3_btntext"] = 'Feature {$a} Button Text';
-$string["feature3_btnurl"] = 'Feature {$a} Button URL';
-$string["feature3content"] = "Feature 3 Content";
-$string["feature3heading"] = "Feature 3 Heading";
-$string["feature3icon"] = 'Feature {$a} Icon';
-$string["feature3icon_desc"] =
-    'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
-$string["feature4_btntext"] = 'Feature {$a} Button Text';
-$string["feature4_btnurl"] = 'Feature {$a} Button URL';
-$string["feature4content"] = "Feature 4 Content";
-$string["feature4heading"] = "Feature 4 Heading";
-$string["feature4icon"] = 'Feature {$a} Icon';
-$string["feature4icon_desc"] =
-    'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+$string["feature_heading"] = 'Feature {$a} Heading';
+$string["feature_icon"] = 'Feature {$a} Icon';
 $string["feature_btntext"] = 'Feature {$a} Button Text';
 $string["feature_btntext_desc"] = 'Text for the button of feature {$a}.';
 $string["feature_btnurl"] = 'Feature {$a} Button URL';
 $string["feature_btnurl_desc"] = 'URL for the button of feature {$a}.';
-$string["featurecontent"] = "Feature Content";
-$string["featureheading"] = "Feature Heading";
-$string["featureicon"] = 'Feature {$a} Icon';
-$string["featureicon_desc"] =
-    'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
+
 $string["features"] = "Display Features Boxes";
-$string["featurescontent"] = "Features Section Content";
-$string["featuresdesc"] =
+$string["features_content"] = "Features Section Content";
+$string["features_desc"] =
     "Choose whether to display the features boxes section on the homepage.";
-$string["featuresheading"] = "Features Section Heading";
+$string["features_heading"] = "Features Section Heading";
+
 $string["generalsettings"] = "General Settings";
+$string["greeting"] = "Hello";
 $string["herocta"] = "Hero Call to Action (CTA)";
 $string["herocta_desc"] =
     "Text for the call to action button in the hero section.";
@@ -188,5 +166,10 @@ $string["to"] = "to";
 $string["twitter"] = "Twitter";
 $string["twitterdesc"] = "Link to your Twitter profile.";
 $string["useful_links"] = "Useful Links";
+$string["visit_linkedin"] = "Linkdin";
+$string["visit_facebook"] = "Facebook";
+$string["visit_instagram"] = "Instagram";
+$string["visit_youtube"] = "Youtube";
+$string["visit_tiktok"] = "Tiktok";
 $string["youtube"] = "YouTube";
 $string["youtubedesc"] = "Link to your YouTube profile.";
