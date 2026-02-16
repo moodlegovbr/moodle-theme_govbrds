@@ -1,5 +1,5 @@
 # This file specifies intentionally untracked files that all Moodle git
-# repositories should ignore. 
+# repositories should ignore.
 
 # Swap files (vim)
 [._]*.s[a-v][a-z]
@@ -58,5 +58,3 @@ UPGRADING-CURRENT.md
 /nbproject
 .DS_Store
 .vscode
-
-./lang/pt_br/theme_govbrds.php

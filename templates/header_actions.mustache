@@ -19,11 +19,11 @@
 }}
 <div class="header-actions">
 
-    <form autocomplete="off" action="{{{config.wwwroot}}}/course/search.php" method="get" accept-charset="utf-8" 
+    <form autocomplete="off" action="{{{config.wwwroot}}}/course/search.php" method="get" accept-charset="utf-8"
     class="mform d-flex flex-wrap align-items-center simplesearchform">
-        <input type="hidden" 
+        <input type="hidden"
           name="areaids" value="core_course-course"
-          placeholder="{{#str}} how_do_you_search, theme_govbrds {{/str}}">
+          placeholder="{{#str}} search, theme_govbrds {{/str}}">
         <div class="header-search-trigger">
             <button class="br-button circle" type="button" aria-label="{{#str}} search_close, theme_govbrds {{/str}}" data-toggle="search" data-target=".header-search">
             <i class="fas fa-search" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
     {{#usermenu}}
         {{> theme_govbrds/user_menu }}
     {{/usermenu}}
-    
+
 </div>
 
 {{> theme_boost/primary-drawer-mobile }}
@@ -53,4 +53,3 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-

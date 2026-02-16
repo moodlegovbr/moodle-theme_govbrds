@@ -22,35 +22,37 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined("MOODLE_INTERNAL") || die();
 
 $bodyattributes = $OUTPUT->body_attributes();
 
-$lines = explode("\n", trim(get_config('theme_govbrds', 'tab')));
+$lines = explode("\n", trim(get_config("theme_govbrds", "tab")));
 $tabs = [];
 
 foreach ($lines as $line) {
-    $cols = explode('|', $line);
-    $name = trim($cols[0] ?? '');
-    $url  = trim($cols[1] ?? '');
+    $cols = explode("|", $line);
+    $name = trim($cols[0] ?? "");
+    $url = trim($cols[1] ?? "");
 
     if ($name && $url) {
         $tabs[] = [
-            'name' => $name,
-            'url' => $url,
+            "name" => $name,
+            "url" => $url,
         ];
     }
 }
 
 $templatecontext = [
     // GOvBRDS.
-    'tabs' => $tabs,
+    "tabs" => $tabs,
 
     // Boost.
-    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-    'output' => $OUTPUT,
-    'bodyattributes' => $bodyattributes,
-
+    "sitename" => format_string($SITE->shortname, true, [
+        "context" => context_course::instance(SITEID),
+        "escape" => false,
+    ]),
+    "output" => $OUTPUT,
+    "bodyattributes" => $bodyattributes,
 ];
 
-echo $OUTPUT->render_from_template('theme_govbrds/login', $templatecontext);
+echo $OUTPUT->render_from_template("theme_govbrds/login", $templatecontext);

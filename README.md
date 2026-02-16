@@ -1,37 +1,40 @@
-# Moodle Tema GovBR-DS
-Identidade Digital de Governo para o Moodle
+# Moodle GovBR-DS Theme
+Government Digital Identity for Moodle
 
-Estas instruções descrevem como fazer a instalação correta do Plugin "moodle-govbrds".
+These instructions describe how to correctly install the "moodle-govbrds" plugin.
 
-Contamos com o apoio do Instituto Federal de Educação, Ciência e Tecnologia de Roraima - IFRR, por meio dos seguintes setores: 
-- Coordenação de Tecnologia e Suporte - CTS / DIPEAD / IFRR 
-- Diretoria de Tecnologia da Informação - DTI / IFRR
+We have the support of the Federal Institute of Education, Science and Technology of Roraima - IFRR, through the following sectors:
 
-Essa versão do plugin foi desenvolvida no âmbito do IFRR com financiamento da Fundape.
+- Technology and Support Coordination - CTS / DIPEAD / IFRR
 
-É atualmente suportado por Fábio Santos 
-Bolsista da Fundape e Servidor do IFRR
+- Information Technology Directorate - DTI / IFRR
 
-Pré-requisitos:
+This version of the plugin was developed within the scope of IFRR with funding from Fundape.
+
+It is currently supported by Fábio Santos, Fundape scholarship holder and IFRR employee.
+
+Prerequisites:
+
 ============
-Você irá precisar no mínimo de:
+You will need at least:
 
-1.  Um servidor rodando Moodle 4.5+
+1. A server running Moodle 4.5+
 
-Instalação:
+Installation:
+
 ============
-Estas instruções assumem que o Moodle já esta instalado no seu servidor (/var/www/moodle).
+These instructions assume that Moodle is already installed on your server (/var/www/moodle).
 
-1.  Descompacte o arquivo e copie para a pasta /var/www/moodle/theme;
-1.  Faça login no seu ambiente Moodle como usuário administrador;
+1. Unzip the file and copy it to the /var/www/moodle/theme folder;
 
-    O próprio Moodle irá identificar a nova instalação e apresentará a tela para a continuação do processo.
+2. Log in to your Moodle environment as an administrator user;
 
-3.  Clique no botão para fazer a instalação;
-4.  Preencha os formulário para parametrizar o tema moodle-govbrds a sua instituição;
-5.  Clique no botão "Continuar";
+Moodle itself will identify the new installation and display the screen to continue the process.
 
-	A partir deste ponto você já poderá adicionar ativar o tema govbrds.
+3. Click the button to install;
 
-Fim
-============
+4. Fill out the form to configure the moodle-govbrds theme for your institution;
+
+5. Click the "Continue" button;
+
+From this point on, you can activate the govbrds theme.
