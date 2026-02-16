@@ -28,9 +28,6 @@
             "services_support": "Services and support",
             "login_info": "You are logged in as cute kitten",
             "moodle_release": "90210",
-            "has_communication_links": true,
-            "communication_url": "https://element:8081/#/room/#yourroom:synapse",
-            "communication_link": "<a href=\"#\">Communication room</a>"
         }
     }
 }}
@@ -67,8 +64,47 @@
                             {{{ addressm }}}
                         </div>
                     </div>
-
                 </div>
+
+                <!-- Popover -->
+                <div class="container-fluid footer-columns">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            {{# output.supportemail }}
+                                <div class="supportemail">{{{ output.supportemail }}}</div>
+                            {{/ output.supportemail }}
+                        </div>
+                        <div class="col-sm-4 column-right">
+                            {{#enablemobilewebservice}}
+                                {{^mobilesetuplink}}
+                                    <h3 class="footer-title">{{#str}}getmoodleonyourmobile, tool_mobile{{/str}}</h3>
+                                {{/mobilesetuplink}}
+                                <div class="stores">
+                                    {{#androidappid}}
+                                        <a href="https://play.google.com/store/apps/details?id={{androidappid}}">
+                                            <img src="{{config.wwwroot}}/theme/moove/pix/store_google.svg" alt="Play Store">
+                                        </a>
+                                    {{/androidappid}}
+                                    {{#iosappid}}
+                                        <a class="mt-1" href="https://apps.apple.com/app/id{{iosappid}}">
+                                            <img src="{{config.wwwroot}}/theme/moove/pix/store_apple.svg" alt="App Store">
+                                        </a>
+                                    {{/iosappid}}
+                                </div>
+                            {{/enablemobilewebservice}}
+                        </div>
+                        <div class="col-sm-4">
+                            {{{ output.login_info }}}
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-content-debugging footer-dark bg-dark text-light">
+                    <div class="container-fluid footer-dark-inner">
+                        {{{ output.debug_footer_html }}}
+                    </div>
+                </div>
+
+                <!-- Popover -->
             </footer>
             {{{ output.standard_after_main_region_html }}}
         </div>

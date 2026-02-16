@@ -22,22 +22,22 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+defined("MOODLE_INTERNAL") || die();
 
-require_once($CFG->libdir . '/behat/lib.php');
-require_once($CFG->dirroot . '/course/lib.php');
+require_once $CFG->libdir . "/behat/lib.php";
+require_once $CFG->dirroot . "/course/lib.php";
 
-require_once(__DIR__ . '/layout.inc.php');
-require_once(__DIR__ . '/images.inc.php');
+require_once __DIR__ . "/layout.inc.php";
+require_once __DIR__ . "/images.inc.php";
 
 $templatecontext = $templatecontext + [
-    'autocadastro_ativo' => $CFG->registerauth === 'email',
-    'herohtml' => get_config('theme_govbrds', 'herohtml'),
-    'heroimage' => $OUTPUT->image_url('heroimage', 'theme'),
-    'hero_url' => $herourl,
-    'heroimagealt' => get_config('theme_govbrds', 'heroimagealt'),
-    'herocta' => get_config('theme_govbrds', 'herocta'),
-    'heroctalink' => get_config('theme_govbrds', 'heroctalink'),
+    "autocadastro_ativo" => $CFG->registerauth === "email",
+    "herohtml" => get_config("theme_govbrds", "herohtml"),
+    "heroimage" => $OUTPUT->image_url("heroimage", "theme"),
+    "hero_url" => $herourl,
+    "heroimagealt" => get_config("theme_govbrds", "heroimagealt"),
+    "herocta" => get_config("theme_govbrds", "herocta"),
+    "heroctalink" => get_config("theme_govbrds", "heroctalink"),
 ];
 
 $themesettings = new \theme_govbrds\util\settings();
@@ -45,6 +45,4 @@ $themesettings = new \theme_govbrds\util\settings();
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
 $templatecontext = array_merge($templatecontext, $themesettings->frontpage());
 
-echo $OUTPUT->render_from_template('theme_govbrds/homepage', $templatecontext);
-echo $OUTPUT->standard_footer_html();
-echo $OUTPUT->standard_end_of_body_html();
+echo $OUTPUT->render_from_template("theme_govbrds/homepage", $templatecontext);
