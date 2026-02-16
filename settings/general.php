@@ -49,7 +49,7 @@ $setting = new admin_setting_configtext(
     get_string("organization", "theme_govbrds"),
     get_string("organization_desc", "theme_govbrds"),
     "University Demo",
-    PARAM_RAW,
+    PARAM_TEXT,
 );
 $setting->set_updatedcallback("theme_reset_all_caches");
 $page->add($setting);
@@ -60,7 +60,7 @@ $setting = new admin_setting_configtext(
     get_string("organization_url", "theme_govbrds"),
     get_string("organization_url_desc", "theme_govbrds"),
     "https://www.universitydemo.com",
-    PARAM_RAW,
+    PARAM_URL,
 );
 $setting->set_updatedcallback("theme_reset_all_caches");
 $page->add($setting);
@@ -71,7 +71,7 @@ $setting = new admin_setting_configtext(
     get_string("listcoursestitle", "theme_govbrds"),
     get_string("listcoursestitle_desc", "theme_govbrds"),
     "Our Courses",
-    PARAM_RAW,
+    PARAM_TEXT,
 );
 $setting->set_updatedcallback("theme_reset_all_caches");
 $page->add($setting);

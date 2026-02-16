@@ -121,7 +121,7 @@ if ($features) {
     $name = "theme_govbrds/features_content";
     $title = get_string("features_content", "theme_govbrds");
     $default =
-        "govbrds is a Moodle template based on Boost with modern and creative design.";
+        "GovBRDS is a Moodle template based on Boost with modern and creative design.";
     $setting = new admin_setting_confightmleditor($name, $title, "", $default);
     $page->add($setting);
 
@@ -147,14 +147,14 @@ if ($features) {
 
         $name = "theme_govbrds/feature{$i}_heading";
         $title = get_string("feature_heading", "theme_govbrds", $i);
-        $default = "Lorem";
+        $default = "Feature header";
         $setting = new admin_setting_configtext($name, $title, "", $default);
         $page->add($setting);
 
         $name = "theme_govbrds/feature{$i}_content";
         $title = get_string("feature_content", "theme_govbrds", $i);
         $default =
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";
+            "Describe the feature that makes your website different from the others.";
         $setting = new admin_setting_confightmleditor(
             $name,
             $title,
@@ -169,7 +169,7 @@ if ($features) {
             get_string("feature_btntext", "theme_govbrds", $i),
             get_string("feature_btntext_desc", "theme_govbrds", $i),
             "",
-            PARAM_RAW,
+            PARAM_TEXT,
         );
         $page->add($setting);
 
@@ -179,7 +179,7 @@ if ($features) {
             get_string("feature_btnurl", "theme_govbrds", $i),
             get_string("feature_btnurl_desc", "theme_govbrds", $i),
             "",
-            PARAM_RAW,
+            PARAM_URL,
         );
         $page->add($setting);
     }
