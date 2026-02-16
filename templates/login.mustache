@@ -37,31 +37,22 @@
 <div id="page-wrapper">
 
     {{{ output.standard_top_of_body_html }}}
-
-    <div id="page" class="container-fluid pt-5 mt-0">
+    {{> theme_govbrds/sections/login_header }}
+    <div id="page" class="container-fluid mt-0">
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
-                <div id="region-main" class="col-12 h-100">
-                <div class="login-wrapper pt-3">
-                    <div class="login-container">
-                        <div class="loginform row " style="background-color: unset; box-shadow: unset; padding-bottom: 0;">
-                            <div class="col">
-                            <ul class="nav nav-tabs">
-                                {{#tabs}}
-                                    <li class="nav-item"><a class="nav-link" href="{{url}}" target="_blank">{{name}}</a></li>
-                                {{/tabs}}
-
-                                </ul>
-                            </div>
+                <div id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
+                    <div class="login-wrapper">
+                        <div class="login-container">
+                            {{{ output.main_content }}}
                         </div>
-                        {{{ output.main_content }}}
                     </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
-
+    {{{ output.standard_footer_html }}}
+    {{{ output.standard_end_of_body_html }}}
 </div>
 
 </body>

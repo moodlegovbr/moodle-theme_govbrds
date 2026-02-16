@@ -94,7 +94,6 @@
 }}
 
 
-
 <div class="loginform row {{#hastwocolumns}}hastwocolumns{{/hastwocolumns}}">
     <div class="{{#hastwocolumns}}col-lg-6 col-md-12 left-column{{/hastwocolumns}}{{^hastwocolumns}}col{{/hastwocolumns}}">
         {{#logourl}}
@@ -121,7 +120,7 @@
 
         <form class="login-form" action="{{loginurl}}" method="post" id="login">
             <input type="hidden" name="logintoken" value="{{logintoken}}">
-            <div class="login-form-username form-group">
+            <div class="br-input login-form-username form-group">
                 <label for="username" class="sr-only">
                     {{^canloginbyemail}}
                         {{#str}} username {{/str}}
@@ -137,7 +136,7 @@
                 !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
                 !}}autocomplete="username">
             </div>
-            <div class="login-form-password form-group">
+            <div class="br-input login-form-password form-group">
                 <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
                 <input type="password" name="password" id="password" value="" {{!
                 !}}class="form-control form-control-lg" {{!
@@ -145,26 +144,29 @@
                 !}}autocomplete="current-password">
             </div>
             <div class="login-form-submit form-group">
-                <button class="btn btn-primary btn-block btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+                <button class="br-button primary block btn-lg" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
             </div>
             <div class="login-form-forgotpassword form-group text-center">
                 <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
             </div>
             {{#cansignup}}
-                <div class="login-signup text-center">
-                    {{#str}}donthaveanaccount, theme_govbrds{{/str}} <a href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
+                <!-- Divider -->
+                <div class="br-divider my-3"></div>
+                <div class="form-group login-signup text-center">
+                    <p style="margin-bottom: 1rem; color: #555; font-size: 0.875rem;">{{#str}}donthaveanaccount, theme_govbrds{{/str}}</p>
+                    <a class="br-button secondary block" href="{{signupurl}}"><i class="fas fa-user-plus mr-1" aria-hidden="true"></i> {{#str}}startsignup{{/str}}</a>
                 </div>
             {{/cansignup}}
         </form>
         {{^hastwocolumns}}
-            {{#canloginasguest}}
+            <!-- {{#canloginasguest}}
                 <form action="{{loginurl}}" method="post" id="guestlogin" class="mt-2">
                     <input type="hidden" name="logintoken" value="{{logintoken}}">
                     <input type="hidden" name="username" value="guest" />
                     <input type="hidden" name="password" value="guest" />
                     <button class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
                 </form>
-            {{/canloginasguest}}
+            {{/canloginasguest}} -->
             <div class="d-flex mt-2">
                 {{#languagemenu}}
                     <div class="login-languagemenu">
@@ -200,14 +202,14 @@
                 {{#hasinstructions}}
                     {{{instructions}}}
                 {{/hasinstructions}}
-                {{#canloginasguest}}
+                <!-- {{#canloginasguest}}
                     <form action="{{loginurl}}" method="post" id="guestlogin">
                         <input type="hidden" name="logintoken" value="{{logintoken}}">
                         <input type="hidden" name="username" value="guest" />
                         <input type="hidden" name="password" value="guest" />
-                        <button class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
+                        <button class="br-button secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
                     </form>
-                {{/canloginasguest}}
+                {{/canloginasguest}} -->
 
                 <div class="d-flex mt-2">
                     {{#languagemenu}}

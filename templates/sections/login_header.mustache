@@ -1,0 +1,38 @@
+<!-- Header -->
+  <header class="br-header mb-4">
+    <div class="container-fluid">
+      <div class="header-top">
+        <div class="header-logo">
+            <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
+                {{# output.should_display_navbar_logo }}
+                    <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
+                {{/ output.should_display_navbar_logo }}
+                {{^ output.should_display_navbar_logo }}
+                    {{{ sitename }}}
+                {{/ output.should_display_navbar_logo }}
+            </a>
+            <div class="header-sign">
+            <a href="{{{ config.homeurl }}}">
+                {{{ fullname }}}
+            </a>
+            </div>
+        </div>
+        <div class="header-actions">
+          <div class="header-links dropdown">
+            <button class="br-button circle small" type="button" data-toggle="dropdown" aria-label="Abrir Acesso Rápido">
+              <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list">
+              <div class="header">
+                <div class="title">Acesso Rápido</div>
+              </div>
+              {{#tabs}}
+                <a class="br-item" href="{{url}}" target="_blank">{{name}}<br /><span class="small">{{tooltip}}</span></a>
+              {{/tabs}}
+            </div>
+            <span class="br-divider vertical mx-half mx-sm-1"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>

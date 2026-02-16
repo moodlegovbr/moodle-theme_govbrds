@@ -18,7 +18,7 @@
  * GovBR-DS Login Page
  *
  * @package    theme_govbrds
- * @copyright  2018 Fábio Santos {@link https://www.ifrr.edu.br}
+ * @copyright  2018-2026 Fábio Santos {@link https://www.ifrr.edu.br}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,11 +33,13 @@ foreach ($lines as $line) {
     $cols = explode("|", $line);
     $name = trim($cols[0] ?? "");
     $url = trim($cols[1] ?? "");
+    $tooltip = trim($cols[2] ?? "");
 
     if ($name && $url) {
         $tabs[] = [
             "name" => $name,
             "url" => $url,
+            "tooltip" => $tooltip,
         ];
     }
 }
@@ -45,6 +47,13 @@ foreach ($lines as $line) {
 $templatecontext = [
     // GOvBRDS.
     "tabs" => $tabs,
+    "fullname" => format_string($SITE->fullname, true, [
+        "context" => context_course::instance(SITEID),
+        "escape" => false,
+    ]),
+    "organization" => get_config("theme_govbrds", "organization"),
+    "organization_url" => get_config("theme_govbrds", "organization_url"),
+    "addressm" => get_config("theme_govbrds", "addressm"),
 
     // Boost.
     "sitename" => format_string($SITE->shortname, true, [
