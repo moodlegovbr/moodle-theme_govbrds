@@ -146,3 +146,17 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 .br-card h1 i {
     font-size: var(--font-size-scale-up-02);
 }
+
+/* === CORREÇÃO BLOQUEIO DE TÓPICOS === */
+
+.nav-item.disabled,
+.nav-item.dimmed {
+    pointer-events: auto !important;
+}
+
+.nav-item.disabled .nav-link,
+.nav-item.dimmed .nav-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+}
