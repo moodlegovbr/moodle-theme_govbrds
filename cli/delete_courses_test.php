@@ -164,6 +164,48 @@ echo "Courses successfully deleted: {$deleted}\n";
 echo "Errors: {$errors}\n";
 echo "========================================\n";
 
+// Delete test categories (idnumber LIKE 'testcat_%') that are now empty.
+$catsql = "SELECT id, name, idnumber, coursecount
+             FROM {course_categories}
+            WHERE " . $DB->sql_like('idnumber', ':idnumber') . "
+              AND coursecount = 0";
+
+$catparams = ['idnumber' => 'testcat_%'];
+
+if ($categoryid !== null) {
+    $catsql .= " AND parent = :parent";
+    $catparams['parent'] = (int)$categoryid;
+}
+
+$catsql .= " ORDER BY id ASC";
+
+$testcats = $DB->get_records_sql($catsql, $catparams);
+
+if (!empty($testcats)) {
+    echo "\nCategorias de teste vazias encontradas: " . count($testcats) . "\n";
+
+    $catdeleted = 0;
+    $caterrors  = 0;
+
+    foreach ($testcats as $cat) {
+        try {
+            $catobj = core_course_category::get($cat->id, IGNORE_MISSING);
+            if ($catobj) {
+                $catobj->delete_full(false);
+                $catdeleted++;
+            }
+        } catch (Exception $e) {
+            $caterrors++;
+            echo "ERRO ao deletar categoria [{$cat->id}] {$cat->name}: " . $e->getMessage() . "\n";
+        }
+    }
+
+    echo "Categorias deletadas: {$catdeleted}\n";
+    if ($caterrors > 0) {
+        echo "Erros ao deletar categorias: {$caterrors}\n";
+    }
+}
+
 // Clear cache.
 echo "\nClearing cache...\n";
 rebuild_course_cache(0, true);

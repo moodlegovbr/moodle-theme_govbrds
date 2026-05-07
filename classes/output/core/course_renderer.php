@@ -28,6 +28,7 @@ use html_writer;
 use coursecat_helper;
 use stdClass;
 use core_course_list_element;
+use core_course_category;
 use theme_govbrds\util\course;
 use moodle_url;
 
@@ -39,6 +40,143 @@ use moodle_url;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_renderer extends \core_course_renderer {
+    /**
+     * Renders the course catalogue page with flat course list and search/filter bar.
+     *
+     * Overrides the core method to avoid the redirect to management.php and to display
+     * all courses as a flat card list instead of a category tree.
+     *
+     * @param int|stdClass|core_course_category $category
+     * @return string
+     */
+    public function course_category($category) {
+        global $CFG;
+
+        if (empty($category)) {
+            $coursecat = core_course_category::user_top();
+        } else if (is_object($category) && $category instanceof core_course_category) {
+            $coursecat = $category;
+        } else {
+            $coursecat = core_course_category::get(is_object($category) ? $category->id : $category);
+        }
+
+        $search  = optional_param('search', '', PARAM_TEXT);
+        $page    = optional_param('page', 0, PARAM_INT);
+        $perpage = max(1, (int) ($CFG->coursesperpage ?: 20));
+
+        $catfilter = (int) $coursecat->id;
+
+        // Build category options for the filter dropdown.
+        $allcats = core_course_category::make_categories_list();
+        $categoryoptions = [];
+        foreach ($allcats as $catid => $catname) {
+            $categoryoptions[] = [
+                'id'       => $catid,
+                'name'     => $catname,
+                'selected' => ($catid === $catfilter),
+            ];
+        }
+
+        $hasactivefilter = !empty($search) || !empty($catfilter);
+        [$courses, $totalcount] = $this->get_catalogue_courses($search, $catfilter, $page, $perpage);
+
+        $paginationparams = [];
+        if (!empty($search)) {
+            $paginationparams['search'] = $search;
+        }
+        if (!empty($catfilter)) {
+            $paginationparams['categoryid'] = $catfilter;
+        }
+
+        $chelper = new coursecat_helper();
+        $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED)
+                ->set_courses_display_options([
+                    'limit'         => $perpage,
+                    'offset'        => $page * $perpage,
+                    'paginationurl' => new moodle_url('/course/index.php', $paginationparams),
+                ])
+                ->set_attributes(['class' => 'course-catalogue-list']);
+
+        $formaction = (new moodle_url('/course/index.php'))->out(false);
+
+        $output = $this->render_from_template('theme_govbrds/course_catalogue_filters', [
+            'formaction'           => $formaction,
+            'search'               => $search,
+            'categoryid'           => $catfilter,
+            'allcategoriesselected'=> empty($catfilter),
+            'categories'           => $categoryoptions,
+            'hasactivefilter'      => $hasactivefilter,
+            'totalcount'           => $totalcount,
+        ]);
+
+        if (!$totalcount) {
+            $msg = !empty($search)
+                ? get_string('nocoursesfound', '', $search)
+                : get_string('nocoursesyet');
+            $output .= html_writer::div($msg, 'alert alert-info mt-3');
+        } else {
+            $output .= $this->coursecat_courses($chelper, $courses, $totalcount);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Fetches courses for the catalogue applying optional name and category filters.
+     *
+     * Uses a direct DB query so that search and category (with subcategories) can be
+     * combined without the pagination distortion that post-filtering would cause.
+     *
+     * @param string $search     Partial name to search (empty = no filter)
+     * @param int    $catfilter  Category ID to restrict to (0 = all categories)
+     * @param int    $page       Zero-based page index
+     * @param int    $perpage    Records per page
+     * @return array [core_course_list_element[], int $totalcount]
+     */
+    private function get_catalogue_courses(string $search, int $catfilter, int $page, int $perpage): array {
+        global $DB;
+
+        $conditions = ['c.id <> :siteid', 'c.visible = 1'];
+        $params     = ['siteid' => SITEID];
+        $joins      = '';
+
+        if (!empty($catfilter)) {
+            $catrecord = $DB->get_record('course_categories', ['id' => $catfilter], 'id, path');
+            if ($catrecord) {
+                $joins .= ' JOIN {course_categories} cc ON c.category = cc.id';
+                $conditions[] = '(cc.id = :catid OR ' . $DB->sql_like('cc.path', ':catpath') . ')';
+                $params['catid']   = $catfilter;
+                $params['catpath'] = $catrecord->path . '/%';
+            }
+        }
+
+        if (!empty($search)) {
+            $escaped = '%' . $DB->sql_like_escape($search) . '%';
+            $conditions[] = '(' . $DB->sql_like('c.fullname', ':fsearch', false)
+                          . ' OR ' . $DB->sql_like('c.shortname', ':ssearch', false) . ')';
+            $params['fsearch'] = $escaped;
+            $params['ssearch'] = $escaped;
+        }
+
+        $where = implode(' AND ', $conditions);
+        $base  = "FROM {course} c{$joins} WHERE {$where}";
+
+        $totalcount = (int) $DB->count_records_sql("SELECT COUNT(DISTINCT c.id) {$base}", $params);
+        $records    = $DB->get_records_sql(
+            "SELECT DISTINCT c.* {$base} ORDER BY c.fullname ASC",
+            $params,
+            $page * $perpage,
+            $perpage
+        );
+
+        $courses = [];
+        foreach ($records as $record) {
+            $courses[$record->id] = new core_course_list_element($record);
+        }
+
+        return [$courses, $totalcount];
+    }
+
     /**
      * Returns HTML to print tree of course categories (with number of courses) for the frontpage
      *

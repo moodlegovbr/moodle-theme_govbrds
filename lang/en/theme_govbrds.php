@@ -25,6 +25,9 @@
 defined("MOODLE_INTERNAL") || die();
 
 $string["about"] = "About";
+$string["catalogue_allcategories"] = "All categories";
+$string["catalogue_clearfilters"] = "Clear";
+$string["catalogue_resultcount"] = '{$a} course(s) found';
 $string["accessibility"] = "Accessibility";
 $string["address"] = "Address";
 $string["address_desc"] =
