@@ -1,0 +1,90 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_govbrds/course_catalogue_filters
+
+    Search and filter bar for the course catalogue page (/course/index.php).
+
+    Context variables:
+    * formaction  - URL for the form action (string)
+    * search      - Current search term (string)
+    * categoryid  - Currently selected category ID (int, 0 = all)
+    * categories  - Array of {id, name, selected} for the category dropdown
+
+    Example context (json):
+    {
+        "formaction": "/course/index.php",
+        "search": "python",
+        "categoryid": 3,
+        "categories": [
+            {"id": 1, "name": "Tecnologia", "selected": false},
+            {"id": 3, "name": "Tecnologia / Programação", "selected": true}
+        ]
+    }
+}}
+<div class="course-catalogue-filters card p-4 mb-4 border-0 bg-light">
+    <form action="{{formaction}}" method="get" class="row g-3 align-items-end">
+        <div class="col-12 col-md-4">
+            <label for="catalogue-search" class="form-label font-weight-bold">
+                {{#str}}searchcourses, core{{/str}}
+            </label><br />
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="catalogue-search"
+                    name="search"
+                    class="form-control"
+                    placeholder="{{#str}}searchcourses, core{{/str}}"
+                    value="{{search}}"
+                    aria-label="{{#str}}searchcourses, core{{/str}}"
+                >
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <label for="catalogue-category" class="form-label font-weight-bold">
+                {{#str}}category, moodle{{/str}}
+            </label><br />
+            <select id="catalogue-category" name="categoryid" class="form-control custom-select">
+                <option value="0" {{#allcategoriesselected}}selected{{/allcategoriesselected}}>
+                    {{#str}}catalogue_allcategories, theme_govbrds{{/str}}
+                </option>
+                {{#categories}}
+                    <option value="{{id}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+                {{/categories}}
+            </select>
+        </div>
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary primary w-100" aria-label="{{#str}}search, moodle{{/str}}" title="{{#str}}search, moodle{{/str}}">
+                <i class="fas fa-search" aria-hidden="true"></i>&nbsp;
+                <span class="d-none d-md-inline">{{#str}}search, moodle{{/str}}</span>
+            </button>
+        </div>
+        {{#hasactivefilter}}
+        <div class="col-6 col-md-2">
+            <a href="{{formaction}}" class="btn btn-outline-secondary w-100" title="{{#str}}catalogue_clearfilters, theme_govbrds{{/str}}">
+                <i class="fas fa-times" aria-hidden="true"></i>
+                <span class="d-none d-md-inline">{{#str}}catalogue_clearfilters, theme_govbrds{{/str}}</span>
+            </a>
+        </div>
+        {{/hasactivefilter}}
+    </form>
+    {{#hasactivefilter}}
+    <div class="mt-2 text-muted small">
+        {{#str}}catalogue_resultcount, theme_govbrds, {{totalcount}}{{/str}}
+    </div>
+    {{/hasactivefilter}}
+</div>

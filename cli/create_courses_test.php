@@ -1,4 +1,4 @@
--<?php
+<?php
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -16,7 +16,9 @@
 
 /**
  * CLI script to create test courses in Moodle.
- * This script creates multiple courses to test the infinite scroll feature.
+ *
+ * Cria categorias na raiz (parent=0) para cada disciplina e
+ * distribui os cursos nelas.
  *
  * Use:
  * php create_courses_test.php --quantity=50
@@ -32,79 +34,41 @@ require_once(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/clilib.php');
 require_once($CFG->dirroot . '/course/lib.php');
 
-// Get command-line parameters.
 [$options, $unrecognized] = cli_get_params(
     [
-        'help' => false,
+        'help'     => false,
         'quantity' => 50,
-        'category' => 1,
-        'prefix' => 'Test Course ',
+        'prefix'   => 'Curso Teste ',
     ],
     [
         'h' => 'help',
         'q' => 'quantity',
-        'c' => 'category',
         'p' => 'prefix',
     ]
 );
 
 if ($options['help']) {
-    echo "Script for creating test courses in Moodle.
+    echo "Script para criação de cursos de teste no Moodle.
 
-Use:
+Cria categorias na raiz (parent=0) por disciplina e distribui os cursos nelas.
+Categorias já existentes são reutilizadas.
+
+Uso:
     php create_courses_test.php [options]
 
-Options:
-    -h, --help              Display this help message.
-    -q, --quantity=NUMBER   Number of courses to create (default: 50)
-    -c, --category=ID       Category ID where courses are to be created (default: 1)
-    -p, --prefix=TEXT       Course name prefix (default: 'Test Course')
+Opções:
+    -h, --help              Exibe esta mensagem de ajuda.
+    -q, --quantity=NUMBER   Número de cursos a criar (padrão: 50)
+    -p, --prefix=TEXT       Prefixo do nome do curso (padrão: 'Curso Teste')
 
-Examples:
-    php create_test_courses.php --quantity=100
-    php create_test_courses.php --quantity=30 --category=2 --prefix='Course Demo'
+Exemplos:
+    php create_courses_test.php --quantity=100
+    php create_courses_test.php --quantity=30 --prefix='Demo'
 
 ";
     exit(0);
 }
 
-// Validate quantity.
-$quantity = (int)$options['quantity'];
-if ($quantity < 1 || $quantity > 1000) {
-    cli_error("The quantity must be between 1 and 1000.");
-}
-
-// Validate category.
-$categoryid = (int)$options['category'];
-try {
-    $category = core_course_category::get($categoryid);
-} catch (Exception $e) {
-    cli_error("Category with ID {$categoryid} not found");
-}
-
-$prefix = $options['prefix'];
-
-echo "========================================\n";
-echo "Criador de Cursos de Teste - Moodle\n";
-echo "========================================\n";
-echo "Quantidade: {$quantity} cursos\n";
-echo "Categoria: {$category->name} (ID: {$categoryid})\n";
-echo "Prefixo: {$prefix}\n";
-echo "========================================\n\n";
-
-// Confirm execution.
-echo "Deseja continuar? (s/n): ";
-$handle = fopen("php://stdin", "r");
-$line = fgets($handle);
-if (trim($line) != 's' && trim($line) != 'S') {
-    echo "Operação cancelada.\n";
-    exit(0);
-}
-fclose($handle);
-
-echo "\nIniciando criação de cursos...\n\n";
-
-// Arrays for varying names and descriptions.
 $subjects = [
     'Matemática', 'Física', 'Química', 'Biologia', 'História',
     'Geografia', 'Português', 'Inglês', 'Programação', 'Design',
@@ -121,45 +85,88 @@ $themes = [
     'Digital', 'Contemporânea', 'Experimental', 'Avançada', 'Fundamental',
 ];
 
-$created = 0;
-$errors = 0;
+$quantity = (int)$options['quantity'];
+if ($quantity < 1 || $quantity > 1000) {
+    cli_error("A quantidade deve estar entre 1 e 1000.");
+}
+
+$prefix = $options['prefix'];
+
+echo "========================================\n";
+echo "Criador de Cursos de Teste - Moodle\n";
+echo "========================================\n";
+echo "Quantidade : {$quantity} cursos\n";
+echo "Prefixo    : {$prefix}\n";
+echo "Categorias : criadas/reutilizadas na raiz (parent=0)\n";
+echo "========================================\n\n";
+
+echo "Deseja continuar? (s/n): ";
+$handle = fopen("php://stdin", "r");
+$line   = fgets($handle);
+fclose($handle);
+if (strtolower(trim($line)) !== 's') {
+    echo "Operação cancelada.\n";
+    exit(0);
+}
+
+echo "\nVerificando/criando categorias na raiz...\n";
+
+// Create or reuse one root-level category per subject.
+$categorymap = []; // subject => category id
+foreach ($subjects as $subject) {
+    $existing = $DB->get_record('course_categories', ['name' => $subject, 'parent' => 0]);
+    if ($existing) {
+        $categorymap[$subject] = (int)$existing->id;
+        echo "  Existente: {$subject} (ID: {$existing->id})\n";
+    } else {
+        $catdata           = new stdClass();
+        $catdata->name     = $subject;
+        $catdata->parent   = 0;
+        $catdata->idnumber = 'testcat_' . strtolower(preg_replace('/[^a-z0-9]/i', '_', $subject));
+        $newcat = core_course_category::create($catdata);
+        $categorymap[$subject] = (int)$newcat->id;
+        echo "  Criada   : {$subject} (ID: {$newcat->id})\n";
+    }
+}
+
+echo "\nIniciando criação de cursos...\n\n";
+
+$created  = 0;
+$errors   = 0;
+$catcount = [];
 
 for ($i = 1; $i <= $quantity; $i++) {
     try {
-        // Generate a unique name for the course.
         $subject = $subjects[array_rand($subjects)];
-        $level = $levels[array_rand($levels)];
-        $theme = $themes[array_rand($themes)];
+        $level   = $levels[array_rand($levels)];
+        $theme   = $themes[array_rand($themes)];
 
-        $coursename = "{$prefix} {$i}: {$subject} {$level}";
-        $shortname = "test_" . strtolower(str_replace(' ', '_', $subject)) . "_{$i}_" . time();
+        $categoryid = $categorymap[$subject];
+        $coursename = "{$prefix}{$i}: {$subject} {$level}";
+        $shortname  = 'test_' . strtolower(preg_replace('/[^a-z0-9]/i', '_', $subject)) . "_{$i}_" . time();
 
-        // Prepare course data.
-        $coursedata = new stdClass();
-        $coursedata->fullname = $coursename;
-        $coursedata->shortname = $shortname;
-        $coursedata->category = $categoryid;
-        $coursedata->category = $categoryid;
-        $coursedata->summary = "Este é um curso de teste criado automaticamente para testar o scroll infinito. "
-                             . "Curso de {$subject} {$theme} nível {$level}. "
-                             . "Conteúdo: Este curso aborda os principais conceitos e práticas relacionados a {$subject}, "
-                             . "com foco em aplicações práticas e teoria {$theme}.";
+        $coursedata                = new stdClass();
+        $coursedata->fullname      = $coursename;
+        $coursedata->shortname     = $shortname;
+        $coursedata->category      = $categoryid;
+        $coursedata->summary       = "Curso de teste criado automaticamente. "
+                                   . "Disciplina: {$subject} {$theme}, nível {$level}. "
+                                   . "Aborda conceitos e práticas relacionados a {$subject} com foco em aplicações {$theme}.";
         $coursedata->summaryformat = FORMAT_HTML;
-        $coursedata->format = 'topics';
-        $coursedata->numsections = 5;
-        $coursedata->startdate = time();
-        $coursedata->enddate = time() + (90 * 24 * 60 * 60); // 90 dias
-        $coursedata->visible = 1;
-        $coursedata->showgrades = 1;
-        $coursedata->newsitems = 5;
-        $coursedata->lang = 'pt_br';
+        $coursedata->format        = 'topics';
+        $coursedata->numsections   = 5;
+        $coursedata->startdate     = time();
+        $coursedata->enddate       = time() + (90 * 24 * 60 * 60);
+        $coursedata->visible       = 1;
+        $coursedata->showgrades    = 1;
+        $coursedata->newsitems     = 5;
+        $coursedata->lang          = 'pt_br';
 
-        // Create the course.
-        $course = create_course($coursedata);
+        create_course($coursedata);
         $created++;
+        $catcount[$categoryid] = ($catcount[$categoryid] ?? 0) + 1;
 
-        // Show progress.
-        if ($i % 10 == 0) {
+        if ($i % 10 === 0) {
             echo "Progresso: {$i}/{$quantity} cursos criados\n";
         }
     } catch (Exception $e) {
@@ -171,12 +178,16 @@ for ($i = 1; $i <= $quantity; $i++) {
 echo "\n========================================\n";
 echo "Processo finalizado!\n";
 echo "========================================\n";
-echo "Cursos criados com sucesso: {$created}\n";
-echo "Erros: {$errors}\n";
+echo "Cursos criados: {$created}\n";
+echo "Erros         : {$errors}\n";
 echo "========================================\n";
 
 if ($created > 0) {
-    echo "\nOs cursos foram criados na categoria: {$category->name}\n";
-    echo "Você pode visualizá-los em: {$CFG->wwwroot}/course/index.php?categoryid={$categoryid}\n";
+    echo "\nDistribuição por categoria:\n";
+    foreach ($catcount as $catid => $count) {
+        $cat = core_course_category::get($catid);
+        echo "  {$cat->name} (ID:{$catid}): {$count} curso(s)\n";
+    }
 }
+
 exit(0);
