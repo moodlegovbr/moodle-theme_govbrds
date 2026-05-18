@@ -71,11 +71,26 @@ $relatedcourses = array_filter($relatedcourses, function ($c) use ($course) {
 });
 
 $templatecontext['relatedcourses'] = $relatedcourses;
-if (!empty($courseid)) {
-    $context = context_course::instance($courseid);
-    $teachers = get_role_users(3, $context, false, 'u.id, u.firstname, u.lastname, u.email');
-    $templatecontext['teachers'] = $teachers;
+$teachercontext = context_course::instance($course->id);
+$fields = 'u.id, u.firstname, u.lastname, u.email, u.picture, u.imagealt,'
+    . ' u.firstnamephonetic, u.lastnamephonetic, u.middlename, u.alternatename';
+$teacherlist = [];
+$seen = [];
+foreach ([3, 4] as $roleid) { // 3=editingteacher, 4=teacher
+    foreach (get_role_users($roleid, $teachercontext, false, $fields) as $user) {
+        if (!isset($seen[$user->id])) {
+            $seen[$user->id] = true;
+            $userutil = new \theme_govbrds\util\user($user);
+            $teacherlist[] = [
+                'fullname' => fullname($user),
+                'picture'  => $userutil->get_user_picture(100),
+            ];
+        }
+    }
 }
+$count = count($teacherlist);
+$templatecontext['teachers'] = $teacherlist;
+$templatecontext['teacherlabel'] = get_string($count === 1 ? 'teacher' : 'teachers', 'theme_govbrds');
 echo $OUTPUT->render_from_template('theme_govbrds/landingpage', $templatecontext);
 echo $OUTPUT->standard_footer_html();
 echo $OUTPUT->standard_end_of_body_html();

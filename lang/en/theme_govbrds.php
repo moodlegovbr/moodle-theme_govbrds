@@ -46,7 +46,7 @@ $string["choosereadme"] =
     "The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.";
 $string["configtitle"] = "GovBR-DS Settings";
 $string["contact"] = "Contact";
-$string["course_deadline"] = "Course Deadline";
+$string["course_period"] = "Period";
 $string["course_details"] = "Course Details";
 $string["courses"] = "Courses";
 $string["currentinparentheses"] = "(current)";
@@ -115,6 +115,8 @@ $string["message_title_desc"] =
 $string["next_activity"] = "Next activity";
 $string["no_related_course"] = "No related courses";
 $string["no_teacher"] = "No teacher";
+$string["teacher"] = "Teacher";
+$string["teachers"] = "Teachers";
 $string["organization"] = "Organization";
 $string["organization_desc"] = "Description of the institution.";
 $string["organization_url"] = "Organization URL";
@@ -163,6 +165,8 @@ $string["tab"] = "Tab";
 $string["tabdesc"] =
     "A custom menu may be configured here. Enter each menu item on a new line with format: menu text, a link URL and a tooltip title, separated by pipe characters. <pre><br/>eLearn|https://example.com/|Online Study Platform <br/> Mooc|https://example.com/mooc|MOOC Platform <br />Workspace|https://example.com/workspace|Corporative Training Environment</pre>";
 $string["terms_of_use"] = "Terms of Use";
+$string["teacher"] = "Teacher";
+$string["teachers"] = "Teachers";
 $string["tiktok"] = "Tik Tok";
 $string["tiktokdesc"] = "Link to your Tik Tok profile.";
 $string["to"] = "to";
