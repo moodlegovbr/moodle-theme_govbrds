@@ -46,7 +46,7 @@ $string["choosereadme"] =
     "The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.";
 $string["configtitle"] = "GovBR-DS Settings";
 $string["contact"] = "Contact";
-$string["course_period"] = "Period";
+$string["course_period"] = "Course Period";
 $string["course_details"] = "Course Details";
 $string["courses"] = "Courses";
 $string["currentinparentheses"] = "(current)";
@@ -172,6 +172,7 @@ $string["tiktokdesc"] = "Link to your Tik Tok profile.";
 $string["to"] = "to";
 $string["twitter"] = "Twitter";
 $string["twitterdesc"] = "Link to your Twitter profile.";
+$string["until"] = "until";
 $string["useful_links"] = "Useful Links";
 $string["visit_linkedin"] = "Linkdin";
 $string["visit_facebook"] = "Facebook";

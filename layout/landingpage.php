@@ -70,7 +70,21 @@ $relatedcourses = array_filter($relatedcourses, function ($c) use ($course) {
     return $c->id !== $course->id;
 });
 
-$templatecontext['relatedcourses'] = $relatedcourses;
+// Convert to indexed array, randomize and limit to 3 courses from same category.
+$relatedcourses = array_values($relatedcourses);
+shuffle($relatedcourses);
+$relatedcourses = array_slice($relatedcourses, 0, 3);
+
+$relatedcoursesformatted = [];
+foreach ($relatedcourses as $c) {
+    $relatedcoursesformatted[] = [
+        'id' => $c->id,
+        'fullname' => format_string($c->fullname),
+        'url' => (new moodle_url('/course/view.php', ['id' => $c->id]))->out(false),
+    ];
+}
+
+$templatecontext['relatedcourses'] = $relatedcoursesformatted;
 $teachercontext = context_course::instance($course->id);
 $fields = 'u.id, u.firstname, u.lastname, u.email, u.picture, u.imagealt,'
     . ' u.firstnamephonetic, u.lastnamephonetic, u.middlename, u.alternatename';
