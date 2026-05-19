@@ -26,13 +26,10 @@
                 <h6 style="text-align:center">{{teacherlabel}}</h6>
                 <ul class="list-unstyled d-flex flex-wrap">
                 {{#teachers}}
-                    <li class="text-center mr-3 mb-2">
-                        <img src="{{picture}}" alt="{{fullname}}" class="rounded-circle d-block mx-auto mb-1" width="60" height="60" style="object-fit:cover;">
-                        <span class="small">{{fullname}}</span>
-                    </li>
+                    <li class="lead" style="text-align:center; font-size:1.25rem;">{{fullname}}</li>
                 {{/teachers}}
                 {{^teachers}}
-                    <li>{{#str}} no_teacher, theme_govbrds {{/str}}</li>
+                    <li class="lead" style="text-align:center; font-size:1.25rem;">{{#str}} no_teacher, theme_govbrds {{/str}}</li>
                 {{/teachers}}
                 </ul>
             </div>
@@ -48,7 +45,7 @@
                <p class="lead" style="text-align:center; font-size:1.25rem;">
                 {{{startdate}}}
                 {{#enddate}}
-                 <br>{{#str}} to, theme_govbrds {{/str}} {{{enddate}}}
+                 <br>{{#str}} until, theme_govbrds {{/str}} {{{enddate}}}
                 {{/enddate}}
                 </p>
             </div>
@@ -59,12 +56,14 @@
             <div class="card-content">
                 <h1><i class="fas fa-link" style="font-size:larger; margin: 0 auto; width: 100%;"></i></h1>
                 <h6 style="text-align:center">{{#str}} related_courses, theme_govbrds {{/str}}</h6>
-                <ul>
+                <ul class="list-unstyled d-flex flex-wrap">
                 {{#relatedcourses}}
-                    <li>{{ fullname }}</li>
+                    <li class="lead" style="text-align:center; font-size:1.25rem;">
+                        <a href="{{url}}">{{fullname}}</a>
+                    </li>
                 {{/relatedcourses}}
                 {{^relatedcourses}}
-                    <li>{{#str}} no_related_course, theme_govbrds {{/str}}</li>
+                    <li class="lead" style="text-align:center; font-size:1.25rem;">{{#str}} no_related_course, theme_govbrds {{/str}}</li>
                 {{/relatedcourses}}
                 </ul>
             </div>
