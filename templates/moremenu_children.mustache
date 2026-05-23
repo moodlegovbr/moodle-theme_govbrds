@@ -15,12 +15,17 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    moremenu_children section.
+    @template theme_govbrds/moremenu_children
+
+    More menu children template.
+
+    Example context (json):
+    {"haschildren": false, "url": "#", "action": "", "text": "Test", "isactive": false, "key": "test", "forceintomoremenu": false}
 }}
 {{#haschildren}}
     <div class="menu-folder" data-forceintomoremenu="{{#forceintomoremenu}}true{{/forceintomoremenu}}{{^forceintomoremenu}}false{{/forceintomoremenu}}">
         <a class="menu-item {{#isactive}}active{{/isactive}} {{#classes}}{{.}} {{/classes}}" id="drop-down-{{moremenuid}}"
-            href="javascript: void(0)" role="treeitem"
+            href="javascript: void(0)"
             {{#title}}title="{{.}}"{{/title}}>
             <span class="icon"></span>
             <span class="content">{{{text}}}</span>
@@ -29,7 +34,6 @@
         {{#children}}
             <li>
                 <a class="menu-item divider {{#isactive}}active{{/isactive}}"
-                    role="treeitem"
                     href="{{{url}}}{{{action}}}"
                     {{#title}}title="{{.}}"{{/title}} 
                     data-key="{{key}}"
@@ -45,7 +49,6 @@
 {{/haschildren}}
 {{^haschildren}}
     <a class="menu-item divider {{#isactive}}active{{/isactive}}"
-        role="treeitem"
         href="{{{url}}}{{{action}}}"
         {{#title}}title="{{.}}"{{/title}} 
         data-key="{{key}}"

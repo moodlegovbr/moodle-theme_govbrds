@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/login
+    @template theme_govbrds/login
 
     Login page template
 
@@ -25,8 +25,16 @@
             "doctype": "<!DOCTYPE html>",
             "page_title": "Login page",
             "favicon": "favicon.ico",
-            "main_content": "<h1>Headers keep HTML validators happy</h1>"
-        }
+            "main_content": "<h1>Headers keep HTML validators happy</h1>",
+            "should_display_navbar_logo": false,
+            "standard_top_of_body_html": "",
+            "standard_footer_html": "",
+            "standard_end_of_body_html": ""
+        },
+        "bodyattributes": "",
+        "sitename": "Test Site",
+        "config": {"homeurl": "#"},
+        "tabs": []
     }
 }}
 {{> theme_boost/head }}

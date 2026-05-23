@@ -15,7 +15,12 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
+    @template theme_govbrds/header
+
     Page section header.
+
+    Example context (json):
+    {"output": {"should_display_navbar_logo": false, "get_compact_logo_url": "#"}, "sitename": "Test Site", "config": {"homeurl": "#", "wwwroot": "#"}, "organization_url": "#", "organization": "Org", "fullname": "My Course"}
 }}
 <header class="br-header" id="header" data-sticky="data-sticky">
   <div class="container-lg">
@@ -65,7 +70,7 @@
           <div class="br-input has-icon">
             <label for="searchbox">{{#str}} searchtext, theme_govbrds {{/str}}</label>
             <input id="searchbox" name="q" type="text"
-            placeholder="{{#str}} search, theme_govbrds {{/str}}" />
+            placeholder="{{#str}} search, theme_govbrds {{/str}}">
             <button class="br-button circle small" type="submit" aria-label="{{#str}} search, theme_govbrds {{/str}}">
               <i class="fas fa-search" aria-hidden="true"></i>
             </button>

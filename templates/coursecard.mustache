@@ -17,37 +17,10 @@
 {{!
     @template theme_govbrds/coursecard
 
-    Course card used in the dashboard and course catalogue.
-
-    Context variables required for this template:
-    * id - The course id
-    * visible - Whether the course is visible to the user
-    * courseurl - URL to the course page
-    * image - Background image URL for the card header
-    * fullname - The full name of the course
-    * category - The category name for the course tag
-    * hasenrolmenticons - True if enrolment icons should be shown
-    * enrolmenticons - Array of enrolment icon HTML strings
-    * metadata - Array of {name, value} metadata items (e.g. teacher, dates)
-    * hasprogress - True if a progress bar should be displayed
-    * progress - Completion percentage (0-100)
+    Course card template.
 
     Example context (json):
-    {
-        “id”: “42”,
-        “visible”: true,
-        “courseurl”: “https://example.com/course/view.php?id=42”,
-        “image”: “https://example.com/pluginfile.php/42/course/overviewfiles/course.jpg”,
-        “fullname”: “Introduction to PHP”,
-        “category”: “Technology”,
-        “hasenrolmenticons”: false,
-        “enrolmenticons”: [],
-        “metadata”: [
-            {“name”: “Teacher”, “value”: “Jane Doe”}
-        ],
-        “hasprogress”: true,
-        “progress”: 50
-    }
+    {“id”: “42”, “courseurl”: “#”, “image”: “#”, “fullname”: “Test”, “category”: “Test”, “visible”: true, “hasenrolmenticons”: false, “enrolmenticons”: [], “metadata”: [], “hasprogress”: false, “progress”: 0}
 }}
 <div class="card dashboard-card {{^visible}}dimmed{{/visible}}" data-region="course-content" data-course-id="{{{id}}}">
     <a href="{{courseurl}}" tabindex="-1">

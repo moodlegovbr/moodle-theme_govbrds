@@ -15,7 +15,14 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    Frontpage section.
+    @template theme_govbrds/sections_features
+
+    Frontpage features section. Only rendered when display_features is true.
+
+    Example context (json):
+    {
+        "display_features": false
+    }
 }}
 {{#display_features}}
 <div class="features-section">

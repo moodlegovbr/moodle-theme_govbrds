@@ -15,7 +15,12 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
+    @template theme_govbrds/navbar
+
     Navbar section.
+
+    Example context (json):
+    {"primarymoremenu": false}
 }}
 <div class="br-menu" id="main-navigation">
     <div class="menu-container">
@@ -40,9 +45,9 @@
                 </div>
             </div>
             {{#primarymoremenu}}
-                <nav class="menu-body" role="tree">
+                <div class="menu-body" role="tree">
                     {{> theme_govbrds/moremenu}}
-                </nav>
+                </div>
             {{/primarymoremenu}}
             <div class="menu-footer">
                 {{> theme_govbrds/footer_social}}
