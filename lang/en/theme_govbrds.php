@@ -25,9 +25,6 @@
 defined("MOODLE_INTERNAL") || die();
 
 $string["about"] = "About";
-$string["catalogue_allcategories"] = "All categories";
-$string["catalogue_clearfilters"] = "Clear";
-$string["catalogue_resultcount"] = '{$a} course(s) found';
 $string["accessibility"] = "Accessibility";
 $string["address"] = "Address";
 $string["address_desc"] =
@@ -42,12 +39,15 @@ $string["backgroundimage_desc"] =
 $string["boostset"] = "Theme Configuration";
 $string["brandcolor"] = "Brand Color";
 $string["brandcolor_desc"] = "Select a color to apply to links and titles.";
+$string["catalogue_allcategories"] = "All categories";
+$string["catalogue_clearfilters"] = "Clear";
+$string["catalogue_resultcount"] = '{$a} course(s) found';
 $string["choosereadme"] =
     "The GovBR-DS theme is a child theme of Boost. It is based on the digital identity of the Brazilian government.";
 $string["configtitle"] = "GovBR-DS Settings";
 $string["contact"] = "Contact";
-$string["course_period"] = "Course Period";
 $string["course_details"] = "Course Details";
+$string["course_period"] = "Course Period";
 $string["courses"] = "Courses";
 $string["currentinparentheses"] = "(current)";
 $string["development_team"] = "Development Team";
@@ -57,16 +57,15 @@ $string["enddate"] = "End Date";
 $string["facebook"] = "Facebook";
 $string["facebookdesc"] = "Link to your Facebook profile.";
 
+$string["feature_btntext"] = 'Feature {$a} Button Text';
+$string["feature_btntext_desc"] = 'Text for the button of feature {$a}.';
+$string["feature_btnurl"] = 'Feature {$a} Button URL';
+$string["feature_btnurl_desc"] = 'URL for the button of feature {$a}.';
 $string["feature_content"] = 'Feature {$a} Content';
 $string["feature_content_desc"] =
     'Choose an icon for feature {$a}. See the list of icons at https://fontawesome.com/icons?d=gallery&m=free.';
 $string["feature_heading"] = 'Feature {$a} Heading';
 $string["feature_icon"] = 'Feature {$a} Icon';
-$string["feature_btntext"] = 'Feature {$a} Button Text';
-$string["feature_btntext_desc"] = 'Text for the button of feature {$a}.';
-$string["feature_btnurl"] = 'Feature {$a} Button URL';
-$string["feature_btnurl_desc"] = 'URL for the button of feature {$a}.';
-
 $string["features"] = "Display Features Boxes";
 $string["features_content"] = "Features Section Content";
 $string["features_desc"] =
@@ -91,7 +90,6 @@ $string["heroimagealt_desc"] =
     "Alternative text for the hero image, used for accessibility purposes.";
 $string["homepage"] = "Homepage";
 $string["homepage_settings"] = "Homepage Settings";
-$string["search"] = "Search";
 $string["how_to"] = "How it works?";
 $string["instagram"] = "Instagram";
 $string["instagramdesc"] = "Link to your Instagram profile.";
@@ -115,8 +113,6 @@ $string["message_title_desc"] =
 $string["next_activity"] = "Next activity";
 $string["no_related_course"] = "No related courses";
 $string["no_teacher"] = "No teacher";
-$string["teacher"] = "Teacher";
-$string["teachers"] = "Teachers";
 $string["organization"] = "Organization";
 $string["organization_desc"] = "Description of the institution.";
 $string["organization_url"] = "Organization URL";
@@ -140,7 +136,7 @@ $string["rawscss_desc"] =
     "Use this field to provide SCSS or CSS code that will be injected at the end of the stylesheet.";
 $string["rawscsspre"] = "Initial Raw SCSS";
 $string["rawscsspre_desc"] =
-    "Use this field to provide initialization SCSS code. It will be injected before everything else. Most of the time, you’ll use this setting to define variables.";
+    "Use this field to provide initialization SCSS code. It will be injected before everything else. Most of the time, you'll use this setting to define variables.";
 $string["region-footer-left"] = "Footer (Left)";
 $string["region-footer-middle"] = "Footer (Middle)";
 $string["region-footer-right"] = "Footer (Right)";
@@ -164,9 +160,9 @@ $string["subordination_desc"] = "Ministry to which it belongs.";
 $string["tab"] = "Tab";
 $string["tabdesc"] =
     "A custom menu may be configured here. Enter each menu item on a new line with format: menu text, a link URL and a tooltip title, separated by pipe characters. <pre><br/>eLearn|https://example.com/|Online Study Platform <br/> Mooc|https://example.com/mooc|MOOC Platform <br />Workspace|https://example.com/workspace|Corporative Training Environment</pre>";
-$string["terms_of_use"] = "Terms of Use";
 $string["teacher"] = "Teacher";
 $string["teachers"] = "Teachers";
+$string["terms_of_use"] = "Terms of Use";
 $string["tiktok"] = "Tik Tok";
 $string["tiktokdesc"] = "Link to your Tik Tok profile.";
 $string["to"] = "to";
@@ -174,10 +170,10 @@ $string["twitter"] = "Twitter";
 $string["twitterdesc"] = "Link to your Twitter profile.";
 $string["until"] = "until";
 $string["useful_links"] = "Useful Links";
-$string["visit_linkedin"] = "Linkdin";
 $string["visit_facebook"] = "Facebook";
 $string["visit_instagram"] = "Instagram";
-$string["visit_youtube"] = "Youtube";
+$string["visit_linkedin"] = "Linkdin";
 $string["visit_tiktok"] = "Tiktok";
+$string["visit_youtube"] = "Youtube";
 $string["youtube"] = "YouTube";
 $string["youtubedesc"] = "Link to your YouTube profile.";

@@ -90,12 +90,12 @@ class course_renderer extends \core_course_renderer {
 
         $chelper = new coursecat_helper();
         $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED)
-                ->set_courses_display_options([
-                    'limit'         => $perpage,
-                    'offset'        => $page * $perpage,
-                    'paginationurl' => new moodle_url('/course/index.php', $paginationparams),
-                ])
-                ->set_attributes(['class' => 'course-catalogue-list']);
+            ->set_courses_display_options([
+                'limit'         => $perpage,
+                'offset'        => $page * $perpage,
+                'paginationurl' => new moodle_url('/course/index.php', $paginationparams),
+            ])
+            ->set_attributes(['class' => 'course-catalogue-list']);
 
         $formaction = (new moodle_url('/course/index.php'))->out(false);
 
@@ -103,7 +103,7 @@ class course_renderer extends \core_course_renderer {
             'formaction'           => $formaction,
             'search'               => $search,
             'categoryid'           => $catfilter,
-            'allcategoriesselected'=> empty($catfilter),
+            'allcategoriesselected' => empty($catfilter),
             'categories'           => $categoryoptions,
             'hasactivefilter'      => $hasactivefilter,
             'totalcount'           => $totalcount,
