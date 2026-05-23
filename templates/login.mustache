@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/login
+    @template theme_govbrds/login
 
     Login page template
 
@@ -25,11 +25,19 @@
             "doctype": "<!DOCTYPE html>",
             "page_title": "Login page",
             "favicon": "favicon.ico",
-            "main_content": "<h1>Headers keep HTML validators happy</h1>"
-        }
+            "main_content": "<h1>Headers keep HTML validators happy</h1>",
+            "should_display_navbar_logo": false,
+            "standard_top_of_body_html": "",
+            "standard_footer_html": "",
+            "standard_end_of_body_html": ""
+        },
+        "bodyattributes": "",
+        "sitename": "Test Site",
+        "config": {"homeurl": "#"},
+        "tabs": []
     }
 }}
-{{> theme_boost/head }}
+{{> theme_govbrds/head }}
 
 <body {{{ bodyattributes }}}>
 {{> core/local/toast/wrapper}}
@@ -41,7 +49,7 @@
     <div id="page" class="container-fluid mt-0">
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
-                <div id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
+                <div id="region-main" class="col-12 h-100" role="main" aria-label="{{#str}}content{{/str}}">
                     <div class="login-wrapper">
                         <div class="login-container">
                             {{{ output.main_content }}}

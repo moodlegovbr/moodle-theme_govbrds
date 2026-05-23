@@ -15,7 +15,12 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template core/user_menu
+    @template theme_govbrds/user_menu
+
+    User menu template.
+
+    Example context (json):
+    {"unauthenticateduser": true, "guest": false, "url": "#"}
 }}
 <div class="header-login">
     {{#unauthenticateduser}}

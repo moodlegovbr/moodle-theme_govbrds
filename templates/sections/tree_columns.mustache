@@ -15,14 +15,19 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    Frontpage section.
+    @template theme_govbrds/sections_tree_columns
+
+    Course tree columns section (teachers, period, related courses).
+
+    Example context (json):
+    {"teacherlabel": "Teachers", "teachers": [], "startdate": "2024-01-01", "relatedcourses": []}
 }}
 
 <div class="row">
     <div class="col-12 col-md-4">
         <div class="br-card main-inner">
             <div class="card-content">
-                <h1><i class="fas fa-users" style="font-size:larger; margin: 0 auto; width: 100%;"></i></h1>
+                <div aria-hidden="true"><i class="fas fa-users" style="font-size:larger; margin: 0 auto; width: 100%;"></i></div>
                 <h6 style="text-align:center">{{teacherlabel}}</h6>
                 <ul class="list-unstyled d-flex flex-wrap">
                 {{#teachers}}
@@ -39,7 +44,7 @@
         <div class="br-card main-inner">
             <div class="card-content">
                 <div>
-                    <h1><i class="fas fa-calendar" style="font-size:larger; margin: 0 auto; width: 100%;"></i></h1>
+                    <div aria-hidden="true"><i class="fas fa-calendar" style="font-size:larger; margin: 0 auto; width: 100%;"></i></div>
                     <h6 style="text-align:center">{{#str}} course_period, theme_govbrds {{/str}}</h6>
                </div>
                <p class="lead" style="text-align:center; font-size:1.25rem;">
@@ -54,7 +59,7 @@
     <div class="col-12 col-md-4">
         <div class="br-card main-inner">
             <div class="card-content">
-                <h1><i class="fas fa-link" style="font-size:larger; margin: 0 auto; width: 100%;"></i></h1>
+                <div aria-hidden="true"><i class="fas fa-link" style="font-size:larger; margin: 0 auto; width: 100%;"></i></div>
                 <h6 style="text-align:center">{{#str}} related_courses, theme_govbrds {{/str}}</h6>
                 <ul class="list-unstyled d-flex flex-wrap">
                 {{#relatedcourses}}

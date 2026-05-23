@@ -15,22 +15,42 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    Page header section.
+    @template theme_govbrds/head
+
+    The HTML head element for every page in the theme.
+
+    Context variables required for this template:
+    * output.doctype - The HTML doctype declaration
+    * output.htmlattributes - Attributes for the html element (e.g. lang)
+    * output.page_title - The page title
+    * output.favicon - URL to the favicon
+    * output.standard_head_html - Standard Moodle head HTML
+
+    Example context (json):
+    {
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "htmlattributes": "lang=\"en\"",
+            "page_title": "Test Page",
+            "favicon": "favicon.ico",
+            "standard_head_html": ""
+        }
+    }
 }}
 {{{ output.doctype }}}
 <html {{{ output.htmlattributes }}}>
 <head>
     <title>{{{ output.page_title }}}</title>
-    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
+    <link rel="shortcut icon" href="{{{ output.favicon }}}">
     {{{ output.standard_head_html }}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonte Rawline-->
-    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"/>
+    <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
     <!-- Fonte Raleway-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
 
      <!-- Fontawesome-->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 </head>

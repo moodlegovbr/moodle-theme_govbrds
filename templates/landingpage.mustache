@@ -15,7 +15,12 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
+    @template theme_govbrds/landingpage
+
     Landing page template.
+
+    Example context (json):
+    {"bodyattributes": "", "output": {"page_title": "Test", "doctype": "<!DOCTYPE html>", "htmlattributes": "lang=\"en\"", "favicon": "favicon.ico", "standard_head_html": "", "standard_top_of_body_html": "", "main_content": "<p>Content</p>", "should_display_navbar_logo": false}, "sitename": "Test Site", "config": {"homeurl": "#", "wwwroot": "#"}, "course": {"fullname": "Test Course", "summary": "<p>Summary</p>"}, "fields": [], "teachers": [], "teacherlabel": "Teachers", "startdate": "2024-01-01", "relatedcourses": []}
 }}
 
 {{> theme_govbrds/head }}
@@ -32,7 +37,7 @@
             <div class="container-lg">
                 <div class="col-8">
                     <div class="dark-mode small p-3">
-                        <h1 class="text-white text-up-05 text-sm-up-06 text-weight-regular text-sm-weight-light mb-5 mt-5">{{{ course.fullname }}}</h2>
+                        <h1 class="text-white text-up-05 text-sm-up-06 text-weight-regular text-sm-weight-light mb-5 mt-5">{{{ course.fullname }}}</h1>
                     </div>
                 </div>
             </div>
@@ -40,7 +45,6 @@
         <main class="d-flex flex-fill mb-5" id="main">
             <div class="container-lg d-flex">
                 <div class="row">
-                    {{> theme_govbrds/navbar }}
                     <div class="col mb-5 main">
                        <div class="main-content pl-sm-3 mt-4" id="main-content">
                             <div class="row">
@@ -73,12 +77,12 @@
                                             </nav>
                                             <div class="tab-content">
                                                 <div class="tab-panel active" id="panel-0-icon">
-                                                    <br />
+                                                    <br>
                                                     {{{course.summary}}}
                                                 </div>
                                                 {{#fields}}
                                                     <div class="tab-panel" id="panel-{{id}}-icon">
-                                                        <br />
+                                                        <br>
                                                     {{{value}}}
                                                 </div>
                                                 {{/fields}}
@@ -87,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-5">
-                                    <div class="card main-inner"" style="margin-top: -220px !important;">
+                                    <div class="card main-inner" style="margin-top: -220px !important;">
                                         <div class="card-content">
                                             {{{ output.main_content }}}
                                         </div>
@@ -104,4 +108,7 @@
         </main>
 
         {{> theme_govbrds/footer }}
-    <!-- ... -->
+    </div>
+    <script src="https://docs-ds.estaleiro.serpro.gov.br/govbr-ds-core/dist/core-init.js"></script>
+</body>
+</html>

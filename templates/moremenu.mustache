@@ -17,6 +17,11 @@
 }}
 {{!
     @template theme_govbrds/moremenu
+
+    More menu template.
+
+    Example context (json):
+    {"moremenuid": "1", "navbarstyle": "primary", "nodecollection": false, "nodearray": false, "istablist": false}
 }}
 <nav class="tab-nav">
     <ul id="moremenu-{{moremenuid}}-{{navbarstyle}}" role="{{#istablist}}tablist{{/istablist}}{{^istablist}}menubar{{/istablist}}" class="nav more-nav {{navbarstyle}}">

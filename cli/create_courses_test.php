@@ -112,7 +112,7 @@ if (strtolower(trim($line)) !== 's') {
 echo "\nVerificando/criando categorias na raiz...\n";
 
 // Create or reuse one root-level category per subject.
-$categorymap = []; // subject => category id
+$categorymap = []; // Subject => category id.
 foreach ($subjects as $subject) {
     $existing = $DB->get_record('course_categories', ['name' => $subject, 'parent' => 0]);
     if ($existing) {

@@ -1,5 +1,5 @@
 body {
-    background-color: #E1ECFF;
+    background-color: #e1ecff;
 }
 
 .main-inner {
@@ -15,17 +15,18 @@ body {
     z-index: 100;
 }
 
-.br-sign-in, .br-button.sign-in {
+.br-sign-in,
+.br-button.sign-in {
     --sign-in-img: 35px;
 }
 
 body.admin .col {
-  flex: auto;
+    flex: auto;
 }
 
 .br-tab .tab-item button,
 .br-tab .tab-item a {
-  font-size: var(--font-size-scale-base);
+    font-size: var(--font-size-scale-base);
 }
 
 .br-feature img {
@@ -33,7 +34,8 @@ body.admin .col {
     display: block; /* Necessário para que o margin funcione */
 }
 
-img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.dashboard-card-img {
+img.dashboard-card-img,
+.pagelayout-coursecategory .dashboard-card .card-img.dashboard-card-img {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -41,17 +43,19 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 .dashboard-card .dashboard-card-img {
     padding: .5rem;
     position: relative;
-    height: 10rem !important;
+    height: 10rem;
     background-position: center;
     background-size: cover;
 }
 
-.card-img, .card-img-bottom {
+.card-img,
+.card-img-bottom {
     border-bottom-right-radius: calc(0.5rem - 1px);
     border-bottom-left-radius: calc(0.5rem - 1px);
 }
 
-.card-img, .card-img-top {
+.card-img,
+.card-img-top {
     border-top-left-radius: calc(0.5rem - 1px);
     border-top-right-radius: calc(0.5rem - 1px);
 }
@@ -75,29 +79,23 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 #id_selfheader > div.d-flex.align-items-center.mb-2 > div > h3 {
     padding-left: 2.5rem;
     padding-bottom: 0;
-    font-size: 24.192px !important;
-    font-size: var(--font-size-scale-up-03) !important;
+    font-size: var(--font-size-scale-up-03);
     margin: 0;
 }
 
 #main-content > div:nth-child(1) > div.col-md-4.mb-5 > div > div > div > h2 {
     padding-left: 2.5rem;
     padding-bottom: 0;
-    font-size: 24.192px !important;
-    font-size: var(--font-size-scale-up-03) !important;
+    font-size: var(--font-size-scale-up-03);
     margin: 0;
 }
 
 #id_submitbutton {
-   --focus-offset: calc((var(--magic-support-size) - var(--magic-size)) * .5 + 4px);
+    --focus-offset: calc((var(--magic-support-size) - var(--magic-size)) * .5 + 4px);
     --button-size: var(--magic-size);
-    background-color: #168821;
     background-color: var(--interactive-alternative);
-    color: #fff;
     color: var(--color-dark);
-    font-size: 20.16px;
     font-size: var(--font-size-scale-up-02);
-    font-weight: 600;
     font-weight: var(--font-weight-semi-bold);
     border-radius: 100em;
     padding: .3em 1em;
@@ -117,21 +115,15 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    background-color: #f0f0f0;
     background-color: var(--gray-5);
     border-radius: 100em;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
     box-shadow: var(--surface-shadow-md);
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
     display: inline-flex;
     height: var(--magic-support-size);
     padding: calc((var(--magic-support-size) - var(--magic-size)) * .5);
-
 }
 
-.tool_dataprivacy{
+.tool_dataprivacy {
     display: none;
 }
 
@@ -149,14 +141,14 @@ img.dashboard-card-img, .pagelayout-coursecategory .dashboard-card .card-img.das
 
 /* === CORREÇÃO BLOQUEIO DE TÓPICOS === */
 
-.nav-item.disabled,
-.nav-item.dimmed {
-    pointer-events: auto !important;
+body .nav-item.disabled,
+body .nav-item.dimmed {
+    pointer-events: auto;
 }
 
-.nav-item.disabled .nav-link,
-.nav-item.dimmed .nav-link {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    opacity: 1 !important;
+body .nav-item.disabled .nav-link,
+body .nav-item.dimmed .nav-link {
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 1;
 }
