@@ -15,70 +15,41 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_govbrds/layout
+    @template theme_govbrds/coursecard
 
-    Main layout template for the GovBRDS theme.
+    Course card used in the dashboard and course catalogue.
 
     Context variables required for this template:
-    * sitename - The short name of the site
-    * fullname - The full name of the site
-    * organization - The name of the organization
-    * organization_url - The organization’s official URL
-    * subordination - The supervising institution or ministry
-    * addressm - The institutional address
-    * output - The core Moodle renderer
-    * sidepreblocks - HTML for the sidebar blocks
-    * hasblocks - True if there are blocks on this page
-    * bodyattributes - HTML attributes for the body tag
-    * courseindexopen - True if the course index should be open on page load
-    * blockdraweropen - True if the block drawer should be open on page load
-    * courseindex - HTML for the course index
-    * primarymoremenu - HTML for the primary navigation menu (more options)
-    * secondarymoremenu - HTML for the secondary navigation menu
-    * mobileprimarynav - HTML for the mobile primary navigation
-    * usermenu - HTML for the user menu
-    * langmenu - HTML for the language menu
-    * forceblockdraweropen - Force the block drawer to remain open
-    * regionmainsettingsmenu - HTML for the main region settings menu
-    * hasregionmainsettingsmenu - True if there is a settings menu in the main region
-    * overflow - Extra content for overflow areas
-    * headercontent - HTML for the header content
-    * addblockbutton - HTML for the “Add block” button
+    * id - The course id
+    * visible - Whether the course is visible to the user
+    * courseurl - URL to the course page
+    * image - Background image URL for the card header
+    * fullname - The full name of the course
+    * category - The category name for the course tag
+    * hasenrolmenticons - True if enrolment icons should be shown
+    * enrolmenticons - Array of enrolment icon HTML strings
+    * metadata - Array of {name, value} metadata items (e.g. teacher, dates)
+    * hasprogress - True if a progress bar should be displayed
+    * progress - Completion percentage (0-100)
 
     Example context (json):
     {
-        "sitename": "My Moodle",
-        "fullname": "Moodle Training Portal",
-        "organization": "Federal Institute",
-        "organization_url": "https://www.if.edu.br",
-        "subordination": "Ministry of Education",
-        "addressm": "123 Brazil Avenue, Boa Vista",
-        "output": {
-            "doctype": "<!DOCTYPE html>",
-            "page_title": "Test Page",
-            "favicon": "favicon.ico",
-            "main_content": "<h1>Sample main content</h1>"
-        },
-        "sidepreblocks": "<h2>Example blocks</h2>",
-        "hasblocks": true,
-        "bodyattributes": "class='format-site'",
-        "courseindexopen": true,
-        "blockdraweropen": false,
-        "courseindex": "<nav>Course index</nav>",
-        "primarymoremenu": "<ul><li>Option 1</li></ul>",
-        "secondarymoremenu": "<ul><li>Secondary</li></ul>",
-        "mobileprimarynav": "<nav>Mobile menu</nav>",
-        "usermenu": "<div>User: John Doe</div>",
-        "langmenu": "<select><option>EN</option><option>PT-BR</option></select>",
-        "forceblockdraweropen": false,
-        "regionmainsettingsmenu": "",
-        "hasregionmainsettingsmenu": false,
-        "overflow": "",
-        "headercontent": "<header>Page header</header>",
-        "addblockbutton": "<button>Add block</button>"
+        “id”: “42”,
+        “visible”: true,
+        “courseurl”: “https://example.com/course/view.php?id=42”,
+        “image”: “https://example.com/pluginfile.php/42/course/overviewfiles/course.jpg”,
+        “fullname”: “Introduction to PHP”,
+        “category”: “Technology”,
+        “hasenrolmenticons”: false,
+        “enrolmenticons”: [],
+        “metadata”: [
+            {“name”: “Teacher”, “value”: “Jane Doe”}
+        ],
+        “hasprogress”: true,
+        “progress”: 50
     }
 }}
-<div class="card dashboard-card {{^visible}}dimmed{{/visible}}" role="listitem" data-region="course-content" data-course-id="{{{id}}}">
+<div class="card dashboard-card {{^visible}}dimmed{{/visible}}" data-region="course-content" data-course-id="{{{id}}}">
     <a href="{{courseurl}}" tabindex="-1">
         <div class="card-img dashboard-card-img" style="background-image: url({{{image}}});">
             <span class="sr-only">{{fullname}}</span>
@@ -103,13 +74,13 @@
         <div class="text-weight-semi-bold text-up-02">
             <a href="{{courseurl}}" class="aalink coursename mr-2 mb-1 {{^visible}}dimmed{{/visible}}">
                 {{{fullname}}}
-            </a><br/>
+            </a><br>
         </div>
     </div>
     <div class="card-footer">
         <div class="d-flex">
             {{#metadata}}
-                <strong>{{{name}}}:</strong>&nbsp;{{{value}}}<br/>
+                <strong>{{{name}}}:</strong>&nbsp;{{{value}}}<br>
             {{/metadata}}
         </div>
     </div>

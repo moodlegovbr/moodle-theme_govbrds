@@ -90,7 +90,7 @@ $fields = 'u.id, u.firstname, u.lastname, u.email, u.picture, u.imagealt,'
     . ' u.firstnamephonetic, u.lastnamephonetic, u.middlename, u.alternatename';
 $teacherlist = [];
 $seen = [];
-foreach ([3, 4] as $roleid) { // 3=editingteacher, 4=teacher
+foreach ([3, 4] as $roleid) { // Role IDs: editing teacher and teacher.
     foreach (get_role_users($roleid, $teachercontext, false, $fields) as $user) {
         if (!isset($seen[$user->id])) {
             $seen[$user->id] = true;

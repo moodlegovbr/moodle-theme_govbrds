@@ -15,15 +15,28 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    header-actions.
+    @template theme_govbrds/header_actions
+
+    Header actions bar containing the search form and user menu.
+
+    Context variables required for this template:
+    * config.wwwroot - The Moodle root URL
+    * usermenu - HTML for the user menu (falsy to hide)
+
+    Example context (json):
+    {
+        "config": {
+            "wwwroot": "https://example.com"
+        },
+        "usermenu": false
+    }
 }}
 <div class="header-actions">
 
     <form autocomplete="off" action="{{{config.wwwroot}}}/course/search.php" method="get" accept-charset="utf-8"
     class="mform d-flex flex-wrap align-items-center simplesearchform">
         <input type="hidden"
-          name="areaids" value="core_course-course"
-          placeholder="{{#str}} search, theme_govbrds {{/str}}">
+          name="areaids" value="core_course-course">
         <div class="header-search-trigger">
             <button class="br-button circle" type="button" aria-label="{{#str}} search_close, theme_govbrds {{/str}}" data-toggle="search" data-target=".header-search">
             <i class="fas fa-search" aria-hidden="true"></i>
