@@ -35,18 +35,16 @@
     Example context (json):
     {
         “id”: “42”,
-        “visible”: true,
-        “courseurl”: “https://example.com/course/view.php?id=42”,
-        “image”: “https://example.com/pluginfile.php/42/course/overviewfiles/course.jpg”,
+        “courseurl”: “#”,
+        “image”: “#”,
         “fullname”: “Introduction to PHP”,
         “category”: “Technology”,
+        “visible”: true,
         “hasenrolmenticons”: false,
         “enrolmenticons”: [],
-        “metadata”: [
-            {“name”: “Teacher”, “value”: “Jane Doe”}
-        ],
-        “hasprogress”: true,
-        “progress”: 50
+        “metadata”: [],
+        “hasprogress”: false,
+        “progress”: 0
     }
 }}
 <div class="card dashboard-card {{^visible}}dimmed{{/visible}}" data-region="course-content" data-course-id="{{{id}}}">
