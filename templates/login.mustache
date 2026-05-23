@@ -37,7 +37,7 @@
         "tabs": []
     }
 }}
-{{> theme_boost/head }}
+{{> theme_govbrds/head }}
 
 <body {{{ bodyattributes }}}>
 {{> core/local/toast/wrapper}}
@@ -49,7 +49,7 @@
     <div id="page" class="container-fluid mt-0">
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
-                <div id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
+                <div id="region-main" class="col-12 h-100" role="main" aria-label="{{#str}}content{{/str}}">
                     <div class="login-wrapper">
                         <div class="login-container">
                             {{{ output.main_content }}}
