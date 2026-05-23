@@ -30,10 +30,10 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = "theme_govbrds";
 
 // This is the version of the plugin.
-$plugin->version = 2026051901;
+$plugin->version = 2026052301;
 
 // This is the named version.
-$plugin->release = "v2.23";
+$plugin->release = "v2.24";
 $plugin->maturity = MATURITY_STABLE;
 
 // This is the version of Moodle this plugin requires.
